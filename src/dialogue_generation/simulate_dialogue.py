@@ -87,7 +87,7 @@ def simulate_conversation(model, system_prompts: dict, seed_message: str, turns:
         print(f"\n[INFO]: Dialogue saved to {log_dir}")
 
 
-# Main
+# Main - THIS NEEDS TO BE RETHINKED WHEN INTEGRATING WITH THE REST OF THE PACKAGE !!!!!! 
 
 def main():
     args = parse_args()
