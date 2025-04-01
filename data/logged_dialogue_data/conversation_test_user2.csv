@@ -1,0 +1,15 @@
+turn,user_msg,tutor_msg
+1,hello i need help with math,"What kind of math do you need help with? Is it a specific topic, like algebra or geometry, or are you working on a particular problem set?"
+2,i need help solving 9*45,"To solve this, multiply 9 by 40 and then add the result of 9 times 5.
+
+9 * 40 = 360
+9 * 5 = 45
+
+Then, add them together:
+360 + 45 ="
+3,i dont know,"Let me help you with that.
+
+360 + 45 = 405
+
+So, the answer is: 9 * 45 = 405"
+4,okay thank you,"You're welcome. If you need help with anything else, feel free to ask!"

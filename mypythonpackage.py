@@ -145,3 +145,14 @@ class DialogueSimulator:
             save_csv_path=save_csv_path
         )
         return df
+
+
+
+###### 3. NOW DIALOGUE LOGGER FOR DIRECT INTERACTIONS WITH LLMS FROM LM STUDIO
+from src.dialogue_wrapper.dia_wrapper_funcs import DialogueLogger
+__all__ = ["DialogueLogger"] # all at once cause already class in that script - could be made here directly, but I prefer the seperation
+
+
+
+
+###### 4. NOW LETS ADD THE CLASSIFIER FOR THE DIALOGUE DATA !!! :DDD
