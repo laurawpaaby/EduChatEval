@@ -4,11 +4,15 @@ Scripts for creating synthetic interactions simulating a tutor/student conversat
 Ideally, this step isn't necessary, as a chat with an actual student is logged directly. 
 
 ### Run like dis
-``` bash
-poetry run python -m dialogue_generation.simulate_dialogue \
-  --mode deep_topic_mastery \
-  --backend mlx \
-  --model_id mlx-community/Qwen2.5-7B-Instruct-1M-4bit \
-  --turns 5 \
-  --log_dir logs/deep_topic_mastery
+``` python
+from mypythonpackage import DialogueSimulator
+
+simulator = DialogueSimulator(backend="mlx", model_id="mlx-community/Qwen2.5-7B-Instruct-1M-4bit")
+
+df = simulator.simulate_dialogue(
+    mode="evaluative_feedback",
+    turns=6,
+    log_dir=Path("logs/raw"), # logged raw dialogue output 
+    save_csv_path=Path("output/dialogue.csv") # stored clean csv output
+)
 ```

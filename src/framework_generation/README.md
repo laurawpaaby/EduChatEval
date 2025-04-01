@@ -32,28 +32,21 @@ prompt_dict = {
 The quality of the generated data can be tested and ensured by the method presented here: https://ojs.aaai.org/index.php/AAAI/article/view/6233  To do so a small dataset on the format: text, label csv. is required to serve as the 'true standard'
 this is done by 
 
-### Usage from notebook: 
-`provide parameters`
-`run code`
-`run quality code`
-
-### Usage from terminal 
-``` bash
-python your_script_name.py \
-  --prompt_path prompts.json \
-  --json_out generated_data.json \
-  --csv_out generated_data.csv \
-  --samples 1000 \
-  --model llama-3.2-3b-instruct
-``` 
-
-or 
+### Usage 
 
 ``` python
-python generate_synthetic.py \
-  --prompt_path prompts_feedback.json \
-  --json_out feedback_synthetic.json \
-  --csv_out feedback_synthetic.csv \
-  --samples 300 \
-  --model llama-3.2-3b-instruct
+# Step 1 - Generate a framework
+df = generator.generate_framework(
+    prompt_path="src/framework_generation/outline_prompts/prompt_default.py", ### THIS NEEDS TO BE UPDATED TO ALSO TAKE IN A DIRECTORY DIRECTLY 
+    num_samples=10,
+    api_url="http://localhost:1234/v1/completions"
+    #json_out="output/data.json",
+    #csv_out="output/data.csv"
+)
+
+# Step 2 - filter by trained classifier 
+filtered_df = generator.filter_with_classifier(
+    train_data=df_train,
+    synth_data=df_synth
+)
 ``` 

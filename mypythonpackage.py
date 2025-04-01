@@ -91,10 +91,57 @@ class FrameworkGenerator:
 
 
 #### 2. NOW NEXT STEP SHOULD BE GENERATING THE SYNTHETIC DIALOGUE DATA ..........
-class DialogueGenerator:
+from typing import Optional
+import pandas as pd
+from pathlib import Path
+
+from src.dialogue_generation.simulate_dialogue import simulate_conversation
+from src.dialogue_generation.txt_llm_inputs.prompt_loader import load_prompts_and_seed  
+from src.dialogue_generation.models.wrap_huggingface import ChatHF
+from src.dialogue_generation.models.wrap_micr import ChatMLX
+
+
+class DialogueSimulator:
     """
-    Generates synthetic dialogue data using a trained quality classifier.
+    Class to simulate a multi-turn dialogue between a student and tutor agent.
+    Outputs structured data as a DataFrame or optional CSV.
     """
 
-    #def __init__(
-    #) 
+    def __init__(
+        self,
+        backend: str = "hf",
+        model_id: str = "gpt2",
+        sampling_params: Optional[dict] = None
+    ):
+        if backend == "hf":
+            self.model = ChatHF(model_id=model_id, sampling_params=sampling_params or {
+                "temperature": 0.9, "top_p": 0.9, "top_k": 50
+            })
+        elif backend == "mlx":
+            self.model = ChatMLX(model_id=model_id, sampling_params=sampling_params or {
+                "temp": 0.9, "top_p": 0.9, "top_k": 40
+            })
+        else:
+            raise ValueError("Unsupported backend")
+
+        self.model.load()
+
+    def simulate_dialogue(
+        self,
+        mode: str = "general_course_exploration",
+        turns: int = 5,
+        log_dir: Optional[Path] = None,
+        save_csv_path: Optional[Path] = None
+    ) -> pd.DataFrame:
+        """
+        Simulate the conversation and return as DataFrame. Optionally save to CSV and log.
+        """
+        system_prompts = load_prompts_and_seed(mode)
+        df = simulate_conversation(
+            model=self.model,
+            system_prompts=system_prompts,
+            turns=turns,
+            log_dir=log_dir,
+            save_csv_path=save_csv_path
+        )
+        return df
