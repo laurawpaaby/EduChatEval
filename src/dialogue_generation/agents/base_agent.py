@@ -36,3 +36,34 @@ class BaseAgent:
         # Add a new message from the "assistant" (ie tutor) role to the chat history
         # This is typically the output that the student just generated
         self.chat_history.messages.append(ChatMessage(role="assistant", content=message))
+
+
+
+class ActiveAgent(BaseAgent):
+    """
+    Agent that simulates a curious student.
+
+    The student acts by generating a follow-up question or continuation
+    based on the previous tutor message.
+    It uses the underlying base model to generate the next user message.
+    """
+
+    def __init__(self, model: ChatModelInterface, system_prompt: str):
+        super().__init__(
+            name="Student",
+            system_prompt=system_prompt,
+            model=model,
+        )
+
+    def act(self, input_message: str = "") -> str:
+        """
+        Generates a question to ask the tutor.
+        The agent (student as tutor) serves as the assistant always adhering llm practise
+         meaning they each have an uninque history where they are the assistant.
+        """
+        if input_message:
+            self.append_user_message(input_message) # self.append_assistant_message(input_message)
+
+        response = self.model.generate(self.chat_history)
+        self.append_assistant_message(response.content) # self.append_user_message(response.content)
+        return response.content

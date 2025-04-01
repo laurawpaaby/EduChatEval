@@ -2,11 +2,14 @@
 something about this being the repo for my thesis with a niiice outline over how its structured: 
 temporary picture of how it may look - mainly for my own overview:
 
-### something about how to run and why 
 ![flowchart](flowchart.png)
 
+### something about how to run and why 
+well first of all because it is a package and not a script to run from the terminal, we see no parser = argparse...
+so it is build to be a python package where each function are callable - fingers crossed it will be :D 
 
 # complete overview:
+``` 
 ├── data/                                  # Contains all data assets
 │   ├── generated_dialogue_data/           # AI-generated dialogue samples
 │   ├── generated_tuning_data/             # Data used for fine-tuning models
@@ -39,3 +42,4 @@ temporary picture of how it may look - mainly for my own overview:
 ├── .python-version                       # Python version file (for pyenv or similar)
 ├── poetry.lock                           # Locked dependency versions (Poetry)
 ├── pyproject.toml                        # Main project config and dependencies
+``` 
