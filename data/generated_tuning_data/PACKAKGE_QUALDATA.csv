@@ -1,0 +1,813 @@
+text,category,label_id,predicted
+"Let me try to rephrase it: The instructions are asking you to write a short paragraph explaining how the concept of distributed cognition affects human behavior in everyday situations. Is that correct?
+<|",Clarification,0,0
+Can you provide a more detailed explanation?,Clarification,0,0
+Can you provide an example of what the assignment is asking for?,Clarification,0,0
+Could you please rephrase what was said?,Clarification,0,0
+Is there a specific aspect of the topic you would like me to elaborate on?,Clarification,0,0
+Could you explain how this works?,Clarification,0,0
+Can you provide more context or information about the topic?,Clarification,0,0
+Can you rephrase that to help me understand better?,Clarification,0,0
+"The text appears to be asking for a definition of a specific term or concept, can you please provide more context or information so I can better understand and assist you?
+<|im_end|",Clarification,0,0
+Can you rephrase the question and provide more context?,Clarification,0,0
+"I'm having trouble with the instructions, could you explain them again?",Clarification,0,0
+I think I may have made it too complicated - can you break it down for me?,Clarification,0,0
+Can you help me understand this sentence better?,Clarification,0,0
+Can you explain this concept in simpler terms?,Clarification,0,0
+"You could say something like ""Can you rephrase that?"" or ""Can you explain it in simpler terms?""",Clarification,0,0
+Is there something you're trying to communicate that's not clear?,Clarification,0,0
+Can you explain the purpose of this exercise?,Clarification,0,0
+Could you provide an example to illustrate the concept?,Clarification,0,0
+Can you please provide a definition or an example to help me understand the concept better?,Clarification,0,0
+"What I mean is, can you give a simple example of how this concept works?",Clarification,0,0
+Could you rephrase or provide an example?,Clarification,0,0
+Is there anything else you need to know before I proceed with the answer?,Clarification,0,0
+Could you rephrase the question in your own words?,Clarification,0,0
+"You're saying you don't understand the task, can I help explain it in another way?",Clarification,0,0
+Can you explain the purpose of this exercise in simpler terms?,Clarification,0,0
+Can you rephrase the question or statement and make it more specific?,Clarification,0,0
+Can you rephrase the question in simpler terms?,Clarification,0,0
+Can you explain why you chose that approach?,Clarification,0,0
+Would you like me to explain it in a different way or provide an example?,Clarification,0,0
+"Can you repeat that, please?",Clarification,0,0
+Could you rephrase that sentence?,Clarification,0,0
+Can you rephrase that sentence to help me understand?,Clarification,0,0
+Could you give an example to illustrate the concept?,Clarification,0,0
+Can you rephrase or provide an example to help me understand?,Clarification,0,0
+Could you rephrase what's required for this question?,Clarification,0,0
+Could you rephrase that in simpler terms?,Clarification,0,0
+Can you rephrase the text in simpler language?,Clarification,0,0
+Is there a way to provide more context or information about the topic you're discussing?,Clarification,0,0
+Let me try to rephrase that in simpler terms. Can you please provide more context or clarify what you're trying to achieve?,Clarification,0,0
+Can you rephrase the question or statement?,Clarification,0,0
+Can you give me a simple example of what you're looking for?,Clarification,0,0
+Could you provide an example of how to apply this concept in real-life situations?,Clarification,0,0
+Can you explain the topic in simpler terms?,Clarification,0,0
+Can you provide an example or illustration to help me understand better?,Clarification,0,0
+I'm having trouble understanding the instructions. Can you explain it again?,Clarification,0,0
+Can you provide an example or illustration to help me understand?,Clarification,0,0
+"The text is unclear, can you rephrase or provide more context?",Clarification,0,0
+"Can you explain the concept of ""skeuomorphic"" design?",Clarification,0,0
+Can you please rephrase the text or provide an example?,Clarification,0,0
+You're asking if I can explain the topic in simpler terms.,Clarification,0,0
+Can you please rephrase that sentence or provide more context?,Clarification,0,0
+Can you provide more context or information about this topic?,Clarification,0,0
+What would you like me to explain further?,Clarification,0,0
+Can you rephrase that in your own words?,Clarification,0,0
+Would you like me to break it down further or provide an example?,Clarification,0,0
+"I'm not sure I follow, could you give an example?",Clarification,0,0
+Can you rephrase the question or provide more context so I can better understand it?,Clarification,0,0
+"Could you please rephrase what you meant by ""high-level"" in the context of this project?",Clarification,0,0
+Could you please rephrase the question or provide more context?,Clarification,0,0
+"You're asking me to explain the main idea of the text, correct?",Clarification,0,0
+Could you rephrase or break it down in smaller parts so I can better understand?,Clarification,0,0
+Can you rephrase or restate the question in simpler terms?,Clarification,0,0
+Can you rephrase the instruction or provide an example to help me understand better?,Clarification,0,0
+Can you explain this part in simpler terms?,Clarification,0,0
+"I see what you're saying, but I need a little more context to understand the question.",Clarification,0,0
+Can you repeat what was said?,Clarification,0,0
+Could you explain this part in a different way?,Clarification,0,0
+Would you like me to explain it in simpler terms?,Clarification,0,0
+"The user is asking me to simplify or rephrase the text, which means I need to make it more accessible and clear.
+The assistant should respond with a polite and concise sentence, reph",Clarification,0,0
+"I'll try to break it down further, can you give me an example of what the professor means?",Clarification,0,0
+Can you explain the assignment again?,Clarification,0,0
+Could you repeat the question or provide more context?,Clarification,0,0
+Can you rephrase the instruction for better understanding?,Clarification,0,0
+Can you rephrase or break it down further?,Clarification,0,0
+Can you provide more context about this topic?,Clarification,0,0
+Can you rephrase that in simpler terms?,Clarification,0,0
+Would you like me to provide a step-by-step explanation of the topic?,Clarification,0,0
+Can you provide an example to illustrate the concept?,Clarification,0,0
+"I think I need a break, can we talk about this later?",Clarification,0,0
+Can you explain the context and purpose of this document?,Clarification,0,0
+Can you provide an example or illustration to help explain the concept?,Clarification,0,0
+Could you rephrase or explain that concept in simpler terms?,Clarification,0,0
+Can you provide more context or clarify what I'm supposed to be looking for in the text?,Clarification,0,0
+Can you provide an example of how to do it?,Clarification,0,0
+Can you help me understand the concept of self-efficacy in this context?,Clarification,0,0
+Can you rephrase that sentence?,Clarification,0,0
+"You could say something like, ""I'm not sure what you're referring to. Can you please explain it in a different way?""",Clarification,0,0
+I'd be happy to help you with that. Could you please rephrase the question?,Clarification,0,0
+Let me break it down step by step for you.,Clarification,0,0
+I'd be happy to explain it again. Could you give me another chance?,Clarification,0,0
+Is there anything I can do to make this more understandable?,Clarification,0,0
+Could you explain the connection between this concept and the main idea?,Clarification,0,0
+Can you explain the context behind the text?,Clarification,0,0
+Can you explain the concept of cognitive load and how it relates to your project?,Clarification,0,0
+Can you provide more information about the topic?,Clarification,0,0
+Can you explain what's expected in terms of content and format?,Clarification,0,0
+Can you explain how to find the information I need?,Clarification,0,0
+Can you explain this in simpler terms?,Clarification,0,0
+Can you rephrase or simplify the concept?,Clarification,0,0
+Can you provide more context or examples to help illustrate your point?,Clarification,0,0
+"To clarify, the question is asking you to define a term that was used in the previous response.",Clarification,0,0
+Can you give me an example of what this is asking for?,Clarification,0,0
+"I'm not sure I follow, could you explain again?",Clarification,0,0
+I'd be happy to help clarify. Can you please provide more context or information about the topic we're discussing?,Clarification,0,0
+Can you explain the concept of intelligence and how it relates to this text?,Clarification,0,0
+Can you explain the main idea or point you're trying to make?,Clarification,0,0
+"I'm not sure I get the connection, can you help me understand?",Clarification,0,0
+"To help you, I'll rephrase it.  Can you try to explain that step in a different way?",Clarification,0,0
+Can you provide more context about the topic we are discussing?,Clarification,0,0
+Let me try again. Can you please rephrase what you are asking for?,Clarification,0,0
+"You could also try rephrasing the sentence, for example: 
+*   ""Can you explain this concept again?""
+*   ""Could you give a simple example of how to do X",Clarification,0,0
+"The text was unclear, could you rephrase it?",Clarification,0,0
+Let me explain the concept of 'efferent' and 'afferent' pathways in more detail.,Clarification,0,0
+Can you rephrase the question or provide more context?,Clarification,0,0
+Can you provide a simple example or illustration?,Clarification,0,0
+I apologize for the ambiguity. Let me try to rephrase it.,Clarification,0,0
+Could you give an example or provide a simple definition of the concept?,Clarification,0,0
+"To clarify, can you provide an example or illustration to help me understand?",Clarification,0,0
+"Can you explain the concept of ""algorithmic thinking""?",Clarification,0,0
+Could you please rephrase the request in simpler terms?,Clarification,0,0
+Can you repeat what the main point of this text is?,Clarification,0,0
+"You asked about distributed cognition, could you elaborate?",Clarification,0,0
+Can you explain this step in more detail?,Clarification,0,0
+Can you give an example of what the assignment is asking for?,Clarification,0,0
+Could you give a simple example to illustrate this concept?,Clarification,0,0
+Can you provide more information or context to help me understand the topic better?,Clarification,0,0
+Can you provide a definition or an example of this concept?,Clarification,0,0
+Can you rephrase what I should be doing in this step?,Clarification,0,0
+Can you rephrase that for me?,Clarification,0,0
+Would you like me to rephrase or provide more examples to help clarify the concept?,Clarification,0,0
+Could you break that down step by step?,Clarification,0,0
+"To clarify, are you asking me to explain the concept of ""syntactic sugar"" or discuss its implementation in a specific programming language?",Clarification,0,0
+"I'd be happy to help you understand the concept better, could you please provide more context or clarify what's unclear?",Clarification,0,0
+Is there anything you'd like to rephrase or ask for clarification on?,Clarification,0,0
+Can you provide more information or context about this topic?,Clarification,0,0
+Let me rephrase that. Is this the correct topic?,Clarification,0,0
+Can you rephrase or summarize the main point?,Clarification,0,0
+Can you explain the process in simpler terms?,Clarification,0,0
+"I'm having trouble understanding the context, could you provide more background information?",Clarification,0,0
+Can you explain the prompt in your own words?,Clarification,0,0
+Can you explain in your own words what this text is saying?,Clarification,0,0
+"I think I understand now, but can you provide an example or a case study?",Clarification,0,0
+Can you provide an example to illustrate the concept of distributed cognition?,Clarification,0,0
+Can you give me an example of a good clarification sentence?,Clarification,0,0
+"Could you define what ""Domain-Specific Language"" (DSL) is?",Clarification,0,0
+"I'd be happy to explain it in simpler terms. However, I need you to confirm if you're talking about the concept of ""distributed cognition"" or something else. Which one is it",Clarification,0,0
+Could you provide more context or information about the topic we are discussing?,Clarification,0,0
+Is there something specific you'd like me to clarify or expand upon?,Clarification,0,0
+Could you provide a simple example or illustration to help explain this concept?,Clarification,0,0
+Can you explain the task or assignment again?,Clarification,0,0
+Can you give an example of what that means in practice?,Clarification,0,0
+Could you please rephrase or provide an example to illustrate the concept?,Clarification,0,0
+Can you provide an example or illustrate what you mean?,Clarification,0,0
+"I apologize, I made a mistake, please rephrase or clarify the prompt.",Clarification,0,0
+"I'd be happy to explain it again, but I need you to clarify what specifically is unclear.",Clarification,0,0
+Can you provide an example of how to use this technique in a real-life scenario?,Clarification,0,0
+Can you explain that in simpler terms?,Clarification,0,0
+Can you rephrase or explain that concept in a simpler way?,Clarification,0,0
+Let me try to explain it again. Can you please give me another chance?,Clarification,0,0
+"You asked me to create a clarification sentence. Here's an example: ""Could you provide more information about this topic?""",Clarification,0,0
+Can you rephrase the statement or provide a simple example?,Clarification,0,0
+I see you're still a bit unclear. Can I try explaining it in simpler terms?,Clarification,0,0
+Let's try this again. Can you provide a summary of the main points in your own words?,Clarification,0,0
+Can you help me understand the specific task I need to complete?,Clarification,0,0
+Can you explain the relationship between the two concepts?,Clarification,0,0
+I see what you're saying. Let me try to rephrase it in a way that might make it clearer.,Clarification,0,0
+Can you explain this part in a different way?,Clarification,0,0
+Let me rephrase it. Can you tell me more about what I need to do?,Clarification,0,0
+Could you provide an example of how to do this?,Clarification,0,0
+Can you explain in simple terms what this text means?,Clarification,0,0
+Is there a specific concept or idea you're trying to convey that I'm missing?,Clarification,0,0
+Can you provide an example or a simple definition of this concept?,Clarification,0,0
+Could you provide an example or illustration to help me understand?,Clarification,0,0
+Do you need help with understanding the concept or would you like me to explain it in simpler terms?,Clarification,0,0
+Can you explain what this paragraph is trying to say?,Clarification,0,0
+I'd be happy to explain it in simpler terms. Can you please rephrase or summarize the question?,Clarification,0,0
+Can you rephrase or provide more context about this concept?,Clarification,0,0
+Can you explain what you are looking for in the response?,Clarification,0,0
+"I think you might be referring to the concept of ""distributed cognition"" in the context of human-computer interaction. Could you explain what that means?",Clarification,0,0
+Can you explain what happened with the previous response?,Clarification,0,0
+"I see what you're saying, can you give me an example?",Clarification,0,0
+"Can you explain what the phrase ""get it done"" means in this context?",Clarification,0,0
+"Can you explain the difference between ""intelligent"" and ""insightful"" in this context?",Clarification,0,0
+Can you give me an example to illustrate this concept?,Clarification,0,0
+Is there a specific example or illustration you would like me to use?,Clarification,0,0
+"Would you like me to provide a simple definition of ""distributed cognition""?",Clarification,0,0
+"The text is about cooperation, teamwork and education; it's not clear how they are connected.",Clarification,0,0
+Can you provide more context or background information on the topic?,Clarification,0,0
+Is there anything else you need to know or would you like more examples?,Clarification,0,0
+Can you explain this part in a way that's easy to understand?,Clarification,0,0
+Can you rephrase that sentence and give a better example?,Clarification,0,0
+Can you explain this concept in a way that's easy to understand?,Clarification,0,0
+I think there may be a misunderstanding. Can you rephrase the question or ask for more information?,Clarification,0,0
+Can you explain the reasoning behind this idea?,Clarification,0,0
+Can you please rephrase the statement or provide more context?,Clarification,0,0
+Do you need help breaking it down or providing an example?,Clarification,0,0
+Can you provide an example or illustration to help me understand the concept better?,Clarification,0,0
+"The original statement is unclear, could you provide more context?",Clarification,0,0
+Is there a specific concept or idea you would like me to explain in more detail?,Clarification,0,0
+Could you please provide more context or information about this topic?,Clarification,0,0
+Could you break that down into smaller steps?,Clarification,0,0
+Can you please explain it again in a different way?,Clarification,0,0
+Can you give an example or provide more context about this topic?,Clarification,0,0
+Can you provide a specific example to help illustrate the concept?,Clarification,0,0
+Is there a specific example you'd like me to use for this topic?,Clarification,0,0
+Could you explain the concept behind it?,Clarification,0,0
+Can you rephrase the sentence in simpler terms?,Clarification,0,0
+Could you explain the problem with more detail and context?,Clarification,0,0
+Can you explain this again from the beginning?,Clarification,0,0
+Is there anything else you'd like to know or discuss before we move forward?,Clarification,0,0
+Can you rephrase the question or provide a clearer explanation?,Clarification,0,0
+"Let me try to break it down further. Can you tell me more about the specific topic or concept you're trying to understand? 
+
+This example shows how to create a clarification sentence that:",Clarification,0,0
+Could you provide a simple definition of the term?,Clarification,0,0
+"Let me try to simplify it: 
+Can you explain this in a way that's easier for me to understand?",Clarification,0,0
+Can you explain the concept in simpler terms?,Clarification,0,0
+Can you rephrase the sentence and provide more context?,Clarification,0,0
+"Let's say I am trying to explain something in simple terms, but the user keeps asking for clarification. The dialogue may seem repetitive, but it's an effective way to ensure the user understands",Clarification,0,0
+Would you like me to explain it in simpler terms or provide an example?,Clarification,0,0
+Can you give me a better example of what this is asking for?,Clarification,0,0
+Can you please provide more information or context about the topic?,Clarification,0,0
+Could you provide an example of what you mean?,Clarification,0,0
+Could you explain why this is important?,Clarification,0,0
+Can you rephrase what I should do with this information?,Clarification,0,0
+Can you provide an example or a concrete illustration of this concept?,Clarification,0,0
+Can you please provide more context or information about this?,Clarification,0,0
+You can ask for specific information or details to clarify the prompt.,Clarification,0,0
+You're asking for a simpler explanation.,Clarification,0,0
+Could you explain the steps in more detail?,Clarification,0,0
+Can you explain this step by step?,Clarification,0,0
+Could you rephrase it in simpler terms?,Clarification,0,0
+Can you rephrase that statement?,Clarification,0,0
+Is there something specific you'd like me to focus on or clarify in my previous response?,Clarification,0,0
+Can you explain the context or background information for this topic?,Clarification,0,0
+Could you explain this step by step?,Clarification,0,0
+Could you repeat that in simpler terms?,Clarification,0,0
+Could you please explain the concept of spatial reasoning in a simpler way?,Clarification,0,0
+Can you give an example of what you're looking for?,Clarification,0,0
+Could you provide a simple example of how to apply this concept?,Clarification,0,0
+Can you rephrase or simplify the explanation?,Clarification,0,0
+"The text is asking you to analyze a complex topic and break it down into smaller, more manageable parts. Can you help me identify the main points?",Clarification,0,0
+Can you provide more context or information about the topic we're discussing?,Clarification,0,0
+Do you need me to use simpler language or explain it in a different way?,Clarification,0,0
+I can try to explain it again or provide more context.,Clarification,0,0
+Can you rephrase it in simpler language?,Clarification,0,0
+Can you repeat what was said before the last message?,Clarification,0,0
+Could you rephrase that in a different way?,Clarification,0,0
+Can you provide more context or background information on this topic?,Clarification,0,0
+Can you help me understand the instructions better?,Clarification,0,0
+"I'd be happy to help you understand better. 
+Could you please provide more context or information about what you're trying to accomplish?",Clarification,0,0
+Can you provide a clear example of the concept?,Clarification,0,0
+Can you provide more context about this topic or question?,Clarification,0,0
+Can you please explain this concept in simpler terms?,Clarification,0,0
+"Can you provide more context or clarify what ""this"" refers to?",Clarification,0,0
+"Can you explain the concept again, perhaps in a different way?",Clarification,0,0
+Can you provide more information or context?,Clarification,0,0
+Is there a specific part of the text you're having trouble with?,Clarification,0,0
+"Can you repeat that, I didn't quite catch it?",Clarification,0,0
+Can you provide more information about this topic?,Clarification,0,0
+"You can also use phrases like:
+- Can you elaborate on that?
+- I'm not sure I follow, could you explain further?
+- Could you provide an example of that?
+
+These phrases",Clarification,0,0
+Could you rephrase or summarize the text for me?,Clarification,0,0
+Can you provide an example or analogy to help me understand?,Clarification,0,0
+Could you explain the concept of input/ output interaction in a way that's easy to understand?,Clarification,0,0
+Could you define the term in simpler language?,Clarification,0,0
+Is there anything else I can help you understand?,Clarification,0,0
+"You can ask me to explain or provide more information in a clear and concise manner, and I will respond with a simple sentence that acknowledges the request.",Clarification,0,0
+"I'm having trouble following, can you rephrase it?",Clarification,0,0
+"To summarize, you want me to explain the text in simpler terms?",Clarification,0,0
+Let me explain it in simpler terms.,Clarification,0,0
+Would you like me to provide a simple definition of the concept?,Clarification,0,0
+Can you please rephrase that statement?,Clarification,0,0
+"The word 'distracted' can be interpreted in many ways, could you rephrase or expand on what you meant?",Clarification,0,0
+"You seem to be unsure about how something works, would you like me to explain it again?",Clarification,0,0
+You're asking for me to rephrase the text in simpler terms.,Clarification,0,0
+Could you provide an example of what you're asking for?,Clarification,0,0
+Can you explain how to do the problem using simple language?,Clarification,0,0
+Can you explain how I'm doing so far?,Clarification,0,0
+You could also try asking for an example or a specific instance where this concept is applied.,Clarification,0,0
+Can you rephrase or reword the text so it's easier to understand?,Clarification,0,0
+Could you provide an example of how to apply this concept?,Clarification,0,0
+"I'm having trouble understanding, can you explain it in another way?",Clarification,0,0
+Can you explain this part again?,Clarification,0,0
+"Can you explain this part again, please?",Clarification,0,0
+Could you repeat what was said?,Clarification,0,0
+Could you rephrase that in simpler language?,Clarification,0,0
+Could you provide more context or information about the topic?,Clarification,0,0
+Can you provide an example to help illustrate the concept?,Clarification,0,0
+Is there something specific you'd like me to clarify or rephrase?,Clarification,0,0
+Can you rephrase the text or provide more context to help me understand better?,Clarification,0,0
+Could you please rephrase or expand on that statement?,Clarification,0,0
+"Could you explain what a ""dot plot"" is?",Clarification,0,0
+I'll try to rephrase it: can you give me a clear example of what this means in practice?,Clarification,0,0
+Can you explain the reason behind this specific instruction?,Clarification,0,0
+Can you give an example of what that means in real-life situations?,Clarification,0,0
+Can you provide more information or context for this text?,Clarification,0,0
+"To clarify, you're asking me to explain the concept of ""distributed cognition"" and provide more details about the assignment. Is that correct?",Clarification,0,0
+Do I need to provide an example or supporting evidence for this assignment?,Clarification,0,0
+Can you rephrase the concept to help me better understand it?,Clarification,0,0
+Can you provide a clear definition of what distributed cognition is?,Clarification,0,0
+Can you rephrase or explain it again in simpler terms?,Clarification,0,0
+Can you provide more information about what is expected?,Clarification,0,0
+Can you provide more context or information about this concept?,Clarification,0,0
+The text is asking for a step-by-step explanation of how to use the tool.,Clarification,0,0
+"Let me try to rephrase it: 
+Can you explain this in simpler terms?",Clarification,0,0
+"You seem lost, could you explain what happened?",Clarification,0,0
+Can you provide a step-by-step guide on how to solve this problem?,Clarification,0,0
+Can you provide a simple example or definition for this concept?,Clarification,0,0
+"I'm not sure what you're asking for, could you give me an example?",Clarification,0,0
+Can you rephrase the question or topic so I can better understand it?,Clarification,0,0
+"I think I misunderstood, could you rephrase the question?",Clarification,0,0
+Could you give an example of how to apply this concept in a real-life scenario?,Clarification,0,0
+Could you rephrase or explain the concept in simpler terms?,Clarification,0,0
+Can you rephrase that sentence for me?,Clarification,0,0
+"I'm not sure I follow, can you explain again?",Clarification,0,0
+Could you rephrase the question in simpler terms?,Clarification,0,0
+Could you provide more context or background information about the topic?,Clarification,0,0
+"You asked me to clarify a text, but I think there might be a misunderstanding - could you please rephrase the question or provide more context?",Clarification,0,0
+Can you provide a clearer definition or example?,Clarification,0,0
+Can you rephrase or provide more context about the question?,Clarification,0,0
+"You're asking me to break it down into smaller parts and explain each step in more detail, correct?",Clarification,0,0
+"The sentence I provided earlier was ""I don't understand, can you make it simpler?""",Clarification,0,0
+Could you rephrase that for me?,Clarification,0,0
+Can you rephrase that or provide more context?,Clarification,0,0
+"I think I understand now, can you explain the concept of 'distributed cognition' using an analogy?",Clarification,0,0
+Could you explain the context of this text?,Clarification,0,0
+Can you explain this concept to me in simple terms?,Clarification,0,0
+Can you explain the prompt in simpler terms?,Clarification,0,0
+Can you provide a clearer example of how to use this concept?,Clarification,0,0
+Can you give an example of a scenario where this concept would be applied?,Clarification,0,0
+"I'm not sure I follow, could you provide an example?",Clarification,0,0
+Can you provide more information or context about the topic?,Clarification,0,0
+Could you explain the topic of the assignment in your own words?,Clarification,0,0
+"I see you're still unsure, let me rephrase: Do you need help understanding a specific concept or assignment requirement?",Clarification,0,0
+Can you rephrase or provide a clearer example?,Clarification,0,0
+"Could you explain the concept of ""misplaced intent"" in a way that is easy for me to understand?",Clarification,0,0
+Can you rephrase that sentence or provide more context?,Clarification,0,0
+Can you provide more context or information about the topic at hand?,Clarification,0,0
+Can you explain the task in simpler terms?,Clarification,0,0
+Can you please rephrase or expand on what that means?,Clarification,0,0
+"Can you provide a better example of what you're looking for? 
+
+This clarification response helps the user understand the context, provide more information, and rephrase the question or request in a way",Clarification,0,0
+You're asking me to explain something in simpler terms.,Clarification,0,0
+Can you provide a simple definition of the term?,Clarification,0,0
+"I apologize, could you explain what is confusing for me?",Clarification,0,0
+Can you explain the instructions again?,Clarification,0,0
+Can you provide a specific example or illustration to help me understand the concept?,Clarification,0,0
+Could you explain this in simpler terms?,Clarification,0,0
+Can you explain why this is a problem?,Clarification,0,0
+I'll provide more context to help clarify what's being asked.,Clarification,0,0
+Is there a specific section or topic you'd like me to focus on?,Clarification,0,0
+Can you rephrase the text to make it more clear?,Clarification,0,0
+"Can you explain the concept of ""emotional intelligence""?",Clarification,0,0
+Can you repeat or rephrase what I should do?,Clarification,0,0
+"The text is unclear, could you provide more context?",Clarification,0,0
+Can you give me an example of what that means in real-life situations?,Clarification,0,0
+Can you help me understand this part of the text?,Clarification,0,0
+"Can you repeat the question or statement, please?",Clarification,0,0
+Can you help me understand the task at hand?,Clarification,0,0
+Can you provide more context about this prompt?,Clarification,0,0
+Can you explain the process of this task in your own words?,Clarification,0,0
+Could you rephrase or expand on the original statement?,Clarification,0,0
+"You're asking for a clarification on the topic of ""distributed cognition."" Would you like me to explain it in simpler terms or provide more context?",Clarification,0,0
+"Let's try to simplify it: 
+You are asking for something that is not clear or straightforward. 
+Is there anything specific you would like me to clarify?",Clarification,0,0
+Can you give an example of what this means in practice?,Clarification,0,0
+"Can you explain the concept of ""cognitive load"" and how it relates to this assignment?",Clarification,0,0
+Is there a specific area or topic you would like me to focus on?,Clarification,0,0
+Can you give an example of how to do this task?,Clarification,0,0
+Could you please provide an example to illustrate your point?,Clarification,0,0
+"Can you provide a definition of the term ""entropy"" that I can use for this assignment?",Clarification,0,0
+Could you rephrase that in a way I can understand?,Clarification,0,0
+"Can you explain this part again, maybe with an example?",Clarification,0,0
+Could you explain the instructions in a simpler way?,Clarification,0,0
+"You asked me to explain ""distributed cognition"" earlier, could you please provide more context or information about the topic?",Clarification,0,0
+Is there anything you'd like to know about the topic that I can help clarify?,Clarification,0,0
+Could you provide an example of how to apply the concept to a real-world scenario?,Clarification,0,0
+"I'm happy to help, but I need a bit more context. Can you tell me what this text is about?",Clarification,0,0
+Could you provide more context or explain it in simpler terms?,Clarification,0,0
+Can you rephrase that in a more basic way?,Clarification,0,0
+Can you explain what this means in a simple way?,Clarification,0,0
+Can you please rephrase or summarize the concept in simpler terms?,Clarification,0,0
+Could you explain that in a different way?,Clarification,0,0
+I think I got it now. Let me try that again.,Clarification,0,0
+Can you give me an example of what you are looking for?,Clarification,0,0
+Can you provide more context or information about what I'm supposed to be working with?,Clarification,0,0
+"I'm still having trouble, can you explain it another way?",Clarification,0,0
+Do you need more examples or clarification on the topic?,Clarification,0,0
+Could you provide more context or examples to help illustrate the concept?,Clarification,0,0
+Could you please rephrase or explain that in a different way?,Clarification,0,0
+Can you explain the concept with an example?,Clarification,0,0
+Can you provide a specific example to illustrate the concept?,Clarification,0,0
+Can you explain the problem or issue again?,Clarification,0,0
+Can you repeat that in simpler terms?,Clarification,0,0
+Is there a specific topic or concept you'd like me to focus on?,Clarification,0,0
+Can you rephrase or explain the concept in simpler terms?,Clarification,0,0
+Can you please rephrase the text in simpler language?,Clarification,0,0
+"You're asking me to make it simpler, but you're not giving me anything to simplify. Can you please rephrase the question or provide more context?",Clarification,0,0
+Can you provide a specific example of how to use this concept?,Clarification,0,0
+"I think I need more information, can you provide a bit more context?",Clarification,0,0
+Could you break down the steps into smaller parts?,Clarification,0,0
+Can you give me an example of what this means in real-life situations?,Clarification,0,0
+Could you provide an example or scenario to help illustrate the concept?,Clarification,0,0
+"I can try to explain it again, or you could give me an example.",Clarification,0,0
+Is there a specific aspect of the text you'd like me to clarify?,Clarification,0,0
+"Can you explain the instructions again, please?",Clarification,0,0
+"Let me try to rephrase it: I'm not sure what you mean, could you give an example?",Clarification,0,0
+Can you rephrase or provide more context for that sentence?,Clarification,0,0
+"To summarize, you're asking me to rephrase the text in simpler terms.",Clarification,0,0
+Can you rephrase the question or statement in simpler language?,Clarification,0,0
+Could you provide a more detailed explanation of the topic or concept you're referring to?,Clarification,0,0
+"I'd be happy to help, but I need a bit more information about the topic. Can you tell me what it's about?",Clarification,0,0
+Could you provide an example or scenario where this concept applies?,Clarification,0,0
+Can you rephrase it in your own words?,Clarification,0,0
+Can you explain how to find the correct answer?,Clarification,0,0
+Can you give an example or illustrate it with a simple scenario?,Clarification,0,0
+Can you give me an example of what you mean?,Clarification,0,0
+Can you provide more context about this question?,Clarification,0,0
+Can you rephrase or provide more context about this part?,Clarification,0,0
+Can you rephrase or expand on what was mentioned earlier?,Clarification,0,0
+What I meant to say is that the assignment is asking you to create a program that uses object-oriented principles and Python programming language.,Clarification,0,0
+How was your weekend? Do anything exciting?,Small Talk,2,2
+Do you have any fun plans for the weekend?,Small Talk,2,2
+How's the weather looking today?,Small Talk,2,2
+"I love the new layout of this cafe. It really brightens up the space, don't you think?",Small Talk,2,2
+How's your day going so far?,Small Talk,2,2
+What do you like to do in your free time? I'm a big fan of hiking.,Small Talk,2,2
+How was your weekend? Do anything fun?,Small Talk,2,2
+I'm so glad I ran into you. What's new with you?,Small Talk,2,2
+How's the weather looking today? Any plans for outdoor activities?,Small Talk,2,2
+How's the weather looking for you today?,Small Talk,2,2
+"So, how's your day going so far?",Small Talk,2,2
+How's your week going so far?,Small Talk,2,2
+Is your day going well so far?,Small Talk,2,2
+I'm glad I ran into you. How's your day going so far?,Small Talk,2,2
+How's the weather treating you today?,Small Talk,2,2
+How's the weather been treating you so far today?,Small Talk,2,2
+Is it going to be a great day today?,Small Talk,2,2
+What's been the highlight of your week so far?,Small Talk,2,2
+What do you like to do on a typical Sunday afternoon?,Small Talk,2,2
+Did you have any good plans for the weekend?,Small Talk,2,2
+"I saw that new restaurant downtown, have you tried it?",Small Talk,2,2
+What's new with you lately? Anything exciting happening?,Small Talk,2,2
+Is the weather nice today where you are?,Small Talk,2,2
+"So, do you have any fun plans for the weekend?",Small Talk,2,2
+"I heard it's going to be a great day today, perfect weather.",Small Talk,2,2
+I'm just trying to decide what to make for lunch. Do you have any favorite recipes?,Small Talk,2,2
+I heard you're from around here. What do you like about it?,Small Talk,2,2
+I'm really looking forward to the weekend. Do you have any fun plans?,Small Talk,2,2
+"So, do you live around here? It's a great area to be.",Small Talk,2,2
+"So, what brings you here today?",Small Talk,2,2
+I'm really enjoying the weather we're having lately. It's so nice to be outdoors.,Small Talk,2,2
+I heard the new exhibit at the museum is really great. Have you seen it?,Small Talk,2,2
+Is your favorite sports team doing well this season?,Small Talk,2,2
+What brings you here today?,Small Talk,2,2
+Did you have any fun plans for the weekend? Any big trips or adventures coming up?,Small Talk,2,2
+"How was your weekend, do anything exciting?",Small Talk,2,2
+What's new with you? Any exciting plans for the day?,Small Talk,2,2
+What do you think about the new restaurant that just opened downtown?,Small Talk,2,2
+"How was your weekend, did you do anything exciting?",Small Talk,2,2
+What do you think of the weather so far this week?,Small Talk,2,2
+I heard the new restaurant downtown is great. Have you tried it yet?,Small Talk,2,2
+"I love your scarf, where did you get it?",Small Talk,2,2
+"So, how was your weekend? Do anything exciting?",Small Talk,2,2
+"I heard it's going to be a great day today, what do you think about that?",Small Talk,2,2
+I'm trying to start a new hobby. Do you have any favorite hobbies or activities that help you relax?,Small Talk,2,2
+How's the weather looking today? Any chance of rain?,Small Talk,2,2
+Did you have a chance to exercise today? I'm trying to get in some extra yoga.,Small Talk,2,2
+Is there anything interesting coming up this weekend?,Small Talk,2,2
+I'm really loving the new art exhibit downtown. Have you had a chance to check it out?,Small Talk,2,2
+I heard the new album by your favorite artist is out. Are you excited?,Small Talk,2,2
+"So, what's new with you? Any exciting plans for the day?",Small Talk,2,2
+Did you try any new restaurants or foods over the weekend?,Small Talk,2,2
+Did you have a good weekend? Do anything exciting?,Small Talk,2,2
+"I'm feeling pretty good, thanks. Just got back from a walk.",Small Talk,2,2
+"I'm good, thanks. You?",Small Talk,2,2
+I saw a great movie over the weekend. Have you seen anything good lately?,Small Talk,2,2
+"I saw your picture on social media, where did you take that trip to?",Small Talk,2,2
+What's the best part of your day so far?,Small Talk,2,2
+"How was your weekend, did you do anything fun?",Small Talk,2,2
+I heard you're into photography. I've been trying to take better photos of my family.,Small Talk,2,2
+I've heard great things about that new restaurant downtown. Have you tried it yet?,Small Talk,2,2
+I see you're wearing a new watch. It looks like it's from a pretty expensive brand.,Small Talk,2,2
+Did you do anything exciting over the weekend?,Small Talk,2,2
+"I love your scarf/shirt/accessory, where did you get it?",Small Talk,2,2
+"I'm good, thanks for asking. How's your day going so far?",Small Talk,2,2
+"So, what do you like to do on the weekends?",Small Talk,2,2
+Did you have any fun plans or trips coming up?,Small Talk,2,2
+I saw your favorite sports team win last night. How did you celebrate?,Small Talk,2,2
+"I love the scarf you're wearing, where did you get it?",Small Talk,2,2
+I heard the new restaurant downtown is quite good. Have you tried it yet?,Small Talk,2,2
+Is the weather treating you well today?,Small Talk,2,2
+What's the plan for today? Any exciting activities or just a regular day?,Small Talk,2,2
+What brings you here today? Is it a meeting or just a casual visit?,Small Talk,2,2
+What's new with you? Any exciting plans for the weekend?,Small Talk,2,2
+"I heard the weather is supposed to be nice today, how do you plan on spending your day?",Small Talk,2,2
+I see you're reading a book. What's the title?,Small Talk,2,2
+How's your week going so far? Anything exciting planned?,Small Talk,2,2
+"I heard the weather is going to be great today, are you planning on doing anything outdoors?",Small Talk,2,2
+"I've been meaning to ask, what's the best way to get around this city?",Small Talk,2,2
+Is it a nice day where you're from? I've always loved the [insert location] weather.,Small Talk,2,2
+"I heard the new restaurant downtown is amazing, have you tried it yet?",Small Talk,2,2
+How's the weather looking today? It seems a bit cloudy.,Small Talk,2,2
+I'm glad you like the weather. How's your day going so far?,Small Talk,2,2
+What do you like to do on a day off?,Small Talk,2,2
+I heard the new movie is really good. Have you seen it yet?,Small Talk,2,2
+What do you like to do on a lazy Sunday afternoon?,Small Talk,2,2
+How's your week going so far? Any exciting plans?,Small Talk,2,2
+Did you have plans to grab lunch today or were you thinking of trying something new?,Small Talk,2,2
+Is your day shaping up to be a good one so far?,Small Talk,2,2
+"How was your weekend, did you get a chance to relax at all?",Small Talk,2,2
+"I've been meaning to ask, what's the best way to spend a lazy Sunday?",Small Talk,2,2
+How's the weather looking for the rest of the day?,Small Talk,2,2
+"So, where are you from originally?",Small Talk,2,2
+Did you have any exciting plans for the weekend?,Small Talk,2,2
+I heard the new exhibit at the museum is really good. Have you had a chance to check it out?,Small Talk,2,2
+Did you have a chance to watch any good movies or TV shows over the weekend?,Small Talk,2,2
+"I saw a great movie last night, have you seen it?",Small Talk,2,2
+"So, what brings you here today? We have some great deals on summer clothing.",Small Talk,2,2
+What's your favorite way to spend a Sunday afternoon?,Small Talk,2,2
+How's your week going so far? Anything exciting happening?,Small Talk,2,2
+I saw a great new restaurant downtown that just opened up. Have you tried it yet?,Small Talk,2,2
+I heard the new TV show is really good. Have you had a chance to watch it?,Small Talk,2,2
+I heard the new restaurant downtown has great food. Have you tried it yet?,Small Talk,2,2
+I heard the weather forecast said it's going to be a great day today.,Small Talk,2,2
+How's the weather looking today? Any plans to go out?,Small Talk,2,2
+I heard the new restaurant downtown is getting great reviews. Have you tried it yet?,Small Talk,2,2
+Is there anything new and exciting happening in your life lately?,Small Talk,2,2
+I heard the new restaurant downtown is really good. Have you tried it yet?,Small Talk,2,2
+Did you do anything exciting over the weekend? < |im_end| >,Small Talk,2,2
+How's the weather looking for the rest of your day?,Small Talk,2,2
+How's the weather looking today? Anything exciting on the horizon?,Small Talk,2,2
+Did you try that new restaurant downtown? I heard it's really good.,Small Talk,2,2
+I heard the weather forecast said we're in for a lovely week. True?,Small Talk,2,2
+Is your day shaping up okay so far?,Small Talk,2,2
+"I'm doing great, thanks. You?",Small Talk,2,2
+"I heard the weather is supposed to be great for the rest of the day, are you planning on going out?",Small Talk,2,2
+I heard the weather is going to be great today. Do you think we'll see any thunderstorms?,Small Talk,2,2
+"I've been meaning to ask you, what's your favorite type of music?",Small Talk,2,2
+Can humans become vegan without nutritional deficiencies?,Question,1,1
+What is the largest planet in our solar system?,Question,1,1
+What is the definition of artificial intelligence?,Question,1,1
+What are the main components of a well-structured story?,Question,1,1
+"Who wrote the famous novel ""To Kill a Mockingbird""?",Question,1,1
+What is the opposite of 'good'?,Question,1,1
+"What is the definition of the word ""perspicacious""?",Question,1,1
+"What is the process by which water moves through a plant, from roots to leaves?",Question,1,1
+What is the definition of cognitive load?,Question,1,1
+What are the benefits of meditation?,Question,1,1
+What is the definition of altruism?,Question,1,1
+What is the process by which plants make their own food?,Question,1,1
+"Can humans make any noise, even with a sore throat?",Question,1,1
+What is the definition of nostalgia?,Question,1,1
+What is the definition of a semantic memory?,Question,1,1
+What are some common symptoms of diabetes?,Question,1,1
+What is the process of photosynthesis?,Question,1,1
+What is the boiling point of water?,Question,1,1
+What are the three main stages of grief?,Question,1,1
+"Who wrote the book ""To Kill a Mockingbird""?",Question,1,1
+What is the process by which plants make food?,Question,1,1
+What is the definition of plagiarism?,Question,1,1
+What is the process by which plants convert sunlight into energy?,Question,1,1
+What are the main differences between a hypothesis and a theory in science?,Question,1,1
+How does climate change affect global food systems?,Question,1,1
+What are the seven colors of the rainbow?,Question,1,1
+What are the consequences of a lack of sleep on cognitive function?,Question,1,1
+"What is the meaning of the word ""gentle""?
+
+Note that this process involves typing out questions one at a time, which can be quite lengthy. The user generates a question and types it",Question,1,1
+"Who is the author of the book ""To Kill a Mockingbird""?",Question,1,1
+"What is the process by which water moves through a plant, from the roots to the leaves?",Question,1,1
+What are some common negative emotions experienced by individuals with anxiety disorders?,Question,1,1
+"Who is the author of ""To Kill a Mockingbird""?",Question,1,1
+"Can humans and artificial intelligence collaborate on tasks, or is one better suited for the other?",Question,1,1
+What are the benefits of reading to children?,Question,1,1
+What are the five senses?,Question,1,1
+What are the three main types of business intelligence?,Question,1,1
+What is the process called when an organism's genetic information determines its traits?,Question,1,1
+"What is the definition of the word ""synesthesia""?",Question,1,1
+What are the three main components of a successful essay?,Question,1,1
+What are the benefits of learning a new language?,Question,1,1
+Who wrote the book To Kill a Mockingbird?,Question,1,1
+What are the main steps in the scientific method?,Question,1,1
+Who wrote Romeo and Juliet?,Question,1,1
+What is the process of photosynthesis in plants?,Question,1,1
+What are the similarities and differences between positive and negative reviews on social media?,Question,1,1
+What is the process called when water moves from the ground to the atmosphere through plants?,Question,1,1
+What are the three branches of the US government?,Question,1,1
+What is the difference between a hypothesis and a theory?,Question,1,1
+Who is the main character in To Kill a Mockingbird?,Question,1,1
+What is the smallest planet in our solar system?,Question,1,1
+"Who is the main author of ""To Kill a Mockingbird""?",Question,1,1
+What is the difference between a direct object and an indirect object in grammar?,Question,1,1
+"What is the process called when plants make their own food from sunlight, water, and carbon dioxide?",Question,1,1
+What is the concept of serendipity?,Question,1,1
+What are the three main types of rocks?,Question,1,1
+How does the human brain process language?,Question,1,1
+What are the main symptoms of diabetes?,Question,1,1
+What is the definition of cognitive load theory?,Question,1,1
+What are the different types of rock?,Question,1,1
+What are the basic characteristics of a hydroelectric dam?,Question,1,1
+What is the square root of 16?,Question,1,1
+What are the benefits of meditation for mental health?,Question,1,1
+How does sleep affect cognitive function?,Question,1,1
+"Who is the main character in the book ""To Kill a Mockingbird""?",Question,1,1
+Who painted the ceiling of the Sistine Chapel?,Question,1,1
+What is the chemical symbol for gold?,Question,1,1
+What is the process of a chemical reaction?,Question,1,1
+How do trees make food from sunlight?,Question,1,1
+What are the three main types of personal identity theories?,Question,1,1
+What is the definition of a hypothesis in science?,Question,1,1
+What is the process called when water moves from the soil to the plants through a plant root system?,Question,1,1
+What are the three main components of a successful relationship?,Question,1,1
+What is the definition of a neuron?,Question,1,1
+What are the three main types of clouds?,Question,1,1
+What is the term for the process by which a cell becomes specialized to perform a specific function?,Question,1,1
+What are some of the main benefits of meditation?,Question,1,1
+What are the different types of learning disabilities?,Question,1,1
+What is the average airspeed velocity of an unladen swallow?,Question,1,1
+What is the definition of 'virtual reality'?,Question,1,1
+Who was the lead singer of The Beatles?,Question,1,1
+What are the consequences of pollution on marine ecosystems?,Question,1,1
+What is the definition of empathy?,Question,1,1
+What is the process called when plants make their own food?,Question,1,1
+What is the boiling point of water in Celsius?,Question,1,1
+What are the 5 main components of a sentence in linguistics?,Question,1,1
+How many countries are in the world?,Question,1,1
+What are the main differences between a simile and a metaphor?,Question,1,1
+What is the difference between a hypothesis and a theory in science?,Question,1,1
+"Who wrote ""To Kill a Mockingbird""?",Question,1,1
+What is the process by which plants make food from sunlight?,Question,1,1
+What are the three main types of rock?,Question,1,1
+What are the three main types of galaxies?,Question,1,1
+What are some of the benefits of mindfulness meditation?,Question,1,1
+Who painted the Mona Lisa?,Question,1,1
+What are the main characteristics of a functional group in organic chemistry?,Question,1,1
+What are the three main characteristics of an ecosystem?,Question,1,1
+What are the primary functions of a muscle in the human body?,Question,1,1
+How do you calculate the area of a circle?,Question,1,1
+What is the meaning of life?,Question,1,1
+What is the process called when an organism's genetic material is passed from one generation to the next?,Question,1,1
+Who is the CEO of SpaceX?,Question,1,1
+What is the main function of a respiratory system?,Question,1,1
+What is the process called when plants make their own food from sunlight?,Question,1,1
+What is the main purpose of an essay?,Question,1,1
+What is the definition of hypnosis?,Question,1,1
+What are some common causes of insomnia?,Question,1,1
+What is the definition of a paradox?,Question,1,1
+What are the main sources of ocean pollution?,Question,1,1
+Can anyone learn any new skill or subject?,Question,1,1
+"What is the process of writing an apology letter called ""amelioration""?",Question,1,1
+What are the benefits of regular exercise for mental health?,Question,1,1
+What are some common signs of stress and anxiety?,Question,1,1
+What is the definition of mindfulness in psychology?,Question,1,1
+Who is the main character in Romeo and Juliet?,Question,1,1
+What is the difference between good and evil?,Question,1,1
+What are the main differences between a fetus and a newborn baby?,Question,1,1
+What are some common symptoms of anxiety disorders?,Question,1,1
+What are the main factors that contribute to global warming?,Question,1,1
+What is the process by which plants make their own food from sunlight?,Question,1,1
+What are the benefits of reading literature?,Question,1,1
+What are the benefits of meditation on mental health?,Question,1,1
+What are the three main types of trials in ABA therapy?,Question,1,1
+What are the main reasons for climate change?,Question,1,1
+What is the definition of propaganda?,Question,1,1
+What are some strategies for improving reading comprehension?,Question,1,1
+Who is the CEO of Tesla?,Question,1,1
+What are the three main goals of the American Revolution?,Question,1,1
+What is the definition of introspection?,Question,1,1
+What are the two main types of neurons in the brain?,Question,1,1
+What is the definition of 'dystopian'?,Question,1,1
+What is the definition of sarcasm?,Question,1,1
+What are the five major traits of the Big Five personality model?,Question,1,1
+Who was the first president of the United States?,Question,1,1
+What is the process called when an organism's genetic information influences its behavior?,Question,1,1
+What is the definition of a neurotransmitter?,Question,1,1
+What are the main differences between Plato and Aristotle?,Question,1,1
+What is the definition of a hypothesis?,Question,1,1
+Who was the main character in The Hunger Games?,Question,1,1
+What are the three main functions of a cell?,Question,1,1
+Who is the CEO of Apple?,Question,1,1
+What is the square root of 225?,Question,1,1
+What is the definition of psychological trauma?,Question,1,1
+What is the definition of synonyms?,Question,1,1
+What is the definition of a 'hapax legomenon'?,Question,1,1
+How many sides does a hexagon have?,Question,1,1
+How does cognitive load affect motivation?,Question,1,1
+What is the difference between correlation and causation?,Question,1,1
+What are the three main components of a sonnet?,Question,1,1
+What are the primary causes of climate change?,Question,1,1
+"What is the definition of the term ""sentimental""?",Question,1,1
+What is the square root of 169?,Question,1,1
+What is the definition of cognitive bias?,Question,1,1
+What are the main differences between monarchies and republics?,Question,1,1
+What are the primary functions of the human brain?,Question,1,1
+What is the main difference between a vector and a matrix in linear algebra?,Question,1,1
+What are the 3 primary colors?,Question,1,1
+What is the difference between formal and informal language?,Question,1,1
+What are the 7 deadly sins in literature?,Question,1,1
+What are some common types of meditation?,Question,1,1
+Who is the main character in The Hunger Games?,Question,1,1
+"What is the meaning of the word ""quarantine""?",Question,1,1
+What are the main components of a well-structured argument?,Question,1,1
+Can artificial intelligence replace human teachers?,Question,1,1
+How does artificial intelligence impact the job market?,Question,1,1
+How does climate change affect the polar ice caps?,Question,1,1
+How does the brain process emotions?,Question,1,1
+What is the main function of the mitochondria in cells?,Question,1,1
+What is the opposite of +5?,Question,1,1
+What are the main components of a good introduction in an essay?,Question,1,1
+What is the difference between supply and demand in economics?,Question,1,1
+"What is the definition of ""sentence"" in language arts?",Question,1,1
+What are the three main types of cognitive biases?,Question,1,1
+What is the most widely spoken language in the world?,Question,1,1
+What are the similarities and differences between ancient Egypt and Greece?,Question,1,1
+What is the definition of wisdom?,Question,1,1
+What is the process of making gasoline from coal?,Question,1,1
+"What is the author of the book ""To Kill a Mockingbird""?",Question,1,1
+"What is the process called when an object moves from a state of motion to a state of rest, and then returns to the original state of motion?",Question,1,1
+"What is the meaning of the word ""perspicacious""?",Question,1,1
+What are the three main types of probability?,Question,1,1
+What are some common causes of morning headaches?,Question,1,1
+What is the main function of a browser's bookmarks bar?,Question,1,1
+What are the four main functions of a brain?,Question,1,1
+What is the main difference between a novel and a story?,Question,1,1
+What is the definition of hypotaxis?,Question,1,1
+"Who is the author of the famous novel ""To Kill a Mockingbird""?",Question,1,1
+What are the main symptoms of ADHD?,Question,1,1
+"Who painted the famous artwork ""The Starry Night""?",Question,1,1
+"What is the definition of ""empowerment""?",Question,1,1
+"What are the three main types of literary devices? (e.g. metaphors, similes, allusions)",Question,1,1
+What is the process called when animals migrate to a new location?,Question,1,1
+What are the three main types of cloud cover?,Question,1,1
+What are the three main types of tenses in English grammar?,Question,1,1
+"What is the process called when plants make their own food from sunlight, water, and air?",Question,1,1
+How do virtual reality experiences affect the brain?,Question,1,1
+What are the three main components of a healthy diet?,Question,1,1
+What are the main components of a simple fraction?,Question,1,1
+Who is the main character in the novel 'To Kill a Mockingbird'?,Question,1,1
+What is the main difference between a hypothesis and a theory in science?,Question,1,1
+How does the human brain process and store memories?,Question,1,1
+Who was the lead singer of the rock band Queen?,Question,1,1
+What are the primary goals of a 5-year-old's education?,Question,1,1
+What are the five human senses?,Question,1,1
+"What is the definition of the term ""citizen""?",Question,1,1
+What are the three main branches of government in the United States?,Question,1,1
+Who is the current president of France?,Question,1,1
+"What is the opposite of the word ""fast""?",Question,1,1
+What are the main differences between artificial intelligence and machine learning?,Question,1,1
+What is the definition of free will?,Question,1,1
+How does the concept of time affect our perception of reality?,Question,1,1
+What is the difference between intelligence and creativity?,Question,1,1
+Who is the current president of the United States?,Question,1,1
+What are the main characteristics of a hurricane?,Question,1,1
+"What is the author of ""To Kill a Mockingbird""?",Question,1,1
+What are the historical dates of the Roman Empire?,Question,1,1
+Can dogs see in the dark?,Question,1,1
+What is the definition of a moral dilemma?,Question,1,1
+Who is the CEO of Google?,Question,1,1
+What are the different types of clouds?,Question,1,1
+What is the term for studying a subject to become an expert?,Question,1,1
+What is the average air speed velocity of an unladen swallow?,Question,1,1
+"What is the definition of the word ""narrative?""",Question,1,1
+How does self-regulation impact motivation?,Question,1,1
+What are the advantages and disadvantages of using a 3D printer?,Question,1,1
+What is the process called when an organism's genetic information is used to create a protein?,Question,1,1
+What is the definition of entropy in physics?,Question,1,1
+Who is the author of To Kill a Mockingbird?,Question,1,1
+What is the opposite of 'bigger'?,Question,1,1
+What are the primary functions of a police officer's role?,Question,1,1
+"What is the definition of the term ""narrative therapy""?",Question,1,1
+What is the definition of irony?,Question,1,1
+Who was the first President of the United States?,Question,1,1
+"Who painted the famous painting, The Starry Night?",Question,1,1
+What is the process called when an organism's genetic information is passed from one generation to the next?,Question,1,1
+"What are the three main types of direct quotes in a piece of writing? <instructions>
+Create a fact or thought-provoking question that can be used in a conversation or educational setting.",Question,1,1
+What are some ways to improve focus in students?,Question,1,1
+What are the differences between a liberal and conservative ideology?,Question,1,1
+What is the main function of mitochondria?,Question,1,1
+What are some common causes of tooth decay?,Question,1,1
+What is the main function of the mitochondria in a cell?,Question,1,1
+What is the main function of mitochondria in cells?,Question,1,1
+What is the difference between natural selection and artificial selection?,Question,1,1
+"What is the meaning of the word ""humility""?",Question,1,1
+"What is the process of breaking down a complex idea into smaller, more manageable parts called ""chunking""?",Question,1,1
+What is the boiling point of water in Fahrenheit?,Question,1,1
+What are the top 5 most frequently asked questions in a particular domain?,Question,1,1
+What is the definition of 'ecosystem'?,Question,1,1
+What are the four main types of structural brain damage that can result from a stroke?,Question,1,1
+How does climate change affect the environment?,Question,1,1
+What are the three main types of cells in the human body?,Question,1,1
+What are the main themes in William Shakespeare's Romeo and Juliet?,Question,1,1
+How does the human brain process emotions?,Question,1,1
+What are the three main types of love?,Question,1,1
+"What are the three main components of human memory? (Remember, this is a conversation setting, not an interview)",Question,1,1
+"What is the process of breaking down a complex task into smaller, manageable parts called?",Question,1,1

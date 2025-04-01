@@ -25,8 +25,10 @@ class StudentAgent(BaseAgent):
         Generates a question to ask the tutor.
         """
         if input_message:
-            self.append_assistant_message(input_message)
+            self.append_user_message(input_message) # self.append_assistant_message(input_message)
 
         response = self.model.generate(self.chat_history)
-        self.append_user_message(response.content)
+        self.append_assistant_message(response.content) # self.append_user_message(response.content)
         return response.content
+
+# changes because an llm needs to be treated as the assistant always also when it is the student 

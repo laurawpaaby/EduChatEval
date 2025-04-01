@@ -1,5 +1,4 @@
 ####  -------- Purpose: -------- ####
-
 # Synthesize a labeled dataset of a theoretical framework for later model training 
 # Method: constraint synthesis using ouline: https://github.com/dottxt-ai/outlines?tab=readme-ov-file#type-constraint 
 
@@ -13,7 +12,6 @@
 # - Text generation parameters (optional)
 # - Save path for dataset
 
-
 ####  -------- Outputs: -------- ####
 # - Labeled dataset for training in the format of a CSV file or json
 
@@ -25,7 +23,6 @@ from typing import List, Dict
 from pydantic import BaseModel, ValidationError
 import importlib.util
 import sys
-import os
 
 
 # --- Pydantic schema ---
@@ -34,80 +31,84 @@ class ConversationAnnotation(BaseModel):
     category: str
 
 
-class SyntheticDataGenerator:
-    def __init__(self, model_name: str = "llama-3.2-3b-instruct", api_url: str = "http://localhost:1234/v1/completions"):
-        self.model_name = model_name
-        self.api_url = api_url
-
-    def generate_from_prompt(self, prompt: str, category: str, num_samples: int = 1000) -> List[Dict]:
-        results = []
-        for _ in range(num_samples):
-            payload = {
-                "model": self.model_name,
-                "prompt": prompt,
-                "temperature": 0.85,
-                "top_p": 0.90,
-                "max_tokens": 40,
-                "stop": ["<|im_end|>"]
-            }
-            try:
-                response = requests.post(self.api_url, json=payload)
-                raw_text = response.json()["choices"][0]["text"].strip()
-                validated = ConversationAnnotation(text=raw_text, category=category)
-                results.append(validated.model_dump())
-            except (KeyError, ValidationError) as e:
-                print(f"Skipping invalid output for category '{category}':", e)
-        return results
-
-    def synthesize_dataset(self, prompt_dict: Dict[str, str], save_json_path: str, save_csv_path: str, num_samples: int = 1000):
-        """
-        Generate synthetic data for each prompt-category pair and save to disk.
-        """
-        all_data = []
-        for category, prompt in prompt_dict.items():
-            print(f"Generating for category: {category}")
-            examples = self.generate_from_prompt(prompt, category, num_samples)
-            all_data.extend(examples)
-
-        with open(save_json_path, "w") as f:
-            json.dump(all_data, f, indent=4)
-
-        # Convert to DataFrame and clean
-        df = pd.DataFrame(all_data)
-
-        # Remove duplicates based on text input and category
-        df = df.drop_duplicates()
-
-        # Clean up weird tokens that may sneak in
-        df["text"] = df["text"].str.replace("<\\|im_start\\|>", "", regex=True)
-        df["text"] = df["text"].str.replace("<\\|im_end\\|>", "", regex=True)
-
-        # RULE FOR NOW AT LEAST filter out rows that contain specific keywords like 'feedback' 
-        # -> cause it indicates that the model meta explains it self, which we don't want 
-        if "Feedback" in prompt_dict:
-            df = df[~df["text"].str.contains("feedback", case=False)]
-
-        # print and save 
-        print(f"Number of duplicates removed: {len(all_data) - len(df)}")
-        df.to_csv(save_csv_path, index=False)
-
-        print(f"Saved {len(df)} total samples to:")
-        print(f"\u2192 JSON: {save_json_path}")
-        print(f"\u2192 CSV: {save_csv_path}")
+def generate_from_prompt(prompt: str, category: str, model_name: str, api_url: str, num_samples: int = 1000) -> List[Dict]:
+    results = []
+    for _ in range(num_samples):
+        payload = {
+            "model": model_name,
+            "prompt": prompt,
+            "temperature": 0.85,
+            "top_p": 0.90,
+            "max_tokens": 40,
+            "stop": ["<|im_end|>"]
+        }
+        try:
+            response = requests.post(api_url, json=payload)
+            raw_text = response.json()["choices"][0]["text"].strip()
+            validated = ConversationAnnotation(text=raw_text, category=category)
+            results.append(validated.model_dump())
+        except (KeyError, ValidationError) as e:
+            print(f"Skipping invalid output for category '{category}':", e)
+    return results
 
 
-# function to load the prompt dictionary from a python file 
-def load_prompt_dict_from_py(path):
+def synthesize_dataset(
+    prompt_dict: Dict[str, str],
+    model_name: str,
+    num_samples: int,
+    api_url: str = "http://localhost:1234/v1/completions",
+    json_out: str = None,
+    csv_out: str = None) -> pd.DataFrame:
+    """
+    Generate synthetic data for each prompt-category pair.
+    
+    Returns: cleaned pd.DataFrame of generated samples.
+
+    Optionally saves the result to disk if json_out or csv_out is provided.
+    """
+    all_data = []
+    for category, prompt in prompt_dict.items():
+        print(f"Generating for category: {category}")
+        examples = generate_from_prompt(prompt, category, model_name, api_url, num_samples)
+        all_data.extend(examples)
+
+    df = pd.DataFrame(all_data).drop_duplicates()
+
+    # Clean up unwanted tokens
+    df["text"] = df["text"].str.replace("<\\|im_start\\|>", "", regex=True)
+    df["text"] = df["text"].str.replace("<\\|im_end\\|>", "", regex=True)
+
+    # RULE: remove rows that contain 'feedback' if Feedback is a category
+    if "Feedback" in prompt_dict:
+        df = df[~df["text"].str.contains("feedback", case=False)]
+
+    print(f"Number of duplicates removed: {len(all_data) - len(df)}")
+    
+    # Optional saving
+    if json_out:
+        with open(json_out, "w") as f:
+            json.dump(df.to_dict(orient="records"), f, indent=4)
+        print(f"\u2192 Saved JSON: {json_out}")
+    
+    if csv_out:
+        df.to_csv(csv_out, index=False)
+        print(f"\u2192 Saved CSV: {csv_out}")
+
+    return df
+
+
+
+def load_prompt_dict_from_py(path: str) -> Dict[str, str]:
     spec = importlib.util.spec_from_file_location("prompt_module", path)
     prompt_module = importlib.util.module_from_spec(spec)
     sys.modules["prompt_module"] = prompt_module
     spec.loader.exec_module(prompt_module)
     return prompt_module.prompt_dict
 
-# run the whole thingy - should moved when a proper package/entry point is created
-if __name__ == "__main__":
+
+def main():
     parser = argparse.ArgumentParser(description="Generate synthetic labeled text data using a local LM Studio model.")
-    parser.add_argument("--prompt_path", type=str, required=True, help="Path to JSON file containing prompts.")
+    parser.add_argument("--prompt_path", type=str, required=True, help="Path to Python file containing prompt_dict.")
     parser.add_argument("--json_out", type=str, required=True, help="Path to save the JSON output.")
     parser.add_argument("--csv_out", type=str, required=True, help="Path to save the CSV output.")
     parser.add_argument("--samples", type=int, default=1000, help="Number of samples to generate per category.")
@@ -117,6 +118,15 @@ if __name__ == "__main__":
 
     prompt_dict = load_prompt_dict_from_py(args.prompt_path)
 
-    # run time 
-    generator = SyntheticDataGenerator(model_name=args.model)
-    generator.synthesize_dataset(prompt_dict, args.json_out, args.csv_out, args.samples)
+    synthesize_dataset(
+        prompt_dict=prompt_dict,
+        model_name=args.model,
+        json_out=args.json_out,
+        csv_out=args.csv_out,
+        num_samples=args.samples
+    )
+
+
+#if __name__ == "__main__":
+#    main()
+

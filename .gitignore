@@ -1,5 +1,7 @@
-/.DS_Store
 /Models
+/Results
+
+/.DS_Store
 /__pycache__
 
 /.idea
@@ -10,3 +12,4 @@
 /.coverage.*
 /.pytest_cache
 /.mypy_cache
+
