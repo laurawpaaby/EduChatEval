@@ -2,6 +2,9 @@
 ### THIS CREATES THE SYNTHETIC DATASET USED FOR TRAINING THE CLASSIFIER AND IS THE FOUNDATION FOR THE ANALYSIS
 
 ## LAURA TO DO: ADD EXPLAINING ERRORS IF INPUTS ARE NOT AS EXPECTED OR MISSING :D <333     
+from typing import Union, Optional
+import pandas as pd
+
 
 # Framework Generator Modules:
 from framework_generation.train_tinylabel_classifier import filter_synthesized_data, load_and_prepare_dataset, load_tokenizer, save_model_and_tokenizer, tokenize_dataset, train_model
@@ -44,8 +47,6 @@ class FrameworkGenerator:
     
 
     #### 2. function to quality check the dataset
-    from typing import Union
-    import pandas as pd
     from src.framework_generation.train_tinylabel_classifier import (load_tokenizer, load_and_prepare_dataset,tokenize_dataset,
         train_model, save_model_and_tokenizer, filter_synthesized_data)
 
@@ -156,6 +157,54 @@ __all__ = ["DialogueLogger"] # all at once cause already class in that script - 
 
 
 ###### 4. NOW LETS ADD THE CLASSIFIER FOR THE DIALOGUE DATA !!! :DDD
-from src.dialogue_classification.train_classifier import (load_tokenizer, load_and_prepare_dataset, tokenize_dataset,
-    train_model, save_model_and_tokenizer, filter_synthesized_data)
 
+from src.dialogue_classification.train_classifier import (load_tokenizer, load_and_prepare_dataset, tokenize_dataset,
+    train_model, save_model_and_tokenizer, predict_annotated_dataset)
+
+class PredictLabels:
+    """
+    Wrapper class for training a classifier and using it to annotate a new dataset.
+    """
+
+    def __init__(self, model_name: str = "distilbert-base-uncased"):
+        self.model_name = model_name
+        self.tokenizer = load_tokenizer(model_name)
+
+    def run_pipeline(
+        self,
+        train_data: Union[str, pd.DataFrame],
+        new_data: Union[str, pd.DataFrame],
+        # columns in the training data
+        text_column: str = "text",
+        label_column: str = "category",
+        # text coliumn in the new data should it have a different name than text_column
+        new_text_column: Optional[str] = None,
+        split_ratio: float = 0.2,
+        training_params: list = [0.01, 'cross_entropy', 5e-5, 8, 8, 4, 0.01],
+        tuning: bool = False,
+        tuning_params: Optional[dict] = None,
+        model_save_path: Optional[str] = None,
+        prediction_save_path: Optional[str] = None) -> pd.DataFrame:
+
+        """
+        Trains classifier and returns annotated DataFrame.
+        """
+
+        dataset_dict, label2id = load_and_prepare_dataset(train_data, text_column, label_column, split_ratio)
+        tokenized = tokenize_dataset(dataset_dict, self.tokenizer)
+
+        model, trainer = train_model(tokenized, self.model_name, len(label2id), training_params, tuning, tuning_params)
+
+        if model_save_path:
+            save_model_and_tokenizer(model, self.tokenizer, model_save_path)
+
+        df_annotated = predict_annotated_dataset(
+            new_data=new_data,
+            model=model,
+            text_column=new_text_column,
+            tokenizer=self.tokenizer,
+            label2id=label2id,
+            save_path=prediction_save_path
+        )
+
+        return df_annotated

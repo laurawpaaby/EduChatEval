@@ -1,23 +1,7 @@
-####  -------- Purpose: -------- ####
+# ####  -------- Purpose: -------- ####
 
-# 1. Train a classification model on a small manually created data set 
-# 2. Get model performance on train and test data
-# 3. Save the model and tokenizer 
-# 4. Use model on the synthesized dataset to predict each label
-# 5. Keep only the ones where the classifier agrees - you now have the final dataset of high quality 
-
-####  -------- Inputs: -------- ####
-# - Dataset path or DataFrame for training
-# - Model name
-# - Name of text column and label column
-# - Train/test split ratio (split_ratio)
-# - Tuning (optional): TRUE/FALSE
-#       - If TRUE, grid of hyper parameters 
-#       - If FALSE, default hyper parameters
-# - Save path for model and tokenizer (optional)
-
-####  -------- Outputs: -------- ####
-# - The final dataset with only the examples where the classifier agrees
+# 1. A utility script for training a classification models
+# 2. It includes functions for loading and preparing datasets, tokenizing, training, and evaluating the model repeatedly used 
 
 import pandas as pd
 from datasets import Dataset, DatasetDict
@@ -25,12 +9,6 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trai
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 import optuna
 from typing import Union
-
-########## LOAD FROM CLASSIFICATION_UTILS INSTEAD LAURA !!!!! ##########
-#from classification_utils import (load_tokenizer, load_and_prepare_dataset, tokenize_dataset, 
-#    compute_metrics, train_model, save_model_and_tokenizer)
-# or maybe first relevant in the entry point of the pipeline not sure, look it up
-
 
 # --- Load tokenizer ---
 def load_tokenizer(model_name: str):
@@ -156,33 +134,3 @@ def save_model_and_tokenizer(model, tokenizer, save_path: str):
     model.save_pretrained(save_path)
     tokenizer.save_pretrained(save_path)
     print(f"Model and tokenizer saved to {save_path}")
-
-
-# --- Filter synthetic dataset ---
-def filter_synthesized_data(synth_input: Union[str, pd.DataFrame], model, tokenizer, label_column: str, save_path: str = None):
-    """
-    Use the trained classifier to filter out low-quality synthetic samples.
-    Accepts a path or a DataFrame. Returns a cleaned pandas DataFrame. Saves to CSV if path is given.
-    """
-    if isinstance(synth_input, str):
-        df = pd.read_csv(synth_input, encoding="utf-8", on_bad_lines='skip')
-    else:
-        df = synth_input.copy()
-
-    label2id = {label: idx for idx, label in enumerate(sorted(df[label_column].unique()))}
-    df["label_id"] = df[label_column].map(label2id)
-
-    dataset = Dataset.from_pandas(df)
-    tokenized = dataset.map(lambda x: tokenizer(x["text"], padding="max_length", truncation=True), batched=True)
-    trainer = Trainer(model=model)
-    predictions = trainer.predict(tokenized)
-    preds = predictions.predictions.argmax(-1)
-
-    df["predicted"] = preds
-    df_filtered = df[df["label_id"] == df["predicted"]]
-
-    if save_path:
-        df_filtered.to_csv(save_path, index=False)
-        print(f"Filtered data saved to {save_path}")
-
-    return df_filtered

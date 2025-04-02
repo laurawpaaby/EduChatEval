@@ -1,97 +1,121 @@
+# THESE ARE SOME OF THE SAME FUNCTIONS AS IN THE TRAING_TINYLABEL_CLASSIFIER.PY - MAYBE MAKE A BASE SCRIPT FOR THEM WITH COMMON FUNCTIONS/ABSTRACT METHODS
 ####  -------- Purpose: -------- ####
 
 # 1. Train a classification model with specified data
 # 2. Get model performance on train and test data
-# 3. Save the model and tokenizer for later use on actual interaction data 
+# 3. Optionally store the model 
+# 4. Use model on the interaction dataset to predict each label
 
 ####  -------- Inputs: -------- ####
-# - Dataset path for training
+# - Dataset path or df for training
 # - Model name
 # - Name of text column and label column
 # - Train/test split ratio (split_ratio)
 # - Tuning (optional): TRUE/FALSE
 #       - If TRUE, grid of hyper parameters 
 #       - If FALSE, default hyper parameters
-# - Save path for model and tokenizer
+# - Save path for model and tokenizer (optional)
 
 ####  -------- Outputs: -------- ####
 # - Trained model
 # - Tokenizer
 # - Training and performance metrics (loss, accuracy, etc.)
+# - The final dataset with predicted annotations 
 
 import pandas as pd
 from datasets import Dataset, DatasetDict
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer, EvalPrediction
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 import optuna
+from typing import Union, Optional
 
 
-# 1.1 Load dataset from CSV with fallback encodings and transform it into Hugging Face DatasetDict
-def load_dataset(csv_path: str, text_column: str, label_column: str, split_ratio: float):
+########## load basic funcs FROM CLASSIFICATION_UTILS INSTEAD LAURA !!!!! ##########
+#from classification_utils import (load_tokenizer, load_and_prepare_dataset, tokenize_dataset, 
+#    compute_metrics, train_model, save_model_and_tokenizer)
+# or maybe first relevant in the entry point of the pipeline not sure, look it up
+
+
+# --- Load tokenizer ---
+def load_tokenizer(model_name: str):
     """
-    Load dataset from CSV with fallback encodings. Then convert pandas DataFrame into Hugging Face DatasetDict.
-    Also, calculate unique labels in the label column for the trainer later on.
-    """
-    try:
-        df = pd.read_csv(csv_path, encoding="utf-8")
-    except UnicodeDecodeError:
-        df = pd.read_csv(csv_path, encoding="ISO-8859-1")
-
-    unique_labels = df[label_column].nunique()  # Get the number of unique labels for trainer
-
-    # convert pandas DataFrame to Hugging Face Dataset
-    dataset = Dataset.from_pandas(df[[text_column, label_column]])
-    split_dataset = dataset.train_test_split(test_size=split_ratio)
-    
-    return DatasetDict({"train": split_dataset["train"], "test": split_dataset["test"]}), unique_labels
-
-
-
-# 1.2 Tokenize the dataset 
-def tokenize_datasets(dataset_dict: DatasetDict, model_name: str, text_column: str):
-    """
-    Tokenize the dataset using the specified model's tokenizer.
+    Load and return a tokenizer based on the specified pre-trained model.
     """
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    
+    if tokenizer.pad_token is None:
+        tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+    return tokenizer
+
+# --- Load and prepare dataset ---
+def load_and_prepare_dataset(data: Union[str, pd.DataFrame], text_column: str, label_column: str, split_ratio: float):
+    """
+    Load dataset from CSV or DataFrame and map labels to IDs. Returns DatasetDict and label2id mapping.
+    """
+    if isinstance(data, str):
+        try:
+            df = pd.read_csv(data, encoding="utf-8")
+        except UnicodeDecodeError:
+            df = pd.read_csv(data, encoding="ISO-8859-1")
+    else:
+        df = data.copy()
+
+    # label encoding
+    label2id = {label: idx for idx, label in enumerate(sorted(df[label_column].unique()))}
+    df[label_column] = df[label_column].map(label2id)
+
+    dataset = Dataset.from_pandas(df[[text_column, label_column]])
+
+    if text_column != "text":
+        dataset = dataset.rename_column(text_column, "text")
+    if label_column != "labels":
+        dataset = dataset.rename_column(label_column, "labels")
+
+    split_dataset = dataset.train_test_split(test_size=split_ratio)
+    return DatasetDict({"train": split_dataset["train"], "test": split_dataset["test"]}), label2id
+
+
+# --- Tokenize dataset ---
+def tokenize_dataset(dataset_dict: DatasetDict, tokenizer):
+    """
+    Tokenize the dataset using max token length from training samples.
+    """
+    sample_texts = dataset_dict["train"]["text"]
+    token_lengths = [len(tokenizer.encode(text)) for text in sample_texts]
+    max_len = max(token_lengths)
+    print("Max token:", max_len, "Average token:", sum(token_lengths)/len(token_lengths))
+
     def tokenize_function(examples):
-        return tokenizer(examples[text_column], 
-                         padding="max_length", 
-                         truncation=True)
-    
-    tokenized_datasets = dataset_dict.map(tokenize_function, batched=True)
-    return tokenized_datasets, tokenizer
+        encoded = tokenizer(examples["text"], padding="max_length", truncation=True, max_length=max_len)
+        encoded["labels"] = examples["labels"]
+        return encoded
+
+    return dataset_dict.map(tokenize_function, batched=True)
 
 
 
-# 2. Train the model with optional hyperparameter tuning and store performance metrics for both training and testing.
+# --- Compute evaluation metrics ---
 def compute_metrics(p: EvalPrediction):
     """
-    Compute performance metrics for classification.
+    Compute classification performance metrics.
     """
-    preds = p.predictions.argmax(-1)  # Take the class with the highest probability
+    preds = p.predictions.argmax(-1)
     labels = p.label_ids
     precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average='weighted')
     acc = accuracy_score(labels, preds)
-    return {
-        'accuracy': acc,
-        'precision': precision,
-        'recall': recall,
-        'f1': f1
-    }
- 
-def train_model(model_name: str, dataset_dict: DatasetDict, label_count: int, training_params: list, tuning: bool = False, tuning_params: dict = None):
+    return {'accuracy': acc, 'precision': precision, 'recall': recall, 'f1': f1}
+
+
+# --- Train the model ---
+def train_model(tokenized_dataset: DatasetDict, model_name: str, label_count: int, training_params: list, tuning: bool = False, tuning_params: dict = None):
     """
-    Train the model considering either a direct list of parameters 
-    or tuning via a grid + store performance metrics.
+    Train the model with or without Optuna hyperparameter tuning.
     """
     model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=label_count)
-    
-    # Extract training parameters from the list if tuning is off
+
     if not tuning:
         training_args = TrainingArguments(
             output_dir="./results",
-            eval_strategy="epoch",
+            evaluation_strategy="epoch",
             save_strategy="epoch",
             per_device_train_batch_size=training_params[3],
             per_device_eval_batch_size=training_params[4],
@@ -103,62 +127,68 @@ def train_model(model_name: str, dataset_dict: DatasetDict, label_count: int, tr
     else:
         training_args = TrainingArguments(
             output_dir="./results",
-            eval_strategy="epoch",
+            evaluation_strategy="epoch",
             save_strategy="epoch",
             logging_dir='./logs'
         )
-    
+
     trainer = Trainer(
         model=model,
         args=training_args,
-        train_dataset=dataset_dict["train"],
-        eval_dataset=dataset_dict["test"],
-        compute_metrics=compute_metrics  # Pass the compute_metrics function to the Trainer
+        train_dataset=tokenized_dataset["train"],
+        eval_dataset=tokenized_dataset["test"],
+        compute_metrics=compute_metrics
     )
-    
+
     if tuning:
         def objective(trial):
-            # Define hyperparameter search space from the tuning parameters grid
             for key, values in tuning_params.items():
                 setattr(training_args, key, trial.suggest_categorical(key, values))
             trainer.args = training_args
             trainer.train()
             return trainer.evaluate()['eval_loss']
-        
+
         study = optuna.create_study(direction="minimize")
-        study.optimize(objective, n_trials=len(tuning_params[list(tuning_params.keys())[0]]))  # Number of trials based on length of parameter lists
-        best_params = study.best_params
-        print("Best hyperparameters:", best_params)
-    
+        study.optimize(objective, n_trials=len(tuning_params[list(tuning_params.keys())[0]]))
+        print("Best hyperparameters:", study.best_params)
+
     trainer.train()
     return model, trainer
 
 
+# --- Save model and tokenizer ---
+def save_model_and_tokenizer(model, tokenizer, save_path: Optional[str]):
+    """
+    Optionally save the trained model and tokenizer.
+    """
+    if save_path:
+        model.save_pretrained(save_path)
+        tokenizer.save_pretrained(save_path)
+        print(f"Model and tokenizer saved to {save_path}")
 
 
-# 3. Save the trained model and tokenizer.
-def save_model(model, tokenizer, save_path: str):
-    """Save the trained model and tokenizer."""
-    model.save_pretrained(save_path)
-    tokenizer.save_pretrained(save_path)
-    print(f"Model and tokenizer saved to {save_path}")
+# --- Predict and filter dataset ---
+def predict_annotated_dataset(new_data: Union[str, pd.DataFrame], model, text_column, tokenizer, label2id, save_path: Optional[str] = None):
+    """
+    Predict the labels on a new dataset without labels and filter the dataset to only include confident predictions.
+    """
+    if isinstance(new_data, str):
+        df = pd.read_csv(new_data)
+    else:
+        df = new_data
 
+    # Prepare and tokenize new data
+    tokenized = tokenizer(df[text_column].tolist(), padding=True, truncation=True, max_length=512, return_tensors="pt")
+    predictions = model(**tokenized)
+    predicted_labels = predictions.logits.argmax(-1).numpy()
+    predicted_label_names = [list(label2id.keys())[label] for label in predicted_labels]
 
+    # Append predicted labels to the DataFrame
+    df['predicted_labels'] = predicted_label_names
 
-# Main function to process input parameters and manage the training/saving workflow.
-def train_and_save_model(csv_path: str, model_name: str, text_column: str, label_column: str, split_ratio: float, training_params: list, tuning: bool = False, tuning_params: dict = None, save_path: str = "./my_finetuned_model"):
-    """Full workflow to train, save, and report on a text classification model."""
-    dataset_dict, unique_labels = load_dataset(csv_path, text_column, label_column, split_ratio)
-    tokenized_datasets, tokenizer = tokenize_datasets(dataset_dict, model_name, text_column)
-    model, trainer = train_model(model_name, tokenized_datasets, unique_labels, training_params, tuning, tuning_params)
-    
-    # Perform final evaluation and get metrics
-    final_metrics = trainer.evaluate()
+    # Optionally save the DataFrame
+    if save_path:
+        df.to_csv(save_path, index=False)
+        print(f"Predicted data saved to {save_path}")
 
-    # Save the model and tokenizer
-    save_model(model, tokenizer, save_path)
-    print("Training completed. Model and tokenizer saved.")
-
-    # Return model, tokenizer, and final performance metrics
-    return model, tokenizer, final_metrics
-
+    return df
