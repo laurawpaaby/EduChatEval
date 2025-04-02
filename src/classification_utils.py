@@ -92,7 +92,8 @@ def train_model(tokenized_dataset: DatasetDict, model_name: str, label_count: in
             num_train_epochs=training_params[5],
             weight_decay=training_params[6],
             logging_dir='./logs',
-            learning_rate=training_params[2]
+            learning_rate=training_params[2],
+            use_mps_device=True
         )
     else:
         training_args = TrainingArguments(

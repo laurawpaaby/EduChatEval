@@ -1,15 +1,15 @@
-turn,user_msg,tutor_msg
-1,hello i need help with english,"What specifically do you need help with in English (e.g. grammar, vocabulary, reading comprehension, writing?)?"
-2,i need to understand some sentences,"What are the sentences you're having trouble understanding? Share them with me, and I'll help clarify their meaning."
-3,The complex houses married and single soldiers and their families.,"This sentence is saying that a complex (likely a military base or housing complex) has homes for both married and single soldiers, as well as their families."
-4,do you understand,"Yes, I understand. The sentence is describing a type of housing that caters to both married and single individuals, specifically soldiers and their families."
+turn,user_msg,tutor_msg,predicted_labels
+1,hello i need help with english,"What specifically do you need help with in English (e.g. grammar, vocabulary, reading comprehension, writing?)?",Small Talk
+2,i need to understand some sentences,"What are the sentences you're having trouble understanding? Share them with me, and I'll help clarify their meaning.",Clarification
+3,The complex houses married and single soldiers and their families.,"This sentence is saying that a complex (likely a military base or housing complex) has homes for both married and single soldiers, as well as their families.",Small Talk
+4,do you understand,"Yes, I understand. The sentence is describing a type of housing that caters to both married and single individuals, specifically soldiers and their families.",Clarification
 5,do you know other examples?,"Here are a few more examples of complex housing for soldiers and their families:
 
 * The base has modular homes for married couples and single airmen.
 * The military housing complex offers apartments for families with children.
 * The installation has townhouses and duplexes available for military personnel.
 
-These examples illustrate the idea of providing housing options for different types of individuals, such as married couples and single personnel."
+These examples illustrate the idea of providing housing options for different types of individuals, such as married couples and single personnel.",Clarification
 6,not housing but examples of complecated sentences,"Here are a few more complex sentence examples:
 
 1. The company, which specializes in marketing, employs a diverse team of professionals.
@@ -25,4 +25,4 @@ These sentences are more complex because they:
 * Have multiple main clauses (e.g. ""I still decided to go for a walk in the park"")
 * Use relative clauses (e.g. ""which specializes in marketing"")
 
-Let me know if you'd like more examples!"
+Let me know if you'd like more examples!",Question
