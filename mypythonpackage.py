@@ -156,3 +156,6 @@ __all__ = ["DialogueLogger"] # all at once cause already class in that script - 
 
 
 ###### 4. NOW LETS ADD THE CLASSIFIER FOR THE DIALOGUE DATA !!! :DDD
+from src.dialogue_classification.train_classifier import (load_tokenizer, load_and_prepare_dataset, tokenize_dataset,
+    train_model, save_model_and_tokenizer, filter_synthesized_data)
+
