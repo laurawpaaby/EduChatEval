@@ -47,8 +47,10 @@ class FrameworkGenerator:
     
 
     #### 2. function to quality check the dataset
-    from src.framework_generation.train_tinylabel_classifier import (load_tokenizer, load_and_prepare_dataset,tokenize_dataset,
-        train_model, save_model_and_tokenizer, filter_synthesized_data)
+    from src.classification_utils import (load_tokenizer, load_and_prepare_dataset, tokenize_dataset, 
+    train_model, save_model_and_tokenizer)
+
+    from src.framework_generation.train_tinylabel_classifier import filter_synthesized_data
 
     def filter_with_classifier(self,
                             train_data: Union[str, pd.DataFrame],
@@ -157,9 +159,9 @@ __all__ = ["DialogueLogger"] # all at once cause already class in that script - 
 
 
 ###### 4. NOW LETS ADD THE CLASSIFIER FOR THE DIALOGUE DATA !!! :DDD
-
-from src.dialogue_classification.train_classifier import (load_tokenizer, load_and_prepare_dataset, tokenize_dataset,
-    train_model, save_model_and_tokenizer, predict_annotated_dataset)
+from src.classification_utils import (load_tokenizer, load_and_prepare_dataset, tokenize_dataset, 
+    train_model, save_model_and_tokenizer)
+from src.dialogue_classification.train_classifier import predict_annotated_dataset 
 
 class PredictLabels:
     """
