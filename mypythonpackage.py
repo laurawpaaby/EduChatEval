@@ -21,8 +21,9 @@ class FrameworkGenerator:
 
     #### 1. function to generate the raw dataset, not yet filtered and quality checked
     def generate_framework(self, 
-                           prompt_path: str, 
-                           num_samples: int = 1000, 
+                           prompt_path: str = None,
+                           prompt_dict_input: dict = None,
+                           num_samples: int = 500,
                            api_url: str = "http://localhost:1234/v1/completions",
                            json_out: str = None, 
                            csv_out: str = None):
@@ -31,11 +32,12 @@ class FrameworkGenerator:
         Returns a pandas DataFrame.
         """
         # use the prompt path to load the prompt dictionary
-        prompt_dict = load_prompt_dict_from_py(prompt_path)
+        #prompt_dict = load_prompt_dict_from_py(prompt_path) NOW DONE DIRECTLY BELOW IF CHOSEN OVER DICT 
 
         # generate the dataset using func 
         df = synthesize_dataset(
-            prompt_dict=prompt_dict,
+            prompt_dict=prompt_dict_input,
+            prompt_path=prompt_path,
             model_name=self.model_name,
             num_samples=num_samples,
             api_url=api_url,
