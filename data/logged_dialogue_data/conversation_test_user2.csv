@@ -1,28 +1,4 @@
 turn,user_msg,tutor_msg
-1,hello i need help with english,"What specifically do you need help with in English (e.g. grammar, vocabulary, reading comprehension, writing?)?"
-2,i need to understand some sentences,"What are the sentences you're having trouble understanding? Share them with me, and I'll help clarify their meaning."
-3,The complex houses married and single soldiers and their families.,"This sentence is saying that a complex (likely a military base or housing complex) has homes for both married and single soldiers, as well as their families."
-4,do you understand,"Yes, I understand. The sentence is describing a type of housing that caters to both married and single individuals, specifically soldiers and their families."
-5,do you know other examples?,"Here are a few more examples of complex housing for soldiers and their families:
+1,exit,"It seems like your message was ""Exit"". 
 
-* The base has modular homes for married couples and single airmen.
-* The military housing complex offers apartments for families with children.
-* The installation has townhouses and duplexes available for military personnel.
-
-These examples illustrate the idea of providing housing options for different types of individuals, such as married couples and single personnel."
-6,not housing but examples of complecated sentences,"Here are a few more complex sentence examples:
-
-1. The company, which specializes in marketing, employs a diverse team of professionals.
-2. Having studied the subject extensively, she was well-prepared to write a thesis on it.
-3. By the time I arrived, they had already finished their project and were preparing for the next one.
-4. Although it was raining, I still decided to go for a walk in the park.
-5. Since the company went public, its stock price has fluctuated significantly.
-
-These sentences are more complex because they:
-
-* Have multiple clauses (e.g. ""which specializes in marketing"" is a dependent clause)
-* Use subordinate conjunctions (e.g. ""although"")
-* Have multiple main clauses (e.g. ""I still decided to go for a walk in the park"")
-* Use relative clauses (e.g. ""which specializes in marketing"")
-
-Let me know if you'd like more examples!"
+Can you please clarify what task or problem you're trying to solve? I'll be happy to help."

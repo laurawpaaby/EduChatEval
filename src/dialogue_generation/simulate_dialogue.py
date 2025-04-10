@@ -24,6 +24,7 @@ def simulate_conversation(
     model,
     system_prompts: dict,
     turns: int = 5,
+    seed_message_input: str = "Hi, I'm a student seeking assistance with my studies.",
     log_dir: Path = None,
     save_csv_path: Path = None,
 ) -> pd.DataFrame:
@@ -38,7 +39,7 @@ def simulate_conversation(
 
     dialogue_log = []
     structured_rows = []
-    seed_message = "Hi, I'm a student seeking assistance with my studies."
+    seed_message = seed_message_input 
 
     # Turn 1: student opens
     print(f"[Student]: {seed_message}")

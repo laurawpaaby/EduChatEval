@@ -26,8 +26,9 @@ class FrameworkGenerator:
     High-level interface for generating synthetic frameworks using prompts and a local model.
     """
 
-    def __init__(self, model_name: str = "llama-3.2-3b-instruct"):
+    def __init__(self, model_name: str = "llama-3.2-3b-instruct", api_url: str = "http://localhost:1234/v1/completions"):
         self.model_name = model_name
+        self.api_url = api_url
 
     #### 1. function to generate the raw dataset, not yet filtered and quality checked
     def generate_framework(
@@ -35,7 +36,6 @@ class FrameworkGenerator:
         prompt_path: str = None,
         prompt_dict_input: dict = None,
         num_samples: int = 500,
-        api_url: str = "http://localhost:1234/v1/completions",
         json_out: str = None,
         csv_out: str = None,
     ):
@@ -43,16 +43,13 @@ class FrameworkGenerator:
         Load prompt dict and generate synthetic labeled dataset.
         Returns a pandas DataFrame.
         """
-        # use the prompt path to load the prompt dictionary
-        # prompt_dict = load_prompt_dict_from_py(prompt_path) NOW DONE DIRECTLY BELOW IF CHOSEN OVER DICT
 
-        # generate the dataset using func
         df = synthesize_dataset(
             prompt_dict=prompt_dict_input,
             prompt_path=prompt_path,
             model_name=self.model_name,
             num_samples=num_samples,
-            api_url=api_url,
+            api_url=self.api_url,
             json_out=json_out,
             csv_out=csv_out,
         )
@@ -121,7 +118,7 @@ class FrameworkGenerator:
         return df_filtered
 
 
-#### 2. NOW NEXT STEP SHOULD BE GENERATING THE SYNTHETIC DIALOGUE DATA ..........
+#### 2. NOW NEXT STEP IS GENERATING THE SYNTHETIC DIALOGUE DATA 
 from typing import Optional
 import pandas as pd
 from pathlib import Path
@@ -165,6 +162,7 @@ class DialogueSimulator:
         self,
         mode: str = "general_course_exploration",
         turns: int = 5,
+        seed_message_input: str = "Hi, I'm a student seeking assistance with my studies.",
         log_dir: Optional[Path] = None,
         save_csv_path: Optional[Path] = None,
     ) -> pd.DataFrame:
@@ -176,6 +174,7 @@ class DialogueSimulator:
             model=self.model,
             system_prompts=system_prompts,
             turns=turns,
+            seed_message_input=seed_message_input,
             log_dir=log_dir,
             save_csv_path=save_csv_path,
         )

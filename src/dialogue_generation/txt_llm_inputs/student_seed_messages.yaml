@@ -1,14 +1,24 @@
-general_task_solving:
-  - "I'm starting a course on English grammar. I want to understand how it all fits together—could you help me explore it section by section?"
-  - "I just enrolled in a course about World War II. Can you guide me through the main themes, and I’ll ask more as I go?"
-  - "I'm beginning a biology course and would love to get a broad overview. Can we go through the big ideas together?"
-  - "I'm learning about environmental science and want to understand how all the topics connect. Let’s start broadly, and I’ll dig deeper as we go."
-  - "I’ve just started a calculus course. Can you walk me through the major concepts step by step so I can ask about the parts I find tricky?"
+english_course:
+  seeds:
+    - "Hi, I'm struggling with writing essays. Can you help me improve?"
+    - "Hi, Can you explain how to use the passive voice in English?"
+    - "Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?"
+    - "Hi, How can I expand my vocabulary effectively?"
+    - "Hi, Can you help me analyze this short story for class?"
 
+biology_course:
+  seeds:
+    - "Hi, I'm having trouble understanding cell division. Can you explain mitosis vs meiosis?"
+    - "Hi, Can you help me review the parts of a plant cell?"
+    - "Hi, How does natural selection work in evolution?"
+    - "Hi, I need help with a biology lab report on photosynthesis."
+    - "Hi, What’s the difference between DNA and RNA?"
 
-evaluative_feedback:
-  - "Here’s a paragraph I wrote in English. Could you give me feedback and help me rewrite it together if needed?"
-  - "I wrote a short essay on the Cold War. I’d love your feedback, and I’ll ask more about anything you point out."
-  - "I solved a math problem and explained my reasoning—can you review it? I’d like to revise it if there’s anything unclear."
-  - "I created a concept map of the human digestive system. Could you tell me what works well and what could be clearer? I’d like to improve it."
-  - "Here’s my summary of a chapter on biodiversity. Please critique it and help me build a stronger version based on your suggestions."
+spanish_course:
+   seeds:
+    - "Hi, I’m learning Spanish and need help practising."
+    - "Hi, how do I use past tense verbs in Spanish?"
+    - "Hi, can you help me practice a short dialogue in Spanish?"
+    - "Hi, what are some tips for improving Spanish pronunciation?"
+    - "Hi, can you explain when to use 'ser' vs 'estar' in Spanish?"
+

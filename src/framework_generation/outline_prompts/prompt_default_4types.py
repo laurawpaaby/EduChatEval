@@ -6,7 +6,7 @@ prompt_dict = {
     # CLARIFICATION
     "Clarification": """<|im_start|>system
 You generate a conversational sentence that seeks clarification or context. 
-It should be polite, concise, and appropriate for an educational setting.
+It should be polite, concise, and appropriate for an educational setting. You never repeat yourself.
 <|im_end|>
 
 <|im_start|>user
@@ -39,7 +39,7 @@ I don't understand, can you make it simpler?
 <|im_start|>assistant""",
     # SMALL TALK
     "Small Talk": """<|im_start|>system
-You generate a short small talk sentence suitable in an casual setting.
+You generate a short small talk sentence suitable in an casual setting. You never repeat yourself.
 <|im_end|>
 
 <|im_start|>user
@@ -66,7 +66,7 @@ Create a small talk sentence.
 <|im_start|>assistant""",
     # QUESTION
     "Question": """<|im_start|>system
-You generate a factual or thoughtful question that can be used in a conversation or educational setting.
+You generate a factual or thoughtful question that can be used in a conversation or educational setting. You never repeat the same question.
 <|im_end|>
 
 <|im_start|>user
@@ -92,44 +92,42 @@ Create a question.
 <|im_end|>
 <|im_start|>assistant""",
     # STATEMENT
-    "Statement": """<|im_start|>system
-You are a helpful assistant that answers factual questions in a clear, conversational tone. 
-Each of your responses should answer the user's question directly with accurate information.
-You only respond with a single sentence that could realistically come from an AI assistant like ChatGPT.
+"Statement": """<|im_start|>system
+You are a helpful and knowledgeable assistant in an educational setting.
+You respond to student questions in a friendly and conversational tone, aiming to explain or clarify in one sentence.
+Each response should:
+- Address the question naturally, like a tutor or teacher would.
+- Stick to one main idea or explanation per response.
+- Avoid repeating previous answers or stating obvious facts. 
+- Don't write the question you are answering.
 <|im_end|>
 
 <|im_start|>user
-What is the tallest mountain on Earth?
+Why do we need sleep?
 <|im_end|>
 <|im_start|>assistant
-Mount Everest is the tallest mountain on Earth, standing at 8,848 meters above sea level.
+Sleep helps your brain and body recover and process everything you’ve learned during the day.
 <|im_end|>
 <|im_start|>user
-Why do leaves change color in the fall?
+How do plants eat sunlight?
 <|im_end|>
 <|im_start|>assistant
-Leaves change color in the fall because chlorophyll breaks down, revealing pigments like carotenoids and anthocyanins.
+Plants use a process called photosynthesis to turn sunlight into energy they can store and use.
 <|im_end|>
 <|im_start|>user
-How does photosynthesis work?
+Can you explain what a neuron does?
 <|im_end|>
 <|im_start|>assistant
-Photosynthesis is the process where plants use sunlight, carbon dioxide, and water to produce energy and oxygen.
+Sure! A neuron sends signals in the brain and body, helping you think, move, and feel things.
 <|im_end|>
 <|im_start|>user
-What is the boiling point of water?
+what is the translation of hi how are you doing in portugese?
 <|im_end|>
 <|im_start|>assistant
-Water boils at 100 degrees Celsius or 212 degrees Fahrenheit at sea level.
+The translation of "Hi, how are you doing?" in Portuguese is: "Oi, como você está?"
 <|im_end|>
 <|im_start|>user
-What is a black hole?
+Give a new, unique one-sentence answer to a new and different question.
 <|im_end|>
-<|im_start|>assistant
-A black hole is a region in space where gravity is so strong that nothing, not even light, can escape from it.
-<|im_end|>
-<|im_start|>user
-Give a one-sentence factual answer.
-<|im_end|>
-<|im_start|>assistant""",
+<|im_start|>assistant"""
 }

@@ -1,0 +1,17 @@
+general_task_solving:
+   seeds:
+    - "Hi, I'm a student seeking assistance with my studies in English."
+    - "Hi, I'm a student seeking assistance with my studies in Geography."
+    - "Hi, I'm a student seeking assistance with my studies in History."
+    - "Hi, I'm a student seeking assistance learning Spanish."
+    - "Hi, I'm a student seeking assistance learning German."
+    - "Hi, I'm a student seeking assistance understanding Biology."
+
+
+evaluative_feedback:
+  seeds:
+    - "Here’s a paragraph I wrote in English. Could you give me feedback and help me rewrite it together if needed?"
+    - "I wrote a short essay on the Cold War. I’d love your feedback, and I’ll ask more about anything you point out."
+    - "I solved a math problem and explained my reasoning—can you review it? I’d like to revise it if there’s anything unclear."
+    - "I created a concept map of the human digestive system. Could you tell me what works well and what could be clearer? I’d like to improve it."
+    - "Here’s my summary of a chapter on biodiversity. Please critique it and help me build a stronger version based on your suggestions."

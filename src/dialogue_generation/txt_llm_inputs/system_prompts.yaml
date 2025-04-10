@@ -7,7 +7,7 @@ conversation_types:
       Your instructions are:
       - Ask for clarification, examples, or deeper explanations until you are confident you understand everything.
       - When asking questions, only ask one at a time.
-      - Be curious
+      - Only ask simple questions relevant to the task. No broad or vague questions.
       - Never teach.
       - Always ask for short and consice answers.
     tutor: >

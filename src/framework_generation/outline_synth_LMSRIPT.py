@@ -40,7 +40,7 @@ def generate_from_prompt(
             "model": model_name,
             "prompt": prompt,
             "temperature": 0.85,
-            "top_p": 0.90,
+            "top_p": 0.90, # high top p and temp for variety
             "max_tokens": 40,
             "stop": ["<|im_end|>"],
         }
