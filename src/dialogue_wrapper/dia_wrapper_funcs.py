@@ -29,9 +29,10 @@ class DialogueLogger:
         self.temperature = temperature
         self.context = context
         self.headers = {"Content-Type": "application/json"}
-        
 
-    def start_dialogue(self, participant_id: str, output_path: str = None) -> pd.DataFrame:
+    def start_dialogue(
+        self, participant_id: str, output_path: str = None
+    ) -> pd.DataFrame:
         messages = []
         logs = []
         turn = 1
@@ -48,21 +49,26 @@ class DialogueLogger:
                 "model": self.model_name,
                 "messages": [{"role": "system", "content": self.context}] + messages,
                 "temperature": self.temperature,
-                #"max_tokens": 250,
-                "stream": False
+                # "max_tokens": 250,
+                "stream": False,
             }
 
-            response = requests.post(self.api_url, headers=self.headers, data=json.dumps(payload))
+            response = requests.post(
+                self.api_url, headers=self.headers, data=json.dumps(payload)
+            )
 
             ### append the user input to the logs
             if response.status_code == 200:
-                model_response = response.json().get("choices", [{}])[0].get("message", {}).get("content", "")
+                model_response = (
+                    response.json()
+                    .get("choices", [{}])[0]
+                    .get("message", {})
+                    .get("content", "")
+                )
                 messages.append({"role": "assistant", "content": model_response})
-                logs.append({
-                    "turn": turn,
-                    "user_msg": user_input,
-                    "tutor_msg": model_response
-                })
+                logs.append(
+                    {"turn": turn, "user_msg": user_input, "tutor_msg": model_response}
+                )
                 print(f"Assistant: {model_response}")
                 turn += 1
             else:
@@ -71,7 +77,7 @@ class DialogueLogger:
 
         df = pd.DataFrame(logs)
 
-        ## write as csv if path provided 
+        ## write as csv if path provided
         if output_path:
             filename = os.path.join(output_path, f"conversation_{participant_id}.csv")
             df.to_csv(filename, index=False)

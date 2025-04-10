@@ -22,7 +22,7 @@ class ChatHF(ChatModelInterface):
         cache_dir: Optional[Path] = None,
         sampling_params: Optional[dict] = None,
         penalty_params: Optional[dict] = None,
-        eos_token: Optional[str] = None
+        eos_token: Optional[str] = None,
     ):
         self.model_id = model_id
         self.cache_dir = cache_dir
@@ -75,8 +75,10 @@ class ChatHF(ChatModelInterface):
                 "[INFO:] No sampling parameters nor penalty parameters were passed. Setting do_sample to 'False'"
             )
 
-        self.tokenizer.use_default_system_prompt = False # ensure no system prompt is there
-        
+        self.tokenizer.use_default_system_prompt = (
+            False  # ensure no system prompt is there
+        )
+
         text = self.tokenizer.apply_chat_template(
             chat,
             tokenize=False,
@@ -84,22 +86,21 @@ class ChatHF(ChatModelInterface):
         )
 
         # tokenized inputs and outputs
-        model_inputs = self.tokenizer(
-            text, return_tensors="pt"
-        ).to(self.model.device)
+        model_inputs = self.tokenizer(text, return_tensors="pt").to(self.model.device)
 
         input_len = model_inputs["input_ids"].shape[-1]
 
         output = self.model.generate(
             **model_inputs,
-
             max_new_tokens=max_new_tokens,
             do_sample=do_sample,
             **kwargs,
         )
 
         # chat (decoded output)
-        response = self.tokenizer.decode(output[0][input_len:], skip_special_tokens=True)
+        response = self.tokenizer.decode(
+            output[0][input_len:], skip_special_tokens=True
+        )
 
         chat_message = ChatMessage(role="assistant", content=response)
 

@@ -1,9 +1,9 @@
-
 # base_model_interface.py
 
 from abc import ABC, abstractmethod
 from typing import List
 from dialogue_generation.chat_instructions import ChatMessage
+
 
 class ChatModelInterface(ABC):
     """
@@ -18,13 +18,15 @@ class ChatModelInterface(ABC):
     This interface ensures that agents can interact with any underlying model
     implementation (e.g., Hugging Face, MLX) in a consistent way.
     """
-        
+
     @abstractmethod
     def load(self) -> None:
         """Load the model and tokenizer."""
         pass
 
     @abstractmethod
-    def generate(self, chat: List[ChatMessage], max_new_tokens: int = 3000) -> ChatMessage:
+    def generate(
+        self, chat: List[ChatMessage], max_new_tokens: int = 3000
+    ) -> ChatMessage:
         """Generate a response based on chat history."""
         pass
