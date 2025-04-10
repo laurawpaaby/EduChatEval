@@ -7,7 +7,7 @@ from mlx_lm import generate, load
 from mlx_lm.sample_utils import make_logits_processors, make_sampler
 
 
-# packages for structure 
+# packages for structure
 from dialogue_generation.chat_instructions import ChatMessage
 from dialogue_generation.chat_model_interface import ChatModelInterface
 
@@ -54,7 +54,9 @@ class ChatMLX(ChatModelInterface):
             if self.device:
                 self.model.to(self.device)
 
-    def generate(self, chat: List[ChatMessage], max_new_tokens: int = 3000) -> ChatMessage:
+    def generate(
+        self, chat: List[ChatMessage], max_new_tokens: int = 3000
+    ) -> ChatMessage:
         """
         Generate a response based on the given chat history.
         Applies the chat template from the tokenizer, and uses MLX's generate function.

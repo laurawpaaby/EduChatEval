@@ -35,8 +35,6 @@ Create a clarification sentence.
 I don't understand, can you make it simpler?
 <|im_end|>
 <|im_start|>assistant""",
-
-
     "Small Talk": """<|im_start|>system
 You generate a short small talk sentence suitable in an casual setting.
 <|im_end|>
@@ -63,7 +61,6 @@ Did you catch the sunrise this morning? It was beautiful.
 Create a small talk sentence.
 <|im_end|>
 <|im_start|>assistant""",
-
     "Question": """<|im_start|>system
 You generate a factual or thoughtful question that can be used in a conversation or educational setting.
 <|im_end|>
@@ -89,5 +86,5 @@ What is 24 times 25?
 <|im_start|>user
 Create a question.
 <|im_end|>
-<|im_start|>assistant"""
+<|im_start|>assistant""",
 }

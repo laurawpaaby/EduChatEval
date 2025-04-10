@@ -16,7 +16,7 @@ from textual.screen import ModalScreen
 from textual.widgets import Button, Footer, Input, Label, Markdown
 from transformers.utils.logging import disable_progress_bar
 
-### FROM OWN FILES - SHOULD BE UPDATED 
+### FROM OWN FILES - SHOULD BE UPDATED
 from .dialogue_generation.chat import ChatHistory, ChatMessage
 from .dialogue_generation.txt_llm_inputs.prompt_wrapper import load_prompt_by_id
 from .dialogue_generation.models.wrap_huggingface import ChatHF
@@ -26,6 +26,7 @@ disable_progress_bar()
 
 DEFAULT_PROMPT_VERSION = 3.0
 
+
 def input_parse():
     parser = argparse.ArgumentParser()
 
@@ -34,7 +35,10 @@ def input_parse():
         "--prompt_id", help="id of prompt in toml", type=str, default="A1"
     )
     parser.add_argument(
-        "--prompt_version", help="version of prompt toml file", type=float, default=DEFAULT_PROMPT_VERSION
+        "--prompt_version",
+        help="version of prompt toml file",
+        type=float,
+        default=DEFAULT_PROMPT_VERSION,
     )
 
     # save arguments to be parsed from the CLI

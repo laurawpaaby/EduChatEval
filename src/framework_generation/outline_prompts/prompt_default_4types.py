@@ -3,7 +3,7 @@
 # in addition a fourth category is added to the original paper, that is: statement
 
 prompt_dict = {
-# CLARIFICATION
+    # CLARIFICATION
     "Clarification": """<|im_start|>system
 You generate a conversational sentence that seeks clarification or context. 
 It should be polite, concise, and appropriate for an educational setting.
@@ -37,9 +37,7 @@ Create a clarification sentence.
 I don't understand, can you make it simpler?
 <|im_end|>
 <|im_start|>assistant""",
-
-
-# SMALL TALK
+    # SMALL TALK
     "Small Talk": """<|im_start|>system
 You generate a short small talk sentence suitable in an casual setting.
 <|im_end|>
@@ -66,9 +64,7 @@ Did you catch the sunrise this morning? It was beautiful.
 Create a small talk sentence.
 <|im_end|>
 <|im_start|>assistant""",
-
-
-# QUESTION
+    # QUESTION
     "Question": """<|im_start|>system
 You generate a factual or thoughtful question that can be used in a conversation or educational setting.
 <|im_end|>
@@ -95,9 +91,8 @@ What is 24 times 25?
 Create a question.
 <|im_end|>
 <|im_start|>assistant""",
-
-# STATEMENT 
-"Statement": """<|im_start|>system
+    # STATEMENT
+    "Statement": """<|im_start|>system
 You are a helpful assistant that answers factual questions in a clear, conversational tone. 
 Each of your responses should answer the user's question directly with accurate information.
 You only respond with a single sentence that could realistically come from an AI assistant like ChatGPT.
@@ -136,5 +131,5 @@ A black hole is a region in space where gravity is so strong that nothing, not e
 <|im_start|>user
 Give a one-sentence factual answer.
 <|im_end|>
-<|im_start|>assistant"""
+<|im_start|>assistant""",
 }

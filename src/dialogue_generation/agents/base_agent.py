@@ -25,7 +25,6 @@ class BaseAgent:
         )
         # The chat history is now a list with one message: the system prompt
 
-
     def append_user_message(self, message: str):
         # Add a new message from the "user" (ie student) role to the chat history
         # For the tutor, this will usually be the student’s last message
@@ -35,8 +34,9 @@ class BaseAgent:
     def append_assistant_message(self, message: str):
         # Add a new message from the "assistant" (ie tutor) role to the chat history
         # This is typically the output that the student just generated
-        self.chat_history.messages.append(ChatMessage(role="assistant", content=message))
-
+        self.chat_history.messages.append(
+            ChatMessage(role="assistant", content=message)
+        )
 
 
 class ActiveAgent(BaseAgent):
@@ -62,8 +62,12 @@ class ActiveAgent(BaseAgent):
          meaning they each have an uninque history where they are the assistant.
         """
         if input_message:
-            self.append_user_message(input_message) # self.append_assistant_message(input_message)
+            self.append_user_message(
+                input_message
+            )  # self.append_assistant_message(input_message)
 
         response = self.model.generate(self.chat_history)
-        self.append_assistant_message(response.content) # self.append_user_message(response.content)
+        self.append_assistant_message(
+            response.content
+        )  # self.append_user_message(response.content)
         return response.content

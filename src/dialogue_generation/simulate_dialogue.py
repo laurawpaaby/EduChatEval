@@ -20,7 +20,13 @@ from dialogue_generation.chat import ChatMessage
 from dialogue_generation.agents.base_agent import ActiveAgent
 
 
-def simulate_conversation(model, system_prompts: dict, turns: int = 5, log_dir: Path = None, save_csv_path: Path = None) -> pd.DataFrame:
+def simulate_conversation(
+    model,
+    system_prompts: dict,
+    turns: int = 5,
+    log_dir: Path = None,
+    save_csv_path: Path = None,
+) -> pd.DataFrame:
     """
     Simulates a conversation between student and tutor agents.
     Returns the dialogue as a pandas DataFrame. Optionally saves to a .csv or .txt.
@@ -45,7 +51,9 @@ def simulate_conversation(model, system_prompts: dict, turns: int = 5, log_dir: 
     dialogue_log.append(ChatMessage(role="assistant", content=tutor_response))
     student.append_assistant_message(tutor_response)
 
-    structured_rows.append({"turn": 1, "student_msg": seed_message, "tutor_msg": tutor_response})
+    structured_rows.append(
+        {"turn": 1, "student_msg": seed_message, "tutor_msg": tutor_response}
+    )
 
     # Turn 2+ (n)
     for i in range(turns - 1):
@@ -61,7 +69,9 @@ def simulate_conversation(model, system_prompts: dict, turns: int = 5, log_dir: 
         dialogue_log.append(ChatMessage(role="assistant", content=tutor_msg))
         student.append_assistant_message(tutor_msg)
 
-        structured_rows.append({"turn": i + 2, "student_msg": student_msg, "tutor_msg": tutor_msg})
+        structured_rows.append(
+            {"turn": i + 2, "student_msg": student_msg, "tutor_msg": tutor_msg}
+        )
 
     df = pd.DataFrame(structured_rows)
 
