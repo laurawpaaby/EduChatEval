@@ -1,10 +1,33 @@
-### 1. THIS FIRST BIT IS FOR THE FIRST STEP OF THE PIPELINE: FRAMEWORK GENERATION
-### THIS CREATES THE SYNTHETIC DATASET USED FOR TRAINING THE CLASSIFIER AND IS THE FOUNDATION FOR THE ANALYSIS
-
-## LAURA TO DO: ADD EXPLAINING ERRORS IF INPUTS ARE NOT AS EXPECTED OR MISSING :D <333
-from typing import Union, Optional
+# Overall library for the pipeline
+from typing import Union, Optional, List
 import pandas as pd
+import numpy as np
+import random
+import torch
 
+# Set seed
+def set_seed(seed: int = 42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    if torch.backends.mps.is_available():
+        torch.manual_seed(seed)
+
+
+""" General Overview Over the Pipeline:
+1. Generate a synthetic framework dataset using a local model and prompts.
+2. Train a small classifier on a labeled dataset and filter the synthetic data based on prediction agreement.
+3. Simulate a multi-turn dialogue between a student and tutor agent.
+4. Log the conversation using a dialogue logger.
+5. Train a classifier on the dialogue data and use it to annotate new datasets.
+6. Save the annotated dataset and optionally the model.
+7. Descriptive Results 
+"""
+
+
+### 1. Framework Generation: Synthesize an annotaded dataset using prompts and a local model
 
 # Framework Generator Modules:
 from framework_generation.train_tinylabel_classifier import (
@@ -16,9 +39,11 @@ from framework_generation.train_tinylabel_classifier import (
     train_model,
 )
 from src.framework_generation.outline_synth_LMSRIPT import (
-    load_prompt_dict_from_py,
     synthesize_dataset,
 )
+
+import warnings
+warnings.filterwarnings("ignore", message="You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.")
 
 
 class FrameworkGenerator:
@@ -38,11 +63,14 @@ class FrameworkGenerator:
         num_samples: int = 500,
         json_out: str = None,
         csv_out: str = None,
+        seed: int = 42
     ):
         """
         Load prompt dict and generate synthetic labeled dataset.
         Returns a pandas DataFrame.
         """
+
+        set_seed(seed)
 
         df = synthesize_dataset(
             prompt_dict=prompt_dict_input,
@@ -165,10 +193,13 @@ class DialogueSimulator:
         seed_message_input: str = "Hi, I'm a student seeking assistance with my studies.",
         log_dir: Optional[Path] = None,
         save_csv_path: Optional[Path] = None,
+        seed: int = 42,
     ) -> pd.DataFrame:
         """
         Simulate the conversation and return as DataFrame. Optionally save to CSV and log.
         """
+        set_seed(seed)
+
         system_prompts = load_prompts_and_seed(mode)
         df = simulate_conversation(
             model=self.model,
@@ -178,6 +209,16 @@ class DialogueSimulator:
             log_dir=log_dir,
             save_csv_path=save_csv_path,
         )
+
+        # Only print the first 3 turns
+        print("\n--- Conversation Preview (First 3 Turns) ---\n")
+        for i, row in df.iterrows():
+            print(f"[{row['role'].capitalize()}]: {row['content']}")
+            if i >= 5:  # 3 turns = 6 rows (student+tutor per turn)
+                print("\n... (remaining dialogue omitted)")
+                break
+
+        print(f"\n Full dialogue stored in DataFrame: use the returned object or view as `df`")
         return df
 
 
@@ -216,18 +257,21 @@ class PredictLabels:
         # columns in the training data
         text_column: str = "text",
         label_column: str = "category",
-        # text coliumn in the new data should it have a different name than text_column
-        new_text_column: Optional[str] = None,
+        # columns to classify in the new data
+        columns_to_classify: Optional[Union[str, List[str]]] = None,
         split_ratio: float = 0.2,
         training_params: list = [0.01, "cross_entropy", 5e-5, 8, 8, 4, 0.01],
         tuning: bool = False,
         tuning_params: Optional[dict] = None,
         model_save_path: Optional[str] = None,
         prediction_save_path: Optional[str] = None,
+        seed: int = 42
     ) -> pd.DataFrame:
         """
         Trains classifier and returns annotated DataFrame.
+        If columns_to_classify is None, text_column is used for predictions.
         """
+        set_seed(seed)
 
         dataset_dict, label2id = load_and_prepare_dataset(
             train_data, text_column, label_column, split_ratio
@@ -246,13 +290,51 @@ class PredictLabels:
         if model_save_path:
             save_model_and_tokenizer(model, self.tokenizer, model_save_path)
 
+        # Default to using the training text_column if no specific columns_to_classify provided
+        if columns_to_classify is None:
+            columns_to_classify = text_column
+
         df_annotated = predict_annotated_dataset(
             new_data=new_data,
             model=model,
-            text_column=new_text_column,
+            text_columns=columns_to_classify,  # Adjusted to handle list of columns
             tokenizer=self.tokenizer,
             label2id=label2id,
             save_path=prediction_save_path,
         )
 
         return df_annotated
+
+
+
+### 5. Visualization and Analysis ####
+from src.descriptive_results.display_results import (
+    plot_predicted_categories,
+    plot_category_bars,
+    create_prediction_summary_table,
+    plot_previous_turn_distribution
+)
+
+class Visualizer:
+    """
+    High-level visualization class for analyzing predicted dialogue labels.
+    Wraps existing plotting and summary functions from display_result.py.
+
+    **kwargs** is used to allow additional keyword arguments found in the func script.
+    """
+
+    def plot_turn_trends(self, df, label_columns, **kwargs):
+        """Wrapper for turn-based category line plot."""
+        return plot_predicted_categories(df, label_columns, **kwargs)
+
+    def plot_category_bars(self, df, label_columns, **kwargs):
+        """Wrapper for grouped barplot of predicted categories."""
+        return plot_category_bars(df, label_columns, **kwargs)
+
+    def create_summary_table(self, df, label_columns):
+        """Wrapper for generating prediction summary table."""
+        return create_prediction_summary_table(df, label_columns)
+
+    def plot_history_interaction(self, df, focus_agent='student', **kwargs):
+        """Wrapper for barplot showing category transitions from previous turn."""
+        return plot_previous_turn_distribution(df, focus_agent, **kwargs)

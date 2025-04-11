@@ -16,6 +16,12 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 import optuna
 from typing import Union
 
+import warnings
+
+# Suppress specific UserWarning about `use_mps_device` and general warning about training the model: done because the models are trained and the version is not 5.0 yet
+warnings.filterwarnings("ignore", message="`use_mps_device` is deprecated and will be removed in version 5.0")
+warnings.filterwarnings("ignore", message="You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.")
+
 
 # --- Load tokenizer ---
 def load_tokenizer(model_name: str):
@@ -117,7 +123,7 @@ def train_model(
     if not tuning:
         training_args = TrainingArguments(
             output_dir="./results",
-            evaluation_strategy="epoch",
+            eval_strategy="epoch",
             save_strategy="epoch",
             per_device_train_batch_size=training_params[3],
             per_device_eval_batch_size=training_params[4],
@@ -130,7 +136,7 @@ def train_model(
     else:
         training_args = TrainingArguments(
             output_dir="./results",
-            evaluation_strategy="epoch",
+            eval_strategy="epoch",
             save_strategy="epoch",
             logging_dir="./logs",
         )

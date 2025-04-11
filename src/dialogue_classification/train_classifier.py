@@ -23,35 +23,27 @@
 # - The final dataset with predicted annotations
 
 import pandas as pd
-from datasets import Dataset, DatasetDict
-from transformers import (
-    AutoTokenizer,
-    AutoModelForSequenceClassification,
-    TrainingArguments,
-    Trainer,
-    EvalPrediction,
-)
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-import optuna
-from typing import Union, Optional
-
-
-########## all basic functions can be found in classification_utils.py ##########
-
+from typing import Union, Optional, List
 import torch
 
+
+import warnings
+warnings.filterwarnings("ignore", message="You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.")
+
+########## all basic functions can be found in classification_utils.py ##########
 
 # --- Predict and filter dataset ---
 def predict_annotated_dataset(
     new_data: Union[str, pd.DataFrame],
     model,
-    text_column,
+    text_columns: Union[str, List[str]],
     tokenizer,
     label2id,
     save_path: Optional[str] = None,
 ):
     """
-    Predict the labels on a new dataset without labels and return annotated DataFrame.
+    Predict the labels on a new dataset using one or more text columns. 
+    Returns a DataFrame with predictions annotated.
     Compatible with Apple M1/M2 (MPS). Optionally saves output as CSV.
     """
     # Load data from path or use provided DataFrame
@@ -60,35 +52,44 @@ def predict_annotated_dataset(
     else:
         df = new_data
 
-    # Move model and input to appropriate device (MPS if available, else CPU)
+    # Ensure text_columns is a list
+    if isinstance(text_columns, str):
+        text_columns = [text_columns]  # Convert to list if only one text column is provided
+
+    # Move model to appropriate device (MPS if available, else CPU)
     device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
     model.to(device)
 
-    # Tokenize text and move tensors to device
-    tokenized = tokenizer(
-        df[text_column].tolist(),
-        padding=True,
-        truncation=True,
-        max_length=512,
-        return_tensors="pt",
-    )
-    tokenized = {k: v.to(device) for k, v in tokenized.items()}
+    # Initialize a DataFrame to store predictions
+    df_predictions = df.copy()
 
-    # Run prediction without tracking gradients
-    with torch.no_grad():
-        predictions = model(**tokenized)
+    # Process each text column
+    for column in text_columns:
+        # Tokenize text and move tensors to device
+        tokenized = tokenizer(
+            df[column].tolist(),
+            padding=True,
+            truncation=True,
+            max_length=512,
+            return_tensors="pt",
+        )
+        tokenized = {k: v.to(device) for k, v in tokenized.items()}
 
-    predicted_labels = (
-        predictions.logits.argmax(-1).cpu().numpy()
-    )  # move to CPU to use in pandas
-    predicted_label_names = [list(label2id.keys())[label] for label in predicted_labels]
+        # Run prediction without tracking gradients
+        with torch.no_grad():
+            predictions = model(**tokenized)
 
-    # Append predicted labels to DataFrame
-    df["predicted_labels"] = predicted_label_names
+        predicted_labels = (
+            predictions.logits.argmax(-1).cpu().numpy()
+        )  # move to CPU to use in pandas
+        predicted_label_names = [list(label2id.keys())[label] for label in predicted_labels]
+
+        # Append predicted labels to DataFrame
+        df_predictions[f"predicted_labels_{column}"] = predicted_label_names
 
     # Save to CSV if path provided
     if save_path:
-        df.to_csv(save_path, index=False)
+        df_predictions.to_csv(save_path, index=False)
         print(f"Predicted data saved to {save_path}")
 
-    return df
+    return df_predictions
