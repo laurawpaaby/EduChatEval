@@ -2,7 +2,7 @@
 something about this being the repo for my thesis with a niiice outline over how its structured: 
 temporary picture of how it may look - mainly for my own overview:
 
-![flowchart](flowchart.png)
+![flowchart](new_flowchart.png)
 
 ### something about how to run and why 
 
@@ -37,8 +37,7 @@ from chat_wrap_edu_pack install generate
 │   ├── generated_dialogue_data/           # Generated dialogue samples
 │   ├── generated_tuning_data/             # Generated framework data for fine-tuning 
 │   ├── logged_dialogue_data/              # Logged real dialogue data
-│   ├── tiny_labeled_data.csv              # Manual true data (needs folder)
-│   └── tiny_labeled_feedback.csv          # -----..------- 
+│   ├── Final_output/                      # 
 │
 ├── Models/                                # Folder for trained models and checkpoints (ignored)
 │
