@@ -59,18 +59,23 @@ class ChatLMStudio(ChatModelInterface):
 def save_chat_as_csv(messages: list[ChatMessage], output_path: Path):
     rows = []
     turn = 1
-    for i in range(0, len(messages) - 1, 2):
-        user = messages[i]
-        assistant = messages[i + 1]
-        if user.role == "user" and assistant.role == "assistant":
+    current_user = None
+
+    for message in messages:
+        if message.role == "user":
+            current_user = message.content
+        elif message.role == "assistant" and current_user is not None:
             rows.append({
                 "turn": turn,
-                "student_msg": user.content,
-                "tutor_msg": assistant.content
+                "student_msg": current_user,
+                "tutor_msg": message.content
             })
             turn += 1
-    pd.DataFrame(rows).to_csv(output_path, index=False)
+            current_user = None  # reset after successful pair
 
+    df = pd.DataFrame(rows)
+    df.to_csv(output_path, index=False)
+    
 
 # ## Quit Dialog ##
 class QuitScreen(ModalScreen[bool]):
@@ -138,7 +143,8 @@ class ChatApp(App):
     }
     """
 
-    BINDINGS = [("q", "request_quit", "Quit")]
+    BINDINGS = [("q", "request_quit", "Quit"),
+                ("ctrl+q", "request_quit", "Quit (Ctrl+Q)")]
 
     def __init__(
         self,
@@ -162,27 +168,37 @@ class ChatApp(App):
     def update_chat(self, chat_message: ChatMessage):
         self.chat_history.messages.append(chat_message)
 
-    async def action_request_quit(self):
-        result = await self.push_screen(QuitScreen())
-        print(f"[DEBUG] Quit confirmed? {result}")  # This should show True/False BUT NOTHING IS PRINTED...
+    ### addition to try to get the quit to work
+    def save_and_exit(self):
+        if self.chat_messages_dir:
+            timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+            messages = self.chat_history.messages
 
-        if result:
-            if self.chat_messages_dir:
-                timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-                messages = self.chat_history.messages
+            # Save JSON
+            json_path = self.chat_messages_dir / f"{timestamp}.json"
+            with open(json_path, "w") as f:
+                json.dump([m.dict() for m in messages], f, indent=2, ensure_ascii=False)
+            print(f"[INFO] Saved JSON: {json_path}")
 
-                # Save JSON
-                with open(self.chat_messages_dir / f"{timestamp}.json", "w", encoding="utf-8") as f:
-                    json.dump([m.dict() for m in messages], f, indent=2, ensure_ascii=False)
+            # Save CSV
+            csv_path = self.chat_messages_dir / f"{timestamp}.csv"
+            save_chat_as_csv(messages, csv_path)
+            print(f"[INFO] Saved CSV: {csv_path}")
 
-
-                # Save CSV WHY ISNT THIS WORKING ?!?!??!!?!
-                save_chat_as_csv(messages, self.chat_messages_dir / f"{timestamp}.csv")
-
-            self.exit()
+        self.exit()
 
 
-        #self.push_screen(QuitScreen(), quit_callback)
+    def action_request_quit(self):
+        print("[DEBUG] 'q' pressed - opening quit dialog")
+
+        def quit_callback(should_quit: bool | None):
+            #print(f"[DEBUG] Quit confirmed? {should_quit}")
+            if should_quit:
+                self.save_and_exit()
+
+        self.push_screen(QuitScreen(), quit_callback)
+    
+    ### addition to try to get the quit to work
 
 
     @on(Input.Submitted)
