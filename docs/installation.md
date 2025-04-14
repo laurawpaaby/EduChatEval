@@ -1,6 +1,6 @@
 You can install chat wrappy using via pip from PyPI:
 
-TESTING THE UPD
+TESTING THE UPD TIMES 2!!!
 
 ```pip install chat-wrappy```
 
