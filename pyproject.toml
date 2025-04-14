@@ -42,6 +42,7 @@ ipykernel = "^6.29.5"
 black = "^25.1.0"
 mkdocs = "^1.6.1"
 mkdocs-material = "^9.6.11"
+mkdocstrings = "^0.29.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

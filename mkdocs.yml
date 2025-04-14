@@ -1,0 +1,49 @@
+site_name: CHATWRAPTIME
+
+theme:
+  name: 'material'
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  font:
+    text: Roboto
+  logo: 'pics/logo.png'
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: pink
+      accent: pink  
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: deep purple
+      accent: indigo
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - User Guide: user-guide.md
+  - API: api.md
+  - About: about.md
+
+
+plugins:
+- search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/laurawpaaby/EduChatEval/tree/main 
+    
+copyright: Copyright &copy; 2025 Laura Wulff Paaby

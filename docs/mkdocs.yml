@@ -1,6 +1,0 @@
-site_name: Your Project Name
-theme:
-  name: material
-
-nav:
-  - Home: index.md
