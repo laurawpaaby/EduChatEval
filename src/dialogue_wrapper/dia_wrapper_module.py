@@ -101,11 +101,11 @@ if __name__ == "__main__":
     )
 
 
-# RAN LIKE THIS FROM TERMINAL :
-# python chat_src/dynam_llm_stud.py \
-#  --api_url "http://127.0.0.1:1234/v1/chat/completions" \
-#  --model_name "llama-3.2-3b-instruct:2" \
-#  --temperature 0.8 \
-#  --context "You are a helpful assistant." \
-#  --participant_id "12345" \
-#  --output_path "/Users/dklaupaa/Desktop/Thesis_Testing2025/logged_chats_txt"
+# RUN LIKE THIS FROM TERMINAL :
+ #python chat_src/dynam_llm_stud.py \
+ # --api_url "http://127.0.0.1:1234/v1/chat/completions" \
+ # --model_name "llama-3.2-3b-instruct:2" \
+ # --temperature 0.8 \
+ # --context "You are a helpful assistant." \
+ # --participant_id "12345" \
+ # --output_path "/Users/dklaupaa/Desktop/Thesis_Testing2025/logged_chats_txt"
