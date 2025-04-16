@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 from datetime import datetime
 from typing import Optional
+import argparse
 
 import pandas as pd
 import requests
@@ -228,24 +229,84 @@ class ChatApp(App):
 
 
 # ## Launch function ##
-def main():
-    # LM Studio config
-    api_url = "http://127.0.0.1:1234/v1/chat/completions"
-    model_name = "llama-3.2-3b-instruct"
-    temperature = 0.7
-    system_prompt = "You are a helpful tutor guiding a student. Answer short and concisely."
+#def old_main():
+#    # LM Studio config
+#    api_url = "http://127.0.0.1:1234/v1/chat/completions"
+#    model_name = "llama-3.2-3b-instruct"
+#    temperature = 0.7
+#   system_prompt = "You are a helpful tutor guiding a student. Answer short and concisely."
 
     # Init model + prompt
-    model = ChatLMStudio(api_url, model_name, temperature)
-    history = ChatHistory(messages=[ChatMessage(role="system", content=system_prompt)])
+#    model = ChatLMStudio(api_url, model_name, temperature)
+#    history = ChatHistory(messages=[ChatMessage(role="system", content=system_prompt)])
 
     # Save path 
-    save_dir = Path("data/logged_dialogue_data")
+#    save_dir = Path("data/logged_dialogue_data")
 
     # Launch TUI
-    app = ChatApp(model=model, chat_history=history, chat_messages_dir=save_dir)
-    app.run()
+#    app = ChatApp(model=model, chat_history=history, chat_messages_dir=save_dir)
+#    app.run()
 
 
-if __name__ == "__main__":
-    main()
+
+
+### wrap up the all functions and run it ##
+class ChatWrap:
+    
+    """
+    A wrapper class for launching the Textual chat interface
+    with an LM Studio-backed language model.
+    """
+
+    def __init__(
+        self,
+        api_url: str = "http://127.0.0.1:1234/v1/chat/completions",
+        model_name: str = "llama-3.2-3b-instruct",
+        temperature: float = 0.7,
+        system_prompt: str = "You are a helpful tutor guiding a student. Answer short and concisely.",
+        save_dir: Path = Path("data/logged_dialogue_data"),
+    ):
+        self.api_url = api_url
+        self.model_name = model_name
+        self.temperature = temperature
+        self.system_prompt = system_prompt
+        self.save_dir = save_dir
+
+        # Initialize model and conversation history
+        self.model = ChatLMStudio(api_url=self.api_url, model_name=self.model_name, temperature=self.temperature)
+        self.chat_history = ChatHistory(
+            messages=[ChatMessage(role="system", content=self.system_prompt)]
+        )
+
+    def run(self):
+        """Launch the Textual app."""
+        app = ChatApp(
+            model=self.model,
+            chat_history=self.chat_history,
+            chat_messages_dir=self.save_dir,
+        )
+        app.run()
+
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model", type=str, default="llama-3.2-3b-instruct")
+    parser.add_argument("--api_url", type=str, default="http://127.0.0.1:1234/v1/chat/completions")
+    parser.add_argument("--temperature", type=float, default=0.7)
+    parser.add_argument("--prompt", type=str, default="You are a helpful tutor.")
+    parser.add_argument("--save_dir", type=str, default="data/logged_dialogue_data")
+
+    args = parser.parse_args()
+
+    chat = ChatWrap(
+        model_name=args.model,
+        api_url=args.api_url,
+        temperature=args.temperature,
+        system_prompt=args.prompt,
+        save_dir=Path(args.save_dir)
+    )
+    chat.run()
+
+#if __name__ == "__main__":
+#    main()

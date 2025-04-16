@@ -1,7 +1,7 @@
 from .core import (
     FrameworkGenerator,
     DialogueSimulator,
-    ChatWrap,
+    #ChatWrap,
     PredictLabels,
     Visualizer,
 )
@@ -9,7 +9,8 @@ from .core import (
 __all__ = [
     "FrameworkGenerator",
     "DialogueSimulator",
-    "ChatWrap",
     "PredictLabels",
     "Visualizer",
 ]
+
+#"ChatWrap" is deleted to be used via cli in terminal instead

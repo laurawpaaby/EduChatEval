@@ -210,19 +210,13 @@ class DialogueSimulator:
             save_csv_path=save_csv_path,
         )
 
-        # Only print the first 3 turns
-        print("\n--- Conversation Preview (First 3 Turns) ---\n")
-        for i, row in df.iterrows():
-            print(f"[{row['role'].capitalize()}]: {row['content']}")
-            if i >= 5:  # 3 turns = 6 rows (student+tutor per turn)
-                print("\n... (remaining dialogue omitted)")
-                break
 
         print(f"\n Full dialogue stored in DataFrame: use the returned object or view as `df`")
         return df
 
 
 ###### 3. NOW DIALOGUE LOGGER FOR DIRECT INTERACTIONS WITH LLMS FROM LM STUDIO
+# actually, this is not saved in the package, as it is used from the chat_ui.py func instead. Should be deleted.
 
 from pathlib import Path
 from educhateval.dialogue_generation.chat import ChatMessage, ChatHistory
