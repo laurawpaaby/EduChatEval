@@ -29,10 +29,14 @@ pip install educhateval
 
 
 ## 🤗 Integration 
-huggingface, lm studio etc use cases only
+- 🦙 LM Studio (local LLM inference)
+- 🖍️ Outlines
+- 🤗 Transformers
+- 🧪 Optuna for experimental tuning
 
 
-# 📖 Documentation
+
+## 📖 Documentation
 
 | **Documentation** | **Description** |
 |-------------------|-----------------|
@@ -53,7 +57,7 @@ from chat_wrap_edu_pack install generate
 ```
 
 
-# 🫶🏼 Acknowdledgement 
+## 🫶🏼 Acknowdledgement 
 
 
 
@@ -70,7 +74,7 @@ Feel free to reach out via:
 
 
 
-# Complete overview:
+## Complete overview:
 ``` 
 ├── data/                                  
 │   ├── generated_dialogue_data/           # Generated dialogue samples
