@@ -1,6 +1,3 @@
-# Framework Generation (Synthetic Dataset Creation)
-**HELE MOLEVITTEN SEJLER FORDI JEG IKKE KAN BESLUTTE MIG FOR OM DET SKAL VÆRE FULL ON CLASS BASED ELLER BARE DEFS INDTIL DET RAMMER ENTRY PACKAGE SCRIPTET BEAR WITH ME**
-
 Functions can be used to generate any relevant classification framework given predefined categories. 
 The generation relies on the constraining synthesization method provided by 
 

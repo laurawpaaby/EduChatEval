@@ -8,8 +8,8 @@ from mlx_lm.sample_utils import make_logits_processors, make_sampler
 
 
 # packages for structure
-from dialogue_generation.chat_instructions import ChatMessage
-from dialogue_generation.chat_model_interface import ChatModelInterface
+from educhateval.dialogue_generation.chat_instructions import ChatMessage
+from educhateval.dialogue_generation.chat_model_interface import ChatModelInterface
 
 
 class ChatMLX(ChatModelInterface):

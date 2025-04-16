@@ -1,8 +1,5 @@
-### new version:
-# base_agent.py
-
-from dialogue_generation.chat_model_interface import ChatModelInterface
-from dialogue_generation.chat import ChatMessage, ChatHistory
+from educhateval.dialogue_generation.chat_model_interface import ChatModelInterface
+from educhateval.dialogue_generation.chat import ChatMessage, ChatHistory
 
 
 class BaseAgent:

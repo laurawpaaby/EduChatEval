@@ -16,3 +16,6 @@
 site/
 
 update_website.txt
+
+dist/
+~/

@@ -7,8 +7,8 @@ from typing import Optional
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from dialogue_generation.chat_instructions import ChatMessage
-from dialogue_generation.chat_model_interface import ChatModelInterface
+from educhateval.dialogue_generation.chat_instructions import ChatMessage
+from educhateval.dialogue_generation.chat_model_interface import ChatModelInterface
 
 
 class ChatHF(ChatModelInterface):
