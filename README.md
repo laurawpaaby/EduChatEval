@@ -57,6 +57,19 @@ from chat_wrap_edu_pack install generate
 
 
 
+## 📬 Contact
+
+Made by **Laura Wulff Paaby**  
+Feel free to reach out via:
+
+- 🌐 [LinkedIn](https://www.linkedin.com/in/laura-wulff-paaby-9131a0238/)
+- 📧 [laurapaaby18@gmail.com](mailto:202806616@post.au.dk)
+- 🐙 [GitHub](https://github.com/laurawpaaby) 
+
+---
+
+
+
 # Complete overview:
 ``` 
 ├── data/                                  
@@ -88,16 +101,3 @@ from chat_wrap_edu_pack install generate
 ├── poetry.lock                           # Locked dependency versions (Poetry)
 ├── pyproject.toml                        # Main project config and dependencies
 ``` 
-
-
-
-## 📬 Contact
-
-Made by **Laura Wulff Paaby**  
-Feel free to reach out via:
-
-- 🌐 [LinkedIn](https://www.linkedin.com/in/laura-wulff-paaby-9131a0238/)
-- 📬 [laurapaaby18@gmail.com](mailto:202806616@post.au.dk)
-- 🧠 [GitHub](https://github.com/your-username/educhateval) *(update this if your repo is public)*
-
----
