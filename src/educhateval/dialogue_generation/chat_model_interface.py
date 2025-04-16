@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from typing import List
-from dialogue_generation.chat_instructions import ChatMessage
+from educhateval.dialogue_generation.chat_instructions import ChatMessage
 
 
 class ChatModelInterface(ABC):

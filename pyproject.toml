@@ -1,50 +1,71 @@
 [project]
-name = "chat-wrap-package"
+name = "educhateval"
 version = "0.1.0"
-description = ""
-authors = [
-    {name = "LauraWulffPaaby",email = "202006161@post.au.dk"}
-]
+description = "A pipeline and package to implement and evaluate LLM chat bot tutors in education."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-dependencies = [
-    "requests (>=2.32.3,<3.0.0)",
-    "numpy (>=2.2.3,<3.0.0)",
-    "pandas (>=2.2.3,<3.0.0)",
-    "lmstudio (>=1.0.1,<2.0.0)",
-    "transformers (>=4.49.0,<5.0.0)",
-    "datasets (>=3.3.2,<4.0.0)",
-    "torch (>=2.6.0,<3.0.0)",
-    "scikit-learn (>=1.6.1,<2.0.0)",
-    "accelerate (>=1.4.0,<2.0.0)",
-    "optuna (>=4.2.1,<5.0.0)",
-    "optuna-integration (>=4.2.1,<5.0.0)",
-    "outlines (>=0.2.1,<0.3.0)",
-    "sentencepiece (>=0.2.0,<0.3.0)",
-    "mlx-lm (>=0.22.2,<0.23.0)",
-    "ipykernel (>=6.29.5,<7.0.0)",
-    "textual (>=3.0.1,<4.0.0)",
-    "toml (>=0.10.2,<0.11.0)",
-    "ipywidgets (>=8.1.6,<9.0.0)",
-    "notebook (>=7.4.0,<8.0.0)",
-    "matplotlib (>=3.10.1,<4.0.0)",
-    "seaborn (>=0.13.2,<0.14.0)",
-    "mkdocs-mermaid2-plugin (>=1.2.1,<2.0.0)",
-    "mkdocs-glightbox (>=0.4.0,<0.5.0)",
+authors = [
+  { name = "Laura Wulff Paaby", email = "202806616@post.au.dk" }
+]
+license = "MIT"
+
+keywords = ["education", "llm", "chatbot", "tutoring", "ai in education"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Education",
+  "Topic :: Education",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
 ]
 
-[tool.poetry]
-packages = [{include = "chat_wrap_package", from = "src"}]
+dependencies = [
+  "requests >=2.32.3,<3.0.0",
+  "numpy >=2.2.3,<3.0.0",
+  "pandas >=2.2.3,<3.0.0",
+  "lmstudio >=1.0.1,<2.0.0",
+  "transformers >=4.49.0,<5.0.0",
+  "datasets >=3.3.2,<4.0.0",
+  "torch >=2.6.0,<3.0.0",
+  "scikit-learn >=1.6.1,<2.0.0",
+  "accelerate >=1.4.0,<2.0.0",
+  "optuna >=4.2.1,<5.0.0",
+  "optuna-integration >=4.2.1,<5.0.0",
+  "outlines >=0.2.1,<0.3.0",
+  "sentencepiece >=0.2.0,<0.3.0",
+  "mlx-lm >=0.22.2,<0.23.0",
+  "ipykernel >=6.29.5,<7.0.0",
+  "textual >=3.0.1,<4.0.0",
+  "toml >=0.10.2,<0.11.0",
+  "ipywidgets >=8.1.6,<9.0.0",
+  "notebook >=7.4.0,<8.0.0",
+  "matplotlib >=3.10.1,<4.0.0",
+  "seaborn >=0.13.2,<0.14.0",
+  "mkdocs-mermaid2-plugin >=1.2.1,<2.0.0",
+  "mkdocs-glightbox >=0.4.0,<0.5.0"
+]
 
+[project.optional-dependencies]
+dev = [
+  "ipykernel >=6.29.5,<7.0.0",
+  "black >=25.1.0,<26.0.0",
+  "mkdocs >=1.6.1,<2.0.0",
+  "mkdocs-material >=9.6.11,<10.0.0",
+  "mkdocstrings >=0.29.1,<1.0.0",
+  "aiohttp <3.11.13"
+]
 
-[tool.poetry.group.dev.dependencies]
-ipykernel = "^6.29.5"
-black = "^25.1.0"
-mkdocs = "^1.6.1"
-mkdocs-material = "^9.6.11"
-mkdocstrings = "^0.29.1"
-aiohttp = "<3.11.13"
+[project.scripts]
+chat-ui = "educhateval.chat_ui:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [{ include = "educhateval", from = "src" }]
+
+[project.urls]
+Homepage = "https://laurawpaaby.github.io/EduChatEval/"
+Repository = "https://github.com/laurawpaaby/EduChatEval"
+Issues = "https://github.com/laurawpaaby/EduChatEval/issues"

@@ -16,8 +16,8 @@
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
-from dialogue_generation.chat import ChatMessage
-from dialogue_generation.agents.base_agent import ActiveAgent
+from educhateval.dialogue_generation.chat import ChatMessage
+from educhateval.dialogue_generation.agents.base_agent import ActiveAgent
 
 
 def simulate_conversation(

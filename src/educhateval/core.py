@@ -30,7 +30,7 @@ def set_seed(seed: int = 42):
 ### 1. Framework Generation: Synthesize an annotaded dataset using prompts and a local model
 
 # Framework Generator Modules:
-from framework_generation.train_tinylabel_classifier import (
+from educhateval.framework_generation.train_tinylabel_classifier import (
     filter_synthesized_data,
     load_and_prepare_dataset,
     load_tokenizer,
@@ -38,7 +38,7 @@ from framework_generation.train_tinylabel_classifier import (
     tokenize_dataset,
     train_model,
 )
-from src.framework_generation.outline_synth_LMSRIPT import (
+from educhateval.framework_generation.outline_synth_LMSRIPT import (
     synthesize_dataset,
 )
 
@@ -85,7 +85,7 @@ class FrameworkGenerator:
         return df
 
     #### 2. function to quality check the dataset
-    from src.classification_utils import (
+    from educhateval.classification_utils import (
         load_tokenizer,
         load_and_prepare_dataset,
         tokenize_dataset,
@@ -93,7 +93,7 @@ class FrameworkGenerator:
         save_model_and_tokenizer,
     )
 
-    from src.framework_generation.train_tinylabel_classifier import (
+    from educhateval.framework_generation.train_tinylabel_classifier import (
         filter_synthesized_data,
     )
 
@@ -151,10 +151,10 @@ from typing import Optional
 import pandas as pd
 from pathlib import Path
 
-from src.dialogue_generation.simulate_dialogue import simulate_conversation
-from src.dialogue_generation.txt_llm_inputs.prompt_loader import load_prompts_and_seed
-from src.dialogue_generation.models.wrap_huggingface import ChatHF
-from src.dialogue_generation.models.wrap_micr import ChatMLX
+from educhateval.dialogue_generation.simulate_dialogue import simulate_conversation
+from educhateval.dialogue_generation.txt_llm_inputs.prompt_loader import load_prompts_and_seed
+from educhateval.dialogue_generation.models.wrap_huggingface import ChatHF
+from educhateval.dialogue_generation.models.wrap_micr import ChatMLX
 
 
 class DialogueSimulator:
@@ -223,22 +223,60 @@ class DialogueSimulator:
 
 
 ###### 3. NOW DIALOGUE LOGGER FOR DIRECT INTERACTIONS WITH LLMS FROM LM STUDIO
-from src.dialogue_wrapper.dia_wrapper_funcs import DialogueLogger
 
-__all__ = [
-    "DialogueLogger"
-]  # all at once cause already class in that script - could be made here directly, but I prefer the seperation
+from pathlib import Path
+from educhateval.dialogue_generation.chat import ChatMessage, ChatHistory
+from educhateval.dialogue_wrapper.app_lmstudio import ChatLMStudio, ChatApp  
+
+class ChatWrap:
+    
+    """
+    A wrapper class for launching the Textual chat interface
+    with an LM Studio-backed language model.
+    """
+
+    def __init__(
+        self,
+        api_url: str = "http://127.0.0.1:1234/v1/chat/completions",
+        model_name: str = "llama-3.2-3b-instruct",
+        temperature: float = 0.7,
+        system_prompt: str = "You are a helpful tutor guiding a student. Answer short and concisely.",
+        save_dir: Path = Path("data/logged_dialogue_data"),
+    ):
+        self.api_url = api_url
+        self.model_name = model_name
+        self.temperature = temperature
+        self.system_prompt = system_prompt
+        self.save_dir = save_dir
+
+        # Initialize model and conversation history
+        self.model = ChatLMStudio(api_url=self.api_url, model_name=self.model_name, temperature=self.temperature)
+        self.chat_history = ChatHistory(
+            messages=[ChatMessage(role="system", content=self.system_prompt)]
+        )
+
+    def run(self):
+        """Launch the Textual app."""
+        app = ChatApp(
+            model=self.model,
+            chat_history=self.chat_history,
+            chat_messages_dir=self.save_dir,
+        )
+        app.run()
+
+
+
 
 
 ###### 4. NOW LETS ADD THE CLASSIFIER FOR THE DIALOGUE DATA !!! :DDD
-from src.classification_utils import (
+from educhateval.classification_utils import (
     load_tokenizer,
     load_and_prepare_dataset,
     tokenize_dataset,
     train_model,
     save_model_and_tokenizer,
 )
-from src.dialogue_classification.train_classifier import predict_annotated_dataset
+from educhateval.dialogue_classification.train_classifier import predict_annotated_dataset
 
 
 class PredictLabels:
@@ -308,7 +346,7 @@ class PredictLabels:
 
 
 ### 5. Visualization and Analysis ####
-from src.descriptive_results.display_results import (
+from educhateval.descriptive_results.display_results import (
     plot_predicted_categories,
     plot_category_bars,
     create_prediction_summary_table,

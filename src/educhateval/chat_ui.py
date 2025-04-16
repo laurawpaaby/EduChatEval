@@ -23,8 +23,8 @@ from textual.widgets import Input, Footer, Markdown, Button, Label
 from textual.screen import ModalScreen
 
 # Internal imports 
-from dialogue_generation.chat import ChatMessage, ChatHistory
-from dialogue_generation.chat_model_interface import ChatModelInterface
+from educhateval.dialogue_generation.chat import ChatMessage, ChatHistory
+from educhateval.dialogue_generation.chat_model_interface import ChatModelInterface
 
 
 # ## LM Studio Model Wrapper ##
@@ -198,8 +198,6 @@ class ChatApp(App):
 
         self.push_screen(QuitScreen(), quit_callback)
     
-    ### addition to try to get the quit to work
-
 
     @on(Input.Submitted)
     async def on_input(self, event: Input.Submitted):
