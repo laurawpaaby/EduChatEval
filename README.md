@@ -46,19 +46,8 @@ pip install educhateval
 | 🤔 [About](https://laurawpaaby.github.io/EduChatEval/about/) | Learn more about the thesis project, context, and contributors |
 
 
-
-## 🤖 Usage 
-well first of all because it is a package and not a script to run from the terminal, we see no parser = argparse...
-so it is build to be a python package where each function are callable - fingers crossed it will be :D 
-
-
-``` python
-from chat_wrap_edu_pack install generate 
-```
-
-
 ## 🫶🏼 Acknowdledgement 
-
+TBA
 
 
 ## 📬 Contact
