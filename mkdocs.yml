@@ -35,11 +35,11 @@ nav:
   - Installation: installation.md
   - User Guide: user-guide.md
   - API: 
-    - api/api_frame_gen.md
-    - api/api_synth_int.md
-    - api/api_wrap_int.md
-    - api/api_pred.md
-    - api/api_viz.md
+    - Frame Generator: api/api_frame_gen.md
+    - Synthesis Interaction: api/api_synth_int.md
+    - Wrap Interaction: api/api_wrap_int.md
+    - Predict Labels: api/api_pred.md
+    - Visualizations: api/api_viz.md
   - About: about.md
 
 
