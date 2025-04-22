@@ -349,23 +349,32 @@ from educhateval.descriptive_results.display_results import (
 
 class Visualizer:
     """
-    High-level visualization class for analyzing predicted dialogue labels.
+    Visualization class for analyzing predicted dialogue labels.
     Wraps existing plotting and summary functions from display_result.py.
 
-    **kwargs** is used to allow additional keyword arguments found in the func script.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The annotated dataframe containing predicted label columns.
+    student_col : str, optional
+        Name of the column containing student message predictions.
+    tutor_col : str, optional
+        Name of the column containing tutor message predictions.
+
+    Other keyword arguments (**kwargs) are passed through to the internal plotting functions.
     """
 
-    def plot_turn_trends(self, df, label_columns, **kwargs):
+    def plot_turn_trends(self, df, student_col=None, tutor_col=None, **kwargs):
         """Wrapper for turn-based category line plot."""
-        return plot_predicted_categories(df, label_columns, **kwargs)
+        return plot_predicted_categories(df, student_col=student_col, tutor_col=tutor_col, **kwargs)
 
-    def plot_category_bars(self, df, label_columns, **kwargs):
+    def plot_category_bars(self, df, student_col=None, tutor_col=None, **kwargs):
         """Wrapper for grouped barplot of predicted categories."""
-        return plot_category_bars(df, label_columns, **kwargs)
+        return plot_category_bars(df, student_col=student_col, tutor_col=tutor_col, **kwargs)
 
-    def create_summary_table(self, df, label_columns):
+    def create_summary_table(self, df, student_col=None, tutor_col=None):
         """Wrapper for generating prediction summary table."""
-        return create_prediction_summary_table(df, label_columns)
+        return create_prediction_summary_table(df, student_col=student_col, tutor_col=tutor_col)
 
     def plot_history_interaction(self, df, focus_agent='student', **kwargs):
         """Wrapper for barplot showing category transitions from previous turn."""

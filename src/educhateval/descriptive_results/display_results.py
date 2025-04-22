@@ -16,19 +16,23 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
+
 #### LINE PLOT FOR PREDICTED CATEGORIES ####
+def plot_predicted_categories(df, student_col=None, tutor_col=None, use_percent=True, palette="icefire", title="Predicted Category Distribution"):
+    if not student_col and not tutor_col:
+        raise ValueError("You must provide at least one of student_col or tutor_col.")
 
-def plot_predicted_categories(df, label_columns, use_percent=True, palette="icefire", title="Predicted Category Distribution"):
-    label_map = {
-        'predicted_labels_student_msg': 'Student',
-        'predicted_labels_tutor_msg': 'Tutor'
-    }
-
+    # Prepare long format
     long_dfs = []
-    for col in label_columns:
-        temp = df[['turn', col]].copy()
-        temp['source'] = label_map.get(col, col)
-        temp.rename(columns={col: 'predicted_label'}, inplace=True)
+    if student_col:
+        temp = df[['turn', student_col]].copy()
+        temp['source'] = 'Student'
+        temp.rename(columns={student_col: 'predicted_label'}, inplace=True)
+        long_dfs.append(temp)
+    if tutor_col:
+        temp = df[['turn', tutor_col]].copy()
+        temp['source'] = 'Tutor'
+        temp.rename(columns={tutor_col: 'predicted_label'}, inplace=True)
         long_dfs.append(temp)
 
     long_df = pd.concat(long_dfs, ignore_index=True)
@@ -57,7 +61,7 @@ def plot_predicted_categories(df, label_columns, use_percent=True, palette="icef
         y='value',
         hue='predicted_label',
         kind='line',
-        col='source' if len(label_columns) > 1 else None,
+        col='source' if student_col and tutor_col else None,
         facet_kws={'sharey': True, 'sharex': True},
         height=4.5,
         aspect=1.5,
@@ -66,7 +70,7 @@ def plot_predicted_categories(df, label_columns, use_percent=True, palette="icef
         hue_order=all_labels
     )
 
-    if len(label_columns) > 1:
+    if student_col and tutor_col:
         g.set_titles("{col_name} Messages")
     g.set_axis_labels("Turn", y_label)
 
@@ -85,18 +89,20 @@ def plot_predicted_categories(df, label_columns, use_percent=True, palette="icef
 
 
 #### BAR PLOT FOR PREDICTED CATEGORIES ####
-
-def plot_category_bars(df, label_columns, use_percent=True, palette="icefire", title="Predicted Category Distribution"):
-    label_map = {
-        'predicted_labels_student_msg': 'Student',
-        'predicted_labels_tutor_msg': 'Tutor'
-    }
+def plot_category_bars(df, student_col=None, tutor_col=None, use_percent=True, palette="icefire", title="Predicted Category Distribution"):
+    if not student_col and not tutor_col:
+        raise ValueError("You must provide at least one of student_col or tutor_col.")
 
     long_dfs = []
-    for col in label_columns:
-        temp = df[[col]].copy()
-        temp['source'] = label_map.get(col, col)
-        temp.rename(columns={col: 'predicted_label'}, inplace=True)
+    if student_col:
+        temp = df[[student_col]].copy()
+        temp['source'] = 'Student'
+        temp.rename(columns={student_col: 'predicted_label'}, inplace=True)
+        long_dfs.append(temp)
+    if tutor_col:
+        temp = df[[tutor_col]].copy()
+        temp['source'] = 'Tutor'
+        temp.rename(columns={tutor_col: 'predicted_label'}, inplace=True)
         long_dfs.append(temp)
 
     long_df = pd.concat(long_dfs, ignore_index=True)
@@ -130,7 +136,7 @@ def plot_category_bars(df, label_columns, use_percent=True, palette="icefire", t
 
     ax.set_xlabel("Predicted Category")
     ax.set_ylabel(y_label)
-    ax.set_title(title)
+    ax.set_title(title, fontsize=15, fontweight='bold')
 
     if use_percent:
         ax.yaxis.set_major_formatter(mtick.FuncFormatter(lambda y, _: f'{y:.0f}%'))
@@ -155,25 +161,29 @@ def plot_category_bars(df, label_columns, use_percent=True, palette="icefire", t
 
 
 #### TABLE OF SIMPLE SUMMARY STATISTICS ####
-
-def create_prediction_summary_table(df, label_columns):
-    assert 1 <= len(label_columns) <= 2, "You must provide one or two label columns."
-
-    label_map = {
-        'predicted_labels_student_msg': 'Student',
-        'predicted_labels_tutor_msg': 'Tutor'
-    }
+def create_prediction_summary_table(df, student_col=None, tutor_col=None):
+    if not student_col and not tutor_col:
+        raise ValueError("You must provide at least one of student_col or tutor_col.")
 
     result_dfs = []
     all_categories = set()
 
-    for col in label_columns:
-        label = label_map.get(col, col.capitalize())
-        value_counts = df[col].value_counts(dropna=False)
-        total = value_counts.sum()
-        counts = value_counts.rename(f"{label} (n)")
-        percents = ((value_counts / total) * 100).round(1).astype(str) + '%'
-        percents.name = f"{label} (%)"
+    if student_col:
+        student_counts = df[student_col].value_counts(dropna=False)
+        total = student_counts.sum()
+        counts = student_counts.rename("Student (n)")
+        percents = ((student_counts / total) * 100).round(1).astype(str) + '%'
+        percents.name = "Student (%)"
+        merged = pd.concat([counts, percents], axis=1)
+        result_dfs.append(merged)
+        all_categories.update(merged.index)
+
+    if tutor_col:
+        tutor_counts = df[tutor_col].value_counts(dropna=False)
+        total = tutor_counts.sum()
+        counts = tutor_counts.rename("Tutor (n)")
+        percents = ((tutor_counts / total) * 100).round(1).astype(str) + '%'
+        percents.name = "Tutor (%)"
         merged = pd.concat([counts, percents], axis=1)
         result_dfs.append(merged)
         all_categories.update(merged.index)
@@ -192,6 +202,7 @@ def create_prediction_summary_table(df, label_columns):
 
     summary_df = summary_df.reset_index()
     return summary_df
+
 
 
 #### HISTORY INTERACTION PLOT ####
