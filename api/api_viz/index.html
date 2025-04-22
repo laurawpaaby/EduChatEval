@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#educhateval.core.Visualizer" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -549,6 +554,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Visualizations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -560,6 +578,83 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#educhateval.core.Visualizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualizer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#educhateval.core.Visualizer--parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#educhateval.core.Visualizer.create_summary_table" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_summary_table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#educhateval.core.Visualizer.plot_category_bars" class="md-nav__link">
+    <span class="md-ellipsis">
+      plot_category_bars
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#educhateval.core.Visualizer.plot_history_interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      plot_history_interaction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#educhateval.core.Visualizer.plot_turn_trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      plot_turn_trends
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -613,7 +708,285 @@
 
   <h1>Visualizations</h1>
 
+<p>This is a test displaying: </p>
 
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="educhateval.core.Visualizer"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>Visualization class for analyzing predicted dialogue labels.
+Wraps existing plotting and summary functions from display_result.py.</p>
+<h3 id="educhateval.core.Visualizer--parameters">Parameters</h3>
+<p>df : pd.DataFrame
+    The annotated dataframe containing predicted label columns.
+student_col : str, optional
+    Name of the column containing student message predictions.
+tutor_col : str, optional
+    Name of the column containing tutor message predictions.</p>
+<p>Other keyword arguments (**kwargs) are passed through to the internal plotting functions.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/educhateval/core.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Visualizer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Visualization class for analyzing predicted dialogue labels.</span>
+<span class="sd">    Wraps existing plotting and summary functions from display_result.py.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pd.DataFrame</span>
+<span class="sd">        The annotated dataframe containing predicted label columns.</span>
+<span class="sd">    student_col : str, optional</span>
+<span class="sd">        Name of the column containing student message predictions.</span>
+<span class="sd">    tutor_col : str, optional</span>
+<span class="sd">        Name of the column containing tutor message predictions.</span>
+
+<span class="sd">    Other keyword arguments (**kwargs) are passed through to the internal plotting functions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_turn_trends</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrapper for turn-based category line plot.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">plot_predicted_categories</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="n">student_col</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="n">tutor_col</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_category_bars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrapper for grouped barplot of predicted categories.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">plot_category_bars</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="n">student_col</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="n">tutor_col</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_summary_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrapper for generating prediction summary table.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">create_prediction_summary_table</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="n">student_col</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="n">tutor_col</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_history_interaction</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrapper for barplot showing category transitions from previous turn.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">plot_previous_turn_distribution</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">,</span>
+            <span class="n">student_col</span><span class="o">=</span><span class="n">student_col</span><span class="p">,</span>
+            <span class="n">tutor_col</span><span class="o">=</span><span class="n">tutor_col</span><span class="p">,</span>
+            <span class="n">focus_agent</span><span class="o">=</span><span class="n">focus_agent</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="educhateval.core.Visualizer.create_summary_table" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">create_summary_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Wrapper for generating prediction summary table.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/educhateval/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_summary_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper for generating prediction summary table.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">create_prediction_summary_table</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="n">student_col</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="n">tutor_col</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="educhateval.core.Visualizer.plot_category_bars" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_category_bars</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Wrapper for grouped barplot of predicted categories.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/educhateval/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_category_bars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper for grouped barplot of predicted categories.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">plot_category_bars</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="n">student_col</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="n">tutor_col</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="educhateval.core.Visualizer.plot_history_interaction" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_history_interaction</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">focus_agent</span><span class="o">=</span><span class="s1">&#39;student&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Wrapper for barplot showing category transitions from previous turn.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/educhateval/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_history_interaction</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper for barplot showing category transitions from previous turn.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">plot_previous_turn_distribution</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">,</span>
+        <span class="n">student_col</span><span class="o">=</span><span class="n">student_col</span><span class="p">,</span>
+        <span class="n">tutor_col</span><span class="o">=</span><span class="n">tutor_col</span><span class="p">,</span>
+        <span class="n">focus_agent</span><span class="o">=</span><span class="n">focus_agent</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="educhateval.core.Visualizer.plot_turn_trends" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_turn_trends</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Wrapper for turn-based category line plot.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/educhateval/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_turn_trends</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper for turn-based category line plot.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">plot_predicted_categories</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="n">student_col</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="n">tutor_col</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
 
 
 
