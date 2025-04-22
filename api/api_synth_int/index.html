@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#educhateval.core.DialogueSimulator" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -480,6 +485,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Synthesis Interaction
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -491,6 +509,41 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#educhateval.core.DialogueSimulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      DialogueSimulator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#educhateval.core.DialogueSimulator.simulate_dialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      simulate_dialogue
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -613,7 +666,539 @@
 
   <h1>Synthesis Interaction</h1>
 
+<p>This is a test displaying: </p>
 
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="educhateval.core.DialogueSimulator"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>A modular simulator for generating multi-turn dialogues between a student and tutor agent using large language models.</p>
+<p>This class wraps backend-specific model interfaces and orchestrates the simulation of goal-driven conversations across various educational modes.
+It supports customizable sampling behavior and ensures reproducibility via global seeding. Outputs are returned as structured pandas DataFrames.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="educhateval.core.DialogueSimulator.backend">backend</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Backend to use for inference. Options are "hf" (Hugging Face) or "mlx" (MLX).</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="educhateval.core.DialogueSimulator.model_id">model_id</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The identifier of the model to use, e.g., "gpt2" or an MLX-compatible model.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="educhateval.core.DialogueSimulator.sampling_params">sampling_params</span></code></td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sampling hyperparameters such as temperature, top_p, or top_k.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="simulate_dialogue(mode='general_task_solving', turns=5, seed_message_input="Hi, I'm a student seeking assistance with my studies.", log_dir=None, save_csv_path=None, seed=42, custom_prompt_file=None) (educhateval.core.DialogueSimulator.simulate_dialogue)" href="#educhateval.core.DialogueSimulator.simulate_dialogue">simulate_dialogue</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Simulates a dialogue and returns it as a pandas DataFrame.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/educhateval/core.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DialogueSimulator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A modular simulator for generating multi-turn dialogues between a student and tutor agent using large language models.</span>
+
+<span class="sd">    This class wraps backend-specific model interfaces and orchestrates the simulation of goal-driven conversations across various educational modes.</span>
+<span class="sd">    It supports customizable sampling behavior and ensures reproducibility via global seeding. Outputs are returned as structured pandas DataFrames.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        backend (str): Backend to use for inference. Options are &quot;hf&quot; (Hugging Face) or &quot;mlx&quot; (MLX).</span>
+<span class="sd">        model_id (str): The identifier of the model to use, e.g., &quot;gpt2&quot; or an MLX-compatible model.</span>
+<span class="sd">        sampling_params (Optional[dict]): Sampling hyperparameters such as temperature, top_p, or top_k.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        simulate_dialogue(...): Simulates a dialogue and returns it as a pandas DataFrame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mlx&quot;</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">,</span>
+        <span class="n">sampling_params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;hf&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ChatHF</span><span class="p">(</span>
+                <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+                <span class="n">sampling_params</span><span class="o">=</span><span class="n">sampling_params</span>
+                <span class="ow">or</span> <span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;top_p&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;top_k&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">},</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;mlx&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ChatMLX</span><span class="p">(</span>
+                <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+                <span class="n">sampling_params</span><span class="o">=</span><span class="n">sampling_params</span>
+                <span class="ow">or</span> <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;top_p&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;top_k&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported backend&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">simulate_dialogue</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;general_task_solving&quot;</span><span class="p">,</span>
+        <span class="n">turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">seed_message_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Hi, I&#39;m a student seeking assistance with my studies.&quot;</span><span class="p">,</span>
+        <span class="n">log_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">save_csv_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+        <span class="n">custom_prompt_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Simulates a multi-turn dialogue using either built-in or custom prompts.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            mode: Mode key to select prompt pair (student/tutor).</span>
+<span class="sd">            turns: Number of back-and-forth turns to simulate.</span>
+<span class="sd">            seed_message_input: First message from the student.</span>
+<span class="sd">            log_dir: Directory to save raw log (optional).</span>
+<span class="sd">            save_csv_path: Path to save structured DataFrame (optional).</span>
+<span class="sd">            seed: Random seed for reproducibility.</span>
+<span class="sd">            custom_prompt_file: Optional path to custom YAML defining prompt modes.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: Structured DataFrame of the conversation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+        <span class="c1"># system_prompts = load_prompts_and_seed(mode)</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">simulate_conversation</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">turns</span><span class="o">=</span><span class="n">turns</span><span class="p">,</span>
+            <span class="n">seed_message_input</span><span class="o">=</span><span class="n">seed_message_input</span><span class="p">,</span>
+            <span class="n">log_dir</span><span class="o">=</span><span class="n">log_dir</span><span class="p">,</span>
+            <span class="n">save_csv_path</span><span class="o">=</span><span class="n">save_csv_path</span><span class="p">,</span>
+            <span class="n">custom_prompt_file</span><span class="o">=</span><span class="n">custom_prompt_file</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Full dialogue stored in DataFrame: use the returned object or view as `df`&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="educhateval.core.DialogueSimulator.simulate_dialogue" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">simulate_dialogue</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;general_task_solving&#39;</span><span class="p">,</span> <span class="n">turns</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">seed_message_input</span><span class="o">=</span><span class="s2">&quot;Hi, I&#39;m a student seeking assistance with my studies.&quot;</span><span class="p">,</span> <span class="n">log_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save_csv_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">custom_prompt_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Simulates a multi-turn dialogue using either built-in or custom prompts.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>mode</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Mode key to select prompt pair (student/tutor).</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;general_task_solving&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>turns</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of back-and-forth turns to simulate.</p>
+              </div>
+            </td>
+            <td>
+                  <code>5</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>seed_message_input</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>First message from the student.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;Hi, I&#39;m a student seeking assistance with my studies.&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>log_dir</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="pathlib.Path">Path</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Directory to save raw log (optional).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>save_csv_path</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="pathlib.Path">Path</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to save structured DataFrame (optional).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>seed</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Random seed for reproducibility.</p>
+              </div>
+            </td>
+            <td>
+                  <code>42</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>custom_prompt_file</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="pathlib.Path">Path</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional path to custom YAML defining prompt modes.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pd.DataFrame: Structured DataFrame of the conversation.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/educhateval/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">simulate_dialogue</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;general_task_solving&quot;</span><span class="p">,</span>
+    <span class="n">turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">seed_message_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Hi, I&#39;m a student seeking assistance with my studies.&quot;</span><span class="p">,</span>
+    <span class="n">log_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">save_csv_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="n">custom_prompt_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulates a multi-turn dialogue using either built-in or custom prompts.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mode: Mode key to select prompt pair (student/tutor).</span>
+<span class="sd">        turns: Number of back-and-forth turns to simulate.</span>
+<span class="sd">        seed_message_input: First message from the student.</span>
+<span class="sd">        log_dir: Directory to save raw log (optional).</span>
+<span class="sd">        save_csv_path: Path to save structured DataFrame (optional).</span>
+<span class="sd">        seed: Random seed for reproducibility.</span>
+<span class="sd">        custom_prompt_file: Optional path to custom YAML defining prompt modes.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: Structured DataFrame of the conversation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="c1"># system_prompts = load_prompts_and_seed(mode)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">simulate_conversation</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="n">turns</span><span class="o">=</span><span class="n">turns</span><span class="p">,</span>
+        <span class="n">seed_message_input</span><span class="o">=</span><span class="n">seed_message_input</span><span class="p">,</span>
+        <span class="n">log_dir</span><span class="o">=</span><span class="n">log_dir</span><span class="p">,</span>
+        <span class="n">save_csv_path</span><span class="o">=</span><span class="n">save_csv_path</span><span class="p">,</span>
+        <span class="n">custom_prompt_file</span><span class="o">=</span><span class="n">custom_prompt_file</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Full dialogue stored in DataFrame: use the returned object or view as `df`&quot;</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
 
 
 
