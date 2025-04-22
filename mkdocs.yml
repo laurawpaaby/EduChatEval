@@ -34,12 +34,19 @@ nav:
   - Home: index.md
   - Installation: installation.md
   - User Guide: user-guide.md
-  - API: api.md
+  - API: 
+    - api/api_frame_gen.md
+    - api/api_synth_int.md
+    - api/api_wrap_int.md
+    - api/api_pred.md
+    - api/api_viz.md
   - About: about.md
 
 
 plugins:
 - search
+- mkdocstrings:
+    default_handler: python
 
 extra:
   social:
