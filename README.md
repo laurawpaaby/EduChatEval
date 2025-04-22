@@ -27,6 +27,15 @@ Here’s a rough overview of the system architecture:
 pip install educhateval
 ```
 
+## ⚙️ Usage
+```python
+from educhateval import FrameworkGenerator, 
+                        DialogueSimulator,
+                        PredictLabels,
+                        Visualizer
+
+```
+
 
 ## 🤗 Integration 
 - 🦙 LM Studio (local LLM inference)
