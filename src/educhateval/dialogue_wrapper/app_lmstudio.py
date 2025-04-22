@@ -22,7 +22,7 @@ from textual.containers import VerticalScroll, Grid
 from textual.widgets import Input, Footer, Markdown, Button, Label
 from textual.screen import ModalScreen
 
-# Internal imports 
+# Internal imports
 from educhateval.dialogue_generation.chat import ChatMessage, ChatHistory
 from educhateval.dialogue_generation.chat_model_interface import ChatModelInterface
 
@@ -43,13 +43,17 @@ class ChatLMStudio(ChatModelInterface):
             "messages": [msg.dict() for msg in chat.messages],
             "temperature": self.temperature,
             "max_tokens": max_new_tokens,
-            "stream": False
+            "stream": False,
         }
         headers = {"Content-Type": "application/json"}
-        response = requests.post(self.api_url, headers=headers, data=json.dumps(payload))
+        response = requests.post(
+            self.api_url, headers=headers, data=json.dumps(payload)
+        )
 
         if response.status_code != 200:
-            raise ValueError(f"LM Studio error: {response.status_code} - {response.text}")
+            raise ValueError(
+                f"LM Studio error: {response.status_code} - {response.text}"
+            )
 
         content = response.json()["choices"][0]["message"]["content"]
         return ChatMessage(role="assistant", content=content)
@@ -65,17 +69,19 @@ def save_chat_as_csv(messages: list[ChatMessage], output_path: Path):
         if message.role == "user":
             current_user = message.content
         elif message.role == "assistant" and current_user is not None:
-            rows.append({
-                "turn": turn,
-                "student_msg": current_user,
-                "tutor_msg": message.content
-            })
+            rows.append(
+                {
+                    "turn": turn,
+                    "student_msg": current_user,
+                    "tutor_msg": message.content,
+                }
+            )
             turn += 1
             current_user = None  # reset after successful pair
 
     df = pd.DataFrame(rows)
     df.to_csv(output_path, index=False)
-    
+
 
 # ## Quit Dialog ##
 class QuitScreen(ModalScreen[bool]):
@@ -84,7 +90,7 @@ class QuitScreen(ModalScreen[bool]):
             Label("Are you sure you want to quit?", id="question"),
             Button("Quit", variant="error", id="quit"),
             Button("Cancel", variant="primary", id="cancel"),
-            id="dialog"
+            id="dialog",
         )
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -92,8 +98,12 @@ class QuitScreen(ModalScreen[bool]):
 
 
 # ## Markdown Boxes ##
-class UserMessage(Markdown): pass
-class Response(Markdown): pass
+class UserMessage(Markdown):
+    pass
+
+
+class Response(Markdown):
+    pass
 
 
 # ## Main App ##
@@ -143,14 +153,16 @@ class ChatApp(App):
     }
     """
 
-    BINDINGS = [("q", "request_quit", "Quit"),
-                ("ctrl+q", "request_quit", "Quit (Ctrl+Q)")]
+    BINDINGS = [
+        ("q", "request_quit", "Quit"),
+        ("ctrl+q", "request_quit", "Quit (Ctrl+Q)"),
+    ]
 
     def __init__(
         self,
         model: ChatLMStudio,
         chat_history: Optional[ChatHistory] = None,
-        chat_messages_dir: Optional[Path] = None
+        chat_messages_dir: Optional[Path] = None,
     ):
         super().__init__()
         self.model = model
@@ -187,17 +199,15 @@ class ChatApp(App):
 
         self.exit()
 
-
     def action_request_quit(self):
         print("[DEBUG] 'q' pressed - opening quit dialog")
 
         def quit_callback(should_quit: bool | None):
-            #print(f"[DEBUG] Quit confirmed? {should_quit}")
+            # print(f"[DEBUG] Quit confirmed? {should_quit}")
             if should_quit:
                 self.save_and_exit()
 
         self.push_screen(QuitScreen(), quit_callback)
-    
 
     @on(Input.Submitted)
     async def on_input(self, event: Input.Submitted):
@@ -233,13 +243,15 @@ def main():
     api_url = "http://127.0.0.1:1234/v1/chat/completions"
     model_name = "llama-3.2-3b-instruct"
     temperature = 0.7
-    system_prompt = "You are a helpful tutor guiding a student. Answer short and concisely."
+    system_prompt = (
+        "You are a helpful tutor guiding a student. Answer short and concisely."
+    )
 
     # Init model + prompt
     model = ChatLMStudio(api_url, model_name, temperature)
     history = ChatHistory(messages=[ChatMessage(role="system", content=system_prompt)])
 
-    # Save path 
+    # Save path
     save_dir = Path("data/logged_dialogue_data")
 
     # Launch TUI

@@ -1,3 +1,6 @@
+##### THIS SHOULD BE DELETED !!!! NO LONGER NEEDED
+
+
 ####  -------- Purpose: -------- ####
 
 # 1. Train a classification model on a small manually created data set

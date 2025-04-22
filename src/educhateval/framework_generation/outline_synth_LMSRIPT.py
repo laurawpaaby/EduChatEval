@@ -32,16 +32,26 @@ class ConversationAnnotation(BaseModel):
 
 
 def generate_from_prompt(
-    prompt: str, category: str, model_name: str, api_url: str, num_samples: int = 1000
+    prompt: str,
+    category: str,
+    model_name: str,
+    api_url: str,
+    num_samples: int = 1000,
+    temperature: float = 0.85,
+    top_p: float = 0.90,
+    max_tokens: int = 40,
 ) -> List[Dict]:
+    """
+    Generate synthetic examples from a prompt using a local LLM in a constraint way.
+    """
     results = []
     for _ in range(num_samples):
         payload = {
             "model": model_name,
             "prompt": prompt,
-            "temperature": 0.85,
-            "top_p": 0.90, # high top p and temp for variety
-            "max_tokens": 40,
+            "temperature": temperature,
+            "top_p": top_p,
+            "max_tokens": max_tokens,
             "stop": ["<|im_end|>"],
         }
         try:
@@ -117,50 +127,3 @@ def load_prompt_dict_from_py(path: str) -> Dict[str, str]:
     sys.modules["prompt_module"] = prompt_module
     spec.loader.exec_module(prompt_module)
     return prompt_module.prompt_dict
-
-
-# this should be deleted as done in the main function in the entrypoint !!!
-def main():
-    parser = argparse.ArgumentParser(
-        description="Generate synthetic labeled text data using a local LM Studio model."
-    )
-    parser.add_argument(
-        "--prompt_path",
-        type=str,
-        required=True,
-        help="Path to Python file containing prompt_dict.",
-    )
-    parser.add_argument(
-        "--json_out", type=str, required=True, help="Path to save the JSON output."
-    )
-    parser.add_argument(
-        "--csv_out", type=str, required=True, help="Path to save the CSV output."
-    )
-    parser.add_argument(
-        "--samples",
-        type=int,
-        default=500,
-        help="Number of samples to generate per category.",
-    )
-    parser.add_argument(
-        "--model",
-        type=str,
-        default="llama-3.2-3b-instruct",
-        help="Model name used for generation.",
-    )
-
-    args = parser.parse_args()
-
-    prompt_dict = load_prompt_dict_from_py(args.prompt_path)
-
-    synthesize_dataset(
-        prompt_dict=prompt_dict,
-        model_name=args.model,
-        json_out=args.json_out,
-        csv_out=args.csv_out,
-        num_samples=args.samples,
-    )
-
-
-# if __name__ == "__main__":
-#    main()

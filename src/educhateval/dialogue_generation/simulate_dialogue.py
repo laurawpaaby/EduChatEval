@@ -20,18 +20,44 @@ from educhateval.dialogue_generation.chat import ChatMessage
 from educhateval.dialogue_generation.agents.base_agent import ActiveAgent
 
 
+import yaml
+
+
+### loading custom prompts from user:
+def load_custom_prompts(custom_prompt_file: Path, mode: str) -> dict:
+    if not custom_prompt_file.exists():
+        raise ValueError(f"Custom prompt file not found at: {custom_prompt_file}")
+
+    with open(custom_prompt_file, "r") as f:
+        prompt_data = yaml.safe_load(f)
+
+    if mode not in prompt_data["conversation_types"]:
+        raise ValueError(f"Mode '{mode}' not found in the prompt file.")
+
+    return prompt_data["conversation_types"][mode]
+
+
 def simulate_conversation(
     model,
-    system_prompts: dict,
+    system_prompts: dict = None,
     turns: int = 5,
     seed_message_input: str = "Hi, I'm a student seeking assistance with my studies.",
     log_dir: Path = None,
     save_csv_path: Path = None,
+    custom_prompt_file: Path = None,
+    mode: str = "general_task_solving",
 ) -> pd.DataFrame:
     """
     Simulates a conversation between student and tutor agents.
     Returns the dialogue as a pandas DataFrame. Optionally saves to a .csv or .txt.
     """
+    if system_prompts is None:
+        if custom_prompt_file is None:
+            raise ValueError(
+                "Either `system_prompts` or `custom_prompt_file` must be provided."
+            )
+        system_prompts = load_custom_prompts(custom_prompt_file, mode)
+
     student = ActiveAgent(model=model, system_prompt=system_prompts["student"])
     tutor = ActiveAgent(model=model, system_prompt=system_prompts["tutor"])
 
@@ -39,7 +65,7 @@ def simulate_conversation(
 
     dialogue_log = []
     structured_rows = []
-    seed_message = seed_message_input 
+    seed_message = seed_message_input
 
     # Turn 1: student opens
     print(f"[Student]: {seed_message}")

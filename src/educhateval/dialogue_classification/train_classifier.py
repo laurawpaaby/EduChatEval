@@ -25,14 +25,18 @@
 import pandas as pd
 from typing import Union, Optional, List
 import torch
-
-
+import torch.nn.functional as F
 import warnings
-warnings.filterwarnings("ignore", message="You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.")
+
+warnings.filterwarnings(
+    "ignore",
+    message="You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.",
+)
 
 ########## all basic functions can be found in classification_utils.py ##########
 
-# --- Predict and filter dataset ---
+
+# --- Predict and annotate dataset ---
 def predict_annotated_dataset(
     new_data: Union[str, pd.DataFrame],
     model,
@@ -42,8 +46,8 @@ def predict_annotated_dataset(
     save_path: Optional[str] = None,
 ):
     """
-    Predict the labels on a new dataset using one or more text columns. 
-    Returns a DataFrame with predictions annotated.
+    Predict the labels on a new dataset using one or more text columns.
+    Adds both the predicted label and its confidence score.
     Compatible with Apple M1/M2 (MPS). Optionally saves output as CSV.
     """
     # Load data from path or use provided DataFrame
@@ -54,18 +58,17 @@ def predict_annotated_dataset(
 
     # Ensure text_columns is a list
     if isinstance(text_columns, str):
-        text_columns = [text_columns]  # Convert to list if only one text column is provided
+        text_columns = [text_columns]
 
     # Move model to appropriate device (MPS if available, else CPU)
     device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
     model.to(device)
 
-    # Initialize a DataFrame to store predictions
+    # Create a copy of the original DataFrame to append predictions
     df_predictions = df.copy()
 
-    # Process each text column
     for column in text_columns:
-        # Tokenize text and move tensors to device
+        # Tokenize and move to device
         tokenized = tokenizer(
             df[column].tolist(),
             padding=True,
@@ -75,19 +78,21 @@ def predict_annotated_dataset(
         )
         tokenized = {k: v.to(device) for k, v in tokenized.items()}
 
-        # Run prediction without tracking gradients
+        # Run model in inference mode
         with torch.no_grad():
-            predictions = model(**tokenized)
+            logits = model(**tokenized).logits
+            probs = F.softmax(logits, dim=-1)
+            predicted_labels = probs.argmax(dim=-1).cpu().numpy()
+            predicted_confidences = probs.max(dim=-1).values.cpu().numpy()
 
-        predicted_labels = (
-            predictions.logits.argmax(-1).cpu().numpy()
-        )  # move to CPU to use in pandas
-        predicted_label_names = [list(label2id.keys())[label] for label in predicted_labels]
+        # Map label indices back to names
+        predicted_label_names = [list(label2id.keys())[i] for i in predicted_labels]
 
-        # Append predicted labels to DataFrame
+        # Append to DataFrame
         df_predictions[f"predicted_labels_{column}"] = predicted_label_names
+        df_predictions[f"predicted_confidence_{column}"] = predicted_confidences
 
-    # Save to CSV if path provided
+    # Save predictions to CSV if requested
     if save_path:
         df_predictions.to_csv(save_path, index=False)
         print(f"Predicted data saved to {save_path}")

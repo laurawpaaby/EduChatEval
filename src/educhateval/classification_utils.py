@@ -19,8 +19,14 @@ from typing import Union
 import warnings
 
 # Suppress specific UserWarning about `use_mps_device` and general warning about training the model: done because the models are trained and the version is not 5.0 yet
-warnings.filterwarnings("ignore", message="`use_mps_device` is deprecated and will be removed in version 5.0")
-warnings.filterwarnings("ignore", message="You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.")
+warnings.filterwarnings(
+    "ignore",
+    message="`use_mps_device` is deprecated and will be removed in version 5.0",
+)
+warnings.filterwarnings(
+    "ignore",
+    message="You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.",
+)
 
 
 # --- Load tokenizer ---
@@ -176,3 +182,44 @@ def save_model_and_tokenizer(model, tokenizer, save_path: str):
     model.save_pretrained(save_path)
     tokenizer.save_pretrained(save_path)
     print(f"Model and tokenizer saved to {save_path}")
+
+
+# --- Filter synthetic dataset ---
+def filter_synthesized_data(
+    synth_input: Union[str, pd.DataFrame],
+    model,
+    tokenizer,
+    label_column: str,
+    save_path: str = None,
+):
+    """
+    Use the trained classifier to filter out low-quality synthetic samples.
+    Accepts a path or a DataFrame. Returns a cleaned pandas DataFrame. Saves to CSV if path is given.
+    """
+    if isinstance(synth_input, str):
+        df = pd.read_csv(synth_input, encoding="utf-8", on_bad_lines="skip")
+    else:
+        df = synth_input.copy()
+
+    label2id = {
+        label: idx for idx, label in enumerate(sorted(df[label_column].unique()))
+    }
+    df["label_id"] = df[label_column].map(label2id)
+
+    dataset = Dataset.from_pandas(df)
+    tokenized = dataset.map(
+        lambda x: tokenizer(x["text"], padding="max_length", truncation=True),
+        batched=True,
+    )
+    trainer = Trainer(model=model)
+    predictions = trainer.predict(tokenized)
+    preds = predictions.predictions.argmax(-1)
+
+    df["predicted"] = preds
+    df_filtered = df[df["label_id"] == df["predicted"]]
+
+    if save_path:
+        df_filtered.to_csv(save_path, index=False)
+        print(f"Filtered data saved to {save_path}")
+
+    return df_filtered

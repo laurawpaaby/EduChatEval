@@ -92,7 +92,7 @@ Create a question.
 <|im_end|>
 <|im_start|>assistant""",
     # STATEMENT
-"Statement": """<|im_start|>system
+    "Statement": """<|im_start|>system
 You are a helpful and knowledgeable assistant in an educational setting.
 You respond to student questions in a friendly and conversational tone, aiming to explain or clarify in one sentence.
 Each response should:
@@ -129,5 +129,5 @@ The translation of "Hi, how are you doing?" in Portuguese is: "Oi, como você es
 <|im_start|>user
 Give a new, unique one-sentence answer to a new and different question.
 <|im_end|>
-<|im_start|>assistant"""
+<|im_start|>assistant""",
 }

@@ -10,7 +10,7 @@ This repository supports my master’s thesis, exploring how large language mode
 
 The package is designed to:
 
-- Simulate student–tutor dialogues with role-based prompts
+- Simulate student–tutor dialogues with role-based prompts if no real data is available 
 - Integrate local + open-source models (e.g., LM Studio, Hugging Face)
 - Log interactions (JSON/CSV) for analysis
 - Provide a framework for classification, evaluation, and fine-tuning
