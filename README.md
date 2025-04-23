@@ -1,4 +1,5 @@
-# 🧠 EduChatEval
+![logo](docs/pics/frontpage.png)
+
 
 _A structured pipeline and Python package for evaluating interactive LLM tutor systems in educational settings._
 
@@ -46,9 +47,9 @@ Note that the framework and dialogue generation is integrated with [LM Studio](h
 
 | **Documentation** | **Description** |
 |-------------------|-----------------|
-| 📚 [User Guide](https://laurawpaaby.github.io/EduChatEval/user-guide/) | Instructions on how to run simulations and analyze dialogue logs |
-| 💡 [Prompt Templates](https://your-docs-site.com/user-guide/templates) | Overview of system prompts, role behaviors, and instructional strategies |
-| 🧠 [API References](https://your-docs-site.com/api) | Full reference for the `educhateval` API: classes, methods, and usage |
+| 📚 [User Guide](https://laurawpaaby.github.io/EduChatEval/user_guides/guide/) | Instructions on how to run the entire pipeline provided in the package |
+| 💡 [Prompt Templates](https://laurawpaaby.github.io/EduChatEval/user_guides/frameworks/) | Overview of system prompts, role behaviors, and instructional strategies |
+| 🧠 [API References](https://laurawpaaby.github.io/EduChatEval/api/api_frame_gen/) | Full reference for the `educhateval` API: classes, methods, and usage |
 | 🤔 [About](https://laurawpaaby.github.io/EduChatEval/about/) | Learn more about the thesis project, context, and contributors |
 
 
