@@ -1,4 +1,7 @@
-# mlx_chat_model.py
+"""
+Chat Model Wrapper for MLX supported models
+Builds on the codebase by Mina Almasi in https://github.com/INTERACT-LLM/Interact-LLM/
+"""
 
 from pathlib import Path
 from typing import Optional, List
@@ -8,7 +11,7 @@ from mlx_lm.sample_utils import make_logits_processors, make_sampler
 
 
 # packages for structure
-from educhateval.dialogue_generation.chat_instructions import ChatMessage
+from educhateval.dialogue_generation.chat import ChatMessage
 from educhateval.dialogue_generation.chat_model_interface import ChatModelInterface
 
 

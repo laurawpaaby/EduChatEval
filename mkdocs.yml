@@ -1,4 +1,4 @@
-site_name: CHATWRAPTIME
+site_name: EduChatEval
 site_url: https://github.com/laurawpaaby/EduChatEval
 repo_url: https://github.com/laurawpaaby/EduChatEval
 docs_dir: 'docs/'
@@ -60,7 +60,10 @@ plugins:
             show_init: false
             members_order: source
         
-
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 
 extra:
   social:

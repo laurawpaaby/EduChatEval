@@ -1,3 +1,8 @@
+"""
+Base agent class to manage chat interaction with an LLM model.
+Builds on the codebase by Mina Almasi in https://github.com/INTERACT-LLM/Interact-LLM/
+"""
+
 from educhateval.dialogue_generation.chat_model_interface import ChatModelInterface
 from educhateval.dialogue_generation.chat import ChatMessage, ChatHistory
 

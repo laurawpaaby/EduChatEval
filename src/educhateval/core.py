@@ -250,6 +250,7 @@ class DialogueSimulator:
         save_csv_path: Optional[Path] = None,
         seed: int = 42,
         custom_prompt_file: Optional[Path] = None,
+        system_prompts: Optional[dict]=None,
     ) -> pd.DataFrame:
         """
         Simulates a multi-turn dialogue using either built-in or custom prompts.
@@ -262,13 +263,41 @@ class DialogueSimulator:
             save_csv_path: Path to save structured DataFrame (optional).
             seed: Random seed for reproducibility.
             custom_prompt_file: Optional path to custom YAML defining prompt modes.
+            system_prompts: Optional dictionary of custom dict of prompt modes.
 
         Returns:
             pd.DataFrame: Structured DataFrame of the conversation.
         """
         set_seed(seed)
 
-        # system_prompts = load_prompts_and_seed(mode)
+        # Validate inputs: only one prompt source should be used
+        if system_prompts is not None and custom_prompt_file is not None:
+            raise ValueError("Provide only one of `system_prompts` or `custom_prompt_file`, not both.")
+
+        # Load prompts based on the user's input
+        if system_prompts is None:
+            if custom_prompt_file:
+                # Load from YAML prompt file
+                import yaml
+                with open(custom_prompt_file, "r") as f:
+                    custom_prompts = yaml.safe_load(f)
+            else:
+                # Hardcoded default if nothing is provided
+                custom_prompts = {
+                    "conversation_types": {
+                        "general_task_solving": {
+                            "student": "You are a student asking for help with a task.",
+                            "tutor": "You are a helpful tutor guiding the student step by step.",
+                        }
+                    }
+                }
+
+            # Extract prompt for selected mode
+            try:
+                system_prompts = custom_prompts["conversation_types"][mode]
+            except KeyError:
+                raise ValueError(f"Mode '{mode}' not found in prompt configuration.")
+
 
         df = simulate_conversation(
             model=self.model,
@@ -276,6 +305,7 @@ class DialogueSimulator:
             seed_message_input=seed_message_input,
             log_dir=log_dir,
             save_csv_path=save_csv_path,
+            system_prompts=system_prompts,
             custom_prompt_file=custom_prompt_file,
             mode=mode,
         )

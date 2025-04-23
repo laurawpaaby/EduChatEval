@@ -1,5 +1,6 @@
 """
 Chat formatting using pydantic
+Original code by Mina Almasi in https://github.com/INTERACT-LLM/Interact-LLM/ 
 """
 
 from pydantic import BaseModel
@@ -8,8 +9,10 @@ from typing import Literal, List
 
 class ChatMessage(BaseModel):
     """
-    Represents a single message in a chat conversation.
-    Roles must be 'user', 'assistant', or 'system'.
+    Chat msg formatting:
+        role: sender of the content
+            user = input, assistant = LLM output, system = initial system message only
+        content: text written by role
     """
 
     role: Literal["user", "assistant", "system"]
@@ -18,8 +21,8 @@ class ChatMessage(BaseModel):
 
 class ChatHistory(BaseModel):
     """
-    Container for storing the full sequence of chat messages.
-    Can be passed to model.generate() as the conversation context.
+    Chat history formatting.
+    - messages: ordered list of ChatMessage items exchanged in a conversation
     """
-
     messages: List[ChatMessage]
+

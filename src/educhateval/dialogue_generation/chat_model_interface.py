@@ -1,8 +1,10 @@
-# base_model_interface.py
+"""
+Builds on the codebase by Mina Almasi in https://github.com/INTERACT-LLM/Interact-LLM/
+"""
 
 from abc import ABC, abstractmethod
 from typing import List
-from educhateval.dialogue_generation.chat_instructions import ChatMessage
+from educhateval.dialogue_generation.chat import ChatMessage
 
 
 class ChatModelInterface(ABC):

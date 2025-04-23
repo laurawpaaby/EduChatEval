@@ -33,9 +33,6 @@ Create a clarification sentence.
 <|im_start|>user
 Create a clarification sentence.
 <|im_end|>
-<|im_start|>assistant
-I don't understand, can you make it simpler?
-<|im_end|>
 <|im_start|>assistant""",
     # SMALL TALK
     "Small Talk": """<|im_start|>system

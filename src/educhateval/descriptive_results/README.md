@@ -1,1 +1,0 @@
-### Scripts to generate simple statistics and present findings visually 

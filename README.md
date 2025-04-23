@@ -1,8 +1,5 @@
 ![logo](docs/pics/frontpage.png)
 
-
-_A structured pipeline and Python package for evaluating interactive LLM tutor systems in educational settings._
-
 ---
 
 ## 🚀 Overview
@@ -55,7 +52,18 @@ Note that the framework and dialogue generation is integrated with [LM Studio](h
 
 
 ## 🫶🏼 Acknowdledgement 
-TBA
+
+This project builds on existing tools and ideas from the open-source community. While specific references are provided within the relevant scripts throughout the repository, the key sources of inspiration are also acknowledged here to highlight the contributions that have shaped the development of this package.
+
+- *Constraint-Based Data Generation – Outlines Package*: [Willard, Brandon T. & Louf, Rémi (2023). *Efficient Guided Generation for LLMs.*](https://arxiv.org/abs/2307.09702) 
+
+- *Chat Interface and Wrapper – Textual*: [McGugan, W. (2024, Sep). *Anatomy of a Textual User Interface.*](https://textual.textualize.io/blog/2024/09/15/anatomy-of-a-textual-user-interface/#were-in-the-pipe-five-by-five)
+
+- *Package Design Inspiration*: [Thea Rolskov Sloth & Astrid Sletten Rybner](https://github.com/DaDebias/genda-lens)  
+
+- *Code Debugging and Conceptual Feedback*:
+  [Mina Almasi](https://pure.au.dk/portal/da/persons/mina%40cc.au.dk) and [Ross Deans Kristensen-McLachlan](https://pure.au.dk/portal/da/persons/rdkm%40cc.au.dk)
+
 
 
 ## 📬 Contact

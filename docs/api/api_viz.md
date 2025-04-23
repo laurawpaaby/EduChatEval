@@ -1,6 +1,6 @@
 # Visualizer
 Module for generating four different visualizations to analysis the interactions by. 
-Every visualization besides the [Interaction Distribution plot](#4-interaction-distribution) can be created for either the student, the tutor or both. The Interaction Distribution plot requires both student and tutor data to visualize interactions. 
+Every visualization besides the *4. Interaction Distribution* plot can be created for either the student, the tutor or both. The Interaction Distribution plot requires both student and tutor data to visualize interactions. 
 
 ***1. Barchart of Predicted Classes***
 ::: educhateval.descriptive_results.display_results.plot_category_bars
