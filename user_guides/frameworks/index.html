@@ -937,7 +937,7 @@
 
   <h1>Templates</h1>
 
-<p>Several modules of the pipeline recevices customized prompts and seeds to ensure that the synthesized data mathces the setting users need to simulate. Here are such provided to illustrate how one can customize ...  </p>
+<p>Several modules within the pipeline accept customized prompts and seed messages to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. The examples provided here illustrate how such customization can guide the generation process and support targeted use cases.</p>
 <h2 id="feedback-templates">Feedback Templates</h2>
 <h3 id="promtps">Promtps</h3>
 <h4 id="framework-generation-contstraint-classes">Framework Generation: Contstraint Classes</h4>
@@ -1044,6 +1044,43 @@ Give a new, unique one-sentence answer to a new and different question.
 
 </code></pre>
 <h4 id="synthesizing-interactions_2">Synthesizing Interactions</h4>
+<p>To generate synthetic dialogues, the simulation pipeline relies on predefined system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether provided as a <code>dictionary</code> or a <code>YAML</code> file.</p>
+<p>This structure makes it possible to store multiple interaction modes (e.g., "feedback", "linguistic") in a single configuration. Each mode must include a pair of prompts—one for the student and one for the tutor—to guide the behavior of both agents during the simulated exchange.</p>
+<p>Below are examples of the expected format in both a <code>dictionary</code> and a <code>YAML</code> file. The <code>YAML</code> template demonstrates how to store multiple frameworks, such as feedback-oriented and linguistically structured interactions.</p>
+<p><strong>Dictionary Template:</strong></p>
+<pre><code class="language-python"># a dictionary of system prompts
+custom_prompts = {
+    &quot;conversation_types&quot;: {
+        &quot;general_task_solving&quot;: {
+            &quot;student&quot;: &quot;You are a student asking for help with a task.&quot;,
+            &quot;tutor&quot;: &quot;You are a helpful tutor guiding the student step by step.&quot;
+        },
+    }
+}
+
+system_prompts = custom_prompts[&quot;conversation_types&quot;][&quot;general_task_solving&quot;]
+</code></pre>
+<p><strong>.YAML Template:</strong></p>
+<pre><code class="language-yaml">conversation_types:
+
+  general_task_solving:
+    student: &gt;
+      You are an AI pretending to be a student trying to solve a task of your own choice.
+
+      Your instructions are:
+      - Ask for clarification, examples, or deeper explanations until you are confident you understand everything.
+      - When asking questions, only ask one at a time.
+      - Only ask simple questions relevant to the task. No broad or vague questions.
+      - Never teach.
+      - Always ask for short and consice answers.
+    tutor: &gt;
+      You are an AI tutor for a student trying to solve a task.
+
+      Your instructions are:
+      - Answer clearly and consicely.
+      - Check for understanding.
+      - Always be short and concise.
+</code></pre>
 <h3 id="seeds_1">Seeds</h3>
 <h4 id="synthesizing-interactions_3">Synthesizing Interactions</h4>
 <h2 id="wrap-interaction">Wrap Interaction</h2>
