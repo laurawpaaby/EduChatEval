@@ -38,10 +38,7 @@ from educhateval import FrameworkGenerator,
 
 
 ## 🤗 Integration 
-- 🦙 LM Studio (local LLM inference)
-- 🖍️ Outlines
-- 🤗 Transformers
-- 🧪 Optuna for experimental tuning
+Note that the framework and dialogue generation is integrated with [LM Studio](https://lmstudio.ai/), and the wrapper and classifiers with [Hugging Face](https://huggingface.co/)
 
 
 
@@ -50,7 +47,7 @@ from educhateval import FrameworkGenerator,
 | **Documentation** | **Description** |
 |-------------------|-----------------|
 | 📚 [User Guide](https://laurawpaaby.github.io/EduChatEval/user-guide/) | Instructions on how to run simulations and analyze dialogue logs |
-| 💡 [Prompt Templates](https://your-docs-site.com/api) | Overview of system prompts, role behaviors, and instructional strategies |
+| 💡 [Prompt Templates](https://your-docs-site.com/user-guide/templates) | Overview of system prompts, role behaviors, and instructional strategies |
 | 🧠 [API References](https://your-docs-site.com/api) | Full reference for the `educhateval` API: classes, methods, and usage |
 | 🤔 [About](https://laurawpaaby.github.io/EduChatEval/about/) | Learn more about the thesis project, context, and contributors |
 
