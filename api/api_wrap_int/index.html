@@ -695,6 +695,9 @@
 
   <h1>Wrap Interactions</h1>
 
+<p>In order to initiate and wrap a dialogue between a user and LLM-tutor locally, follow this <a href="https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md">tutorial</a> </p>
+
+
 <div class="doc doc-object doc-class">
 
 
@@ -825,9 +828,9 @@ and automatic logging of chat history to JSON and CSV formats. </p>
     </table>
 
 
-<details class="example-usage" open>
-  <summary>Example usage</summary>
-  <pre><code class="language-bash">chat-ui             --api_url http://127.0.0.1:1234/v1/chat/completions             --model llama-3.2-3b-instruct             --prompt &quot;You are a helpful tutor guiding a student.&quot;             --save_dir data/logged_dialogue_data
+<details class="example" open>
+  <summary>Example</summary>
+  <pre><code class="language-python">chat-ui             --api_url http://127.0.0.1:1234/v1/chat/completions             --model llama-3.2-3b-instruct             --prompt &quot;You are a helpful tutor guiding a student.&quot;             --save_dir data/logged_dialogue_data
 </code></pre>
 </details>
 
@@ -918,8 +921,8 @@ and automatic logging of chat history to JSON and CSV formats. </p>
 <span class="sd">        run(): Launches the Textual chat application and starts interaction with the model.</span>
 
 
-<span class="sd">    Example usage:</span>
-<span class="sd">        ```bash</span>
+<span class="sd">    Example:</span>
+<span class="sd">        ```python</span>
 <span class="sd">        chat-ui \</span>
 <span class="sd">            --api_url http://127.0.0.1:1234/v1/chat/completions \</span>
 <span class="sd">            --model llama-3.2-3b-instruct \</span>
