@@ -562,16 +562,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#promtps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Promtps
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Promtps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#framework-generation-contstraint-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Framework Generation: Contstraint Classes
@@ -586,35 +576,6 @@
       Synthesizing Interactions
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#seeds" class="md-nav__link">
-    <span class="md-ellipsis">
-      Seeds
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Seeds">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#synthesizing-interactions_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Synthesizing Interactions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -643,18 +604,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#synthesizing-interactions_2" class="md-nav__link">
+  <a href="#synthesizing-interactions_1" class="md-nav__link">
     <span class="md-ellipsis">
       Synthesizing Interactions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#seeds_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Seeds
     </span>
   </a>
   
@@ -676,9 +628,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#potential-prompts" class="md-nav__link">
+  <a href="#example-prompts" class="md-nav__link">
     <span class="md-ellipsis">
-      Potential Prompts
+      Example Prompts
     </span>
   </a>
   
@@ -690,11 +642,35 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      or
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#or_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      or
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="or">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References:
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -920,20 +896,136 @@
   
 
 
-  <h1>Templates</h1>
-
-<p>Several modules within the pipeline accept customized prompts and seed messages to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. The examples provided here illustrate how such customization can guide the generation process and support targeted use cases.</p>
+<p>Several modules within the pipeline accept <strong>customized prompts</strong> and <strong>seed messages</strong> to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. The examples provided here illustrate how such customization can guide the generation process and support targeted use cases.</p>
 <h2 id="feedback-templates">Feedback Templates</h2>
-<h3 id="promtps">Promtps</h3>
-<h4 id="framework-generation-contstraint-classes">Framework Generation: Contstraint Classes</h4>
-<h4 id="synthesizing-interactions">Synthesizing Interactions</h4>
-<h3 id="seeds">Seeds</h3>
-<h4 id="synthesizing-interactions_1">Synthesizing Interactions</h4>
+<p>This section demonstrates a pipeline configuration centered on feedback types, inspired by the work of <a href="https://doi.org/10.1016/j.ipm.2021.102838">Rasmus</a>. The template framework focuses on the following categories: <em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>. </p>
+<h3 id="framework-generation-contstraint-classes">Framework Generation: Contstraint Classes</h3>
+<p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. </p>
+<p>For the generation of utterances under the eight categories (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>), the model was provided with the following prompts:</p>
+<p>??? Yaml Test dropdown
+    ```yaml
+    prompt_dict = {
+        # ADVICE
+        "Advice": """&lt;|im_start|&gt;system
+    You provide a single sentence of advice in an educational setting.
+    The advice should be constructive, context-appropriate, and expressed in a helpful tone. You never repeat yourself.
+    &lt;|im_end|&gt;</p>
+<pre><code>&lt;|im_start|&gt;user
+Give a sentence of advice.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant""",
+
+    # CONTENT
+    "Content": """&lt;|im_start|&gt;system
+You state an academic fact or piece of content relevant to a student's learning.
+Each sentence should be informative, domain-relevant, and suited for tutoring. You never repeat yourself.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Provide a factual statement.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant""",
+
+    # ENCOURAGEMENT
+    "Encouragement": """&lt;|im_start|&gt;system
+You generate a single sentence offering encouragement to a student.
+The tone should be warm, supportive, and appropriate for educational feedback. You never repeat yourself.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Say something encouraging.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant""",
+
+    # EXPLANATION
+    "Explanation": """&lt;|im_start|&gt;system
+You provide a one-sentence explanation of a concept or process relevant in education.
+Your explanations should be clear, concise, and accurate. You never repeat yourself.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Explain a concept in one sentence.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant""",
+
+    # POSED QUESTION
+    "Posed Question": """&lt;|im_start|&gt;system
+You pose an open-ended or reflective question to stimulate learning.
+The questions should be clear, relevant, and suitable for a tutor to ask a student. You never repeat the same question.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Pose a thoughtful question.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant""",
+
+    # SMALL TALK
+    "Small Talk": """&lt;|im_start|&gt;system
+You generate short, friendly small talk suitable for casual rapport between student and tutor.
+Keep it relaxed and appropriate for an educational setting. You never repeat yourself.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Say something casual.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant""",
+
+
+# SPECIFICITY
+"Specificity": """&lt;|im_start|&gt;system
+You generate a sentence that highlights a specific part of the user’s message by referencing it directly.
+This may include precise feedback, correction, or specific praise. Be educational and avoid repetition.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Here is my sentence: I has always enjoyed to learn new things.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+The phrase “I has always enjoyed” should be corrected to “I have always enjoyed” to match subject-verb agreement.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+I think my main argument was strong.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+Yes, the statement “my main argument was strong” is supported well by the example you gave about online learning.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Give a new specific comment on a new sentence.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant""",
+
+    # STYLE
+    "Style": """&lt;|im_start|&gt;system
+You highlight a stylistic feature in the user's sentence. This can include vivid language, varied sentence structure, tone shifts, or rhetorical devices.
+Make sure your response is educational, concise, and never repeats itself. Do not rephrase the user's sentence or generate a new one.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+The thunder cracked like a whip, and the sky spilled open in a furious storm.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+Your sentence uses vivid imagery and a simile (“cracked like a whip”) to create a dramatic, sensory-rich description.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Her words, soft as feathers, floated across the room and lingered in the silence.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+This sentence demonstrates strong style through its gentle simile and poetic rhythm, which evoke a calm, reflective mood.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Give another sentence and highlight a stylistic feature.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant"""
+
+}
+```
+</code></pre>
+<h3 id="synthesizing-interactions">Synthesizing Interactions</h3>
 <h2 id="linguistic-templates">Linguistic Templates</h2>
 <p>This section demonstrates a pipeline configuration centered on simple linguistic interaction types, inspired by the communicative categories proposed by <a href="https://doi.org/10.1016/j.ipm.2021.102838">Wei et al. (2022)</a>. The template framework focuses on the following categories: <em>Clarification, Question, Small Talk</em>, and <em>Statement</em>. These categories reflect the communicative intent behind user inputs—whether from the student or the LLM-driven tutor.</p>
 <p>While <em>Clarification</em>, <em>Question</em>, and <em>Small Talk</em> are directly derived from the study, the <em>Statement</em> category has been added to capture direct, informative responses that serve an answering function. It reflects utterances that do not seek new information but instead contribute content to the dialogue, as frequently observed in educational contexts.</p>
+<h3 id="framework-generation-contstraint-classes_1">Framework Generation: Contstraint Classes</h3>
 <p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. Notably, only the <em>Statement</em> category involves full question–answer pairs, ensuring that responses align with the discourse patterns typically found in learning environments.</p>
-<h4 id="framework-generation-contstraint-classes_1">Framework Generation: Contstraint Classes</h4>
 <p>For the generation of utterances under the four categories (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>), the model was provided with the following prompts:</p>
 <pre><code class="language-yaml">
 prompt_dict = {
@@ -1028,8 +1120,8 @@ Give a new, unique one-sentence answer to a new and different question.
 }
 
 </code></pre>
-<h4 id="synthesizing-interactions_2">Synthesizing Interactions</h4>
-<p>To generate synthetic dialogues, the <a href="../api/api_synth_int">interaction generator</a> relies on system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether passed as a <code>dictionary</code> or a <code>YAML</code> file. This format allows multiple interaction modes to be stored in a single configuration. If no prompting scheme is provided, a simple default prompt is used.</p>
+<h3 id="synthesizing-interactions_1">Synthesizing Interactions</h3>
+<p>To generate synthetic dialogues, the <a href="../api/api_synth_int/">interaction generator</a> relies on system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether passed as a <code>dictionary</code> or a <code>YAML</code> file. This format allows multiple interaction modes to be stored in a single configuration. If no prompting scheme is provided, a simple default prompt is used.</p>
 <p>Below are examples of the expected format in both a <code>dictionary</code> and a <code>YAML</code> file. The <code>YAML</code> template demonstrates how to store multiple frameworks, such as feedback-oriented and linguistically structured interactions.</p>
 <p><strong>Dictionary Template:</strong></p>
 <pre><code class="language-python"># a dictionary of system prompts
@@ -1065,8 +1157,7 @@ system_prompts = custom_prompts[&quot;conversation_types&quot;][&quot;general_ta
       - Check for understanding.
       - Always be short and concise.
 </code></pre>
-<h4 id="seeds_1">Seeds</h4>
-<p>In addition to prompts, the <a href="../api/api_synth_int">interaction generator</a> requires a seed message to initiate the dialogue. This is the first message sent by the <strong>student-agent</strong>.
+<p>In addition to prompts, the <a href="../api/api_synth_int/">interaction generator</a> requires a <strong>seed message</strong> to initiate the dialogue. This is the first message sent by the <strong>student-agent</strong>.
 Seed messages can be passed directly as strings or organized in a YAML file when generating multiple dialogues. The example below illustrates both formats, based on an English course context.</p>
 <p><strong>Example of single seed:</strong></p>
 <pre><code class="language-python">seed_msg = &quot;Hi, I'm a student seeking assistance with my studies in English. I need precise and easy-to-understand answers.&quot;
@@ -1082,8 +1173,15 @@ Seed messages can be passed directly as strings or organized in a YAML file when
 
 </code></pre>
 <h2 id="wrap-interaction">Wrap Interaction</h2>
-<p>While this function isn't used in any of the guides to avoid generating bias data by myself, an example of prompts for the chat tutor is here presented.</p>
-<h3 id="potential-prompts">Potential Prompts</h3>
+<p>The <a href="../api/api_wrap_int/">chat wrapper</a> is not used in the provided guides. However, example prompts for initiating a local dialogue with the LLM-based tutor are provided below.</p>
+<p><em>To use the wrapper for local student–tutor interaction, follow the <a href="https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md">Chat Wrap Tutorial</a>.</em></p>
+<h3 id="example-prompts">Example Prompts</h3>
+<p>```bash
+--prompt "You are a helpful tutor guiding a student."</p>
+<h1 id="or">or</h1>
+<p>--prompt "You are a helpful tutor providing feedback on inputs by the student."</p>
+<h1 id="or_1">or</h1>
+<p>--prompt "You are a helpful tutor helping a student translate Spanish to English. Make sure to break it down."</p>
 <h2 id="references">References:</h2>
 <ul>
 <li>Wei, Y., Lu, W., Cheng, Q., Jiang, T., &amp; Liu, S. (2022). How humans obtain information from AI: Categorizing user messages in human-AI collaborative conversations. <em>Information Processing &amp; Management, 59</em>(2), 102838. https://doi.org/10.1016/j.ipm.2021.102838</li>
