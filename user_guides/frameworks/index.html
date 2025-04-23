@@ -704,6 +704,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References:
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -928,6 +937,7 @@
 
   <h1>Templates</h1>
 
+<p>Several modules of the pipeline recevices customized prompts and seeds to ensure that the synthesized data mathces the setting users need to simulate. Here are such provided to illustrate how one can customize ...  </p>
 <h2 id="feedback-templates">Feedback Templates</h2>
 <h3 id="promtps">Promtps</h3>
 <h4 id="framework-generation-contstraint-classes">Framework Generation: Contstraint Classes</h4>
@@ -935,13 +945,114 @@
 <h3 id="seeds">Seeds</h3>
 <h4 id="synthesizing-interactions_1">Synthesizing Interactions</h4>
 <h2 id="linguistic-templates">Linguistic Templates</h2>
+<p>This section demonstrates a pipeline configuration centered on simple linguistic interaction types, inspired by the communicative categories proposed by <a href="https://doi.org/10.1016/j.ipm.2021.102838">Wei et al. (2022)</a>. The template framework focuses on the following categories: <em>Clarification, Question, Small Talk</em>, and <em>Statement</em>. These categories reflect the communicative intent behind user inputs—whether from the student or the LLM-driven tutor.</p>
+<p>While <em>Clarification</em>, <em>Question</em>, and <em>Small Talk</em> are directly derived from the study, the <em>Statement</em> category has been added to capture direct, informative responses that serve an answering function. It reflects utterances that do not seek new information but instead contribute content to the dialogue, as frequently observed in educational contexts.</p>
+<p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. Notably, only the <em>Statement</em> category involves full question–answer pairs, ensuring that responses align with the discourse patterns typically found in learning environments.</p>
 <h4 id="framework-generation-contstraint-classes_1">Framework Generation: Contstraint Classes</h4>
+<p>For the generation of utterances under the four categories (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>), the model was provided with the following prompts:</p>
+<pre><code class="language-yaml">
+prompt_dict = {
+    # CLARIFICATION
+    &quot;Clarification&quot;: &quot;&quot;&quot;&lt;|im_start|&gt;system
+You generate a conversational sentence that seeks clarification or context. 
+It should be polite, concise, and appropriate for an educational setting. You never repeat yourself.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Create a clarification sentence.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+Could you explain what you meant by the term 'distributed cognition'?
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Create another clarification sentence.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+Please provide more details about what the assignment is asking for?    
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Create a clarification sentence.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant&quot;&quot;&quot;,
+
+    # SMALL TALK
+    &quot;Small Talk&quot;: &quot;&quot;&quot;&lt;|im_start|&gt;system
+You generate a short small talk sentence suitable in an casual setting. You never repeat yourself.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Create a small talk sentence.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+Hi, how are you?
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Create another small talk sentence.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant&quot;&quot;&quot;,
+
+    # QUESTION
+    &quot;Question&quot;: &quot;&quot;&quot;&lt;|im_start|&gt;system
+You generate a factual or thoughtful question that can be used in a conversation or educational setting. You never repeat the same question.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Create a question.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+What is the capital of France?
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Create a question.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+What is 24 times 25?
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Create a question.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant&quot;&quot;&quot;,
+
+    # STATEMENT
+    &quot;Statement&quot;: &quot;&quot;&quot;&lt;|im_start|&gt;system
+You are a helpful and knowledgeable assistant in an educational setting.
+You respond to student questions in a friendly and conversational tone, aiming to explain or clarify in one sentence.
+Each response should:
+- Address the question naturally, like a tutor or teacher would.
+- Stick to one main idea or explanation per response.
+- Avoid repeating previous answers or stating obvious facts. 
+- Don't write the question you are answering.
+&lt;|im_end|&gt;
+
+&lt;|im_start|&gt;user
+Why do we need sleep?
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+Sleep helps your brain and body recover and process everything you’ve learned during the day.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+what is the translation of hi how are you doing in portugese?
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+The translation of 'Hi, how are you doing?&quot; in Portuguese is: &quot;Oi, como você está?'
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+Give a new, unique one-sentence answer to a new and different question.
+&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant&quot;&quot;&quot;,
+}
+
+</code></pre>
 <h4 id="synthesizing-interactions_2">Synthesizing Interactions</h4>
 <h3 id="seeds_1">Seeds</h3>
 <h4 id="synthesizing-interactions_3">Synthesizing Interactions</h4>
 <h2 id="wrap-interaction">Wrap Interaction</h2>
 <p>While this function isn't used in any of the guides to avoid generating bias data by myself, an example of prompts for the chat tutor is here presented.</p>
 <h3 id="potential-prompts">Potential Prompts</h3>
+<h2 id="references">References:</h2>
+<ul>
+<li>Wei, Y., Lu, W., Cheng, Q., Jiang, T., &amp; Liu, S. (2022). How humans obtain information from AI: Categorizing user messages in human-AI collaborative conversations. <em>Information Processing &amp; Management, 59</em>(2), 102838. https://doi.org/10.1016/j.ipm.2021.102838</li>
+</ul>
 
 
 
