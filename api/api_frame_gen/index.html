@@ -688,10 +688,10 @@
     <div class="doc doc-contents first">
 
 
-        <p>Module for generating synthetic datasets (frameworks) using prompts and local LLMs.</p>
-<p>Includes:
--\ Synthetic data generation using instruction-tuned models.
--\ Filtering of low-quality examples via classifier agreement with a small labeled dataset.</p>
+        <p>Module for generating synthetic annotated datasets (frameworks) using instruction-tuned models hosted locally and filtering of low-quality examples via classifier agreement.</p>
+<p>Parameters:
+- model_name (str): Name of the local model to use for generation (default: "llama-3.2-3b-instruct").
+- api_url (str): URL for the local model API (default: "http://localhost:1234/v1/completions").</p>
 
 
 
@@ -834,14 +834,13 @@
 <span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FrameworkGenerator</span><span class="p">:</span>
+<span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FrameworkGenerator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Module for generating synthetic datasets (frameworks) using prompts and local LLMs.</span>
+<span class="sd">    Module for generating synthetic annotated datasets (frameworks) using instruction-tuned models hosted locally and filtering of low-quality examples via classifier agreement.</span>
 
-<span class="sd">    Includes:</span>
-<span class="sd">    -\ Synthetic data generation using instruction-tuned models.</span>
-<span class="sd">    -\ Filtering of low-quality examples via classifier agreement with a small labeled dataset.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    - model_name (str): Name of the local model to use for generation (default: &quot;llama-3.2-3b-instruct&quot;).</span>
+<span class="sd">    - api_url (str): URL for the local model API (default: &quot;http://localhost:1234/v1/completions&quot;).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -865,7 +864,6 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a synthetic labeled dataset from prompts using a language model.</span>
-
 <span class="sd">        Either `prompt_path` (path to .py file with `prompt_dict`) or `prompt_dict_input` must be provided.</span>
 
 <span class="sd">        Parameters:</span>
@@ -1015,7 +1013,8 @@
 
             <details class="quote">
               <summary>Source code in <code>src/educhateval/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">118</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">117</span>
+<span class="normal">118</span>
 <span class="normal">119</span>
 <span class="normal">120</span>
 <span class="normal">121</span>
@@ -1082,8 +1081,7 @@
 <span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_with_classifier</span><span class="p">(</span>
+<span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_with_classifier</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">train_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
     <span class="n">synth_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
@@ -1169,8 +1167,8 @@
 
     <div class="doc doc-contents ">
 
-        <p>Generate a synthetic labeled dataset from prompts using a language model.</p>
-<p>Either <code>prompt_path</code> (path to .py file with <code>prompt_dict</code>) or <code>prompt_dict_input</code> must be provided.</p>
+        <p>Generate a synthetic labeled dataset from prompts using a language model.
+Either <code>prompt_path</code> (path to .py file with <code>prompt_dict</code>) or <code>prompt_dict_input</code> must be provided.</p>
 <p>Parameters:
 - prompt_path (str): Path to a Python file containing a prompt dictionary.
 - prompt_dict_input (dict): Prompt dictionary directly provided.
@@ -1229,8 +1227,7 @@
 <span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_framework</span><span class="p">(</span>
+<span class="normal">114</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_framework</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">prompt_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">prompt_dict_input</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1243,7 +1240,6 @@
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a synthetic labeled dataset from prompts using a language model.</span>
-
 <span class="sd">    Either `prompt_path` (path to .py file with `prompt_dict`) or `prompt_dict_input` must be provided.</span>
 
 <span class="sd">    Parameters:</span>
