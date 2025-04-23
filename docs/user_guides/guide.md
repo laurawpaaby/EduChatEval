@@ -4,7 +4,8 @@ Below are two example workflows demonstrating how to use each module in the pack
 
 
 **Generate Label Framework**
-The first walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on different feedback types: (*Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity*, and *Style*).
+
+The first example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on different feedback types: (*Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity*, and *Style*).
 
 First install the package:
 ```bash
@@ -88,6 +89,7 @@ annotaded_feedback = predictor.run_pipeline(
 ```
 
 **Visualize**
+
 Import the visualizer and plot results:
 ```python
 from educhateval import Visualizer
@@ -118,6 +120,7 @@ viz.plot_turn_trends(
     title="Feedback Distribution over Turns",
 )
 ```
+Returns:
 [Bar Chart](../pics/simple_bar.png)
 
 
@@ -126,7 +129,7 @@ viz.plot_turn_trends(
 
 ## Linguistic Example
 
-This example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (*Clarification*, *Question*, *Small Talk* and *Statement*).
+The second example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (*Clarification*, *Question*, *Small Talk* and *Statement*).
 
 First install the package:
 ```bash
@@ -135,13 +138,13 @@ pip install educhateval
 
 **Generate Label Framework**
 
-Install the package and import the framework generator
+Import the framework generator:
 ```python
 from educhateval import FrameworkGenerator
 ```
 
-Initialize the generator with your chosen model and API, and generate labeled samples. In this example a dictionary is provided as prompt:
-
+Initialize the generator with your chosen model and API, and generate labeled samples. In this example a dictionary is provided as prompt. 
+See [Templates](frameworks.md) for how to structure a `YAML` prompt input instead. 
 
 
 ```python
@@ -223,10 +226,9 @@ from educhateval import DialogueSimulator
 
 simulator = DialogueSimulator(backend="mlx", model_id="mlx-community/Qwen2.5-7B-Instruct-1M-4bit")
 ```
-
-See [Templates](frameworks.md) for how to structure your `YAML` input. 
-
 In this example, multiple dialogues are simulated representing different student agents. Each seed message in the `english_course` configuration acts as the starting input for one student. The model responds over several turns, alternating between the student and tutor roles. This looped setup helps create a diverse set of interaction sequences, each grounded in a unique initiating prompt.
+
+See [Templates](frameworks.md) for how to structure your `YAML` seed input used here. 
 
 ```python
 # Extract seed messages for the English course
@@ -329,3 +331,33 @@ viz.plot_history_interaction(
 ```
 Returns:
 ![interactions](../pics/interaction.png)
+
+
+---
+
+## Direct Wrap of Interactions
+
+Instead of generating or using pre-existing interaction data, users can collect it directly using the package’s `chat_ui` wrapper. 
+his replaces the *synthesizing interactions* step above and is executed as follows:
+
+```bash 
+pip install educhateval
+```
+
+From the terminal run: 
+
+```bash
+chat-ui \
+  --api_url http://127.0.0.1:1234/v1/chat/completions \
+  --model llama-3.2-3b-instruct \
+  --prompt "You are a helpful tutor guiding a student." \
+  --save_dir data/logged_dialogue_data
+
+```
+
+Returns: 
+
+![ui](../pics/ui.png)
+
+
+Find more detailed instructions in the [Chat Wrap Tutorial](https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md).

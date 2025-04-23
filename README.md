@@ -16,7 +16,7 @@ The package is designed to:
 
 Overview of the system architecture:
 
-![flowchart](new_flowchart.png)
+![flowchart](docs/pics/new_flowchart.png)
 
 ---
 
@@ -32,9 +32,91 @@ from educhateval import FrameworkGenerator,
                         DialogueSimulator,
                         PredictLabels,
                         Visualizer
-
+from pathlib import Path
 ```
 
+```python
+# 1. Generate Label Framework
+generator = FrameworkGenerator(
+    model_name="llama-3.2-3b-instruct",
+    api_url="http://localhost:1234/v1/completions"
+)
+
+df_4 = generator.generate_framework(
+    prompt_path="outline_prompts/prompt_default_4types.py",
+    num_samples=200,
+    csv_out="data/labeled_training_data.csv"
+)
+
+filtered_df = generator.filter_with_classifier(
+    train_data="data/tiny_labeled_default.csv",
+    synth_data=df_4,
+    classifier_model_name="distilbert-base-uncased"
+)
+```
+
+```python
+# 2. Synthesize Interaction
+simulator = DialogueSimulator(
+    backend="mlx",
+    model_id="mlx-community/Qwen2.5-7B-Instruct-1M-4bit"
+)
+
+seed_message = "Hi, can you please help me with my English course?"
+
+# Simulate a single student-tutor dialogue with a custom YAML file
+df_single = simulator.simulate_dialogue(
+    mode="general_task_solving",
+    turns=10,
+    seed_message_input=seed_message,
+    custom_prompt_file=Path("prompts/my_custom_prompts.yaml")
+)
+```
+
+```python
+# 3. Classify and Predict
+predictor = PredictLabels(model_name="distilbert/distilroberta-base")
+
+annotaded_df = predictor.run_pipeline(
+    train_data=filtered_df,
+    new_data=english_course_df,
+    text_column="text",
+    label_column="category",
+    columns_to_classify=["student_msg", "tutor_msg"],
+    split_ratio=0.2
+)
+```
+
+```python
+# 4. Visualize
+viz = Visualizer()
+
+summary = viz.create_summary_table(
+    df=annotaded_df,
+    label_columns=["predicted_labels_student_msg", "predicted_labels_tutor_msg"]
+)
+
+viz.plot_category_bars(
+    df=annotaded_df,
+    label_columns=["predicted_labels_student_msg", "predicted_labels_tutor_msg"],
+    use_percent=True,
+    title="Distribution of Predicted Classes"
+)
+
+viz.plot_turn_trends(
+    df=annotaded_df,
+    student_col="predicted_labels_student_msg",
+    tutor_col="predicted_labels_tutor_msg",
+    title="Category Distribution over Turns"
+)
+
+viz.plot_history_interaction(
+    df=annotaded_df,
+    student_col="predicted_labels_student_msg",
+    tutor_col="predicted_labels_tutor_msg",
+    focus_agent="student",
+    use_percent=True
+)
 
 ## 🤗 Integration 
 Note that the framework and dialogue generation is integrated with [LM Studio](https://lmstudio.ai/), and the wrapper and classifiers with [Hugging Face](https://huggingface.co/)

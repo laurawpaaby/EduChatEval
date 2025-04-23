@@ -6,5 +6,5 @@ Detailed information on the available classes, functions, and configuration opti
 
 ---
 
-Continue to [**Guide**](guide.md) or see [**Templates**](frameworks.md)
+Continue to [**Guides**](guide.md) or see [**Templates**](frameworks.md)
 
