@@ -530,38 +530,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DialogueSimulator">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#educhateval.core.DialogueSimulator.model" class="md-nav__link">
-    <span class="md-ellipsis">
-      model
-    </span>
-  </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#educhateval.core.DialogueSimulator.__init__" class="md-nav__link">
-    <span class="md-ellipsis">
-      __init__
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#educhateval.core.DialogueSimulator.simulate_dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       simulate_dialogue
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -694,13 +670,7 @@
 
 
 
-<h2 id="educhateval.core.DialogueSimulator" class="doc doc-heading">
-            <code>educhateval.core.DialogueSimulator</code>
-
-
-</h2>
-
-
+<a id="educhateval.core.DialogueSimulator"></a>
     <div class="doc doc-contents first">
 
 
@@ -960,98 +930,15 @@ It supports customizable sampling behavior and ensures reproducibility via globa
 
 
 
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="educhateval.core.DialogueSimulator.model" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">model</span> <span class="o">=</span> <span class="n">ChatHF</span><span class="p">(</span><span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span> <span class="n">sampling_params</span><span class="o">=</span><span class="n">sampling_params</span> <span class="ow">or</span> <span class="p">{</span><span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">&#39;top_p&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">&#39;top_k&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">})</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-
-    </div>
-
-</div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-<h3 id="educhateval.core.DialogueSimulator.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;mlx&#39;</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="s1">&#39;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&#39;</span><span class="p">,</span> <span class="n">sampling_params</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-
-
-            <details class="quote">
-              <summary>Source code in <code>src/educhateval/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mlx&quot;</span><span class="p">,</span>
-    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">,</span>
-    <span class="n">sampling_params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;hf&quot;</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ChatHF</span><span class="p">(</span>
-            <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
-            <span class="n">sampling_params</span><span class="o">=</span><span class="n">sampling_params</span>
-            <span class="ow">or</span> <span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;top_p&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;top_k&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">},</span>
-        <span class="p">)</span>
-    <span class="k">elif</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;mlx&quot;</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ChatMLX</span><span class="p">(</span>
-            <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
-            <span class="n">sampling_params</span><span class="o">=</span><span class="n">sampling_params</span>
-            <span class="ow">or</span> <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;top_p&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;top_k&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span>
-        <span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported backend&quot;</span><span class="p">)</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="educhateval.core.DialogueSimulator.simulate_dialogue" class="doc doc-heading">
+<h2 id="educhateval.core.DialogueSimulator.simulate_dialogue" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">simulate_dialogue</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;general_task_solving&#39;</span><span class="p">,</span> <span class="n">turns</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">seed_message_input</span><span class="o">=</span><span class="s2">&quot;Hi, I&#39;m a student seeking assistance with my studies.&quot;</span><span class="p">,</span> <span class="n">log_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save_csv_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">custom_prompt_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-</h3>
+</h2>
 
 
     <div class="doc doc-contents ">
