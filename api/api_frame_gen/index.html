@@ -514,18 +514,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#educhateval.core.FrameworkGenerator.filter_with_classifier" class="md-nav__link">
+  <a href="#educhateval.core.FrameworkGenerator.generate_framework" class="md-nav__link">
     <span class="md-ellipsis">
-      filter_with_classifier
+      generate_framework
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#educhateval.core.FrameworkGenerator.generate_framework" class="md-nav__link">
+  <a href="#educhateval.core.FrameworkGenerator.filter_with_classifier" class="md-nav__link">
     <span class="md-ellipsis">
-      generate_framework
+      filter_with_classifier
     </span>
   </a>
   
@@ -1056,6 +1056,254 @@
 <div class="doc doc-object doc-function">
 
 
+<h2 id="educhateval.core.FrameworkGenerator.generate_framework" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generate_framework</span><span class="p">(</span><span class="n">prompt_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prompt_dict_input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">json_out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">csv_out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top_p</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generate a synthetic labeled dataset from prompts using a language model.
+Either <code>prompt_path</code> (path to .py file with <code>prompt_dict</code>) or <code>prompt_dict_input</code> must be provided.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>prompt_path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to a Python file containing a prompt dictionary.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>prompt_dict_input</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Prompt dictionary directly provided.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>num_samples</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of samples to generate per category.</p>
+              </div>
+            </td>
+            <td>
+                  <code>500</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>json_out</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional path to save JSON output.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>csv_out</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional path to save CSV output.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>seed</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Random seed for reproducibility.</p>
+              </div>
+            </td>
+            <td>
+                  <code>42</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pd.DataFrame: Cleaned, labeled synthetic dataset.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/educhateval/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_framework</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">prompt_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">prompt_dict_input</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">num_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="n">json_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">csv_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">,</span>
+    <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.90</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a synthetic labeled dataset from prompts using a language model.</span>
+<span class="sd">    Either `prompt_path` (path to .py file with `prompt_dict`) or `prompt_dict_input` must be provided.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        prompt_path (str): Path to a Python file containing a prompt dictionary.</span>
+<span class="sd">        prompt_dict_input (dict): Prompt dictionary directly provided.</span>
+<span class="sd">        num_samples (int): Number of samples to generate per category.</span>
+<span class="sd">        json_out (str): Optional path to save JSON output.</span>
+<span class="sd">        csv_out (str): Optional path to save CSV output.</span>
+<span class="sd">        seed (int): Random seed for reproducibility.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: Cleaned, labeled synthetic dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">prompt_path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">prompt_dict_input</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;You must provide either a prompt_path or prompt_dict_input.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">synthesize_dataset</span><span class="p">(</span>
+        <span class="n">prompt_dict</span><span class="o">=</span><span class="n">prompt_dict_input</span><span class="p">,</span>
+        <span class="n">prompt_path</span><span class="o">=</span><span class="n">prompt_path</span><span class="p">,</span>
+        <span class="n">model_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+        <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples</span><span class="p">,</span>
+        <span class="n">api_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span>
+        <span class="n">json_out</span><span class="o">=</span><span class="n">json_out</span><span class="p">,</span>
+        <span class="n">csv_out</span><span class="o">=</span><span class="n">csv_out</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="o">=</span><span class="n">top_p</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h2 id="educhateval.core.FrameworkGenerator.filter_with_classifier" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">filter_with_classifier</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">synth_data</span><span class="p">,</span> <span class="n">text_column</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">label_column</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="n">split_ratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">training_params</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;cross_entropy&#39;</span><span class="p">,</span> <span class="mf">5e-05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">tuning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tuning_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_save_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classifier_model_name</span><span class="o">=</span><span class="s1">&#39;distilbert-base-uncased&#39;</span><span class="p">,</span> <span class="n">filtered_save_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
@@ -1420,254 +1668,6 @@
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">df_filtered</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="educhateval.core.FrameworkGenerator.generate_framework" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">generate_framework</span><span class="p">(</span><span class="n">prompt_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prompt_dict_input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">json_out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">csv_out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top_p</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span></code>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Generate a synthetic labeled dataset from prompts using a language model.
-Either <code>prompt_path</code> (path to .py file with <code>prompt_dict</code>) or <code>prompt_dict_input</code> must be provided.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>prompt_path</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Path to a Python file containing a prompt dictionary.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>prompt_dict_input</code>
-            </td>
-            <td>
-                  <code><span title="dict">dict</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Prompt dictionary directly provided.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>num_samples</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Number of samples to generate per category.</p>
-              </div>
-            </td>
-            <td>
-                  <code>500</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>json_out</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional path to save JSON output.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>csv_out</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional path to save CSV output.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>seed</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Random seed for reproducibility.</p>
-              </div>
-            </td>
-            <td>
-                  <code>42</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="pandas.DataFrame">DataFrame</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>pd.DataFrame: Cleaned, labeled synthetic dataset.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-            <details class="quote">
-              <summary>Source code in <code>src/educhateval/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_framework</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">prompt_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">prompt_dict_input</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">num_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span>
-    <span class="n">json_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">csv_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">,</span>
-    <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.90</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Generate a synthetic labeled dataset from prompts using a language model.</span>
-<span class="sd">    Either `prompt_path` (path to .py file with `prompt_dict`) or `prompt_dict_input` must be provided.</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">        prompt_path (str): Path to a Python file containing a prompt dictionary.</span>
-<span class="sd">        prompt_dict_input (dict): Prompt dictionary directly provided.</span>
-<span class="sd">        num_samples (int): Number of samples to generate per category.</span>
-<span class="sd">        json_out (str): Optional path to save JSON output.</span>
-<span class="sd">        csv_out (str): Optional path to save CSV output.</span>
-<span class="sd">        seed (int): Random seed for reproducibility.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        pd.DataFrame: Cleaned, labeled synthetic dataset.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">prompt_path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">prompt_dict_input</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">&quot;You must provide either a prompt_path or prompt_dict_input.&quot;</span>
-        <span class="p">)</span>
-
-    <span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-
-    <span class="n">df</span> <span class="o">=</span> <span class="n">synthesize_dataset</span><span class="p">(</span>
-        <span class="n">prompt_dict</span><span class="o">=</span><span class="n">prompt_dict_input</span><span class="p">,</span>
-        <span class="n">prompt_path</span><span class="o">=</span><span class="n">prompt_path</span><span class="p">,</span>
-        <span class="n">model_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
-        <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples</span><span class="p">,</span>
-        <span class="n">api_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span>
-        <span class="n">json_out</span><span class="o">=</span><span class="n">json_out</span><span class="p">,</span>
-        <span class="n">csv_out</span><span class="o">=</span><span class="n">csv_out</span><span class="p">,</span>
-        <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
-        <span class="n">top_p</span><span class="o">=</span><span class="n">top_p</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">df</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
