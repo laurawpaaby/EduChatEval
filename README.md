@@ -117,6 +117,7 @@ viz.plot_history_interaction(
     focus_agent="student",
     use_percent=True
 )
+```
 
 ## 🤗 Integration 
 Note that the framework and dialogue generation is integrated with [LM Studio](https://lmstudio.ai/), and the wrapper and classifiers with [Hugging Face](https://huggingface.co/)
