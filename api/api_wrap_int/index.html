@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#this-one-you-need-to-do-on-your-own-kind-of-like-the-tutorial" class="md-skip">
+        <a href="#educhateval.chat_ui.ChatWrap" class="md-skip">
           Skip to content
         </a>
       
@@ -573,9 +573,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#this-one-you-need-to-do-on-your-own-kind-of-like-the-tutorial" class="md-nav__link">
+  <a href="#educhateval.chat_ui.ChatWrap" class="md-nav__link">
     <span class="md-ellipsis">
-      THIS ONE YOU NEED TO DO ON YOUR OWN KIND OF LIKE THE TUTORIAL !!!!!!!!!
+      ChatWrap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#educhateval.chat_ui.ChatWrap.run" class="md-nav__link">
+    <span class="md-ellipsis">
+      run
     </span>
   </a>
   
@@ -686,7 +695,331 @@
 
   <h1>Wrap Interactions</h1>
 
-<h3 id="this-one-you-need-to-do-on-your-own-kind-of-like-the-tutorial">THIS ONE YOU NEED TO DO ON YOUR OWN KIND OF LIKE THE TUTORIAL !!!!!!!!!</h3>
+<div class="doc doc-object doc-class">
+
+
+
+<a id="educhateval.chat_ui.ChatWrap"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>Module for launching the Textual chat interface with an LM Studio-backed language model. It should be run from the command line.</p>
+<p>This class configures the model, system prompt, and save path, and then starts an interactive, full-screen terminal chat
+application using the <code>textual</code> framework. The interface supports live message streaming, styled user and assistant blocks,
+and automatic logging of chat history to JSON and CSV formats. </p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>api_url</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>URL of the LM Studio API endpoint used for inference. Defaults to "http://127.0.0.1:1234/v1/chat/completions".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;http://127.0.0.1:1234/v1/chat/completions&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the model to use in LM Studio (e.g., "llama-3.2-3b-instruct").</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;llama-3.2-3b-instruct&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>temperature</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sampling temperature for text generation. Controls randomness. Defaults to 0.7.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0.7</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>system_prompt</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Initial system message to prime the assistant’s behavior. Defaults to a helpful tutoring message.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;You are a helpful tutor guiding a student. Answer short and concisely.&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>save_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Directory for saving logged conversations as <code>.json</code> and <code>.csv</code>. Defaults to "data/logged_dialogue_data".</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span>(&#39;data/logged_dialogue_data&#39;)</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="run() (educhateval.chat_ui.ChatWrap.run)" href="#educhateval.chat_ui.ChatWrap.run">run</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Launches the Textual chat application and starts interaction with the model.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+<details class="example-usage" open>
+  <summary>Example usage</summary>
+  <pre><code class="language-bash">chat-ui             --api_url http://127.0.0.1:1234/v1/chat/completions             --model llama-3.2-3b-instruct             --prompt &quot;You are a helpful tutor guiding a student.&quot;             --save_dir data/logged_dialogue_data
+</code></pre>
+</details>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/educhateval/chat_ui.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ChatWrap</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Module for launching the Textual chat interface with an LM Studio-backed language model. It should be run from the command line.</span>
+
+<span class="sd">    This class configures the model, system prompt, and save path, and then starts an interactive, full-screen terminal chat</span>
+<span class="sd">    application using the `textual` framework. The interface supports live message streaming, styled user and assistant blocks,</span>
+<span class="sd">    and automatic logging of chat history to JSON and CSV formats. </span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        api_url (str): URL of the LM Studio API endpoint used for inference. Defaults to &quot;http://127.0.0.1:1234/v1/chat/completions&quot;.</span>
+<span class="sd">        model_name (str): Name of the model to use in LM Studio (e.g., &quot;llama-3.2-3b-instruct&quot;).</span>
+<span class="sd">        temperature (float): Sampling temperature for text generation. Controls randomness. Defaults to 0.7.</span>
+<span class="sd">        system_prompt (str): Initial system message to prime the assistant’s behavior. Defaults to a helpful tutoring message.</span>
+<span class="sd">        save_dir (Path): Directory for saving logged conversations as `.json` and `.csv`. Defaults to &quot;data/logged_dialogue_data&quot;.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        run(): Launches the Textual chat application and starts interaction with the model.</span>
+
+
+<span class="sd">    Example usage:</span>
+<span class="sd">        ```bash</span>
+<span class="sd">        chat-ui \</span>
+<span class="sd">            --api_url http://127.0.0.1:1234/v1/chat/completions \</span>
+<span class="sd">            --model llama-3.2-3b-instruct \</span>
+<span class="sd">            --prompt &quot;You are a helpful tutor guiding a student.&quot; \</span>
+<span class="sd">            --save_dir data/logged_dialogue_data</span>
+<span class="sd">        ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">api_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;http://127.0.0.1:1234/v1/chat/completions&quot;</span><span class="p">,</span>
+        <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">system_prompt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;You are a helpful tutor guiding a student. Answer short and concisely.&quot;</span><span class="p">,</span>
+        <span class="n">save_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/logged_dialogue_data&quot;</span><span class="p">),</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api_url</span> <span class="o">=</span> <span class="n">api_url</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span> <span class="o">=</span> <span class="n">system_prompt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span> <span class="o">=</span> <span class="n">save_dir</span>
+
+        <span class="c1"># Initialize model and conversation history</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ChatLMStudio</span><span class="p">(</span>
+            <span class="n">api_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span>
+            <span class="n">model_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span> <span class="o">=</span> <span class="n">ChatHistory</span><span class="p">(</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span><span class="p">)]</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Launch the Textual app.&quot;&quot;&quot;</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">ChatApp</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">chat_history</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span><span class="p">,</span>
+            <span class="n">chat_messages_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="educhateval.chat_ui.ChatWrap.run" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">run</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Launch the Textual app.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/educhateval/chat_ui.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Launch the Textual app.&quot;&quot;&quot;</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">ChatApp</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="n">chat_history</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span><span class="p">,</span>
+        <span class="n">chat_messages_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
 
 
 
