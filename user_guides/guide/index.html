@@ -883,10 +883,104 @@
 <h3 id="classify-and-predict">Classify and Predict</h3>
 <h3 id="visualize">Visualize</h3>
 <h2 id="linguistic-example">Linguistic Example</h2>
+<p>This example walks through the full pipeline for generating, simulating, classifying, and visualizing dialogue interactions focused on simple linguistic categories.</p>
 <h3 id="generate-label-framework_1">Generate Label Framework</h3>
+<p>Install the package and import the framework generator:
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">educhateval</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
+</code></pre></div></p>
+<p>Initialize the generator with your chosen model and API, and generate labeled samples:
+<div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span>
+
+<span class="n">df_4</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_framework</span><span class="p">(</span>
+    <span class="n">prompt_path</span><span class="o">=</span><span class="s2">&quot;/outline_prompts/prompt_default_4types.py&quot;</span><span class="p">,</span> 
+    <span class="n">num_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+    <span class="n">csv_out</span><span class="o">=</span><span class="s2">&quot;/data/labeled_training_data.csv&quot;</span>
+<span class="p">)</span>
+</code></pre></div></p>
 <h3 id="synthesize-interaction_1">Synthesize Interaction</h3>
+<p>Import and initialize the dialogue simulator:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">DialogueSimulator</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">DialogueSimulator</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mlx&quot;</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>See <a href="../frameworks/">Templates</a> for how to structure your <code>YAML</code> input. </p>
+<p>In this example, we simulate multiple dialogues representing different student agents. Each seed message in the <code>english_course</code> configuration acts as the starting input for one student. The model responds over several turns, alternating between the student and tutor roles. This looped setup helps create a diverse set of interaction sequences, each grounded in a unique initiating prompt.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Extract seed messages for the English course</span>
+<span class="n">english_seeds</span> <span class="o">=</span> <span class="n">seed_messages</span><span class="p">[</span><span class="s2">&quot;english_course&quot;</span><span class="p">][</span><span class="s2">&quot;seeds&quot;</span><span class="p">]</span>
+<span class="n">n_seeds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">english_seeds</span><span class="p">)</span>
+
+<span class="c1"># Store all simulated dialogues</span>
+<span class="n">english_dialogues</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">seed_message</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">english_seeds</span><span class="p">):</span>
+    <span class="n">df_single</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">simulate_dialogue</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;general_task_solving&quot;</span><span class="p">,</span>
+        <span class="n">turns</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">seed_message_input</span><span class="o">=</span><span class="n">seed_message</span><span class="p">,</span>
+        <span class="n">custom_prompt_file</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;prompts/my_custom_prompts.yaml&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Add metadata</span>
+    <span class="n">df_single</span><span class="p">[</span><span class="s2">&quot;student_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;english_course_student_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">df_single</span><span class="p">[</span><span class="s2">&quot;course&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;english_course&quot;</span>
+    <span class="n">english_dialogues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_single</span><span class="p">)</span>
+
+<span class="c1"># Combine all dialogues</span>
+<span class="n">english_course_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">english_dialogues</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="classify-and-predict_1">Classify and Predict</h3>
+<p>Import the classifier and run prediction on your labeled and synthesized data:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">PredictLabels</span>
+
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">PredictLabels</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;distilbert/distilroberta-base&quot;</span><span class="p">)</span>
+
+<span class="c1"># Run the full prediction pipeline</span>
+<span class="n">annotaded_df</span> <span class="o">=</span> <span class="n">predictor</span><span class="o">.</span><span class="n">run_pipeline</span><span class="p">(</span>
+    <span class="n">train_data</span><span class="o">=</span><span class="n">df_4</span><span class="p">,</span> 
+    <span class="n">new_data</span><span class="o">=</span><span class="n">english_course_df</span><span class="p">,</span> 
+    <span class="n">text_column</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+    <span class="n">label_column</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">,</span> 
+    <span class="n">columns_to_classify</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;student_msg&quot;</span><span class="p">,</span> <span class="s2">&quot;tutor_msg&quot;</span><span class="p">],</span> 
+    <span class="n">split_ratio</span><span class="o">=</span><span class="mf">0.20</span>
+<span class="p">)</span>
+</code></pre></div></p>
 <h3 id="visualize_1">Visualize</h3>
+<p>Import the visualizer and plot results:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">Visualizer</span>
+
+<span class="n">viz</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Generate summary tables and plots:
+<div class="highlight"><pre><span></span><code><span class="c1"># Summary table of predicted categories</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">viz</span><span class="o">.</span><span class="n">create_summary_table</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotaded_df</span><span class="p">,</span> 
+    <span class="n">label_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span> <span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+
+<span class="c1"># Bar plot of class distributions</span>
+<span class="n">viz</span><span class="o">.</span><span class="n">plot_category_bars</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotaded_df</span><span class="p">,</span>
+    <span class="n">label_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span> <span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">],</span>
+    <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of Predicted Classes&quot;</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<p>Returns:
+<img alt="Summary Table" src="../../pics/sum_table.png" /><br />
+<img alt="Bar Chart" src="../../pics/simple_bar.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Trend plot of predicted categories over turns</span>
+<span class="n">viz</span><span class="o">.</span><span class="n">plot_turn_trends</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotated_df</span><span class="p">,</span>
+    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Category Distribution over Turns&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Returns:
+<img alt="Line Chart" src="../../pics/turns_line.png" /></p>
 
 
 
