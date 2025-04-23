@@ -582,6 +582,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#educhateval.core.PredictLabels.run_pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      run_pipeline
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -670,16 +679,36 @@
     <div class="doc doc-contents first">
 
 
-        <p>A wrapper for training and applying a text classification model.</p>
+        <p>Module for training and applying a text classification model.</p>
 <p>This class streamlines the process of fine-tuning a transformer-based classifier on labeled data
 and applying the trained model to annotate new, unlabeled datasets. Supports both single and multi-column
 predictions and includes optional model saving and evaluation output.</p>
 
 
-<details class="required-args" open>
-  <summary>Required Args</summary>
-  <p>model_name (str): Name of the pretrained Hugging Face model to fine-tune (default: "distilbert-base-uncased").</p>
-</details>
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="educhateval.core.PredictLabels.model_name">model_name</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the pretrained Hugging Face model to fine-tune (default: "distilbert-base-uncased").</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 <p><span class="doc-section-title">Methods:</span></p>
     <table>
@@ -691,7 +720,7 @@ predictions and includes optional model saving and evaluation output.</p>
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><span title="educhateval.core.PredictLabels.run_pipeline">run_pipeline</span></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="run_pipeline(train_data, new_data, text_column='text', label_column='category', columns_to_classify=None, split_ratio=0.2, training_params=[0.01, 'cross_entropy', 5e-05, 8, 8, 4, 0.01], tuning=False, tuning_params=None, model_save_path=None, prediction_save_path=None, seed=42) (educhateval.core.PredictLabels.run_pipeline)" href="#educhateval.core.PredictLabels.run_pipeline">run_pipeline</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Trains the classifier and returns a DataFrame with predicted labels and confidence scores.</p>
@@ -815,15 +844,39 @@ predictions and includes optional model saving and evaluation output.</p>
 <span class="normal">409</span>
 <span class="normal">410</span>
 <span class="normal">411</span>
-<span class="normal">412</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PredictLabels</span><span class="p">:</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PredictLabels</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A wrapper for training and applying a text classification model.</span>
+<span class="sd">    Module for training and applying a text classification model.</span>
 
 <span class="sd">    This class streamlines the process of fine-tuning a transformer-based classifier on labeled data</span>
 <span class="sd">    and applying the trained model to annotate new, unlabeled datasets. Supports both single and multi-column</span>
 <span class="sd">    predictions and includes optional model saving and evaluation output.</span>
 
-<span class="sd">    Required Args:</span>
+<span class="sd">    Attributes:</span>
 <span class="sd">        model_name (str): Name of the pretrained Hugging Face model to fine-tune (default: &quot;distilbert-base-uncased&quot;).</span>
 
 <span class="sd">    Methods:</span>
@@ -851,6 +904,30 @@ predictions and includes optional model saving and evaluation output.</p>
         <span class="n">prediction_save_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function handles the full pipeline of loading data, preparing datasets, tokenizing inputs, training a transformer-based</span>
+<span class="sd">        classifier, and applying it to specified text columns in new data. It supports custom hyperparameters, optional hyperparameter</span>
+<span class="sd">        tuning, and saving of both the trained model and prediction outputs.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            train_data (Union[str, pd.DataFrame]): Labeled dataset for training. Can be a DataFrame or a CSV file path.</span>
+<span class="sd">            new_data (Union[str, pd.DataFrame]): Dataset to annotate with predicted labels. Can be a DataFrame or a CSV file path.</span>
+<span class="sd">            text_column (str): Column in the training data containing the input text. Defaults to &quot;text&quot;.</span>
+<span class="sd">            label_column (str): Column in the training data containing the target labels. Defaults to &quot;category&quot;.</span>
+<span class="sd">            columns_to_classify (Optional[Union[str, List[str]]]): Column(s) in `new_data` to predict labels for. Defaults to `text_column`.</span>
+<span class="sd">            split_ratio (float): Ratio of data to use for validation. Must be between 0 and 1. Defaults to 0.2.</span>
+<span class="sd">            training_params (list): List of 7 training hyperparameters: [weight_decay, loss_fn, learning_rate, batch_size,</span>
+<span class="sd">                                num_epochs, warmup_steps, gradient_accumulation]. Defaults to [0.01, &quot;cross_entropy&quot;, 5e-5, 8, 8, 4, 0.01].</span>
+<span class="sd">            tuning (bool): Whether to perform hyperparameter tuning. Defaults to False.</span>
+<span class="sd">            tuning_params (Optional[dict]): Dictionary of tuning settings if `tuning` is True. Defaults to None.</span>
+<span class="sd">            model_save_path (Optional[str]): Optional path to save the trained model and tokenizer. Defaults to None.</span>
+<span class="sd">            prediction_save_path (Optional[str]): Optional path to save annotated predictions as a CSV. Defaults to None.</span>
+<span class="sd">            seed (int): Random seed for reproducibility. Defaults to 42.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: A DataFrame containing the original `new_data` with added columns for predicted labels and confidence scores.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
 
         <span class="c1"># Validate training data input</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
@@ -936,6 +1013,484 @@ predictions and includes optional model saving and evaluation output.</p>
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="educhateval.core.PredictLabels.run_pipeline" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">run_pipeline</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">new_data</span><span class="p">,</span> <span class="n">text_column</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">label_column</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="n">columns_to_classify</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">split_ratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">training_params</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;cross_entropy&#39;</span><span class="p">,</span> <span class="mf">5e-05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">tuning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tuning_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_save_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prediction_save_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>This function handles the full pipeline of loading data, preparing datasets, tokenizing inputs, training a transformer-based
+classifier, and applying it to specified text columns in new data. It supports custom hyperparameters, optional hyperparameter
+tuning, and saving of both the trained model and prediction outputs.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>train_data</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="pandas.DataFrame">DataFrame</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Labeled dataset for training. Can be a DataFrame or a CSV file path.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>new_data</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="pandas.DataFrame">DataFrame</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dataset to annotate with predicted labels. Can be a DataFrame or a CSV file path.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>text_column</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Column in the training data containing the input text. Defaults to "text".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;text&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>label_column</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Column in the training data containing the target labels. Defaults to "category".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;category&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>columns_to_classify</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="typing.List">List</span>[<span title="str">str</span>]]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Column(s) in <code>new_data</code> to predict labels for. Defaults to <code>text_column</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>split_ratio</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Ratio of data to use for validation. Must be between 0 and 1. Defaults to 0.2.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0.2</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>training_params</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of 7 training hyperparameters: [weight_decay, loss_fn, learning_rate, batch_size,
+                num_epochs, warmup_steps, gradient_accumulation]. Defaults to [0.01, "cross_entropy", 5e-5, 8, 8, 4, 0.01].</p>
+              </div>
+            </td>
+            <td>
+                  <code>[0.01, &#39;cross_entropy&#39;, 5e-05, 8, 8, 4, 0.01]</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tuning</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to perform hyperparameter tuning. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tuning_params</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dictionary of tuning settings if <code>tuning</code> is True. Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_save_path</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional path to save the trained model and tokenizer. Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>prediction_save_path</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional path to save annotated predictions as a CSV. Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>seed</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Random seed for reproducibility. Defaults to 42.</p>
+              </div>
+            </td>
+            <td>
+                  <code>42</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pd.DataFrame: A DataFrame containing the original <code>new_data</code> with added columns for predicted labels and confidence scores.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/educhateval/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run_pipeline</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">train_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+    <span class="n">new_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+    <span class="c1"># columns in the training data</span>
+    <span class="n">text_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+    <span class="n">label_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span>
+    <span class="c1"># columns to classify in the new data</span>
+    <span class="n">columns_to_classify</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">split_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">training_params</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="s2">&quot;cross_entropy&quot;</span><span class="p">,</span> <span class="mf">5e-5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+    <span class="n">tuning</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">tuning_params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">model_save_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">prediction_save_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function handles the full pipeline of loading data, preparing datasets, tokenizing inputs, training a transformer-based</span>
+<span class="sd">    classifier, and applying it to specified text columns in new data. It supports custom hyperparameters, optional hyperparameter</span>
+<span class="sd">    tuning, and saving of both the trained model and prediction outputs.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        train_data (Union[str, pd.DataFrame]): Labeled dataset for training. Can be a DataFrame or a CSV file path.</span>
+<span class="sd">        new_data (Union[str, pd.DataFrame]): Dataset to annotate with predicted labels. Can be a DataFrame or a CSV file path.</span>
+<span class="sd">        text_column (str): Column in the training data containing the input text. Defaults to &quot;text&quot;.</span>
+<span class="sd">        label_column (str): Column in the training data containing the target labels. Defaults to &quot;category&quot;.</span>
+<span class="sd">        columns_to_classify (Optional[Union[str, List[str]]]): Column(s) in `new_data` to predict labels for. Defaults to `text_column`.</span>
+<span class="sd">        split_ratio (float): Ratio of data to use for validation. Must be between 0 and 1. Defaults to 0.2.</span>
+<span class="sd">        training_params (list): List of 7 training hyperparameters: [weight_decay, loss_fn, learning_rate, batch_size,</span>
+<span class="sd">                            num_epochs, warmup_steps, gradient_accumulation]. Defaults to [0.01, &quot;cross_entropy&quot;, 5e-5, 8, 8, 4, 0.01].</span>
+<span class="sd">        tuning (bool): Whether to perform hyperparameter tuning. Defaults to False.</span>
+<span class="sd">        tuning_params (Optional[dict]): Dictionary of tuning settings if `tuning` is True. Defaults to None.</span>
+<span class="sd">        model_save_path (Optional[str]): Optional path to save the trained model and tokenizer. Defaults to None.</span>
+<span class="sd">        prediction_save_path (Optional[str]): Optional path to save annotated predictions as a CSV. Defaults to None.</span>
+<span class="sd">        seed (int): Random seed for reproducibility. Defaults to 42.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: A DataFrame containing the original `new_data` with added columns for predicted labels and confidence scores.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Validate training data input</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Please provide data training data. This must be a pandas DataFrame or a path to a CSV file.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Please provide data to be labeled. This must be a pandas DataFrame or a path to a CSV file.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Validate training parameters</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">training_params</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">training_params</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;training_params must be a list of at least 7 hyperparameter values.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">split_ratio</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">split_ratio</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;split_ratio must be a float between 0 and 1.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Validate column names</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text_column</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;text_column must be a string.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_column</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;label_column must be a string.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Validate columns_to_classify</span>
+    <span class="k">if</span> <span class="n">columns_to_classify</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">columns_to_classify</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;columns_to_classify must be a string or a list of strings.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">columns_to_classify</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns_to_classify</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;All entries in columns_to_classify must be strings.&quot;</span><span class="p">)</span>
+
+    <span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="n">dataset_dict</span><span class="p">,</span> <span class="n">label2id</span> <span class="o">=</span> <span class="n">load_and_prepare_dataset</span><span class="p">(</span>
+        <span class="n">train_data</span><span class="p">,</span> <span class="n">text_column</span><span class="p">,</span> <span class="n">label_column</span><span class="p">,</span> <span class="n">split_ratio</span>
+    <span class="p">)</span>
+    <span class="n">tokenized</span> <span class="o">=</span> <span class="n">tokenize_dataset</span><span class="p">(</span><span class="n">dataset_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="p">,</span> <span class="n">trainer</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span>
+        <span class="n">tokenized</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">label2id</span><span class="p">),</span>
+        <span class="n">training_params</span><span class="p">,</span>
+        <span class="n">tuning</span><span class="p">,</span>
+        <span class="n">tuning_params</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">model_save_path</span><span class="p">:</span>
+        <span class="n">save_model_and_tokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_save_path</span><span class="p">)</span>
+
+    <span class="c1"># Default to using the training text_column if no specific columns_to_classify provided</span>
+    <span class="k">if</span> <span class="n">columns_to_classify</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">columns_to_classify</span> <span class="o">=</span> <span class="n">text_column</span>
+
+    <span class="n">df_annotated</span> <span class="o">=</span> <span class="n">predict_annotated_dataset</span><span class="p">(</span>
+        <span class="n">new_data</span><span class="o">=</span><span class="n">new_data</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+        <span class="n">text_columns</span><span class="o">=</span><span class="n">columns_to_classify</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">label2id</span><span class="o">=</span><span class="n">label2id</span><span class="p">,</span>
+        <span class="n">save_path</span><span class="o">=</span><span class="n">prediction_save_path</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_annotated</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
 
 
 
