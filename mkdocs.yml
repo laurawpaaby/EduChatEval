@@ -37,7 +37,12 @@ theme:
 nav:
   - Home: index.md
   - Installation: installation.md
-  - User Guide: user-guide.md
+  - User Guide: 
+    - Overview: user_guides/userguide_intro.md
+    - Feedback Guide: user_guides/feedback_guide.md
+    - Feedback Templates: user_guides/feedback_frameworks.md
+    - Linguistic Guide: user_guides/default_guide.md
+    - Linguistic Templates: user_guides/default_frameworks.md
   - API: 
     - Framework Generation: api/api_frame_gen.md
     - Synthesizing Interactions: api/api_synth_int.md

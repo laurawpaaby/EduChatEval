@@ -277,16 +277,6 @@ class ChatWrap:
     Methods:
         run(): Launches the Textual chat application and starts interaction with the model.
 
-    *Example Usage*
-
-           ```bash
-           chat-ui \
-            --api_url http://127.0.0.1:1234/v1/chat/completions \
-            --model llama-3.2-3b-instruct \
-            --prompt "You are a helpful tutor guiding a student." \
-            --save_dir data/logged_dialogue_data
-
-           ```
 
     """
 

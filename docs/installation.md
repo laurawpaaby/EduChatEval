@@ -1,6 +1,6 @@
-You can install chat wrappy using via pip from PyPI:
+You can install EduChatEval using via pip from PyPI:
 
-```pip install chat-wrappy```
+```pip install educhateval```
 
 Or from [Github](https://github.com/laurawpaaby/EduChatEval/tree/main):
 

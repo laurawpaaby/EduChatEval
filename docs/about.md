@@ -1,19 +1,33 @@
 # About
 
 ### Project
-This package was developed as part of a master’s thesis on the MSc in Cognitive Science at Aarhus University. With this package, I hope to contribute to the development of methods for evaluating the use of LLMs.
+This package was developed as part of a master's thesis in Cognitive Science at Aarhus University. The project explores how interactions between students and LLM-based tutors can be systematically analyzed using natural language processing, classification pipelines, and visualization techniques.
 
-The main contribution is refining and wrapping existing methods into a coherent test suite. Additionally, we have introduced our own evaluation and visualization functions to present the results of various metrics in a cohesive manner.
+The core contribution is the enablement of quantitative evaluation of interaction-based learning by transforming student–tutor exchanges into structured, labeled data. Through classifier-based annotation and modular components for synthetic data generation, interaction simulation, and result visualization, the package enables a reproducible and data-driven approach to studying chatbot-assisted education. It is designed for flexibility across educational and experimental contexts, particularly where interaction analysis is needed beyond traditional self-report methods.
+
+The full source code for the [EduChatEval package](https://pypi.org/project/educhateval/) is available on GitHub and is licensed under [MIT License](https://github.com/laurawpaaby/EduChatEval/blob/main/LICENSE)
+
 
 ### Contact
-If you have any questions regarding the project or the code implementation, feel free to contact someone@example.com.
+For questions or collaboration inquiries, feel free to reach out to [Laura W Paaby](mailto:laurawpaaby@gmail.com).
 
-Chatwrap is licensed under MIT and available on GitHub.
 
 ## Acknowledgements
-This project uses code from three already implemented frameworks for quantifying gender bias in Danish. While all externally authored code is properly attributed in the repository’s scripts, we would also like to acknowledge the authors of the work we draw on:
 
-Reference 1: Author, A. A. (Year). Title of the article. Journal Title, 10(2), 123–145. https://doi.org/10.0000/xyz123
-Reference 2: Author, B. B., & Author, C. C. (Year). Another work. Publisher. https://doi.org/10.0000/abc456
-Reference 3: Author, D. D. (Year). Yet another reference. Conference Proceedings. https://doi.org/10.0000/def789
-Reference 4: Organization E. (Year). Document title. Retrieved from https://doi.org/10.0000/ghi012
+This project builds on existing tools and ideas from the open-source community. While specific references are provided within the relevant scripts throughout the repository, the key sources of inspiration are also acknowledged here to highlight the contributions that have shaped the development of this package.
+
+- *Constraint-Based Data Generation – Outlines Package*  
+  [Willard, Brandon T. & Louf, Rémi (2023). *Efficient Guided Generation for LLMs.*](https://arxiv.org/abs/2307.09702)  
+  Provided the foundation for constrained text generation used in the framework module.
+
+- *Chat Interface and Wrapper – Textual* 
+  [McGugan, W. (2024, Sep). *Anatomy of a Textual User Interface.*](https://textual.textualize.io/blog/2024/09/15/anatomy-of-a-textual-user-interface/#were-in-the-pipe-five-by-five)  
+  Inspired the design and implementation of the terminal-based chat application.
+
+- *Package Design Inspiration* 
+  [Thea Rolskov Sloth & Astrid Sletten Rybner](https://github.com/DaDebias/genda-lens)  
+  Their clean and modular implementation of Genda-Lens influenced the architectural design of *EduChatEval*.
+
+- *Code Debugging and Conceptual Feedback*
+  [Mina Almasi](https://pure.au.dk/portal/da/persons/mina%40cc.au.dk) and [Ross Deans Kristensen-McLachlan](https://pure.au.dk/portal/da/persons/rdkm%40cc.au.dk)  
+  Contributed helpful debugging support and valuable conceptual input throughout the development process.
