@@ -546,6 +546,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#direct-wrap-of-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct Wrap of Interactions
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -795,8 +804,8 @@
 
 <p>Below are two example workflows demonstrating how to use each module in the package to synthesize, classify, and visualize dialogue interactions between a student and tutor agent. In practice, users are encouraged to incorporate real-world data where available, which may slightly alter certain steps in the pipeline.</p>
 <h2 id="feedback-example">Feedback Example</h2>
-<p><strong>Generate Label Framework</strong>
-The first walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on different feedback types: (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>).</p>
+<p><strong>Generate Label Framework</strong></p>
+<p>The first example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on different feedback types: (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>).</p>
 <p>First install the package:
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>educhateval
 </code></pre></div>
@@ -861,8 +870,8 @@ Initialize the generator with your chosen model and API, and generate labeled sa
     <span class="n">split_ratio</span><span class="o">=</span><span class="mf">0.25</span>
 <span class="p">)</span>
 </code></pre></div></p>
-<p><strong>Visualize</strong>
-Import the visualizer and plot results:
+<p><strong>Visualize</strong></p>
+<p>Import the visualizer and plot results:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">Visualizer</span>
 
 <span class="n">viz</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
@@ -886,18 +895,20 @@ Import the visualizer and plot results:
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Feedback Distribution over Turns&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
+Returns:
 <a href="../../pics/simple_bar.png">Bar Chart</a></p>
 <hr />
 <h2 id="linguistic-example">Linguistic Example</h2>
-<p>This example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>).</p>
+<p>The second example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>).</p>
 <p>First install the package:
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>educhateval
 </code></pre></div></p>
 <p><strong>Generate Label Framework</strong></p>
-<p>Install the package and import the framework generator
+<p>Import the framework generator:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
 </code></pre></div></p>
-<p>Initialize the generator with your chosen model and API, and generate labeled samples. In this example a dictionary is provided as prompt:</p>
+<p>Initialize the generator with your chosen model and API, and generate labeled samples. In this example a dictionary is provided as prompt. 
+See <a href="../frameworks/">Templates</a> for how to structure a <code>YAML</code> prompt input instead. </p>
 <div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span>
 
 <span class="c1"># Dictionary of prompts</span>
@@ -970,9 +981,9 @@ Import the visualizer and plot results:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">DialogueSimulator</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">DialogueSimulator</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mlx&quot;</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<p>See <a href="../frameworks/">Templates</a> for how to structure your <code>YAML</code> input. </p>
-<p>In this example, multiple dialogues are simulated representing different student agents. Each seed message in the <code>english_course</code> configuration acts as the starting input for one student. The model responds over several turns, alternating between the student and tutor roles. This looped setup helps create a diverse set of interaction sequences, each grounded in a unique initiating prompt.</p>
+</code></pre></div>
+In this example, multiple dialogues are simulated representing different student agents. Each seed message in the <code>english_course</code> configuration acts as the starting input for one student. The model responds over several turns, alternating between the student and tutor roles. This looped setup helps create a diverse set of interaction sequences, each grounded in a unique initiating prompt.</p>
+<p>See <a href="../frameworks/">Templates</a> for how to structure your <code>YAML</code> seed input used here. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Extract seed messages for the English course</span>
 <span class="n">english_seeds</span> <span class="o">=</span> <span class="n">seed_messages</span><span class="p">[</span><span class="s2">&quot;english_course&quot;</span><span class="p">][</span><span class="s2">&quot;seeds&quot;</span><span class="p">]</span>
 <span class="n">n_seeds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">english_seeds</span><span class="p">)</span>
@@ -1059,6 +1070,22 @@ Import the visualizer and plot results:
 </code></pre></div>
 Returns:
 <img alt="interactions" src="../../pics/interaction.png" /></p>
+<hr />
+<h2 id="direct-wrap-of-interactions">Direct Wrap of Interactions</h2>
+<p>Instead of generating or using pre-existing interaction data, users can collect it directly using the package’s <code>chat_ui</code> wrapper. 
+his replaces the <em>synthesizing interactions</em> step above and is executed as follows:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>educhateval
+</code></pre></div>
+<p>From the terminal run: </p>
+<div class="highlight"><pre><span></span><code>chat-ui<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--api_url<span class="w"> </span>http://127.0.0.1:1234/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--model<span class="w"> </span>llama-3.2-3b-instruct<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prompt<span class="w"> </span><span class="s2">&quot;You are a helpful tutor guiding a student.&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--save_dir<span class="w"> </span>data/logged_dialogue_data
+</code></pre></div>
+<p>Returns: 
+<img alt="ui" src="../../pics/ui.png" /></p>
+<p>Find more detailed instructions in the <a href="https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md">Chat Wrap Tutorial</a></p>
 
 
 
