@@ -26,17 +26,31 @@ Overview of the system architecture:
 pip install educhateval
 ```
 
+## 🤗 Integration 
+Note that the framework and dialogue generation is integrated with [LM Studio](https://lmstudio.ai/), and the wrapper and classifiers with [Hugging Face](https://huggingface.co/).
+
+
+## 📖 Documentation
+
+| **Documentation** | **Description** |
+|-------------------|-----------------|
+| 📚 [User Guide](https://laurawpaaby.github.io/EduChatEval/user_guides/guide/) | Instructions on how to run the entire pipeline provided in the package |
+| 💡 [Prompt Templates](https://laurawpaaby.github.io/EduChatEval/user_guides/frameworks/) | Overview of system prompts, role behaviors, and instructional strategies |
+| 🧠 [API References](https://laurawpaaby.github.io/EduChatEval/api/api_frame_gen/) | Full reference for the `educhateval` API: classes, methods, and usage |
+| 🤔 [About](https://laurawpaaby.github.io/EduChatEval/about/) | Learn more about the thesis project, context, and contributors |
+
+
 ## ⚙️ Usage
 ```python
+from pathlib import Path
 from educhateval import FrameworkGenerator, 
                         DialogueSimulator,
                         PredictLabels,
                         Visualizer
-from pathlib import Path
 ```
 
+1. Generate Label Framework
 ```python
-# 1. Generate Label Framework
 generator = FrameworkGenerator(
     model_name="llama-3.2-3b-instruct",
     api_url="http://localhost:1234/v1/completions"
@@ -44,19 +58,17 @@ generator = FrameworkGenerator(
 
 df_4 = generator.generate_framework(
     prompt_path="outline_prompts/prompt_default_4types.py",
-    num_samples=200,
-    csv_out="data/labeled_training_data.csv"
+    num_samples=200
 )
 
 filtered_df = generator.filter_with_classifier(
     train_data="data/tiny_labeled_default.csv",
-    synth_data=df_4,
-    classifier_model_name="distilbert-base-uncased"
+    synth_data=df_4
 )
 ```
 
+2. Synthesize Interaction
 ```python
-# 2. Synthesize Interaction
 simulator = DialogueSimulator(
     backend="mlx",
     model_id="mlx-community/Qwen2.5-7B-Instruct-1M-4bit"
@@ -73,8 +85,8 @@ df_single = simulator.simulate_dialogue(
 )
 ```
 
+Classify and Predict
 ```python
-# 3. Classify and Predict
 predictor = PredictLabels(model_name="distilbert/distilroberta-base")
 
 annotaded_df = predictor.run_pipeline(
@@ -87,8 +99,8 @@ annotaded_df = predictor.run_pipeline(
 )
 ```
 
+ Visualize
 ```python
-# 4. Visualize
 viz = Visualizer()
 
 summary = viz.create_summary_table(
@@ -118,20 +130,7 @@ viz.plot_history_interaction(
     use_percent=True
 )
 ```
-
-## 🤗 Integration 
-Note that the framework and dialogue generation is integrated with [LM Studio](https://lmstudio.ai/), and the wrapper and classifiers with [Hugging Face](https://huggingface.co/)
-
-
-
-## 📖 Documentation
-
-| **Documentation** | **Description** |
-|-------------------|-----------------|
-| 📚 [User Guide](https://laurawpaaby.github.io/EduChatEval/user_guides/guide/) | Instructions on how to run the entire pipeline provided in the package |
-| 💡 [Prompt Templates](https://laurawpaaby.github.io/EduChatEval/user_guides/frameworks/) | Overview of system prompts, role behaviors, and instructional strategies |
-| 🧠 [API References](https://laurawpaaby.github.io/EduChatEval/api/api_frame_gen/) | Full reference for the `educhateval` API: classes, methods, and usage |
-| 🤔 [About](https://laurawpaaby.github.io/EduChatEval/about/) | Learn more about the thesis project, context, and contributors |
+--- 
 
 
 ## 🫶🏼 Acknowdledgement 
