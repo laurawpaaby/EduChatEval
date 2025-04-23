@@ -514,15 +514,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#educhateval.core.FrameworkGenerator.__init__" class="md-nav__link">
-    <span class="md-ellipsis">
-      __init__
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#educhateval.core.FrameworkGenerator.filter_with_classifier" class="md-nav__link">
     <span class="md-ellipsis">
       filter_with_classifier
@@ -844,14 +835,7 @@
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FrameworkGenerator</span><span class="p">:</span>
+<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FrameworkGenerator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Module for generating synthetic datasets (frameworks) using prompts and local LLMs.</span>
 
@@ -865,13 +849,6 @@
         <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span>
         <span class="n">api_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initialize the framework generator.</span>
-
-<span class="sd">        Parameters:</span>
-<span class="sd">        - model_name (str): Name of the generative model to use (e.g., llama-3.2-3b-instruct).</span>
-<span class="sd">        - api_url (str): URL endpoint to communicate with the locally hosted LLM (e.g., LM Studio).</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">api_url</span> <span class="o">=</span> <span class="n">api_url</span>
 
@@ -1011,58 +988,6 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="educhateval.core.FrameworkGenerator.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;llama-3.2-3b-instruct&#39;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:1234/v1/completions&#39;</span><span class="p">)</span></code>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Initialize the framework generator.</p>
-<p>Parameters:
-- model_name (str): Name of the generative model to use (e.g., llama-3.2-3b-instruct).
-- api_url (str): URL endpoint to communicate with the locally hosted LLM (e.g., LM Studio).</p>
-
-
-            <details class="quote">
-              <summary>Source code in <code>src/educhateval/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span>
-    <span class="n">api_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">,</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initialize the framework generator.</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">    - model_name (str): Name of the generative model to use (e.g., llama-3.2-3b-instruct).</span>
-<span class="sd">    - api_url (str): URL endpoint to communicate with the locally hosted LLM (e.g., LM Studio).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">api_url</span> <span class="o">=</span> <span class="n">api_url</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
 <h2 id="educhateval.core.FrameworkGenerator.filter_with_classifier" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">filter_with_classifier</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">synth_data</span><span class="p">,</span> <span class="n">text_column</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">label_column</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="n">split_ratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">training_params</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;cross_entropy&#39;</span><span class="p">,</span> <span class="mf">5e-05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">tuning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tuning_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_save_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classifier_model_name</span><span class="o">=</span><span class="s1">&#39;distilbert-base-uncased&#39;</span><span class="p">,</span> <span class="n">filtered_save_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
@@ -1090,7 +1015,14 @@
 
             <details class="quote">
               <summary>Source code in <code>src/educhateval/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
@@ -1151,14 +1083,7 @@
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_with_classifier</span><span class="p">(</span>
+<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_with_classifier</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">train_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
     <span class="n">synth_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
@@ -1259,7 +1184,14 @@
 
             <details class="quote">
               <summary>Source code in <code>src/educhateval/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 76</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
 <span class="normal"> 77</span>
 <span class="normal"> 78</span>
 <span class="normal"> 79</span>
@@ -1298,14 +1230,7 @@
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_framework</span><span class="p">(</span>
+<span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_framework</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">prompt_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">prompt_dict_input</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
