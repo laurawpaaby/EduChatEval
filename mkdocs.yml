@@ -1,4 +1,8 @@
 site_name: CHATWRAPTIME
+site_url: https://github.com/laurawpaaby/EduChatEval
+repo_url: https://github.com/laurawpaaby/EduChatEval
+docs_dir: 'docs/'
+
 
 theme:
   name: 'material'
@@ -35,9 +39,9 @@ nav:
   - Installation: installation.md
   - User Guide: user-guide.md
   - API: 
-    - Frame Generator: api/api_frame_gen.md
-    - Synthesis Interaction: api/api_synth_int.md
-    - Wrap Interaction: api/api_wrap_int.md
+    - Framework Generation: api/api_frame_gen.md
+    - Synthesizing Interactions: api/api_synth_int.md
+    - Wrap Interactions: api/api_wrap_int.md
     - Predict Labels: api/api_pred.md
     - Visualizations: api/api_viz.md
   - About: about.md
@@ -46,7 +50,14 @@ nav:
 plugins:
 - search
 - mkdocstrings:
-    default_handler: python
+    handlers:
+      python:
+        options:
+            docstring_style: google
+            show_init: false
+            members_order: source
+        
+
 
 extra:
   social:

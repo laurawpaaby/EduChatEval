@@ -261,9 +261,35 @@ class ChatApp(App):
 ### wrap up the all functions and run it ##
 class ChatWrap:
     """
-    A wrapper class for launching the Textual chat interface
-    with an LM Studio-backed language model.
+    Module for launching the Textual chat interface with an LM Studio-backed language model. It should be run from the command line.
+
+    This class configures the model, system prompt, and save path, and then starts an interactive, full-screen terminal chat
+    application using the `textual` framework. The interface supports live message streaming, styled user and assistant blocks,
+    and automatic logging of chat history to JSON and CSV formats. 
+
+    Parameters:
+        api_url (str): URL of the LM Studio API endpoint used for inference. Defaults to "http://127.0.0.1:1234/v1/chat/completions".
+        model_name (str): Name of the model to use in LM Studio (e.g., "llama-3.2-3b-instruct").
+        temperature (float): Sampling temperature for text generation. Controls randomness. Defaults to 0.7.
+        system_prompt (str): Initial system message to prime the assistant’s behavior. Defaults to a helpful tutoring message.
+        save_dir (Path): Directory for saving logged conversations as `.json` and `.csv`. Defaults to "data/logged_dialogue_data".
+
+    Methods:
+        run(): Launches the Textual chat application and starts interaction with the model.
+
+    *Example Usage*
+
+           ```bash
+           chat-ui \
+            --api_url http://127.0.0.1:1234/v1/chat/completions \
+            --model llama-3.2-3b-instruct \
+            --prompt "You are a helpful tutor guiding a student." \
+            --save_dir data/logged_dialogue_data
+
+           ```
+
     """
+
 
     def __init__(
         self,
@@ -290,7 +316,7 @@ class ChatWrap:
         )
 
     def run(self):
-        """Launch the Textual app."""
+        """Launches the Textual app."""
         app = ChatApp(
             model=self.model,
             chat_history=self.chat_history,

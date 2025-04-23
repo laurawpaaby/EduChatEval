@@ -51,11 +51,15 @@ warnings.filterwarnings(
 
 class FrameworkGenerator:
     """
-    High-level interface for generating synthetic datasets (frameworks) using prompts and local LLMs.
+    Module for generating synthetic annotated datasets (frameworks) using instruction-tuned models hosted locally and filtering of low-quality examples via classifier agreement.
 
-    Includes:
-    - Synthetic data generation using instruction-tuned models.
-    - Filtering of low-quality examples via classifier agreement with a small labeled dataset.
+    Attributes:
+        model_name (str): Name of the local model to use for generation (default: "llama-3.2-3b-instruct").
+        api_url (str): URL for the local model API (default: "http://localhost:1234/v1/completions").
+    
+    Methods:
+        generate_framework(...): Simulates a dialogue and returns it as a pandas DataFrame.
+        filter_with_classifier(...): Filters the generated dataset using a small classifier trained on real labeled data.
     """
 
     def __init__(
@@ -63,13 +67,6 @@ class FrameworkGenerator:
         model_name: str = "llama-3.2-3b-instruct",
         api_url: str = "http://localhost:1234/v1/completions",
     ):
-        """
-        Initialize the framework generator.
-
-        Parameters:
-        - model_name (str): Name of the generative model to use (e.g., llama-3.2-3b-instruct).
-        - api_url (str): URL endpoint to communicate with the locally hosted LLM (e.g., LM Studio).
-        """
         self.model_name = model_name
         self.api_url = api_url
 
@@ -86,19 +83,18 @@ class FrameworkGenerator:
     ) -> pd.DataFrame:
         """
         Generate a synthetic labeled dataset from prompts using a language model.
-
         Either `prompt_path` (path to .py file with `prompt_dict`) or `prompt_dict_input` must be provided.
 
         Parameters:
-        - prompt_path (str): Path to a Python file containing a prompt dictionary.
-        - prompt_dict_input (dict): Prompt dictionary directly provided.
-        - num_samples (int): Number of samples to generate per category.
-        - json_out (str): Optional path to save JSON output.
-        - csv_out (str): Optional path to save CSV output.
-        - seed (int): Random seed for reproducibility.
+            prompt_path (str): Path to a Python file containing a prompt dictionary.
+            prompt_dict_input (dict): Prompt dictionary directly provided.
+            num_samples (int): Number of samples to generate per category.
+            json_out (str): Optional path to save JSON output.
+            csv_out (str): Optional path to save CSV output.
+            seed (int): Random seed for reproducibility.
 
         Returns:
-        - pd.DataFrame: Cleaned, labeled synthetic dataset.
+            pd.DataFrame: Cleaned, labeled synthetic dataset.
         """
         if not prompt_path and not prompt_dict_input:
             raise ValueError(
@@ -140,20 +136,20 @@ class FrameworkGenerator:
         Train a small classifier on real labeled data and use it to filter the synthetic dataset by agreement.
 
         Parameters:
-        - train_data (str or pd.DataFrame): Path or DataFrame of small labeled training set.
-        - synth_data (str or pd.DataFrame): Path or DataFrame of generated synthetic dataset.
-        - text_column (str): Name of the text column.
-        - label_column (str): Name of the label column.
-        - split_ratio (float): Ratio for train/test split.
-        - training_params (list): Training hyperparameters.
-        - tuning (bool): Whether to perform hyperparameter tuning using Optuna.
-        - tuning_params (dict): Optional tuning grid.
-        - model_save_path (str): Optional path to save the classifier model.
-        - classifier_model_name (str): HF model ID for the classifier.
-        - filtered_save_path (str): Optional path to save filtered synthetic dataset.
+            train_data (str or pd.DataFrame): Path or DataFrame of small labeled training set.
+            synth_data (str or pd.DataFrame): Path or DataFrame of generated synthetic dataset.
+            text_column (str): Name of the text column.
+            label_column (str): Name of the label column.
+            split_ratio (float): Ratio for train/test split.
+            training_params (list): Training hyperparameters.
+            tuning (bool): Whether to perform hyperparameter tuning using Optuna.
+            tuning_params (dict): Optional tuning grid.
+            model_save_path (str): Optional path to save the classifier model.
+            classifier_model_name (str): HF model ID for the classifier.
+            filtered_save_path (str): Optional path to save filtered synthetic dataset.
 
         Returns:
-        - pd.DataFrame: Filtered synthetic dataset based on classifier agreement.
+            pd.DataFrame: Filtered synthetic dataset based on classifier agreement.
         """
         if isinstance(train_data, pd.DataFrame) and train_data.empty:
             raise ValueError("Provided training DataFrame is empty.")
@@ -208,14 +204,14 @@ from educhateval.dialogue_generation.models.wrap_micr import ChatMLX
 
 class DialogueSimulator:
     """
-    A modular simulator for generating multi-turn dialogues between a student and tutor agent using large language models.
+    Module for generating multi-turn dialogues between a student and tutor agent using large language models.
 
-    This class wraps backend-specific model interfaces and orchestrates the simulation of goal-driven conversations across various educational modes.
-    It supports customizable sampling behavior and ensures reproducibility via global seeding. Outputs are returned as structured pandas DataFrames.
+    This class wraps backend-specific model interfaces and orchestrates the simulation of conversations between two agents.
+    It supports customizable educational modes and sampling behavior and ensures reproducibility via global seeding. Outputs are returned as structured pandas DataFrames.
 
     Attributes:
         backend (str): Backend to use for inference. Options are "hf" (Hugging Face) or "mlx" (MLX).
-        model_id (str): The identifier of the model to use, e.g., "gpt2" or an MLX-compatible model.
+        model_id (str): The identifier of the model to use, e.g., "gpt2" (Hugging Face) or "Qwen2.5-7B-Instruct-1M-4bit" (MLX).
         sampling_params (Optional[dict]): Sampling hyperparameters such as temperature, top_p, or top_k.
 
     Methods:
@@ -309,13 +305,13 @@ from educhateval.dialogue_classification.train_classifier import (
 
 class PredictLabels:
     """
-    A wrapper for training and applying a text classification model.
+    Module for training and applying a text classification model.
 
     This class streamlines the process of fine-tuning a transformer-based classifier on labeled data
     and applying the trained model to annotate new, unlabeled datasets. Supports both single and multi-column
     predictions and includes optional model saving and evaluation output.
 
-    Required Args:
+    Attributes:
         model_name (str): Name of the pretrained Hugging Face model to fine-tune (default: "distilbert-base-uncased").
 
     Methods:
@@ -343,6 +339,30 @@ class PredictLabels:
         prediction_save_path: Optional[str] = None,
         seed: int = 42,
     ) -> pd.DataFrame:
+        """
+        This function handles the full pipeline of loading data, preparing datasets, tokenizing inputs, training a transformer-based
+        classifier, and applying it to specified text columns in new data. It supports custom hyperparameters, optional hyperparameter
+        tuning, and saving of both the trained model and prediction outputs.
+
+        Parameters:
+            train_data (Union[str, pd.DataFrame]): Labeled dataset for training. Can be a DataFrame or a CSV file path.
+            new_data (Union[str, pd.DataFrame]): Dataset to annotate with predicted labels. Can be a DataFrame or a CSV file path.
+            text_column (str): Column in the training data containing the input text. Defaults to "text".
+            label_column (str): Column in the training data containing the target labels. Defaults to "category".
+            columns_to_classify (Optional[Union[str, List[str]]]): Column(s) in `new_data` to predict labels for. Defaults to `text_column`.
+            split_ratio (float): Ratio of data to use for validation. Must be between 0 and 1. Defaults to 0.2.
+            training_params (list): List of 7 training hyperparameters: [weight_decay, loss_fn, learning_rate, batch_size,
+                                num_epochs, warmup_steps, gradient_accumulation]. Defaults to [0.01, "cross_entropy", 5e-5, 8, 8, 4, 0.01].
+            tuning (bool): Whether to perform hyperparameter tuning. Defaults to False.
+            tuning_params (Optional[dict]): Dictionary of tuning settings if `tuning` is True. Defaults to None.
+            model_save_path (Optional[str]): Optional path to save the trained model and tokenizer. Defaults to None.
+            prediction_save_path (Optional[str]): Optional path to save annotated predictions as a CSV. Defaults to None.
+            seed (int): Random seed for reproducibility. Defaults to 42.
+
+        Returns:
+            pd.DataFrame: A DataFrame containing the original `new_data` with added columns for predicted labels and confidence scores.
+        """
+
 
         # Validate training data input
         if not isinstance(train_data, (pd.DataFrame, str)):
@@ -430,8 +450,7 @@ class Visualizer:
     Visualization class for analyzing predicted dialogue labels.
     Wraps existing plotting and summary functions from display_result.py.
 
-    Parameters
-    ----------
+    Parameters:
     df : pd.DataFrame
         The annotated dataframe containing predicted label columns.
     student_col : str, optional
