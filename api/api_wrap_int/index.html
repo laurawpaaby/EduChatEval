@@ -826,10 +826,11 @@ and automatic logging of chat history to JSON and CSV formats. </p>
             </tr>
       </tbody>
     </table>
-        <p><em>Example Usage:</em></p>
-<pre><code>``` python
-chat-ui             --api_url http://127.0.0.1:1234/v1/chat/completions             --model llama-3.2-3b-instruct             --prompt "You are a helpful tutor guiding a student."             --save_dir data/logged_dialogue_data
-```
+        <p><em>Example Usage</em></p>
+<pre><code>   ```bash
+   chat-ui             --api_url http://127.0.0.1:1234/v1/chat/completions             --model llama-3.2-3b-instruct             --prompt "You are a helpful tutor guiding a student."             --save_dir data/logged_dialogue_data
+
+   ```
 </code></pre>
 
 
@@ -902,7 +903,8 @@ chat-ui             --api_url http://127.0.0.1:1234/v1/chat/completions         
 <span class="normal">321</span>
 <span class="normal">322</span>
 <span class="normal">323</span>
-<span class="normal">324</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ChatWrap</span><span class="p">:</span>
+<span class="normal">324</span>
+<span class="normal">325</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ChatWrap</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Module for launching the Textual chat interface with an LM Studio-backed language model. It should be run from the command line.</span>
 
@@ -920,16 +922,17 @@ chat-ui             --api_url http://127.0.0.1:1234/v1/chat/completions         
 <span class="sd">    Methods:</span>
 <span class="sd">        run(): Launches the Textual chat application and starts interaction with the model.</span>
 
+<span class="sd">    *Example Usage*</span>
 
-<span class="sd">    *Example Usage:*</span>
-
-<span class="sd">        ``` python</span>
-<span class="sd">        chat-ui \</span>
+<span class="sd">           ```bash</span>
+<span class="sd">           chat-ui \</span>
 <span class="sd">            --api_url http://127.0.0.1:1234/v1/chat/completions \</span>
 <span class="sd">            --model llama-3.2-3b-instruct \</span>
 <span class="sd">            --prompt &quot;You are a helpful tutor guiding a student.&quot; \</span>
 <span class="sd">            --save_dir data/logged_dialogue_data</span>
-<span class="sd">        ```</span>
+
+<span class="sd">           ```</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
 
@@ -996,14 +999,14 @@ chat-ui             --api_url http://127.0.0.1:1234/v1/chat/completions         
 
             <details class="quote">
               <summary>Source code in <code>src/educhateval/chat_ui.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">317</span>
-<span class="normal">318</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">318</span>
 <span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
 <span class="normal">322</span>
 <span class="normal">323</span>
-<span class="normal">324</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">324</span>
+<span class="normal">325</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Launches the Textual app.&quot;&quot;&quot;</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">ChatApp</span><span class="p">(</span>
         <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
