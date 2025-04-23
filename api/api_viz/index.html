@@ -664,9 +664,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#4-interaction-distribution-interaction-distribution" class="md-nav__link">
+  <a href="#4-interaction-distribution" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Interaction Distribution { #interaction-distribution }
+      4. Interaction Distribution
     </span>
   </a>
   
@@ -927,7 +927,7 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
             </details>
     </div>
 
-</div><p>Example: </p>
+</div><p>Example usage: </p>
 <pre><code class="language-python">viz.plot_category_bars(
     df=annotated_df,
     student_col=&quot;predicted_labels_student_msg&quot;,
@@ -936,45 +936,18 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
     title=&quot;Distribution of Predicted Classes&quot;
 )
 </code></pre>
-<p>Return:
-<img alt="barplot" src="../../pics/simple_bar.png" /></p>
-<p><strong>Parameters:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>df</code></td>
-<td><code>df</code></td>
-<td>Dataframe containing predicted labels.</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>student_col</code></td>
-<td><code>str</code></td>
-<td>Name of the column with predicted labels for the <strong>student</strong>.</td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><code>tutor_col</code></td>
-<td><code>str</code></td>
-<td>Name of the column with predicted labels for the <strong>tutor</strong>.</td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td><code>str</code></td>
-<td>Title for the plot</td>
-<td><em>"Predicted Classes"</em></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Parameters:</strong>
+| Name         | Type      | Description                                                                 | Default      |
+|--------------|-----------|-----------------------------------------------------------------------------|--------------|
+| <code>df</code>         | <code>DataFrame</code> | The input DataFrame containing predicted categories for student and/or tutor. | <em>required</em>   |
+| <code>student_col</code>| <code>str</code> or <code>None</code> | Name of the column with <strong>student</strong>-predicted labels. Optional.               | <code>None</code>       |
+| <code>tutor_col</code>  | <code>str</code> or <code>None</code> | Name of the column with <strong>tutor</strong>-predicted labels. Optional.                 | <code>None</code>       |
+| <code>palette</code>     | <code>str</code>       | Color palette used for the plot. Optional                                                          | <code>"icefire"</code>                 |
+| <code>title</code>       | <code>str</code>       | Title of the plot. Optional.                                                                    | <code>"Predicted Classes"</code>     |</p>
+<p><strong>Returns:</strong>
+| Name | Type  | Description                                    |
+|------|-------|------------------------------------------------|
+| —    | <code>None</code> | Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned. |</p>
 <h4 id="2-summary-table">2. Summary Table</h4>
 
 
@@ -1073,7 +1046,27 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
             </details>
     </div>
 
-</div><h4 id="3-predicted-classes-by-turns">3. Predicted Classes by Turns</h4>
+</div><p>Example usage: </p>
+<pre><code class="language-python">summary = viz.create_summary_table(
+    df=annotated_df,
+    student_col=&quot;predicted_labels_student_msg&quot;,
+    tutor_col=&quot;predicted_labels_tutor_msg&quot;
+)
+
+print(summary)
+</code></pre>
+<p><strong>Parameters:</strong>
+| Name         | Type      | Description                                                                 | Default      |
+|--------------|-----------|-----------------------------------------------------------------------------|--------------|
+| <code>df</code>         | <code>DataFrame</code> | The input DataFrame containing predicted categories for student and/or tutor. | <em>required</em>   |
+| <code>student_col</code>| <code>str</code> or <code>None</code> | Name of the column with <strong>student</strong>-predicted labels. Optional.               | <code>None</code>       |
+| <code>tutor_col</code>  | <code>str</code> or <code>None</code> | Name of the column with <strong>tutor</strong>-predicted labels. Optional.                 | <code>None</code>       |</p>
+<p><strong>Returns:</strong>
+| Name               | Type        | Description                                                                 |
+|--------------------|-------------|-----------------------------------------------------------------------------|
+| <code>summary_df</code>       | <code>DataFrame</code> | A summary table with counts and percentages for each predicted category,    |
+|                    |             | split by student and tutor (if provided). Missing values are filled with 0. |</p>
+<h4 id="3-predicted-classes-by-turns">3. Predicted Classes by Turns</h4>
 
 
 <div class="doc doc-object doc-function">
@@ -1255,7 +1248,28 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
             </details>
     </div>
 
-</div><h4 id="4-interaction-distribution-interaction-distribution">4. Interaction Distribution { #interaction-distribution }</h4>
+</div><p>Example usage: </p>
+<pre><code class="language-python">plot_predicted_categories(
+        df=annotated_df,
+        student_col=&quot;predicted_labels_student_msg&quot;,
+        tutor_col=&quot;predicted_labels_tutor_msg&quot;,
+        title=&quot;Predicted Category Distribution&quot;
+    )
+</code></pre>
+<p><strong>Parameters:</strong>
+| Name          | Type        | Description                                                                                      | Default                        |
+|---------------|-------------|--------------------------------------------------------------------------------------------------|--------------------------------|
+| <code>df</code>          | <code>DataFrame</code> | Input DataFrame with turn-level predicted labels for student and/or tutor.                      | <em>required</em>                     |
+| <code>student_col</code> | <code>str</code> or <code>None</code> | Name of the column containing <strong>student</strong>-predicted categories. Optional                                  | <code>None</code>                         |
+| <code>tutor_col</code>   | <code>str</code> or <code>None</code> | Name of the column containing <strong>tutor</strong>-predicted categories. Optional                                   | <code>None</code>                         |
+| <code>use_percent</code> | <code>bool</code>      | Whether to plot percentage values (<code>True</code>) or raw counts (<code>False</code>).                            | <code>True</code>                         |
+| <code>palette</code>     | <code>str</code>       | Color palette used for the plot. Optional                                                                | <code>"icefire"</code>                 |
+| <code>title</code>       | <code>str</code>       | Title of the plot. Optional.                                                                     | <code>"Predicted Classes"</code>    |</p>
+<p><strong>Returns:</strong>
+| Name | Type  | Description                                    |
+|------|-------|------------------------------------------------|
+| —    | <code>None</code> | Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned. |</p>
+<h4 id="4-interaction-distribution">4. Interaction Distribution</h4>
 
 
 <div class="doc doc-object doc-function">
@@ -1402,12 +1416,32 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
 <span class="normal">372</span>
 <span class="normal">373</span>
 <span class="normal">374</span>
-<span class="normal">375</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_previous_turn_distribution</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_previous_turn_distribution</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> 
+    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span> 
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span> 
+    <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> 
+    <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;icefire&quot;</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot the distribution of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">student_col</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">tutor_col</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Both student_col and tutor_col must be provided.&quot;</span>
+            <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">focus_agent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="s2">&quot;tutor&quot;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;focus_agent must be either &#39;student&#39; or &#39;tutor&#39;.&quot;</span><span class="p">)</span>
@@ -1486,7 +1520,7 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
         <span class="n">y</span><span class="o">=</span><span class="n">y_col</span><span class="p">,</span>
         <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;prev_opposite_label&quot;</span><span class="p">,</span>
         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
-        <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;icefire&quot;</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
         <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
         <span class="n">aspect</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
         <span class="n">dodge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1501,7 +1535,7 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
     <span class="c1"># Labels and title</span>
     <span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Category in Current Turn for </span><span class="si">{</span><span class="n">focus_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">y_label</span><span class="p">)</span>
     <span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Interaction History: </span><span class="si">{</span><span class="n">focus_label</span><span class="si">}</span><span class="s2"> Focus&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;Distribution of Interactions: </span><span class="si">{</span><span class="n">focus_label</span><span class="si">}</span><span class="s2"> Focus&quot;</span><span class="p">,</span>
         <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
         <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
         <span class="n">y</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>
@@ -1539,7 +1573,68 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
             </details>
     </div>
 
-</div>
+</div><p>Example usage:</p>
+<pre><code class="language-python">viz.plot_history_interaction(
+    df=annotated_df,
+    student_col=&quot;predicted_labels_student_msg&quot;,
+    tutor_col=&quot;predicted_labels_tutor_msg&quot;,
+    focus_agent=&quot;tutor&quot;,
+    use_percent=True
+)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df</code></td>
+<td><code>DataFrame</code></td>
+<td>Input DataFrame including turn-level predicted labels for both student and tutor.</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>student_col</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td>Column name containing <strong>student</strong>-predicted categories.</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>tutor_col</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td>Column name containing <strong>tutor</strong>-predicted categories.</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>focus_agent</code></td>
+<td><code>str</code></td>
+<td>Determines whether to analyze the student or tutor perspective. Options: <code>"student"</code> or <code>"tutor"</code>.</td>
+<td><code>"student"</code></td>
+</tr>
+<tr>
+<td><code>use_percent</code></td>
+<td><code>bool</code></td>
+<td>If <code>True</code>, the y-axis will display percentages; otherwise raw counts are shown.</td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>palette</code></td>
+<td><code>str</code></td>
+<td>Color palette used for the plot. Optional</td>
+<td><code>"icefire"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong>
+| Name | Type  | Description                                    |
+|------|-------|------------------------------------------------|
+| —    | <code>None</code> | Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned. |</p>
 
 
 
