@@ -965,7 +965,34 @@ It supports customizable educational modes and sampling behavior and ensures rep
 <span class="normal">286</span>
 <span class="normal">287</span>
 <span class="normal">288</span>
-<span class="normal">289</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DialogueSimulator</span><span class="p">:</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DialogueSimulator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Module for generating multi-turn dialogues between a student and tutor agent using large language models.</span>
 
@@ -1013,7 +1040,7 @@ It supports customizable educational modes and sampling behavior and ensures rep
         <span class="n">save_csv_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
         <span class="n">custom_prompt_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">system_prompts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">system_prompts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Simulates a multi-turn dialogue using either built-in or custom prompts.</span>
@@ -1026,14 +1053,41 @@ It supports customizable educational modes and sampling behavior and ensures rep
 <span class="sd">            save_csv_path: Path to save structured DataFrame (optional).</span>
 <span class="sd">            seed: Random seed for reproducibility.</span>
 <span class="sd">            custom_prompt_file: Optional path to custom YAML defining prompt modes.</span>
-<span class="sd">            system_prompts: Optional dictionary of system prompts to override defaults.</span>
+<span class="sd">            system_prompts: Optional dictionary of custom dict of prompt modes.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            pd.DataFrame: Structured DataFrame of the conversation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 
-        <span class="c1"># system_prompts = load_prompts_and_seed(mode)</span>
+        <span class="c1"># Validate inputs: only one prompt source should be used</span>
+        <span class="k">if</span> <span class="n">system_prompts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">custom_prompt_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Provide only one of `system_prompts` or `custom_prompt_file`, not both.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Load prompts based on the user&#39;s input</span>
+        <span class="k">if</span> <span class="n">system_prompts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">custom_prompt_file</span><span class="p">:</span>
+                <span class="c1"># Load from YAML prompt file</span>
+                <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">custom_prompt_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">custom_prompts</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Hardcoded default if nothing is provided</span>
+                <span class="n">custom_prompts</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;conversation_types&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;general_task_solving&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;student&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a student asking for help with a task.&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;tutor&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful tutor guiding the student step by step.&quot;</span><span class="p">,</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+
+            <span class="c1"># Extract prompt for selected mode</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">system_prompts</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="p">[</span><span class="s2">&quot;conversation_types&quot;</span><span class="p">][</span><span class="n">mode</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode &#39;</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&#39; not found in prompt configuration.&quot;</span><span class="p">)</span>
+
 
         <span class="n">df</span> <span class="o">=</span> <span class="n">simulate_conversation</span><span class="p">(</span>
             <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
@@ -1207,10 +1261,11 @@ It supports customizable educational modes and sampling behavior and ensures rep
                 <code>system_prompts</code>
             </td>
             <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Optional dictionary of system prompts to override defaults.</p>
+                <p>Optional dictionary of custom dict of prompt modes.</p>
               </div>
             </td>
             <td>
@@ -1291,7 +1346,34 @@ It supports customizable educational modes and sampling behavior and ensures rep
 <span class="normal">286</span>
 <span class="normal">287</span>
 <span class="normal">288</span>
-<span class="normal">289</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">simulate_dialogue</span><span class="p">(</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">simulate_dialogue</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;general_task_solving&quot;</span><span class="p">,</span>
     <span class="n">turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
@@ -1300,7 +1382,7 @@ It supports customizable educational modes and sampling behavior and ensures rep
     <span class="n">save_csv_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
     <span class="n">custom_prompt_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">system_prompts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">system_prompts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Simulates a multi-turn dialogue using either built-in or custom prompts.</span>
@@ -1313,14 +1395,41 @@ It supports customizable educational modes and sampling behavior and ensures rep
 <span class="sd">        save_csv_path: Path to save structured DataFrame (optional).</span>
 <span class="sd">        seed: Random seed for reproducibility.</span>
 <span class="sd">        custom_prompt_file: Optional path to custom YAML defining prompt modes.</span>
-<span class="sd">        system_prompts: Optional dictionary of system prompts to override defaults.</span>
+<span class="sd">        system_prompts: Optional dictionary of custom dict of prompt modes.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        pd.DataFrame: Structured DataFrame of the conversation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 
-    <span class="c1"># system_prompts = load_prompts_and_seed(mode)</span>
+    <span class="c1"># Validate inputs: only one prompt source should be used</span>
+    <span class="k">if</span> <span class="n">system_prompts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">custom_prompt_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Provide only one of `system_prompts` or `custom_prompt_file`, not both.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Load prompts based on the user&#39;s input</span>
+    <span class="k">if</span> <span class="n">system_prompts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">custom_prompt_file</span><span class="p">:</span>
+            <span class="c1"># Load from YAML prompt file</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">custom_prompt_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">custom_prompts</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Hardcoded default if nothing is provided</span>
+            <span class="n">custom_prompts</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;conversation_types&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;general_task_solving&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;student&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a student asking for help with a task.&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;tutor&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful tutor guiding the student step by step.&quot;</span><span class="p">,</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="c1"># Extract prompt for selected mode</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">system_prompts</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="p">[</span><span class="s2">&quot;conversation_types&quot;</span><span class="p">][</span><span class="n">mode</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode &#39;</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&#39; not found in prompt configuration.&quot;</span><span class="p">)</span>
+
 
     <span class="n">df</span> <span class="o">=</span> <span class="n">simulate_conversation</span><span class="p">(</span>
         <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
