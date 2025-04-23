@@ -742,7 +742,7 @@
 
 <h1 id="visualizer">Visualizer</h1>
 <p>This class can be used to generate four different visualizations to analysis the interactions by. 
-Every visualization besides the <a href="#interaction-distribution">Interaction Distribution plot</a> can be created for either the student, the tutor or both. The <a href="#interaction-distribution">Interaction Distribution plot</a> needs both student and tutor data to visualize interactions. </p>
+Every visualization besides the <a href="#4-interaction-distribution">Interaction Distribution plot</a> can be created for either the student, the tutor or both. The <a href="#4-interaction-distribution">Interaction Distribution plot</a> needs both student and tutor data to visualize interactions. </p>
 <h4 id="1-barchart-of-predicted-classes">1. Barchart of Predicted Classes</h4>
 
 
@@ -936,18 +936,66 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
     title=&quot;Distribution of Predicted Classes&quot;
 )
 </code></pre>
-<p><strong>Parameters:</strong>
-| Name         | Type      | Description                                                                 | Default      |
-|--------------|-----------|-----------------------------------------------------------------------------|--------------|
-| <code>df</code>         | <code>DataFrame</code> | The input DataFrame containing predicted categories for student and/or tutor. | <em>required</em>   |
-| <code>student_col</code>| <code>str</code> or <code>None</code> | Name of the column with <strong>student</strong>-predicted labels. Optional.               | <code>None</code>       |
-| <code>tutor_col</code>  | <code>str</code> or <code>None</code> | Name of the column with <strong>tutor</strong>-predicted labels. Optional.                 | <code>None</code>       |
-| <code>palette</code>     | <code>str</code>       | Color palette used for the plot. Optional                                                          | <code>"icefire"</code>                 |
-| <code>title</code>       | <code>str</code>       | Title of the plot. Optional.                                                                    | <code>"Predicted Classes"</code>     |</p>
-<p><strong>Returns:</strong>
-| Name | Type  | Description                                    |
-|------|-------|------------------------------------------------|
-| —    | <code>None</code> | Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned. |</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df</code></td>
+<td><code>DataFrame</code></td>
+<td>The input DataFrame containing predicted categories for student and/or tutor.</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>student_col</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td>Name of the column with <strong>student</strong>-predicted labels. Optional.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>tutor_col</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td>Name of the column with <strong>tutor</strong>-predicted labels. Optional.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>palette</code></td>
+<td><code>str</code></td>
+<td>Color palette used for the plot. Optional.</td>
+<td><code>"icefire"</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>Title of the plot. Optional.</td>
+<td><code>"Predicted Classes"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td><code>None</code></td>
+<td>Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="2-summary-table">2. Summary Table</h4>
 
 
@@ -1055,17 +1103,59 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
 
 print(summary)
 </code></pre>
-<p><strong>Parameters:</strong>
-| Name         | Type      | Description                                                                 | Default      |
-|--------------|-----------|-----------------------------------------------------------------------------|--------------|
-| <code>df</code>         | <code>DataFrame</code> | The input DataFrame containing predicted categories for student and/or tutor. | <em>required</em>   |
-| <code>student_col</code>| <code>str</code> or <code>None</code> | Name of the column with <strong>student</strong>-predicted labels. Optional.               | <code>None</code>       |
-| <code>tutor_col</code>  | <code>str</code> or <code>None</code> | Name of the column with <strong>tutor</strong>-predicted labels. Optional.                 | <code>None</code>       |</p>
-<p><strong>Returns:</strong>
-| Name               | Type        | Description                                                                 |
-|--------------------|-------------|-----------------------------------------------------------------------------|
-| <code>summary_df</code>       | <code>DataFrame</code> | A summary table with counts and percentages for each predicted category,    |
-|                    |             | split by student and tutor (if provided). Missing values are filled with 0. |</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df</code></td>
+<td><code>DataFrame</code></td>
+<td>The input DataFrame containing predicted categories for student and/or tutor.</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>student_col</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td>Name of the column with <strong>student</strong>-predicted labels. Optional.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>tutor_col</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td>Name of the column with <strong>tutor</strong>-predicted labels. Optional.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>summary_df</code></td>
+<td><code>DataFrame</code></td>
+<td>A summary table with counts and percentages for each predicted category.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Split by student and tutor (if provided). Missing values are filled with 0.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="3-predicted-classes-by-turns">3. Predicted Classes by Turns</h4>
 
 
@@ -1256,19 +1346,72 @@ print(summary)
         title=&quot;Predicted Category Distribution&quot;
     )
 </code></pre>
-<p><strong>Parameters:</strong>
-| Name          | Type        | Description                                                                                      | Default                        |
-|---------------|-------------|--------------------------------------------------------------------------------------------------|--------------------------------|
-| <code>df</code>          | <code>DataFrame</code> | Input DataFrame with turn-level predicted labels for student and/or tutor.                      | <em>required</em>                     |
-| <code>student_col</code> | <code>str</code> or <code>None</code> | Name of the column containing <strong>student</strong>-predicted categories. Optional                                  | <code>None</code>                         |
-| <code>tutor_col</code>   | <code>str</code> or <code>None</code> | Name of the column containing <strong>tutor</strong>-predicted categories. Optional                                   | <code>None</code>                         |
-| <code>use_percent</code> | <code>bool</code>      | Whether to plot percentage values (<code>True</code>) or raw counts (<code>False</code>).                            | <code>True</code>                         |
-| <code>palette</code>     | <code>str</code>       | Color palette used for the plot. Optional                                                                | <code>"icefire"</code>                 |
-| <code>title</code>       | <code>str</code>       | Title of the plot. Optional.                                                                     | <code>"Predicted Classes"</code>    |</p>
-<p><strong>Returns:</strong>
-| Name | Type  | Description                                    |
-|------|-------|------------------------------------------------|
-| —    | <code>None</code> | Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned. |</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df</code></td>
+<td><code>DataFrame</code></td>
+<td>Input DataFrame with turn-level predicted labels for student and/or tutor.</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>student_col</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td>Name of the column containing <strong>student</strong>-predicted categories. Optional.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>tutor_col</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td>Name of the column containing <strong>tutor</strong>-predicted categories. Optional.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>use_percent</code></td>
+<td><code>bool</code></td>
+<td>Whether to plot percentage values (<code>True</code>) or raw counts (<code>False</code>).</td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>palette</code></td>
+<td><code>str</code></td>
+<td>Color palette used for the plot. Optional.</td>
+<td><code>"icefire"</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>Title of the plot. Optional.</td>
+<td><code>"Predicted Classes"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td><code>None</code></td>
+<td>Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="4-interaction-distribution">4. Interaction Distribution</h4>
 
 
@@ -1614,7 +1757,7 @@ print(summary)
 <tr>
 <td><code>focus_agent</code></td>
 <td><code>str</code></td>
-<td>Determines whether to analyze the student or tutor perspective. Options: <code>"student"</code> or <code>"tutor"</code>.</td>
+<td>Determines whether to analyze the student or tutor perspective. Options: "student" or "tutor".</td>
 <td><code>"student"</code></td>
 </tr>
 <tr>
@@ -1626,15 +1769,28 @@ print(summary)
 <tr>
 <td><code>palette</code></td>
 <td><code>str</code></td>
-<td>Color palette used for the plot. Optional</td>
+<td>Color palette used for the plot. Optional.</td>
 <td><code>"icefire"</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong>
-| Name | Type  | Description                                    |
-|------|-------|------------------------------------------------|
-| —    | <code>None</code> | Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned. |</p>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td><code>None</code></td>
+<td>Displays the plot using <code>matplotlib.pyplot.show()</code>. No object is returned.</td>
+</tr>
+</tbody>
+</table>
 
 
 
