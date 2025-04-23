@@ -535,48 +535,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Feedback Example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#generate-label-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generate Label Framework
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#synthesize-interaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Synthesize Interaction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#classify-and-predict" class="md-nav__link">
-    <span class="md-ellipsis">
-      Classify and Predict
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#visualize" class="md-nav__link">
-    <span class="md-ellipsis">
-      Visualize
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -585,48 +543,6 @@
       Linguistic Example
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Linguistic Example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#generate-label-framework_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generate Label Framework
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#synthesize-interaction_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Synthesize Interaction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#classify-and-predict_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Classify and Predict
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#visualize_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Visualize
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -878,14 +794,14 @@
   <h1>Guides</h1>
 
 <h2 id="feedback-example">Feedback Example</h2>
-<h3 id="generate-label-framework">Generate Label Framework</h3>
-<h3 id="synthesize-interaction">Synthesize Interaction</h3>
-<h3 id="classify-and-predict">Classify and Predict</h3>
-<h3 id="visualize">Visualize</h3>
+<p><strong>Generate Label Framework</strong>
+<strong>Synthesize Interaction</strong>
+<strong>Classify and Predict</strong>
+<strong>Visualize</strong></p>
 <h2 id="linguistic-example">Linguistic Example</h2>
-<p>This example walks through the full pipeline for generating, simulating, classifying, and visualizing dialogue interactions focused on simple linguistic categories.</p>
-<h3 id="generate-label-framework_1">Generate Label Framework</h3>
-<p>Install the package and import the framework generator:
+<p>This example walks through the full pipeline for generating, simulating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>).</p>
+<p><strong>Generate Label Framework</strong></p>
+<p>Install the package and import the framework generator
 <div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">educhateval</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
@@ -893,20 +809,28 @@
 <p>Initialize the generator with your chosen model and API, and generate labeled samples:
 <div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span>
 
+<span class="c1"># Generating the raw data </span>
 <span class="n">df_4</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_framework</span><span class="p">(</span>
     <span class="n">prompt_path</span><span class="o">=</span><span class="s2">&quot;/outline_prompts/prompt_default_4types.py&quot;</span><span class="p">,</span> 
     <span class="n">num_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
     <span class="n">csv_out</span><span class="o">=</span><span class="s2">&quot;/data/labeled_training_data.csv&quot;</span>
 <span class="p">)</span>
+
+<span class="c1"># Filtering based on classifier agreement to ensure high-quality framework</span>
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">filter_with_classifier</span><span class="p">(</span>
+    <span class="n">train_data</span><span class="o">=</span><span class="s2">&quot;data/tiny_labeled_default.csv&quot;</span><span class="p">,</span> 
+    <span class="n">synth_data</span><span class="o">=</span><span class="n">df_4</span><span class="p">,</span>
+    <span class="n">classifier_model_name</span> <span class="o">=</span> <span class="s2">&quot;distilbert-base-uncased&quot;</span>
+<span class="p">)</span>
 </code></pre></div></p>
-<h3 id="synthesize-interaction_1">Synthesize Interaction</h3>
+<p><strong>Synthesize Interaction</strong></p>
 <p>Import and initialize the dialogue simulator:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">DialogueSimulator</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">DialogueSimulator</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mlx&quot;</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>See <a href="../frameworks/">Templates</a> for how to structure your <code>YAML</code> input. </p>
-<p>In this example, we simulate multiple dialogues representing different student agents. Each seed message in the <code>english_course</code> configuration acts as the starting input for one student. The model responds over several turns, alternating between the student and tutor roles. This looped setup helps create a diverse set of interaction sequences, each grounded in a unique initiating prompt.</p>
+<p>In this example, multiple dialogues are simulated representing different student agents. Each seed message in the <code>english_course</code> configuration acts as the starting input for one student. The model responds over several turns, alternating between the student and tutor roles. This looped setup helps create a diverse set of interaction sequences, each grounded in a unique initiating prompt.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Extract seed messages for the English course</span>
 <span class="n">english_seeds</span> <span class="o">=</span> <span class="n">seed_messages</span><span class="p">[</span><span class="s2">&quot;english_course&quot;</span><span class="p">][</span><span class="s2">&quot;seeds&quot;</span><span class="p">]</span>
 <span class="n">n_seeds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">english_seeds</span><span class="p">)</span>
@@ -930,7 +854,7 @@
 <span class="c1"># Combine all dialogues</span>
 <span class="n">english_course_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">english_dialogues</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="classify-and-predict_1">Classify and Predict</h3>
+<p><strong>Classify and Predict</strong></p>
 <p>Import the classifier and run prediction on your labeled and synthesized data:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">PredictLabels</span>
 
@@ -938,7 +862,7 @@
 
 <span class="c1"># Run the full prediction pipeline</span>
 <span class="n">annotaded_df</span> <span class="o">=</span> <span class="n">predictor</span><span class="o">.</span><span class="n">run_pipeline</span><span class="p">(</span>
-    <span class="n">train_data</span><span class="o">=</span><span class="n">df_4</span><span class="p">,</span> 
+    <span class="n">train_data</span><span class="o">=</span><span class="n">filtered_df</span><span class="p">,</span> 
     <span class="n">new_data</span><span class="o">=</span><span class="n">english_course_df</span><span class="p">,</span> 
     <span class="n">text_column</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
     <span class="n">label_column</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">,</span> 
@@ -946,8 +870,8 @@
     <span class="n">split_ratio</span><span class="o">=</span><span class="mf">0.20</span>
 <span class="p">)</span>
 </code></pre></div></p>
-<h3 id="visualize_1">Visualize</h3>
-<p>Import the visualizer and plot results:
+<p><strong>Visualize</strong>
+Import the visualizer and plot results:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">Visualizer</span>
 
 <span class="n">viz</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
@@ -969,7 +893,7 @@
 <span class="p">)</span>
 </code></pre></div></p>
 <p>Returns:
-<img alt="Summary Table" src="../../pics/sum_table.png" /><br />
+<img alt="Summary Table" src="../../pics/sum_table.png" />   THIS NEEDS AN UPDATE LAURA !!!!!!!!
 <img alt="Bar Chart" src="../../pics/simple_bar.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Trend plot of predicted categories over turns</span>
 <span class="n">viz</span><span class="o">.</span><span class="n">plot_turn_trends</span><span class="p">(</span>
