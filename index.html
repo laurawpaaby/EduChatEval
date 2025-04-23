@@ -20,7 +20,7 @@
     
     
       
-        <title>CHATWRAPTIME</title>
+        <title>EduChatEval</title>
       
     
     
@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#user-guides-and-api" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="CHATWRAPTIME" class="md-header__button md-logo" aria-label="CHATWRAPTIME" data-md-component="logo">
+    <a href="." title="EduChatEval" class="md-header__button md-logo" aria-label="EduChatEval" data-md-component="logo">
       
   <img src="pics/logo.png" alt="logo">
 
@@ -96,7 +101,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            CHATWRAPTIME
+            EduChatEval
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,12 +337,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="CHATWRAPTIME" class="md-nav__button md-logo" aria-label="CHATWRAPTIME" data-md-component="logo">
+    <a href="." title="EduChatEval" class="md-nav__button md-logo" aria-label="EduChatEval" data-md-component="logo">
       
   <img src="pics/logo.png" alt="logo">
 
     </a>
-    CHATWRAPTIME
+    EduChatEval
   </label>
   
     <div class="md-nav__source">
@@ -368,6 +373,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -379,6 +397,32 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-guides-and-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Guides and API
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -743,6 +787,10 @@
 <li>Log interactions in structured formats (JSON/CSV) for downstream analysis</li>
 <li>Train and applu classifiers to predict customized interaction classes and visualize patterns across conversations</li>
 </ul>
+<h3 id="user-guides-and-api">User Guides and API</h3>
+<p>To run the full pipeline, the package requires integration with LM Studio (for local model hosting) and the Hugging Face ecosystem. Step-by-step tutorials are provided in the <a href="user_guides/userguide_intro/">User Guide section</a>, covering setup, configuration, and usage across all modules—from data generation to classification and visualization.</p>
+<p>Detailed information on the available classes, functions, and configuration options can be found in the <a href="api/api_frame_gen/">API reference</a>.</p>
+<p><strong>Be aware</strong>, that the package can be run on python 3.12 due to the dependency on ... </p>
 
 
 
