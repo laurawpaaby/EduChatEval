@@ -1,4 +1,3 @@
-# Prdict
-This is a test displaying: 
+# Predicting Labels
 
 ::: educhateval.core.PredictLabels

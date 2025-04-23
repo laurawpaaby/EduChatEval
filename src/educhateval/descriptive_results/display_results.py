@@ -110,7 +110,7 @@ def plot_category_bars(
     tutor_col=None,
     use_percent=True,
     palette="icefire",
-    title="Predicted Category Distribution",
+    title="Predicted Classes",
 ):
     if not student_col and not tutor_col:
         raise ValueError("You must provide at least one of student_col or tutor_col.")
