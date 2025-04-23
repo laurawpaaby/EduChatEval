@@ -815,7 +815,7 @@
 
 <h1 id="visualizer">Visualizer</h1>
 <p>Module for generating four different visualizations to analysis the interactions by. 
-Every visualization besides the <a href="#4-interaction-distribution">Interaction Distribution plot</a> can be created for either the student, the tutor or both. The Interaction Distribution plot requires both student and tutor data to visualize interactions. </p>
+Every visualization besides the <em>4. Interaction Distribution</em> plot can be created for either the student, the tutor or both. The Interaction Distribution plot requires both student and tutor data to visualize interactions. </p>
 <p><strong><em>1. Barchart of Predicted Classes</em></strong>
 </p>
 
@@ -1001,15 +1001,15 @@ Every visualization besides the <a href="#4-interaction-distribution">Interactio
             </details>
     </div>
 
-</div><p>Example usage: </p>
-<pre><code class="language-python">viz.plot_category_bars(
-    df=annotated_df,
-    student_col=&quot;predicted_labels_student_msg&quot;,
-    tutor_col=&quot;predicted_labels_tutor_msg&quot;,
-    use_percent=True,
-    title=&quot;Distribution of Predicted Classes&quot;
-)
-</code></pre>
+</div><p>Example usage: 
+<div class="highlight"><pre><span></span><code><span class="n">viz</span><span class="o">.</span><span class="n">plot_category_bars</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotated_df</span><span class="p">,</span>
+    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
+    <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of Predicted Classes&quot;</span>
+<span class="p">)</span>
+</code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -1169,15 +1169,15 @@ Every visualization besides the <a href="#4-interaction-distribution">Interactio
             </details>
     </div>
 
-</div><p>Example usage: </p>
-<pre><code class="language-python">summary = viz.create_summary_table(
-    df=annotated_df,
-    student_col=&quot;predicted_labels_student_msg&quot;,
-    tutor_col=&quot;predicted_labels_tutor_msg&quot;
-)
+</div><p>Example usage: 
+<div class="highlight"><pre><span></span><code><span class="n">summary</span> <span class="o">=</span> <span class="n">viz</span><span class="o">.</span><span class="n">create_summary_table</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotated_df</span><span class="p">,</span>
+    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span>
+<span class="p">)</span>
 
-print(summary)
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+</code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -1409,14 +1409,14 @@ print(summary)
             </details>
     </div>
 
-</div><p>Example usage: </p>
-<pre><code class="language-python">plot_predicted_categories(
-        df=annotated_df,
-        student_col=&quot;predicted_labels_student_msg&quot;,
-        tutor_col=&quot;predicted_labels_tutor_msg&quot;,
-        title=&quot;Predicted Category Distribution&quot;
-    )
-</code></pre>
+</div><p>Example usage: 
+<div class="highlight"><pre><span></span><code><span class="n">plot_predicted_categories</span><span class="p">(</span>
+        <span class="n">df</span><span class="o">=</span><span class="n">annotated_df</span><span class="p">,</span>
+        <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
+        <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Category Distribution&quot;</span>
+    <span class="p">)</span>
+</code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -1788,15 +1788,15 @@ print(summary)
             </details>
     </div>
 
-</div><p>Example usage:</p>
-<pre><code class="language-python">viz.plot_history_interaction(
-    df=annotated_df,
-    student_col=&quot;predicted_labels_student_msg&quot;,
-    tutor_col=&quot;predicted_labels_tutor_msg&quot;,
-    focus_agent=&quot;tutor&quot;,
-    use_percent=True
-)
-</code></pre>
+</div><p>Example usage:
+<div class="highlight"><pre><span></span><code><span class="n">viz</span><span class="o">.</span><span class="n">plot_history_interaction</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotated_df</span><span class="p">,</span>
+    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
+    <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;tutor&quot;</span><span class="p">,</span>
+    <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
