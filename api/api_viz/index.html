@@ -845,7 +845,7 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
     <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;icefire&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Category Distribution&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Classes&quot;</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">student_col</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">tutor_col</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide at least one of student_col or tutor_col.&quot;</span><span class="p">)</span>
@@ -927,7 +927,55 @@ Every visualization besides the <a href="#interaction-distribution">Interaction 
             </details>
     </div>
 
-</div><h4 id="2-summary-table">2. Summary Table</h4>
+</div><p>Example: </p>
+<pre><code class="language-python">viz.plot_category_bars(
+    df=annotated_df,
+    student_col=&quot;predicted_labels_student_msg&quot;,
+    tutor_col=&quot;predicted_labels_tutor_msg&quot;,
+    use_percent=True,
+    title=&quot;Distribution of Predicted Classes&quot;
+)
+</code></pre>
+<p>Return:
+<img alt="Screenshot" src="pics/simple_bar.png" /></p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df</code></td>
+<td><code>df</code></td>
+<td>Dataframe containing predicted labels.</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>student_col</code></td>
+<td><code>str</code></td>
+<td>Name of the column with predicted labels for the <strong>student</strong>.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>tutor_col</code></td>
+<td><code>str</code></td>
+<td>Name of the column with predicted labels for the <strong>tutor</strong>.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>Title for the plot</td>
+<td><em>"Predicted Classes"</em></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-summary-table">2. Summary Table</h4>
 
 
 <div class="doc doc-object doc-function">
