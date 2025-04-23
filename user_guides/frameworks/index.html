@@ -658,21 +658,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Seeds">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#synthesizing-interactions_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Synthesizing Interactions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -1044,8 +1029,7 @@ Give a new, unique one-sentence answer to a new and different question.
 
 </code></pre>
 <h4 id="synthesizing-interactions_2">Synthesizing Interactions</h4>
-<p>To generate synthetic dialogues, the simulation pipeline relies on predefined system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether provided as a <code>dictionary</code> or a <code>YAML</code> file.</p>
-<p>This structure makes it possible to store multiple interaction modes (e.g., "feedback", "linguistic") in a single configuration. Each mode must include a pair of prompts—one for the student and one for the tutor—to guide the behavior of both agents during the simulated exchange.</p>
+<p>To generate synthetic dialogues, the <a href="../api/api_synth_int">interaction generator</a> relies on system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether passed as a <code>dictionary</code> or a <code>YAML</code> file. This format allows multiple interaction modes to be stored in a single configuration. If no prompting scheme is provided, a simple default prompt is used.</p>
 <p>Below are examples of the expected format in both a <code>dictionary</code> and a <code>YAML</code> file. The <code>YAML</code> template demonstrates how to store multiple frameworks, such as feedback-oriented and linguistically structured interactions.</p>
 <p><strong>Dictionary Template:</strong></p>
 <pre><code class="language-python"># a dictionary of system prompts
@@ -1081,8 +1065,22 @@ system_prompts = custom_prompts[&quot;conversation_types&quot;][&quot;general_ta
       - Check for understanding.
       - Always be short and concise.
 </code></pre>
-<h3 id="seeds_1">Seeds</h3>
-<h4 id="synthesizing-interactions_3">Synthesizing Interactions</h4>
+<h4 id="seeds_1">Seeds</h4>
+<p>In addition to prompts, the <a href="../api/api_synth_int">interaction generator</a> requires a seed message to initiate the dialogue. This is the first message sent by the <strong>student-agent</strong>.
+Seed messages can be passed directly as strings or organized in a YAML file when generating multiple dialogues. The example below illustrates both formats, based on an English course context.</p>
+<p><strong>Example of single seed:</strong></p>
+<pre><code class="language-python">seed_msg = &quot;Hi, I'm a student seeking assistance with my studies in English. I need precise and easy-to-understand answers.&quot;
+</code></pre>
+<p><strong>Example of multiple seeds in YAML:</strong></p>
+<pre><code class="language-yaml">english_course:
+  seeds:
+    - &quot;Hi, I'm struggling with writing essays. Can you help me improve?&quot;
+    - &quot;Hi, Can you explain how to use the passive voice in English?&quot;
+    - &quot;Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?&quot;
+    - &quot;Hi, How can I expand my vocabulary effectively?&quot;
+    - &quot;Hi, Can you help me analyze this short story for class?&quot;
+
+</code></pre>
 <h2 id="wrap-interaction">Wrap Interaction</h2>
 <p>While this function isn't used in any of the guides to avoid generating bias data by myself, an example of prompts for the chat tutor is here presented.</p>
 <h3 id="potential-prompts">Potential Prompts</h3>
