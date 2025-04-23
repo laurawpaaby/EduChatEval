@@ -793,25 +793,167 @@
 
   <h1>Guides</h1>
 
+<p>Below are two example workflows demonstrating how to use each module in the package to synthesize, classify, and visualize dialogue interactions between a student and tutor agent. In practice, users are encouraged to incorporate real-world data where available, which may slightly alter certain steps in the pipeline.</p>
 <h2 id="feedback-example">Feedback Example</h2>
 <p><strong>Generate Label Framework</strong>
-<strong>Synthesize Interaction</strong>
-<strong>Classify and Predict</strong>
-<strong>Visualize</strong></p>
-<h2 id="linguistic-example">Linguistic Example</h2>
-<p>This example walks through the full pipeline for generating, simulating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>).</p>
-<p><strong>Generate Label Framework</strong></p>
-<p>Install the package and import the framework generator
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">educhateval</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
-</code></pre></div></p>
-<p>Initialize the generator with your chosen model and API, and generate labeled samples:
+The first walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on different feedback types: (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>).</p>
+<p>First install the package:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>educhateval
+</code></pre></div>
+Initialize the generator with your chosen model and API, and generate labeled samples:
 <div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span>
 
 <span class="c1"># Generating the raw data </span>
+<span class="n">df_feedback</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_framework</span><span class="p">(</span>
+    <span class="n">prompt_path</span><span class="o">=</span><span class="s2">&quot;/outline_prompts/prompt_feedback.py&quot;</span><span class="p">,</span> 
+    <span class="n">num_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+    <span class="n">csv_out</span><span class="o">=</span><span class="s2">&quot;/data/labeled_feedback_data.csv&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Filtering based on classifier agreement to ensure high-quality framework</span>
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">filter_with_classifier</span><span class="p">(</span>
+    <span class="n">train_data</span><span class="o">=</span><span class="s2">&quot;data/tiny_labeled_feedback.csv&quot;</span><span class="p">,</span> 
+    <span class="n">synth_data</span><span class="o">=</span><span class="n">df_feedback</span><span class="p">,</span>
+    <span class="n">classifier_model_name</span> <span class="o">=</span> <span class="s2">&quot;distilbert-base-uncased&quot;</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Synthesize Interaction</strong></p>
+<p>Import and initialize the dialogue simulator:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">DialogueSimulator</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">DialogueSimulator</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mlx&quot;</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>In this example a system prompt and seed message is given directly, see <a href="../frameworks/">Templates</a> for how to structure a <code>YAML</code> input instead. 
+<div class="highlight"><pre><span></span><code><span class="c1"># making the custom prompt as dict</span>
+<span class="n">custom_prompts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;conversation_types&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;feedback&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;student&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a student asking for feedback on your work.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tutor&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful tutor providing focused, costructive feedback.&quot;</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># setting prompt and seed msg</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="p">[</span><span class="s2">&quot;conversation_types&quot;</span><span class="p">][</span><span class="s2">&quot;feedback&quot;</span><span class="p">]</span>
+<span class="n">seed_message</span> <span class="o">=</span> <span class="s2">&quot;I&#39;ve written this paragraph, please help me polish it: flowers are nice and they grow in gardens. some are red or yellow. people give them on birthdays and stuff. bees like them too.&quot;</span> 
+</code></pre></div></p>
+<p>In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a <code>DataFrame</code> look at the <a href="Linguistic-Example">linguistic example</a>. </p>
+<div class="highlight"><pre><span></span><code><span class="n">df_single_feedback</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">simulate_dialogue</span><span class="p">(</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;feedback&quot;</span><span class="p">,</span>
+    <span class="n">turns</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">seed_message_input</span><span class="o">=</span><span class="n">seed_message</span>
+    <span class="n">system_prompts</span><span class="o">=</span><span class="n">prompt</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Classify and Predict</strong></p>
+<p>Import the classifier and run prediction on the labeled, synthesized data. In this case only the <code>tutor messages</code> are of interest, as it is the feedback types provided by the llm that are being analyzed.
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">PredictLabels</span>
+
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">PredictLabels</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;distilbert/distilroberta-base&quot;</span><span class="p">)</span>
+
+<span class="c1"># Run the full prediction pipeline</span>
+<span class="n">annotaded_feedback</span> <span class="o">=</span> <span class="n">predictor</span><span class="o">.</span><span class="n">run_pipeline</span><span class="p">(</span>
+    <span class="n">train_data</span><span class="o">=</span><span class="n">filtered_df</span><span class="p">,</span> 
+    <span class="n">new_data</span><span class="o">=</span><span class="n">df_single_feedback</span><span class="p">,</span> 
+    <span class="n">text_column</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+    <span class="n">label_column</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">,</span> 
+    <span class="n">columns_to_classify</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tutor_msg&quot;</span><span class="p">],</span> 
+    <span class="n">split_ratio</span><span class="o">=</span><span class="mf">0.25</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Visualize</strong>
+Import the visualizer and plot results:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">Visualizer</span>
+
+<span class="n">viz</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Generate plots - here focusing on the bar charts:
+<div class="highlight"><pre><span></span><code><span class="c1"># Bar plot of class distributions</span>
+<span class="n">viz</span><span class="o">.</span><span class="n">plot_category_bars</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotaded_feedback</span><span class="p">,</span>
+    <span class="n">label_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span> <span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">],</span>
+    <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of Predicted Feedback Classes&quot;</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<p>Returns:
+<a href="../../pics/simple_bar.png">Bar Chart</a></p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Trend plot of predicted categories over turns</span>
+<span class="n">viz</span><span class="o">.</span><span class="n">plot_turn_trends</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotaded_feedback</span><span class="p">,</span>
+    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Feedback Distribution over Turns&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<a href="../../pics/simple_bar.png">Bar Chart</a></p>
+<hr />
+<h2 id="linguistic-example">Linguistic Example</h2>
+<p>This example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>).</p>
+<p>First install the package:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>educhateval
+</code></pre></div></p>
+<p><strong>Generate Label Framework</strong></p>
+<p>Install the package and import the framework generator
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
+</code></pre></div></p>
+<p>Initialize the generator with your chosen model and API, and generate labeled samples. In this example a dictionary is provided as prompt:</p>
+<div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span>
+
+<span class="c1"># Dictionary of prompts</span>
+<span class="n">custom_prompt_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># CLARIFICATION</span>
+        <span class="s2">&quot;Clarification&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
+<span class="s2">    You generate a conversational sentence that seeks clarification or context. </span>
+<span class="s2">    It should be polite, concise, and appropriate for an educational setting. You never repeat yourself.</span>
+<span class="s2">    &lt;|im_end|&gt;</span>
+
+<span class="s2">    &lt;|im_start|&gt;user</span>
+<span class="s2">    Create a clarification sentence.</span>
+<span class="s2">    &lt;|im_end|&gt;</span>
+<span class="s2">    &lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="p">,</span>
+
+        <span class="c1"># SMALL TALK</span>
+        <span class="s2">&quot;Small Talk&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
+<span class="s2">    You generate a short small talk sentence suitable in an casual setting. You never repeat yourself.</span>
+<span class="s2">    &lt;|im_end|&gt;</span>
+
+<span class="s2">    &lt;|im_start|&gt;user</span>
+<span class="s2">    Create a small talk sentence.</span>
+<span class="s2">    &lt;|im_end|&gt;</span>
+<span class="s2">    &lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="p">,</span>
+
+        <span class="c1"># QUESTION</span>
+        <span class="s2">&quot;Question&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
+<span class="s2">    You generate a factual or thoughtful question that can be used in a conversation or educational setting. You never repeat the same question.</span>
+<span class="s2">    &lt;|im_end|&gt;</span>
+
+<span class="s2">    &lt;|im_start|&gt;user</span>
+<span class="s2">    Create a question.</span>
+<span class="s2">    &lt;|im_end|&gt;</span>
+<span class="s2">    &lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="p">,</span>
+
+        <span class="c1"># STATEMENT</span>
+        <span class="s2">&quot;Statement&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
+<span class="s2">    You are a helpful and knowledgeable assistant in an educational setting.</span>
+<span class="s2">    You respond to student questions in a friendly and conversational tone, aiming to explain or clarify in one sentence.</span>
+<span class="s2">    Each response should:</span>
+<span class="s2">    - Address the question naturally, like a tutor or teacher would.</span>
+<span class="s2">    - Stick to one main idea or explanation per response.</span>
+<span class="s2">    - Avoid repeating previous answers or stating obvious facts. </span>
+<span class="s2">    - Don&#39;t write the question you are answering.</span>
+<span class="s2">    &lt;|im_end|&gt;</span>
+
+<span class="s2">    &lt;|im_start|&gt;user</span>
+<span class="s2">    Give a unique one-sentence answer to a new and different question.</span>
+<span class="s2">    &lt;|im_end|&gt;</span>
+<span class="s2">    &lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Now using the dictionary directly:
+<div class="highlight"><pre><span></span><code><span class="c1"># Generating the raw data </span>
 <span class="n">df_4</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_framework</span><span class="p">(</span>
-    <span class="n">prompt_path</span><span class="o">=</span><span class="s2">&quot;/outline_prompts/prompt_default_4types.py&quot;</span><span class="p">,</span> 
+    <span class="n">prompt_path</span><span class="o">=</span><span class="n">custom_prompt_dict</span><span class="p">,</span>
     <span class="n">num_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
     <span class="n">csv_out</span><span class="o">=</span><span class="s2">&quot;/data/labeled_training_data.csv&quot;</span>
 <span class="p">)</span>
@@ -905,6 +1047,18 @@ Import the visualizer and plot results:
 </code></pre></div>
 <p>Returns:
 <img alt="Line Chart" src="../../pics/turns_line.png" /></p>
+<p>Lastly the tutor–student interaction patterns can be visualized, here with a student focus. The x-axis represents the student's current input category, while each bar shows the distribution of tutor response types from the previous turn. This is possible when both student and tutor inputs are predicted and labeled. </p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Interaction plot</span>
+<span class="n">viz</span><span class="o">.</span><span class="n">plot_history_interaction</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">annotated_df</span><span class="p">,</span>
+    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
+    <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span>
+    <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</code></pre></div>
+Returns:
+<img alt="interactions" src="../../pics/interaction.png" /></p>
 
 
 
