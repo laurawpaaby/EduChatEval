@@ -562,18 +562,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#framework-generation-contstraint-classes" class="md-nav__link">
+  <a href="#framework-generation-feedback" class="md-nav__link">
     <span class="md-ellipsis">
-      Framework Generation: Contstraint Classes
+      Framework Generation - Feedback
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#synthesizing-interactions" class="md-nav__link">
+  <a href="#synthesizing-interactions-feedback" class="md-nav__link">
     <span class="md-ellipsis">
-      Synthesizing Interactions
+      Synthesizing Interactions - Feedback
     </span>
   </a>
   
@@ -595,16 +595,16 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#framework-generation-contstraint-classes_1" class="md-nav__link">
+  <a href="#framework-generation" class="md-nav__link">
     <span class="md-ellipsis">
-      Framework Generation: Contstraint Classes
+      Framework Generation
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#synthesizing-interactions_1" class="md-nav__link">
+  <a href="#synthesizing-interactions" class="md-nav__link">
     <span class="md-ellipsis">
       Synthesizing Interactions
     </span>
@@ -642,35 +642,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#or" class="md-nav__link">
-    <span class="md-ellipsis">
-      or
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#or_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      or
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="or">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References:
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -896,14 +872,16 @@
   
 
 
+  <h1>Templates</h1>
+
 <p>Several modules within the pipeline accept <strong>customized prompts</strong> and <strong>seed messages</strong> to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. The examples provided here illustrate how such customization can guide the generation process and support targeted use cases.</p>
-<h2 id="feedback-templates">Feedback Templates</h2>
+<h2 id="feedback-templates"><strong>Feedback Templates</strong></h2>
 <p>This section demonstrates a pipeline configuration centered on feedback types, inspired by the work of <a href="https://doi.org/10.1016/j.ipm.2021.102838">Rasmus</a>. The template framework focuses on the following categories: <em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>. </p>
-<h3 id="framework-generation-contstraint-classes">Framework Generation: Contstraint Classes</h3>
+<h3 id="framework-generation-feedback">Framework Generation - Feedback</h3>
 <p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. </p>
-<p>For the generation of utterances under the eight categories (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>), the model was provided with the following prompts:</p>
+<p>For the generation of a framework for the eight categories (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>), the model was provided with the template presented below. </p>
 <details class="example">
-<summary>Yaml Test dropdown </summary>
+<summary>Prompt Template for Feedback: YAML</summary>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">prompt_dict = {</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># ADVICE</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&quot;Advice&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
@@ -1021,13 +999,86 @@
 <span class="err">}</span>
 </code></pre></div>
 </details>
-<h3 id="synthesizing-interactions">Synthesizing Interactions</h3>
-<h2 id="linguistic-templates">Linguistic Templates</h2>
+<h3 id="synthesizing-interactions-feedback">Synthesizing Interactions - Feedback</h3>
+<p>To generate synthetic dialogues, the <a href="../../api/api_synth_int/">interaction generator</a> relies on system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether passed as a <code>dictionary</code> or a <code>YAML</code> file. This format allows multiple interaction modes to be stored in a single configuration. If no prompting scheme is provided, a simple default prompt is used.</p>
+<p>Below are examples of the expected format in both a <code>dictionary</code> and a <code>YAML</code> file. The <code>YAML</code> template demonstrates how to store multiple frameworks, in this example for both <strong>feedback</strong> and <strong>linguistic</strong> categories.</p>
+<p><strong>Dictionary Template:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># a dictionary of system prompts</span>
+<span class="n">custom_prompts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;conversation_types&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;general_task_solving&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;student&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a student asking for help with a task.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tutor&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful tutor guiding the student step by step.&quot;</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">system_prompts</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="p">[</span><span class="s2">&quot;conversation_types&quot;</span><span class="p">][</span><span class="s2">&quot;general_task_solving&quot;</span><span class="p">]</span>
+</code></pre></div></p>
+<p><strong>YAML Template:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">conversation_types</span><span class="p">:</span>
+
+<span class="w">  </span><span class="nt">general_task_solving</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">student</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">You are an AI pretending to be a student trying to solve a task of your own choice.</span>
+
+<span class="w">      </span><span class="no">Your instructions are:</span>
+<span class="w">      </span><span class="no">- Ask for clarification, examples, or deeper explanations until you are confident you understand everything.</span>
+<span class="w">      </span><span class="no">- When asking questions, only ask one at a time.</span>
+<span class="w">      </span><span class="no">- Only ask simple questions relevant to the task. No broad or vague questions.</span>
+<span class="w">      </span><span class="no">- Never teach.</span>
+<span class="w">      </span><span class="no">- Always ask for short and consice answers.</span>
+<span class="w">    </span><span class="nt">tutor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">You are an AI tutor for a student trying to solve a task.</span>
+
+<span class="w">      </span><span class="no">Your instructions are:</span>
+<span class="w">      </span><span class="no">- Answer clearly and consicely.</span>
+<span class="w">      </span><span class="no">- Check for understanding.</span>
+<span class="w">      </span><span class="no">- Always be short and concise.</span>
+
+<span class="w">  </span><span class="nt">evaluative_feedback</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">student</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">You are an AI pretending to be a student submitting some work and looking for constructive feedback.</span>
+
+<span class="w">      </span><span class="no">Your instructions are:</span>
+<span class="w">      </span><span class="no">- Present your work clearly and concisely.</span>
+<span class="w">      </span><span class="no">- Ask for feedback on the work.</span>
+<span class="w">      </span><span class="no">- When asking questions, only ask one at a time.</span>
+<span class="w">      </span><span class="no">- Always ask for short and consice answers.</span>
+
+<span class="w">      </span><span class="no">After receiving feedback, ask follow-up questions or offer revised versions for further improvement.</span>
+<span class="w">    </span><span class="nt">tutor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">You are a an AI tutor providing feedback on student work.</span>
+
+<span class="w">      </span><span class="no">Your instructions are:</span>
+<span class="w">      </span><span class="no">- Always be short and concise.</span>
+<span class="w">      </span><span class="no">- Feedback should be constructive and specific.</span>
+<span class="w">      </span><span class="no">- Feedback should be varied and not repetitive in both content and style.</span>
+<span class="w">      </span><span class="no">- Invite the student to reflect or revise their work.</span>
+</code></pre></div></p>
+<p>In addition to prompts, the <a href="../../api/api_synth_int/">interaction generator</a> requires a <strong>seed message</strong> to initiate the dialogue. This is the first message sent by the <strong>student-agent</strong>.
+Seed messages can be passed directly as strings or organized in a YAML file when generating multiple dialogues. The example below illustrates both formats, based on an feedback context.</p>
+<p><strong>Example of single seed:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">seed_msg</span> <span class="o">=</span> <span class="s2">&quot;Hi, I&#39;m a student seeking feedback on my work, please provide me useful and precise feedback.&quot;</span>
+</code></pre></div></p>
+<p><strong>Example of multiple seeds in YAML:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">feedback_session</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">seeds</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Hi,</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">give</span><span class="nv"> </span><span class="s">me</span><span class="nv"> </span><span class="s">feedback</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">essay</span><span class="nv"> </span><span class="s">introduction?&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Hello,</span><span class="nv"> </span><span class="s">I</span><span class="nv"> </span><span class="s">just</span><span class="nv"> </span><span class="s">submitted</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">paragraph—what</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">think</span><span class="nv"> </span><span class="s">I</span><span class="nv"> </span><span class="s">could</span><span class="nv"> </span><span class="s">improve?&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Hey,</span><span class="nv"> </span><span class="s">I&#39;d</span><span class="nv"> </span><span class="s">like</span><span class="nv"> </span><span class="s">feedback</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">structure</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">report.</span><span class="nv"> </span><span class="s">Is</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">clear?&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Hi,</span><span class="nv"> </span><span class="s">could</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">point</span><span class="nv"> </span><span class="s">out</span><span class="nv"> </span><span class="s">any</span><span class="nv"> </span><span class="s">grammar</span><span class="nv"> </span><span class="s">issues</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">writing?&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Hi,</span><span class="nv"> </span><span class="s">I’m</span><span class="nv"> </span><span class="s">trying</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">make</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">argument</span><span class="nv"> </span><span class="s">stronger—can</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">help</span><span class="nv"> </span><span class="s">me</span><span class="nv"> </span><span class="s">refine</span><span class="nv"> </span><span class="s">it?&quot;</span>
+</code></pre></div></p>
+<hr />
+<h2 id="linguistic-templates"><strong>Linguistic Templates</strong></h2>
 <p>This section demonstrates a pipeline configuration centered on simple linguistic interaction types, inspired by the communicative categories proposed by <a href="https://doi.org/10.1016/j.ipm.2021.102838">Wei et al. (2022)</a>. The template framework focuses on the following categories: <em>Clarification, Question, Small Talk</em>, and <em>Statement</em>. These categories reflect the communicative intent behind user inputs—whether from the student or the LLM-driven tutor.</p>
 <p>While <em>Clarification</em>, <em>Question</em>, and <em>Small Talk</em> are directly derived from the study, the <em>Statement</em> category has been added to capture direct, informative responses that serve an answering function. It reflects utterances that do not seek new information but instead contribute content to the dialogue, as frequently observed in educational contexts.</p>
-<h3 id="framework-generation-contstraint-classes_1">Framework Generation: Contstraint Classes</h3>
+<h3 id="framework-generation">Framework Generation</h3>
 <p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. Notably, only the <em>Statement</em> category involves full question–answer pairs, ensuring that responses align with the discourse patterns typically found in learning environments.</p>
-<p>For the generation of utterances under the four categories (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>), the model was provided with the following prompts:</p>
+<p>For the generation of a framework for the four categories (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>), the model was provided with the prompt template presented below. </p>
+<details class="example">
+<summary>Prompt Template for Four Linguistic Categories: YAML</summary>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">prompt_dict = {</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># CLARIFICATION</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&quot;Clarification&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
@@ -1119,8 +1170,9 @@
 <span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
 <span class="err">}</span>
 </code></pre></div>
-<h3 id="synthesizing-interactions_1">Synthesizing Interactions</h3>
-<p>To generate synthetic dialogues, the <a href="../api/api_synth_int/">interaction generator</a> relies on system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether passed as a <code>dictionary</code> or a <code>YAML</code> file. This format allows multiple interaction modes to be stored in a single configuration. If no prompting scheme is provided, a simple default prompt is used.</p>
+</details>
+<h3 id="synthesizing-interactions">Synthesizing Interactions</h3>
+<p>To generate synthetic dialogues, the <a href="../../api/api_synth_int/">interaction generator</a> relies on system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether passed as a <code>dictionary</code> or a <code>YAML</code> file. This format allows multiple interaction modes to be stored in a single configuration. If no prompting scheme is provided, a simple default prompt is used.</p>
 <p>Below are examples of the expected format in both a <code>dictionary</code> and a <code>YAML</code> file. The <code>YAML</code> template demonstrates how to store multiple frameworks, such as feedback-oriented and linguistically structured interactions.</p>
 <p><strong>Dictionary Template:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1"># a dictionary of system prompts</span>
@@ -1135,29 +1187,9 @@
 
 <span class="n">system_prompts</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="p">[</span><span class="s2">&quot;conversation_types&quot;</span><span class="p">][</span><span class="s2">&quot;general_task_solving&quot;</span><span class="p">]</span>
 </code></pre></div></p>
-<p><strong>.YAML Template:</strong>
-<div class="highlight"><pre><span></span><code><span class="nt">conversation_types</span><span class="p">:</span>
-
-<span class="w">  </span><span class="nt">general_task_solving</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">student</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">      </span><span class="no">You are an AI pretending to be a student trying to solve a task of your own choice.</span>
-
-<span class="w">      </span><span class="no">Your instructions are:</span>
-<span class="w">      </span><span class="no">- Ask for clarification, examples, or deeper explanations until you are confident you understand everything.</span>
-<span class="w">      </span><span class="no">- When asking questions, only ask one at a time.</span>
-<span class="w">      </span><span class="no">- Only ask simple questions relevant to the task. No broad or vague questions.</span>
-<span class="w">      </span><span class="no">- Never teach.</span>
-<span class="w">      </span><span class="no">- Always ask for short and consice answers.</span>
-<span class="w">    </span><span class="nt">tutor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">      </span><span class="no">You are an AI tutor for a student trying to solve a task.</span>
-
-<span class="w">      </span><span class="no">Your instructions are:</span>
-<span class="w">      </span><span class="no">- Answer clearly and consicely.</span>
-<span class="w">      </span><span class="no">- Check for understanding.</span>
-<span class="w">      </span><span class="no">- Always be short and concise.</span>
-</code></pre></div></p>
-<p>In addition to prompts, the <a href="../api/api_synth_int/">interaction generator</a> requires a <strong>seed message</strong> to initiate the dialogue. This is the first message sent by the <strong>student-agent</strong>.
-Seed messages can be passed directly as strings or organized in a YAML file when generating multiple dialogues. The example below illustrates both formats, based on an English course context.</p>
+<p><strong>YAML Scheme:</strong>
+The yaml template for this task are the same as used in the <a href="#synthesizing-interactions---feedback">synthesization of feedback data</a>.</p>
+<p>As mentioned above, the <a href="../../api/api_synth_int/">interaction generator</a> requires a <strong>seed message</strong> to initiate the dialogue. The example below illustrates both formats, based on an English course context.</p>
 <p><strong>Example of single seed:</strong>
 <div class="highlight"><pre><span></span><code><span class="n">seed_msg</span> <span class="o">=</span> <span class="s2">&quot;Hi, I&#39;m a student seeking assistance with my studies in English. I need precise and easy-to-understand answers.&quot;</span>
 </code></pre></div></p>
@@ -1170,16 +1202,18 @@ Seed messages can be passed directly as strings or organized in a YAML file when
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Hi,</span><span class="nv"> </span><span class="s">How</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">I</span><span class="nv"> </span><span class="s">expand</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">vocabulary</span><span class="nv"> </span><span class="s">effectively?&quot;</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Hi,</span><span class="nv"> </span><span class="s">Can</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">help</span><span class="nv"> </span><span class="s">me</span><span class="nv"> </span><span class="s">analyze</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">short</span><span class="nv"> </span><span class="s">story</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">class?&quot;</span>
 </code></pre></div></p>
+<hr />
 <h2 id="wrap-interaction">Wrap Interaction</h2>
-<p>The <a href="../api/api_wrap_int/">chat wrapper</a> is not used in the provided guides. However, example prompts for initiating a local dialogue with the LLM-based tutor are provided below.</p>
+<p>The <a href="../../api/api_wrap_int/">chat wrapper</a> is not used in the provided guides. However, example prompts for initiating a local dialogue with the LLM-based tutor are provided below.</p>
 <p><em>To use the wrapper for local student–tutor interaction, follow the <a href="https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md">Chat Wrap Tutorial</a>.</em></p>
 <h3 id="example-prompts">Example Prompts</h3>
-<p>```bash
---prompt "You are a helpful tutor guiding a student."</p>
-<h1 id="or">or</h1>
-<p>--prompt "You are a helpful tutor providing feedback on inputs by the student."</p>
-<h1 id="or_1">or</h1>
-<p>--prompt "You are a helpful tutor helping a student translate Spanish to English. Make sure to break it down."</p>
+<div class="highlight"><pre><span></span><code>--prompt<span class="w"> </span><span class="s2">&quot;You are a helpful tutor guiding a student.&quot;</span>
+<span class="c1"># or</span>
+--prompt<span class="w"> </span><span class="s2">&quot;You are a helpful tutor providing feedback on inputs by the student.&quot;</span>
+<span class="c1"># or</span>
+--prompt<span class="w"> </span><span class="s2">&quot;You are a helpful tutor helping a student translate Spanish to English. Make sure to break it down.&quot;</span>
+</code></pre></div>
+<hr />
 <h2 id="references">References:</h2>
 <ul>
 <li>Wei, Y., Lu, W., Cheng, Q., Jiang, T., &amp; Liu, S. (2022). How humans obtain information from AI: Categorizing user messages in human-AI collaborative conversations. <em>Information Processing &amp; Management, 59</em>(2), 102838. https://doi.org/10.1016/j.ipm.2021.102838</li>
