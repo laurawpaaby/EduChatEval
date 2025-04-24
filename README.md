@@ -49,7 +49,7 @@ from educhateval import FrameworkGenerator,
                         Visualizer
 ```
 
-1. Generate Label Framework
+**1.** Generate Label Framework
 ```python
 generator = FrameworkGenerator(
     model_name="llama-3.2-3b-instruct",
@@ -67,7 +67,7 @@ filtered_df = generator.filter_with_classifier(
 )
 ```
 
-2. Synthesize Interaction
+**2.** Synthesize Interaction
 ```python
 simulator = DialogueSimulator(
     backend="mlx",
@@ -85,13 +85,13 @@ df_single = simulator.simulate_dialogue(
 )
 ```
 
-Classify and Predict
+**3.** Classify and Predict
 ```python
 predictor = PredictLabels(model_name="distilbert/distilroberta-base")
 
 annotaded_df = predictor.run_pipeline(
     train_data=filtered_df,
-    new_data=english_course_df,
+    new_data=df_single,
     text_column="text",
     label_column="category",
     columns_to_classify=["student_msg", "tutor_msg"],
@@ -99,7 +99,7 @@ annotaded_df = predictor.run_pipeline(
 )
 ```
 
- Visualize
+**4.** Visualize
 ```python
 viz = Visualizer()
 

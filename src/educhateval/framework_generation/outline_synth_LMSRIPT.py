@@ -42,7 +42,7 @@ def generate_from_prompt(
     max_tokens: int = 40,
 ) -> List[Dict]:
     """
-    Generate synthetic examples from a prompt using a local LLM in a constraint way.
+    Generate synthetic examples from a prompt in a constraint scheme using a local LLM.
     """
     results = []
     for _ in range(num_samples):
@@ -72,7 +72,9 @@ def synthesize_dataset(
     api_url: str = "http://localhost:1234/v1/completions",
     json_out: str = None,
     csv_out: str = None,
-) -> pd.DataFrame:
+    top_p: float = 0.90,
+    max_tokens: int = 40,
+) -> pd.DataFrame: 
     """
     Generate synthetic data for each prompt-category pair.
     Returns: cleaned pd.DataFrame of generated samples.
@@ -89,7 +91,7 @@ def synthesize_dataset(
     for category, prompt in prompt_dict.items():
         print(f"Generating for category: {category}")
         examples = generate_from_prompt(
-            prompt, category, model_name, api_url, num_samples
+            prompt, category, model_name, api_url, num_samples, top_p, max_tokens
         )
         all_data.extend(examples)
 
