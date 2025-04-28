@@ -807,7 +807,7 @@
         <p>Module for launching the Textual chat interface with an LM Studio-backed language model. It should be run from the command line.</p>
 <p>This class configures the model, system prompt, and save path, and then starts an interactive, full-screen terminal chat
 application using the <code>textual</code> framework. The interface supports live message streaming, styled user and assistant blocks,
-and automatic logging of chat history to JSON and CSV formats. </p>
+and automatic logging of chat history to JSON and CSV formats.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -985,14 +985,13 @@ and automatic logging of chat history to JSON and CSV formats. </p>
 <span class="normal">311</span>
 <span class="normal">312</span>
 <span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ChatWrap</span><span class="p">:</span>
+<span class="normal">314</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ChatWrap</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Module for launching the Textual chat interface with an LM Studio-backed language model. It should be run from the command line.</span>
 
 <span class="sd">    This class configures the model, system prompt, and save path, and then starts an interactive, full-screen terminal chat</span>
 <span class="sd">    application using the `textual` framework. The interface supports live message streaming, styled user and assistant blocks,</span>
-<span class="sd">    and automatic logging of chat history to JSON and CSV formats. </span>
+<span class="sd">    and automatic logging of chat history to JSON and CSV formats.</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        api_url (str): URL of the LM Studio API endpoint used for inference. Defaults to &quot;http://127.0.0.1:1234/v1/chat/completions&quot;.</span>
@@ -1006,7 +1005,6 @@ and automatic logging of chat history to JSON and CSV formats. </p>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1071,14 +1069,14 @@ and automatic logging of chat history to JSON and CSV formats. </p>
 
             <details class="quote">
               <summary>Source code in <code>src/educhateval/chat_ui.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">308</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">307</span>
+<span class="normal">308</span>
 <span class="normal">309</span>
 <span class="normal">310</span>
 <span class="normal">311</span>
 <span class="normal">312</span>
 <span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">314</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Launches the Textual app.&quot;&quot;&quot;</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">ChatApp</span><span class="p">(</span>
         <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>

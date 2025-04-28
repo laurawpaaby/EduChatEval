@@ -1639,24 +1639,20 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 <span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span>
-<span class="normal">383</span>
-<span class="normal">384</span>
-<span class="normal">385</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_previous_turn_distribution</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">,</span> 
-    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span> 
-    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span> 
-    <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> 
+<span class="normal">383</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_previous_turn_distribution</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
+    <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span>
     <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;icefire&quot;</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;icefire&quot;</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot the distribution of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">student_col</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">tutor_col</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;Both student_col and tutor_col must be provided.&quot;</span>
-            <span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Both student_col and tutor_col must be provided.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">focus_agent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="s2">&quot;tutor&quot;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;focus_agent must be either &#39;student&#39; or &#39;tutor&#39;.&quot;</span><span class="p">)</span>
