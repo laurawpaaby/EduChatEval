@@ -4,7 +4,7 @@
 
 ## 🚀 Overview
 
-This package provides an evaluation framework for analyzing interactions between students and LLM-based tutors through classification, simulation, and visualization tools.
+This package offers a framework for researchers to map and quantify interactions between students and LLM-based tutors in educational settings. It supports structured, objective evaluation through classification, simulation, and visualization tools, and is designed for flexible use across tasks of any scale. The framework accommodates both researchers analyzing pre-collected, annotated data and those starting from scratch, providing modular support through each step of the evaluation process.
 
 The package is designed to:
 
@@ -12,7 +12,7 @@ The package is designed to:
 - Simulate student–tutor interactions using role-based prompts and seed messages when real data is unavailable
 - Initiate an interface with locally hosted, open-source models (e.g., via LM Studio or Hugging Face)
 - Log interactions in structured formats (JSON/CSV) for downstream analysis
-- Train and apply classifiers to predict customized interaction classes and visualize patterns across conversations
+- Train and applu classifiers to predict customized interaction classes and visualize patterns across conversations
 
 Overview of the system architecture:
 
