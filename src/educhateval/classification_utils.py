@@ -111,6 +111,8 @@ def compute_metrics(p: EvalPrediction):
 
 
 # --- Train the model ---
+
+# --- Train the model ---
 def train_model(
     tokenized_dataset: DatasetDict,
     model_name: str,
@@ -157,21 +159,51 @@ def train_model(
 
     if tuning:
 
+        trial_results = []
+
         def objective(trial):
+            # Suggest parameters
             for key, values in tuning_params.items():
                 setattr(training_args, key, trial.suggest_categorical(key, values))
             trainer.args = training_args
             trainer.train()
-            return trainer.evaluate()["eval_loss"]
+
+            eval_metrics = trainer.evaluate()
+
+            # Save all relevant metrics for this trial
+            trial_results.append({
+                "Trial": trial.number,
+                "Validation Loss": eval_metrics["eval_loss"],
+                "Accuracy": eval_metrics["eval_accuracy"],
+                "Precision": eval_metrics["eval_precision"],
+                "Recall": eval_metrics["eval_recall"],
+                "F1": eval_metrics["eval_f1"],
+                **trial.params
+            })
+
+            return eval_metrics["eval_loss"]
 
         study = optuna.create_study(direction="minimize")
         study.optimize(
-            objective, n_trials=len(tuning_params[list(tuning_params.keys())[0]])
+            objective,
+            n_trials=len(tuning_params[list(tuning_params.keys())[0]]),
         )
-        print("Best hyperparameters:", study.best_params)
 
-    trainer.train()
-    return model, trainer
+        # displaying the results for easier review
+        study_results_df = pd.DataFrame(trial_results)
+        study_results_df = study_results_df.sort_values("Validation Loss")
+
+        print("\n--- Summary of all tuning trials ---\n")
+        print(study_results_df.to_string(index=False))
+
+        print("\nBest hyperparameters:", study.best_params)
+
+    #trainer.train()
+    if tuning:
+        return model, trainer, study_results_df
+    else:
+        return model, trainer
+
 
 
 # --- Save model and tokenizer ---

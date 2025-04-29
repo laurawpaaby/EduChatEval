@@ -1,0 +1,24 @@
+english_course:
+  seeds:
+    - "Hi, I'm struggling with writing essays. Can you help me improve?"
+    - "Hi, Can you explain how to use the passive voice in English?"
+    - "Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?"
+    - "Hi, How can I expand my vocabulary effectively?"
+    - "Hi, Can you help me analyze this short story for class?"
+
+biology_course:
+  seeds:
+    - "Hi, I'm having trouble understanding cell division. Can you explain mitosis vs meiosis?"
+    - "Hi, Can you help me review the parts of a plant cell?"
+    - "Hi, How does natural selection work in evolution?"
+    - "Hi, I need help with a biology lab report on photosynthesis."
+    - "Hi, What’s the difference between DNA and RNA?"
+
+spanish_course:
+   seeds:
+    - "Hi, I’m learning Spanish and need help practising."
+    - "Hi, how do I use past tense verbs in Spanish?"
+    - "Hi, can you help me practice a short dialogue in Spanish?"
+    - "Hi, what are some tips for improving Spanish pronunciation?"
+    - "Hi, can you explain when to use 'ser' vs 'estar' in Spanish?"
+
