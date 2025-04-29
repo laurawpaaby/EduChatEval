@@ -72,9 +72,10 @@ def synthesize_dataset(
     api_url: str = "http://localhost:1234/v1/completions",
     json_out: str = None,
     csv_out: str = None,
+    temperature: float = 0.85,
     top_p: float = 0.90,
     max_tokens: int = 40,
-) -> pd.DataFrame: 
+) -> pd.DataFrame:
     """
     Generate synthetic data for each prompt-category pair.
     Returns: cleaned pd.DataFrame of generated samples.
@@ -91,7 +92,7 @@ def synthesize_dataset(
     for category, prompt in prompt_dict.items():
         print(f"Generating for category: {category}")
         examples = generate_from_prompt(
-            prompt, category, model_name, api_url, num_samples, top_p, max_tokens
+            prompt, category, model_name, api_url, num_samples, temperature, top_p, max_tokens
         )
         all_data.extend(examples)
 

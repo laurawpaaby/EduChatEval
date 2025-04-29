@@ -5,7 +5,7 @@ Below are two example workflows demonstrating how to use each module in the pack
 
 **Generate Label Framework**
 
-The first example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on different feedback types: (*Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity*, and *Style*).
+The first example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on different feedback types: (*Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity*, and *Style*). 
 
 First install the package:
 ```bash

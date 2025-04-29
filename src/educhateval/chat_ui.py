@@ -265,7 +265,7 @@ class ChatWrap:
 
     This class configures the model, system prompt, and save path, and then starts an interactive, full-screen terminal chat
     application using the `textual` framework. The interface supports live message streaming, styled user and assistant blocks,
-    and automatic logging of chat history to JSON and CSV formats. 
+    and automatic logging of chat history to JSON and CSV formats.
 
     Parameters:
         api_url (str): URL of the LM Studio API endpoint used for inference. Defaults to "http://127.0.0.1:1234/v1/chat/completions".
@@ -279,7 +279,6 @@ class ChatWrap:
 
 
     """
-
 
     def __init__(
         self,

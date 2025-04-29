@@ -5,7 +5,7 @@ Several modules within the pipeline accept **customized prompts** and **seed mes
 
 ## **Feedback Templates**
 
-This section demonstrates a pipeline configuration centered on feedback types, inspired by the work of [Rasmus](https://doi.org/10.1016/j.ipm.2021.102838). The template framework focuses on the following categories: *Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity*, and *Style*. 
+This section demonstrates a pipeline configuration centered on feedback types, inspired by the work of [Hansen et al. 2025](https://doi.org/10.7146/lom.v17i31.148831). The template framework focuses on the following categories: *Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity*, and *Style*. 
 
 ### Framework Generation
 The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. 
@@ -388,4 +388,5 @@ The [chat wrapper](../api/api_wrap_int.md/) is not used in the provided guides. 
 
 ---
 ## References
+- Hansen, R., Prilop, C. N., Alsted Nielsen, T., Møller, K. L., Frøhlich Hougaard, R., & Büchert Lindberg, A. (2025). The effects of an AI feedback coach on students’ peer feedback quality, composition, and feedback experience. *Tidsskriftet Læring Og Medier (LOM)*, 17(31). [https://doi.org/10.7146/lom.v17i31.148831](https://doi.org/10.7146/lom.v17i31.148831)
 - Wei, Y., Lu, W., Cheng, Q., Jiang, T., & Liu, S. (2022). How humans obtain information from AI: Categorizing user messages in human-AI collaborative conversations. *Information Processing & Management, 59*(2), 102838. [https://doi.org/10.1016/j.ipm.2021.102838](https://doi.org/10.1016/j.ipm.2021.102838)

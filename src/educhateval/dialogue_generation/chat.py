@@ -1,6 +1,6 @@
 """
 Chat formatting using pydantic
-Original code by Mina Almasi in https://github.com/INTERACT-LLM/Interact-LLM/ 
+Original code by Mina Almasi in https://github.com/INTERACT-LLM/Interact-LLM/
 """
 
 from pydantic import BaseModel
@@ -24,5 +24,5 @@ class ChatHistory(BaseModel):
     Chat history formatting.
     - messages: ordered list of ChatMessage items exchanged in a conversation
     """
-    messages: List[ChatMessage]
 
+    messages: List[ChatMessage]

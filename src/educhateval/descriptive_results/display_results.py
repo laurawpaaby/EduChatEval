@@ -241,22 +241,20 @@ import matplotlib.ticker as mtick
 
 
 def plot_previous_turn_distribution(
-    df, 
-    student_col="predicted_labels_student_msg", 
-    tutor_col="predicted_labels_tutor_msg", 
-    focus_agent="student", 
+    df,
+    student_col="predicted_labels_student_msg",
+    tutor_col="predicted_labels_tutor_msg",
+    focus_agent="student",
     use_percent=True,
-    palette="icefire"
+    palette="icefire",
 ):
     """
     Plot the distribution of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.
     """
 
     if not student_col or not tutor_col:
-        raise ValueError(
-                "Both student_col and tutor_col must be provided."
-            )
-    
+        raise ValueError("Both student_col and tutor_col must be provided.")
+
     if focus_agent not in ["student", "tutor"]:
         raise ValueError("focus_agent must be either 'student' or 'tutor'.")
 

@@ -11,7 +11,6 @@ The advice should be constructive, context-appropriate, and expressed in a helpf
 Give a sentence of advice.
 <|im_end|>
 <|im_start|>assistant""",
-
     # CONTENT
     "Content": """<|im_start|>system
 You state an academic fact or piece of content relevant to a student's learning.
@@ -22,7 +21,6 @@ Each sentence should be informative, domain-relevant, and suited for tutoring. Y
 Provide a factual statement.
 <|im_end|>
 <|im_start|>assistant""",
-
     # ENCOURAGEMENT
     "Encouragement": """<|im_start|>system
 You generate a single sentence offering encouragement to a student.
@@ -33,7 +31,6 @@ The tone should be warm, supportive, and appropriate for educational feedback. Y
 Say something encouraging.
 <|im_end|>
 <|im_start|>assistant""",
-
     # EXPLANATION
     "Explanation": """<|im_start|>system
 You provide a one-sentence explanation of a concept or process relevant in education.
@@ -44,7 +41,6 @@ Your explanations should be clear, concise, and accurate. You never repeat yours
 Explain a concept in one sentence.
 <|im_end|>
 <|im_start|>assistant""",
-
     # POSED QUESTION
     "Posed Question": """<|im_start|>system
 You pose an open-ended or reflective question to stimulate learning.
@@ -55,7 +51,6 @@ The questions should be clear, relevant, and suitable for a tutor to ask a stude
 Pose a thoughtful question.
 <|im_end|>
 <|im_start|>assistant""",
-
     # SMALL TALK
     "Small Talk": """<|im_start|>system
 You generate short, friendly small talk suitable for casual rapport between student and tutor.
@@ -66,10 +61,8 @@ Keep it relaxed and appropriate for an educational setting. You never repeat you
 Say something casual.
 <|im_end|>
 <|im_start|>assistant""",
-
-
-# SPECIFICITY
-"Specificity": """<|im_start|>system
+    # SPECIFICITY
+    "Specificity": """<|im_start|>system
 You generate a sentence that highlights a specific part of the user’s message by referencing it directly.
 This may include precise feedback, correction, or specific praise. Be educational and avoid repetition.
 <|im_end|>
@@ -90,7 +83,6 @@ Yes, the statement “my main argument was strong” is supported well by the ex
 Give a new specific comment on a new sentence.
 <|im_end|>
 <|im_start|>assistant""",
-
     # STYLE
     "Style": """<|im_start|>system
 You highlight a stylistic feature in the user's sentence. This can include vivid language, varied sentence structure, tone shifts, or rhetorical devices.
@@ -112,6 +104,5 @@ This sentence demonstrates strong style through its gentle simile and poetic rhy
 <|im_start|>user
 Give another sentence and highlight a stylistic feature.
 <|im_end|>
-<|im_start|>assistant"""
-
+<|im_start|>assistant""",
 }

@@ -12,7 +12,7 @@ The package is designed to:
 - Simulate student–tutor interactions using role-based prompts and seed messages when real data is unavailable
 - Initiate an interface with locally hosted, open-source models (e.g., via LM Studio or Hugging Face)
 - Log interactions in structured formats (JSON/CSV) for downstream analysis
-- Train and applu classifiers to predict customized interaction classes and visualize patterns across conversations
+- Train and apply classifiers to predict customized interaction classes and visualize patterns across conversations
 
 Overview of the system architecture:
 

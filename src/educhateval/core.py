@@ -56,7 +56,7 @@ class FrameworkGenerator:
     Attributes:
         model_name (str): Name of the local model to use for generation (default: "llama-3.2-3b-instruct").
         api_url (str): URL for the local model API (default: "http://localhost:1234/v1/completions").
-    
+
     Methods:
         generate_framework(...): Simulates a dialogue and returns it as a pandas DataFrame.
         filter_with_classifier(...): Filters the generated dataset using a small classifier trained on real labeled data.
@@ -92,6 +92,8 @@ class FrameworkGenerator:
             json_out (str): Optional path to save JSON output.
             csv_out (str): Optional path to save CSV output.
             seed (int): Random seed for reproducibility.
+            temperature (float): Sampling temperature for generation.
+            top_p (float): Top-p sampling parameter.
 
         Returns:
             pd.DataFrame: Cleaned, labeled synthetic dataset.
@@ -250,7 +252,7 @@ class DialogueSimulator:
         save_csv_path: Optional[Path] = None,
         seed: int = 42,
         custom_prompt_file: Optional[Path] = None,
-        system_prompts: Optional[dict]=None,
+        system_prompts: Optional[dict] = None,
     ) -> pd.DataFrame:
         """
         Simulates a multi-turn dialogue using either built-in or custom prompts.
@@ -272,13 +274,16 @@ class DialogueSimulator:
 
         # Validate inputs: only one prompt source should be used
         if system_prompts is not None and custom_prompt_file is not None:
-            raise ValueError("Provide only one of `system_prompts` or `custom_prompt_file`, not both.")
+            raise ValueError(
+                "Provide only one of `system_prompts` or `custom_prompt_file`, not both."
+            )
 
         # Load prompts based on the user's input
         if system_prompts is None:
             if custom_prompt_file:
                 # Load from YAML prompt file
                 import yaml
+
                 with open(custom_prompt_file, "r") as f:
                     custom_prompts = yaml.safe_load(f)
             else:
@@ -297,7 +302,6 @@ class DialogueSimulator:
                 system_prompts = custom_prompts["conversation_types"][mode]
             except KeyError:
                 raise ValueError(f"Mode '{mode}' not found in prompt configuration.")
-
 
         df = simulate_conversation(
             model=self.model,
@@ -392,7 +396,6 @@ class PredictLabels:
         Returns:
             pd.DataFrame: A DataFrame containing the original `new_data` with added columns for predicted labels and confidence scores.
         """
-
 
         # Validate training data input
         if not isinstance(train_data, (pd.DataFrame, str)):
