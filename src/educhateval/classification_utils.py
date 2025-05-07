@@ -199,10 +199,8 @@ def train_model(
         print("\nBest hyperparameters:", study.best_params)
 
     #trainer.train()
-    if tuning:
-        return model, trainer, study_results_df
-    else:
-        return model, trainer
+    return model, trainer
+    
 
 
 

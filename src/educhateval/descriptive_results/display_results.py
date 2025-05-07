@@ -25,6 +25,7 @@ def plot_predicted_categories(
     use_percent=True,
     palette="icefire",
     title="Predicted Category Distribution",
+    show_ci=False,
 ):
     if not student_col and not tutor_col:
         raise ValueError("You must provide at least one of student_col or tutor_col.")
@@ -83,6 +84,7 @@ def plot_predicted_categories(
         marker="o",
         palette=palette,
         hue_order=all_labels,
+        errorbar=('ci', 95) if show_ci else None,
     )
 
     if student_col and tutor_col:
@@ -247,6 +249,7 @@ def plot_previous_turn_distribution(
     focus_agent="student",
     use_percent=True,
     palette="icefire",
+    title=None,
 ):
     """
     Plot the distribution of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.
@@ -379,5 +382,141 @@ def plot_previous_turn_distribution(
     g._legend.set_frame_on(True)
     g._legend.set_title(f"{opposite_label} Category (Turn - 1)")
 
+
+    plt.suptitle(title, fontsize=15, fontweight="bold", y=0.95)
+
+    plt.tight_layout()
+    plt.show()
+
+
+
+#### JUST TESTING !!!!
+def plot_turn_ci_predicted_categories(
+    df,
+    student_col=None,
+    tutor_col=None,
+    session_col=None,
+    use_percent=True,
+    palette="icefire",
+    title="Predicted Category Distribution",
+    show_ci=False,
+):
+    if not student_col and not tutor_col:
+        raise ValueError("You must provide at least one of student_col or tutor_col.")
+    
+    if show_ci and not session_col:
+        raise ValueError("To use `show_ci=True`, you must provide `session_col` to compute variation across sessions.")
+
+    # --- STEP 1: Prepare long format ---
+    long_dfs = []
+    if student_col:
+        temp = df[[session_col, "turn", student_col]].copy() if show_ci else df[["turn", student_col]].copy()
+        temp["source"] = "Student"
+        temp.rename(columns={student_col: "predicted_label"}, inplace=True)
+        long_dfs.append(temp)
+
+    if tutor_col:
+        temp = df[[session_col, "turn", tutor_col]].copy() if show_ci else df[["turn", tutor_col]].copy()
+        temp["source"] = "Tutor"
+        temp.rename(columns={tutor_col: "predicted_label"}, inplace=True)
+        long_dfs.append(temp)
+
+    long_df = pd.concat(long_dfs, ignore_index=True)
+
+    # --- STEP 2: Label handling ---
+    all_labels = sorted(long_df["predicted_label"].dropna().unique())
+    long_df["predicted_label"] = pd.Categorical(
+        long_df["predicted_label"], categories=all_labels, ordered=True
+    )
+
+    sns.set_style("whitegrid")
+
+    if show_ci:
+        # --- STEP 3: One-hot encode + melt for each predicted label ---
+        onehot = pd.get_dummies(long_df["predicted_label"])
+        onehot[session_col] = long_df[session_col]
+        onehot["turn"] = long_df["turn"]
+        onehot["source"] = long_df["source"]
+
+        melted = onehot.melt(
+            id_vars=[session_col, "turn", "source"],
+            var_name="predicted_label",
+            value_name="is_class"
+        )
+
+        # Plot
+        g = sns.relplot(
+            data=melted,
+            x="turn",
+            y="is_class",
+            hue="predicted_label",
+            col="source" if student_col and tutor_col else None,
+            kind="line",
+            marker="o",
+            errorbar=('ci', 95),
+            height=4.5,
+            aspect=1.5,
+            palette=palette,
+            hue_order=all_labels
+        )
+
+        y_label = "Proportion per Turn (%)"
+        fmt = lambda y, _: f"{y*100:.0f}%"
+        y_max = 1  # Proportion
+        for ax in g.axes.flat:
+            ax.set_ylim(0, y_max)
+            ax.yaxis.set_major_formatter(mtick.FuncFormatter(fmt))
+
+    else:
+        # --- STEP 3b: Aggregated mode ---
+        count_df = (
+            long_df.groupby(["turn", "source", "predicted_label"], observed=True)
+            .size()
+            .reset_index(name="count")
+        )
+
+        if use_percent:
+            total_per_group = count_df.groupby(["turn", "source"], observed=True)["count"].transform("sum")
+            count_df["value"] = (count_df["count"] / total_per_group) * 100
+            y_label = "Occurrences (%)"
+            fmt = lambda y, _: f"{y:.0f}%"
+            y_max = 100
+        else:
+            count_df["value"] = count_df["count"]
+            y_label = "Number of Occurrences"
+            fmt = lambda y, _: f"{int(y)}"
+            y_max = count_df["value"].max() + 3
+
+        g = sns.relplot(
+            data=count_df,
+            x="turn",
+            y="value",
+            hue="predicted_label",
+            kind="line",
+            col="source" if student_col and tutor_col else None,
+            facet_kws={"sharey": True, "sharex": True},
+            height=4.5,
+            aspect=1.5,
+            marker="o",
+            palette=palette,
+            hue_order=all_labels,
+            errorbar=None
+        )
+
+        for ax in g.axes.flat:
+            ax.set_ylim(0, y_max)
+            ax.yaxis.set_major_formatter(mtick.FuncFormatter(fmt))
+
+    # --- Final formatting ---
+    if student_col and tutor_col:
+        g.set_titles("{col_name} Messages")
+    g.set_axis_labels("Turn", y_label)
+
+    g.fig.subplots_adjust(right=0.85)
+    g._legend.set_bbox_to_anchor((1.12, 0.5))
+    g._legend.set_frame_on(True)
+    g._legend.set_title("Predicted Category")
+
+    plt.suptitle(title, fontsize=15, fontweight="bold", y=0.95)
     plt.tight_layout()
     plt.show()

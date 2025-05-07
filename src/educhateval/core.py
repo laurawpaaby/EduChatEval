@@ -272,37 +272,38 @@ class DialogueSimulator:
         """
         set_seed(seed)
 
-        # Validate inputs: only one prompt source should be used
+        # Validate input source
         if system_prompts is not None and custom_prompt_file is not None:
-            raise ValueError(
-                "Provide only one of `system_prompts` or `custom_prompt_file`, not both."
-            )
+            raise ValueError("Provide only one of `system_prompts` or `custom_prompt_file`, not both.")
 
-        # Load prompts based on the user's input
+        # Load prompts from file if needed
         if system_prompts is None:
             if custom_prompt_file:
-                # Load from YAML prompt file
                 import yaml
+                try:
+                    with open(custom_prompt_file, "r") as f:
+                        custom_prompts = yaml.safe_load(f)
+                    print(f" Loaded custom prompts from: {custom_prompt_file}")
+                except Exception as e:
+                    raise ValueError(f"Failed to load YAML from {custom_prompt_file}: {e}")
 
-                with open(custom_prompt_file, "r") as f:
-                    custom_prompts = yaml.safe_load(f)
+                if "conversation_types" not in custom_prompts:
+                    raise ValueError(f"Missing 'conversation_types' in custom prompt file: {custom_prompt_file}")
+
+                if mode not in custom_prompts["conversation_types"]:
+                    raise ValueError(f"Mode '{mode}' not found in custom prompt file: {custom_prompt_file}")
+
+                system_prompts = custom_prompts["conversation_types"][mode]
+
             else:
-                # Hardcoded default if nothing is provided
-                custom_prompts = {
-                    "conversation_types": {
-                        "general_task_solving": {
-                            "student": "You are a student asking for help with a task.",
-                            "tutor": "You are a helpful tutor guiding the student step by step.",
-                        }
-                    }
+                # Use built-in fallback
+                print("Using default hardcoded prompts.")
+                system_prompts = {
+                    "student": "You are a student asking for help with a task.",
+                    "tutor": "You are a helpful tutor guiding the student step by step.",
                 }
 
-            # Extract prompt for selected mode
-            try:
-                system_prompts = custom_prompts["conversation_types"][mode]
-            except KeyError:
-                raise ValueError(f"Mode '{mode}' not found in prompt configuration.")
-
+        # Simulate conversation
         df = simulate_conversation(
             model=self.model,
             turns=turns,
@@ -310,13 +311,11 @@ class DialogueSimulator:
             log_dir=log_dir,
             save_csv_path=save_csv_path,
             system_prompts=system_prompts,
-            custom_prompt_file=custom_prompt_file,
+            custom_prompt_file=None,  # already used, no need to pass again
             mode=mode,
         )
 
-        print(
-            f"\n Full dialogue stored in DataFrame: use the returned object or view as `df`"
-        )
+        print("\nFull dialogue stored in DataFrame. Use the returned object or view as `df`.")
         return df
 
 
@@ -475,6 +474,7 @@ from educhateval.descriptive_results.display_results import (
     plot_category_bars,
     create_prediction_summary_table,
     plot_previous_turn_distribution,
+    plot_turn_ci_predicted_categories,
 )
 
 
@@ -494,12 +494,6 @@ class Visualizer:
     Other keyword arguments (**kwargs) are passed through to the internal plotting functions.
     """
 
-    def plot_turn_trends(self, df, student_col=None, tutor_col=None, **kwargs):
-        """Wrapper for turn-based category line plot."""
-        return plot_predicted_categories(
-            df, student_col=student_col, tutor_col=tutor_col, **kwargs
-        )
-
     def plot_category_bars(self, df, student_col=None, tutor_col=None, **kwargs):
         """Wrapper for grouped barplot of predicted categories."""
         return plot_category_bars(
@@ -510,6 +504,12 @@ class Visualizer:
         """Wrapper for generating prediction summary table."""
         return create_prediction_summary_table(
             df, student_col=student_col, tutor_col=tutor_col
+        )
+
+    def plot_turn_trends(self, df, student_col=None, tutor_col=None, **kwargs):
+        """Wrapper for generating prediction summary table."""
+        return plot_turn_ci_predicted_categories(
+            df, student_col=student_col, tutor_col=tutor_col, **kwargs
         )
 
     def plot_history_interaction(

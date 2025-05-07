@@ -1,0 +1,755 @@
+turn,student_msg,tutor_msg,student_id,course,predicted_labels_student_msg,predicted_confidence_student_msg,predicted_labels_tutor_msg,predicted_confidence_tutor_msg
+1,"Hi, I'm struggling with writing essays. Can you help me improve?","Of course! Let's focus on structure: intro, thesis, body paragraphs with topic sentences, evidence, and conclusion. Also, make sure to proofread for clarity and grammar. Practice writing short essays regularly. How does this help?",english_course_student_1,english_course,Small Talk,0.92861086,Clarification,0.99526596
+2,"Sure, that's helpful. What do you mean by a strong thesis statement?","A strong thesis statement clearly states your main argument or claim. It should be specific and debatable. For example: ""While traditional schooling has its merits, online education offers more flexibility and better scalability."" This sets up a clear direction for the essay.",english_course_student_1,english_course,Clarification,0.9989907,Clarification,0.99478614
+3,Got it. What should I do if I get stuck on the body paragraphs?,"Start with a topic sentence for each paragraph. Follow with evidence and explanation. If stuck, ask yourself: What point am I trying to make? What evidence supports it? Brainstorm ideas, then connect them logically.",english_course_student_1,english_course,Clarification,0.9969896,Clarification,0.99949276
+4,Thank you. How can I improve my introduction to make it more engaging?,"Start with a hook (fact, quote, question) to grab attention. Then briefly introduce the topic and end with your thesis. Keep it concise and engaging.",english_course_student_1,english_course,Clarification,0.99518186,Clarification,0.9990007
+5,"Great, thanks! How can I avoid common pitfalls in my essays?","Avoid: vague language, irrelevant examples, and wandering from your topic. Always stick to your thesis, use clear transitions, and proofread for clarity and logic.",english_course_student_1,english_course,Small Talk,0.5426426,Clarification,0.9863349
+6,Got it. What about transitions between paragraphs?,"Use linking words like ""however,"" ""furthermore,"" ""similarly."" Show how each para builds or contrasts. It helps smooth flow and maintains focus.",english_course_student_1,english_course,Clarification,0.877187,Statement,0.99660385
+7,Thanks! Can you suggest a few examples of linking words?,"Sure! Try: 
+- Similarly
+- However
+- Furthermore
+- Nonetheless
+- Consequently
+- Firstly, Secondly
+This adds clarity and structure.",english_course_student_1,english_course,Clarification,0.9994991,Clarification,0.9981464
+8,"Thanks, that's really helpful! How do I know if my essay is well-written?","Check: clear thesis, well-developed points, strong evidence, good transitions, and no major grammar/typos. Ask someone else to read it too!",english_course_student_1,english_course,Small Talk,0.99843174,Clarification,0.9975642
+1,"Hi, Can you explain how to use the passive voice in English?","The passive voice is used when you want to emphasize the action rather than the doer. To form it: ""be"" + past participle. For example, ""The cake was eaten"" emphasizes the eating, not who ate it.",english_course_student_2,english_course,Clarification,0.9996388,Statement,0.9847751
+2,"Sure, could you give me another example of the passive voice to better understand when to use it?","Of course! ""The book was written by a famous author"" emphasizes the book and the action of writing, not the specific author.",english_course_student_2,english_course,Clarification,0.99968076,Statement,0.8470695
+3,Can you provide another example where the passive voice emphasizes the action rather than the doer?,"Sure! ""The windows were broken last night."" This emphasizes that the windows were broken but doesn't specify who broke them.",english_course_student_2,english_course,Clarification,0.99965096,Small Talk,0.5755808
+4,"Got it. So, the passive voice is used when we want to focus on what happened rather than who did it. Thanks!",Exactly! You got it. Perfect way to use passive voice! 😊,english_course_student_2,english_course,Clarification,0.9889169,Small Talk,0.90434223
+5,Great! Can you give me one more example where the passive voice is used to avoid mentioning the doer?,"Sure! ""Coffee is served at the hotel."" — avoids mentioning who serves it.",english_course_student_2,english_course,Clarification,0.99964535,Small Talk,0.9852291
+6,Got it. Thanks for the examples. Is there anything else I should know about using the passive voice?,You're welcome! Just remember the passive voice is useful for emphasizing the action or when the doer is unknown or unimportant. Keep practicing!,english_course_student_2,english_course,Clarification,0.99897385,Clarification,0.95468616
+7,Perfect! Thanks for the clarification. Is there anything else I should watch out for when using the passive voice?,Good to know! Just watch out for using it naturally in conversations—some contexts call for the active voice. Practice both! 😊,english_course_student_2,english_course,Clarification,0.98791784,Small Talk,0.77687997
+8,Got it. Thanks for the advice! I'll make sure to use both active and passive voices appropriately.,You're welcome! Great plan—use each where it fits best. Keep practicing! 🌟,english_course_student_2,english_course,Small Talk,0.8318638,Small Talk,0.9985745
+1,"Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?","Watch out for:
+
+1. Subject-verb agreement
+2. Misplaced or missing commas
+3. Run-on sentences
+4. Homonym confusion
+5. Misplaced modifiers
+6. Missing apostrophes
+
+Review these to improve your exam score!",english_course_student_3,english_course,Small Talk,0.9972625,Clarification,0.7690707
+2,Got it. Can you give me an example of each?,"Sure! Here are examples:
+
+1. **Subject-verb agreement**: Incorrect: The dog and cats play.  
+   Correct: The dog and cats **play**.
+
+2. **Commas**: Incorrect: We went to the store the bank.  
+   Correct: We went to the store, and the bank.
+
+3. **Run-on sentences**: Incorrect: She went to the store and bought milk.  
+   Correct: She went to the store. She bought milk.
+
+4. **Homonyms**: Incorrect: I mean I'm going to the park.  
+   Correct: I mean, I'm going to the park.
+
+5. **Modifiers**: Incorrect: Running quickly to the store she bought milk.  
+   Correct: She ran quickly to the store and bought milk.
+
+6. **Apostrophes**: Incorrect: Its my book.  
+   Correct: It's my book.",english_course_student_3,english_course,Clarification,0.99954283,Clarification,0.8174796
+3,Got it! Could you give me one more example for each to ensure I fully understand?,"Absolutely! Here are additional examples:
+
+1. **Subject-verb agreement**:  
+   Incorrect: Neither the teachers or the students were present.  
+   Correct: Neither the teachers nor the students were present.
+
+2. **Commas**:  
+   Incorrect: I like apples and oranges and bananas.  
+   Correct: I like apples, oranges, and bananas.
+
+3. **Run-on sentences**:  
+   Incorrect: She went to the park and there were many people there.  
+   Correct: She went to the park. There were many people there.
+
+4. **Homonyms**:  
+   Incorrect: I saw a pair of shoes and bought it.  
+   Correct: I saw a pair of shoes and bought them.
+
+5. **Modifiers**:  
+   Incorrect: Looking out the window, the storm approached.  
+   Correct: Looking out the window, she saw the storm approaching.
+
+6. **Apostrophes**:  
+   Incorrect: Their going to the party is exciting.  
+   Correct: Their going to the party is exciting.  
+   (Or) Theirs is going to the party is exciting.",english_course_student_3,english_course,Clarification,0.99965954,Clarification,0.8541417
+4,"Thanks! That helps a lot. Could you clarify the difference between ""its"" and ""it's""?","Sure! ""It's"" is a contraction of ""it is"" or ""it has."" Example: It's raining.
+
+""Its"" is a possessive pronoun. Example: The dog wagged its tail.",english_course_student_3,english_course,Clarification,0.9986891,Statement,0.476959
+5,Got it! One more example for each would be great to solidify my understanding.,"Of course! Here are more examples:
+
+1. **It's**:  
+   Incorrect: Its going to rain.  
+   Correct: It's going to rain.
+
+2. **Its**:  
+   Incorrect: The cat sat on its.  
+   Correct: The cat sat on its lap.
+
+Let me know if you need more!",english_course_student_3,english_course,Clarification,0.9994155,Clarification,0.9335961
+6,Got it! Great examples. Thanks for your help!,You're welcome! Glad to help. Good luck with your exam! 😊,english_course_student_3,english_course,Small Talk,0.9986181,Small Talk,0.9990182
+7,Thank you! I feel more confident now.,Glad to hear it! Congrats on feeling more confident. Best of luck! 🎉,english_course_student_3,english_course,Small Talk,0.9973634,Small Talk,0.98360795
+8,Thanks! Really appreciate your help.,You're welcome! Happy studying! 😊,english_course_student_3,english_course,Small Talk,0.9982918,Small Talk,0.998939
+1,"Hi, How can I expand my vocabulary effectively?","Read widely, use a dictionary, and write frequently.",english_course_student_4,english_course,Clarification,0.9966583,Statement,0.9984597
+2,Could you please give me an example of how reading widely helps expand vocabulary?,"Sure! Reading exposes you to new words in context. When you see words in stories or articles, you learn how they're used and remember them better.",english_course_student_4,english_course,Clarification,0.9996768,Clarification,0.9913829
+3,Can you suggest a specific type of reading material that is particularly helpful for expanding vocabulary?,"Try reading diverse genres and topics. Fiction, essays, news articles, and non-fiction books introduce you to various vocabulary.",english_course_student_4,english_course,Clarification,0.99964523,Statement,0.92985195
+4,What about using a dictionary? How exactly does that help expand my vocabulary?,"Look up words you don't know. Definition, synonyms, etymology—these details deepen your understanding and memorization.",english_course_student_4,english_course,Question,0.91490877,Clarification,0.9986337
+5,And how does writing frequently help in expanding vocabulary?,Write using new words. This reinforces memory and helps you use new terms naturally in sentences and context.,english_course_student_4,english_course,Question,0.99913377,Statement,0.99838746
+6,Can you give me an example of how writing with new words helps remember them better?,"Sure! When you write ""ambivalent,"" in a sentence like ""I feel ambivalent about the trip,"" it helps you remember its meaning better than just memorizing it.",english_course_student_4,english_course,Clarification,0.99967337,Clarification,0.99616736
+7,Thanks for the examples. What are some specific exercises I can do while reading to improve my vocabulary?,Use a notebook to write down new words with their meanings. Make sentences using them. Review regularly.,english_course_student_4,english_course,Clarification,0.9910801,Statement,0.9852041
+8,Are there any specific apps or tools you recommend for tracking and practicing new words?,"Yes! Apps like Anki, Duolingo, and Memrise use spaced repetition to help remember new words effectively.",english_course_student_4,english_course,Clarification,0.9985833,Statement,0.9845524
+1,"Hi, Can you help me analyze this short story for class?",Of course! Please share the story or key elements you'd like to analyze.,english_course_student_5,english_course,Clarification,0.95616764,Clarification,0.9994804
+2,Could you please provide the first paragraph of the story so I can get started?,"Sure, please share the first paragraph, and we can begin analyzing it.",english_course_student_5,english_course,Clarification,0.9996208,Clarification,0.99962366
+3,"Here it is: 
+
+""In a small village nestled between the mountains, lived a young girl named Eliza. She had always been curious about the world beyond her village, though she knew little about it.""","Got it! Let's start by identifying the setting, character, and theme in this paragraph.
+
+Setting: Small village between mountains.
+Character: Young girl named Eliza.
+Theme: Curiosity and desire for adventure.
+
+Does this help?",english_course_student_5,english_course,Small Talk,0.7975402,Clarification,0.9802034
+4,That makes sense! Could you suggest some questions we could explore about Eliza's character based on this paragraph?,"Sure! Here are some questions to explore Eliza's character:
+
+1. What might Eliza's curiosity imply about her personality?
+2. How do you think Eliza's village influences her curiosity?
+3. What could Eliza be curious about beyond her village?
+
+These can help deepen your analysis!",english_course_student_5,english_course,Clarification,0.99966943,Clarification,0.99897575
+5,Great questions! Could we also think about how Eliza's desire to explore the world outside her village might affect her in the story?,"Absolutely! Here are a few more questions:
+
+4. How might Eliza's curiosity impact her relationships in the village?
+5. What challenges might Eliza face when she decides to explore the world outside?
+6. How could Eliza's journey shape her character by the end of the story?
+
+These should help you explore her growth and motivations!",english_course_student_5,english_course,Clarification,0.999476,Clarification,0.9928149
+6,"Thanks! That's really helpful. Let's focus on the first question: ""What might Eliza's curiosity imply about her personality?"" Could you give me an example from the paragraph to support this?","Sure! The paragraph suggests Eliza's curiosity implies that she is adventurous and open-minded. For example, she ""had always been curious about the world beyond her village,"" showing a desire to learn and experience more.",english_course_student_5,english_course,Clarification,0.99957794,Clarification,0.9974867
+7,Got it! Thank you for the example. Could you also help me think of another way Eliza's curiosity might influence her actions in the story?,Absolutely! Another way Eliza's curiosity might influence her is by driving her to seek knowledge and explore unknown territories. This could lead her to take risks or make decisions that change her life in the story.,english_course_student_5,english_course,Clarification,0.99950194,Clarification,0.9953999
+8,That makes sense. How about we look at the theme of curiosity itself? Could we explore why the author chose to make the main character so curious?,"Definitely! The author might have chosen to make Eliza curious to:
+
+1. Spark the reader's interest and encourage exploration of the story.
+2. Represent the importance of discovery and learning.
+3. Show the challenges of stepping out of one's comfort zone.
+
+Exploring these can help understand the story's deeper meaning!",english_course_student_5,english_course,Clarification,0.99949217,Clarification,0.9930287
+1,"Hi, I'm struggling with writing essays. Can you help me improve?",Absolutely! Start by outlining your main points and practicing clear introductions and conclusions. Regular practice and getting feedback are key. Let's work on your next essay together!,english_course_student_6,english_course,Small Talk,0.92861086,Small Talk,0.81407833
+2,Could you please provide more specific details about the type of essays you're working on or areas where you're facing particular challenges?,"Sure, it helps to know if you're writing argumentative, narrative, or another type. Share specific challenges you're facing, like structure, argument development, or using evidence.",english_course_student_6,english_course,Clarification,0.99964774,Clarification,0.99924743
+3,Could you give me an example of a problem I'm facing with my essays so we can address it specifically?,"Of course! Let's say you're having trouble developing strong arguments. We can practice creating clear, supported points. For example, instead of saying ""video games are bad,"" you could say ""video games are associated with increased aggression in young players according to multiple studies.""",english_course_student_6,english_course,Clarification,0.99965847,Clarification,0.99945134
+4,That makes sense. Let's take that example further. How can I better structure my argument to make it stronger and more convincing?,"Great choice! Here’s a simple structure:
+1. Introduce the topic & thesis.
+2. Present point 1 with evidence.
+3. Present point 2 with evidence.
+4. Present point 3 with evidence.
+5. Conclude by summarizing key points & reinforcing thesis.
+
+Let’s apply this to video games!",english_course_student_6,english_course,Clarification,0.99965,Clarification,0.99784815
+5,"Got it. So, for the thesis, I should state my main argument clearly at the beginning. And for each point, I should include a statement, evidence, and explanation. Right?","Exactly! Here’s a quick summary:
+1. Clear thesis statement at the start.
+2. Point + evidence + explanation for each body paragraph.
+3. Reinforce thesis in conclusion.
+
+Ready to try it out? Pick a point and we'll craft it together!",english_course_student_6,english_course,Clarification,0.99957114,Clarification,0.998522
+6,"Let's start with my first point: ""Video games are associated with increased aggression in young players according to multiple studies."" How can I add evidence and explanation to make it stronger?","Great start! Here's how to strengthen that point:
+
+**Point:** Video games are associated with increased aggression in young players according to multiple studies.
+
+**Evidence:** Studies by Anderson et al. (2010) and Gentile et al. (2004) found a correlation between playing violent video games and higher levels of aggression.
+
+**Explanation:** These studies suggest that prolonged exposure to violent content in games can lead to more aggressive behaviors in players, especially when they are young.
+
+This makes your argument more structured and convincing!",english_course_student_6,english_course,Clarification,0.9990453,Clarification,0.9662724
+7,Thank you! That's really helpful. Can you suggest some tips for introducing the topic and thesis in a compelling way?,"Sure! Here are tips for a strong introduction:
+
+1. **Grab Attention:** Start with a surprising fact, question, or quote.
+2. **Context:** Briefly explain the topic and its importance.
+3. **Thesis Statement:** Clearly state your main argument.
+
+Example:
+""Have you ever considered the impact of video games on behavior? Studies show a link between violent games and aggression. This essay explores why.""
+
+This sets a strong foundation!",english_course_student_6,english_course,Clarification,0.883468,Clarification,0.99714357
+8,"Got it. For my conclusion, should I summarize the main points or restate my thesis in a new way?","Both are great! Summarize main points to reinforce understanding, then restate your thesis in a new way for a strong finish. Example:
+
+""Summarize: Studies link violent games to aggression. Conclusion: Given these findings, we must consider the impact seriously.""
+
+This wraps it up effectively!",english_course_student_6,english_course,Clarification,0.9996319,Clarification,0.9993068
+1,"Hi, Can you explain how to use the passive voice in English?","The passive voice in English is used when you want to emphasize the action rather than the doer. It uses ""to be"" + past participle. Example: ""The cake was eaten"" (focus on the action, not who ate it).
+
+Need help with examples or constructing sentences in passive voice?",english_course_student_7,english_course,Clarification,0.9996388,Clarification,0.9575686
+2,Can you give me an example of when the passive voice would be more appropriate to use?,"Sure! Use passive when the doer is unknown: ""The meeting was canceled due to rain.""
+
+Use it when the doer is obvious: ""The book was written by Rowling.""
+
+Use it to focus on the action: ""Water is heated to 100 degrees.""",english_course_student_7,english_course,Clarification,0.9996762,Statement,0.49676117
+3,Can you provide more examples of passive voice sentences in different contexts?,"Of course! Here are some examples:
+
+- The window was broken last night. (unknown doer)
+- The document will be reviewed tomorrow. (scheduled event)
+- It was announced that the meeting would be delayed. (official statement)
+- The coffee is served hot here. (procedure)
+
+Does this help?",english_course_student_7,english_course,Clarification,0.99965906,Clarification,0.9826155
+4,Can you give me an example where the passive voice is used to emphasize the action over the doer?,"Sure! Here's an example:
+
+**Active:** The team won the match.
+
+**Passive:** The match was won by the team.
+
+In the passive version, the focus is on the action (the team winning) rather than who performed the action.",english_course_student_7,english_course,Clarification,0.9996549,Clarification,0.9892162
+5,Can you give me another example where the passive voice emphasizes the action over the doer?,"Absolutely!
+
+Active: The detective solved the mystery.
+
+Passive: The mystery was solved by the detective.
+
+In this example, the passive emphasizes the solving of the mystery more than who did it.",english_course_student_7,english_course,Clarification,0.99966645,Clarification,0.92092043
+6,Got it. Can you give me a sentence where the passive voice is used for a scheduled event?,"Of course!
+
+Active: They will clean the park tomorrow.
+
+Passive: The park will be cleaned tomorrow.
+
+This emphasizes the planned event (cleaning the park) rather than who is doing it.",english_course_student_7,english_course,Clarification,0.9995802,Clarification,0.4086742
+7,Got it. Can you give me a sentence where the passive voice is used for an official announcement?,"Sure!
+
+Active: The mayor will declare the state of emergency.
+
+Passive: It was announced that the state of emergency will be declared by the mayor.
+
+This emphasizes the announcement itself.",english_course_student_7,english_course,Clarification,0.99959904,Clarification,0.9650824
+8,Got it. Can you give me a sentence where the passive voice is used to describe a procedure or rule?,"Of course!
+
+Active: Students must submit assignments on time.
+
+Passive: Assignments must be submitted on time.
+
+This emphasizes the requirement more than who must follow it.",english_course_student_7,english_course,Clarification,0.99965477,Clarification,0.92999834
+1,"Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?","Common mistakes include:
+
+1. Subject-verb agreement
+2. Misusing homophones
+3. Incorrect use of tenses
+4. Punctuation errors
+5. Misplaced modifiers
+
+Focus on these!",english_course_student_8,english_course,Small Talk,0.9972625,Statement,0.65549374
+2,Could you give me an example of a subject-verb agreement error?,"Sure! Here's an example:
+
+Incorrect: The group of friends were going to the park.
+Correct: The group of friends was going to the park.",english_course_student_8,english_course,Clarification,0.999678,Clarification,0.62216204
+3,Thanks! Can you suggest another common mistake related to homophones?,"Of course! Here's another one:
+
+Incorrect: I have to worked on the project all day.
+Correct: I have to work on the project all day.",english_course_student_8,english_course,Clarification,0.9995919,Small Talk,0.9914084
+4,Got it! Can you give me an example of an incorrect tense use?,"Sure! Here’s an example:
+
+Incorrect: She will go to the store yesterday.
+Correct: She went to the store yesterday.",english_course_student_8,english_course,Clarification,0.99959534,Small Talk,0.93727267
+5,Thanks! Can you give me an example of a misplaced modifier?,"Sure! Here’s an example:
+
+Incorrect: Running to the bus, the sign fell.
+Correct: The sign fell as she ran to the bus.",english_course_student_8,english_course,Clarification,0.9994184,Clarification,0.9849311
+6,Got it. Thanks for the examples! Do you have any tips for avoiding punctuation errors?,"Great! Here’s a tip: Always read your sentences aloud to check if the punctuation sounds right. Also, use commas for pauses and periods to end complete thoughts.",english_course_student_8,english_course,Small Talk,0.9565258,Small Talk,0.86476135
+7,Thanks! Can you give me a quick example of a comma error?,"Sure! Here’s an example:
+
+Incorrect: Let's eat, lunch is ready.
+Correct: Let's eat, because lunch is ready.",english_course_student_8,english_course,Clarification,0.9989818,Small Talk,0.95696294
+8,"Got it. Thanks for the examples! One more question—how about the difference between ""affect"" and ""effect""?","No problem! Quick tip: Use ""affect"" as a verb (to influence) and ""effect"" as a noun (result). Example: The weather will affect our plans. The result will be a delay.",english_course_student_8,english_course,Clarification,0.9968053,Clarification,0.89944583
+1,"Hi, How can I expand my vocabulary effectively?","Read widely, use a dictionary, and practice by writing.",english_course_student_9,english_course,Clarification,0.9966583,Statement,0.9984364
+2,Could you provide an example of how reading widely helps in expanding vocabulary?,Sure! Reading different types of books exposes you to new words in context.,english_course_student_9,english_course,Clarification,0.99966526,Clarification,0.9518034
+3,Can you give an example of a book that uses complex vocabulary?,"""1984"" by George Orwell uses sophisticated language and complex ideas.",english_course_student_9,english_course,Clarification,0.99965894,Statement,0.99337775
+4,What about using a dictionary? Could you give an example of how it helps?,"Look up words you don't know. For example, if you come across ""inanely,"" look it up to learn it means without reason or point.",english_course_student_9,english_course,Clarification,0.9995053,Clarification,0.9995061
+5,"Can you suggest a simple sentence using the word ""inanely"" so I can better understand it?","Sure: ""He talked inanely for hours without saying anything useful.""",english_course_student_9,english_course,Clarification,0.99967813,Clarification,0.9092158
+6,Thanks! Can you suggest another word and a simple sentence to practice writing?,"Certainly! Try ""tenacious."" Sentence: ""She showed tenacious determination despite many setbacks.""",english_course_student_9,english_course,Clarification,0.99884087,Clarification,0.9991715
+7,Great! How about a practice writing exercise to reinforce this?,"Write a short paragraph using ""tenacious"" and ""inanely.""",english_course_student_9,english_course,Small Talk,0.9043737,Clarification,0.7576226
+8,"I'll try: ""He spoke inanely about his achievements, but his tenacious efforts earned him respect.""",Great job! That shows good use of both words. Keep practicing!,english_course_student_9,english_course,Clarification,0.99929786,Small Talk,0.977091
+1,"Hi, Can you help me analyze this short story for class?",Of course! Please share the story details or key elements you'd like to discuss.,english_course_student_10,english_course,Clarification,0.95616764,Clarification,0.99937844
+2,Could you please provide the title and a brief overview of the story so I can better understand what to focus on?,"Sure, please provide the title and a brief overview of the story. This will help in analyzing key themes, characters, and plot development.",english_course_student_10,english_course,Clarification,0.9996606,Clarification,0.99937695
+3,"The story is titled ""The Lottery"" by Shirley Jackson. It's about a small town where the townspeople gather annually to participate in a lottery, which ultimately leads to the stoning of one of the participants.","Great, thanks for the overview! Let's focus on themes like luck, violence, and conformity. What aspects are you specifically curious about?",english_course_student_10,english_course,Statement,0.9934331,Small Talk,0.88839334
+4,I'm curious about how the story uses the annual lottery as a metaphor for conformity. Can you explain how the townspeople seem to accept the lottery even though it results in violence?,"Sure! The annual lottery symbolizes conformity by reinforcing societal norms and collective behavior. Despite the violence, townspeople follow it because it's tradition, showing how societal pressure can override individual judgment.",english_course_student_10,english_course,Clarification,0.99961543,Statement,0.9984621
+5,Can you give me an example of how the townspeople's behavior shows conformity in the story?,"Certainly! When everyone participates in the lottery, even knowing it could result in violence, they show conformity. For example, Mrs. Hutchinson is initially shocked but then participates in the stoning, showing how群体""))))
+<|im_start|><|im_start|>⚗️",english_course_student_10,english_course,Clarification,0.99966395,Statement,0.8590924
+6,"It seems like my response got cut off. Let me try again:
+
+Certainly! An example of conformity in the story is when Mrs. Hutchinson is initially shocked by the lottery and protests. However, she then participates in the stoning, showing how societal pressure and tradition override individual judgment. This highlights how conformity can lead individuals to support or participate in harmful actions they may not personally endorse.",Perfect! Mrs. Hutchinson's shift from protest to participation shows conformity under societal pressure. This exemplifies how traditions can override personal judgment. Great analysis!,english_course_student_10,english_course,Clarification,0.9991321,Clarification,0.9076822
+7,Thank you! I'm glad you found the example helpful. Is there anything else you'd like to explore about the story?,"You're welcome! 😊 One more thing to explore could be the theme of luck versus free will. The lottery seems random, but actually reflects broader societal control. Would you like to dive into that?",english_course_student_10,english_course,Small Talk,0.8672459,Clarification,0.98849535
+8,"Yes, that would be great! How does the lottery reflect broader societal control or randomness in the story?","Great question! The lottery reflects societal control by masking how arbitrary and random the outcome is. Despite appearances, it's a tool for enforcing conformity and control. The randomness hides the fact that it's the society, not chance, that decides who faces violence.",english_course_student_10,english_course,Clarification,0.70329976,Statement,0.9972488
+1,"Hi, I'm struggling with writing essays. Can you help me improve?","Of course! Start by brainstorming your ideas, then outline your essay with clear thesis and supporting points. Practice writing introductions and conclusions. Review frequently for improvements. Would you like tips on specific parts of essays?",english_course_student_11,english_course,Small Talk,0.92861086,Clarification,0.98532397
+2,"Sure, let's focus on the introduction. What's the best way to start an essay?","Start with a hook to grab attention, followed by relevant background information leading to your thesis. Keep it concise and clear.",english_course_student_11,english_course,Clarification,0.8980582,Clarification,0.9987232
+3,Got it. What makes a good hook for an essay?,"A good hook can be a quote, surprising fact, question, or compelling statement. It should relate to your topic and draw readers in.",english_course_student_11,english_course,Small Talk,0.9950382,Clarification,0.9968664
+4,Thanks! Can you give me an example of a good hook for an essay about climate change?,"Sure! ""Imagine a world where coral reefs cease to exist.""",english_course_student_11,english_course,Clarification,0.985796,Clarification,0.9190109
+5,That's a great hook! How can I ensure my introduction flows well into my thesis statement?,"Transition smoothly by summarizing your hook and linking it to your thesis. Use phrases like ""Therefore,"" ""This leads us to,"" or ""In conclusion,"" to show flow.",english_course_student_11,english_course,Clarification,0.9983657,Clarification,0.7656746
+6,Got it. What about transitions between paragraphs? Any tips?,"Use transition words and phrases like ""furthermore,"" ""however,"" ""similarly,"" or ""despite"" to show connections. Summarize the previous point briefly before introducing the new one.",english_course_student_11,english_course,Small Talk,0.98289996,Clarification,0.651953
+7,Thanks! One last question: How do I check if my essay is clear and well-structured?,"Read it aloud, check for flow, and ensure each paragraph has a clear topic sentence. Use a checklist: introduction, thesis, body paragraphs, conclusion.",english_course_student_11,english_course,Clarification,0.57831556,Clarification,0.98523825
+8,Perfect! I'll use this checklist. Thank you for all your help!,"You're welcome! Happy writing! If you need more help, feel free to ask.",english_course_student_11,english_course,Small Talk,0.99796,Small Talk,0.9984675
+1,"Hi, Can you explain how to use the passive voice in English?","The passive voice is used when you want to emphasize the action rather than the doer. It's formed with ""to be"" + past participle. Example: ""The cake was eaten"" (emphasizes eating, not who ate it).",english_course_student_12,english_course,Clarification,0.9996388,Statement,0.99055475
+2,Got it! Can you give me another example where the passive voice emphasizes the action over the doer?,"Sure! ""The letter was written by her."" Emphasizes writing the letter, not who wrote it.",english_course_student_12,english_course,Clarification,0.9996443,Clarification,0.9931371
+3,Thanks! Can you provide an example where the passive voice is used to avoid mentioning the doer?,"Of course! ""The meeting has been canceled."" Avoids mentioning who canceled it.",english_course_student_12,english_course,Clarification,0.9996562,Small Talk,0.86096495
+4,Got it! Can you give me an example where the passive voice is used to make the sentence more formal or objective?,"Certainly! ""It is recommended that all forms be submitted by next week."" Makes it formal and less personal.",english_course_student_12,english_course,Clarification,0.9996469,Clarification,0.82305264
+5,"Thanks! Can you give me one more example using the passive voice for emphasis, please?","Of course! ""That report is due at the end of the month."" Emphasizes when it's due, not who submits it.",english_course_student_12,english_course,Clarification,0.99957484,Clarification,0.97829926
+6,Great example! Is there anything else I should know about using the passive voice?,"Just remember, use passive when you want to focus on the action or to avoid specifying the doer. It's common in formal writing.",english_course_student_12,english_course,Clarification,0.99951077,Clarification,0.9989839
+7,"Thanks! One last thing, are there any situations where using the passive voice is not recommended?","Yes, use passive sparingly. It can make sentences less clear or less concise. Best to use active voice when the doer is known or important.",english_course_student_12,english_course,Clarification,0.97963,Clarification,0.9642566
+8,Got it! Thanks for the clarification. One last quick question: Is there a way to identify when a sentence is in passive voice?,"Yes! Look for forms of ""to be"" + past participle. Example: ""The cake is baked."" ""Baked"" is the past participle after ""is.""",english_course_student_12,english_course,Clarification,0.99915373,Clarification,0.97467005
+1,"Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?","Common mistakes include:
+- Subject-verb agreement
+- Misusing commas
+- Incorrect use of tenses
+- Confusing homophones
+- Misplacing modifiers
+- Improper use of prepositions
+
+Let me know if you need examples or explanations!",english_course_student_13,english_course,Small Talk,0.9972625,Clarification,0.98678035
+2,Got it. Could you give me an example of a subject-verb agreement mistake?,"Sure! ""The dog barks"" is correct, but ""The dogs bark"" is also correct. The plural subject ""dogs"" requires the plural verb ""bark.""",english_course_student_13,english_course,Clarification,0.99963164,Statement,0.7872446
+3,Thank you! That helps a lot. Could you give me an example of misusing commas?,"Of course! Here's an example:
+Incorrect: She said she was coming over we'll have dinner.
+Correct: She said she was coming over, and we'll have dinner.
+Commas help separate independent clauses for clarity.",english_course_student_13,english_course,Clarification,0.99883825,Clarification,0.942522
+4,Great example! Could you give me another type of common mistake to watch out for?,"Sure! Watch out for misplaced or dangling modifiers, like:
+
+Incorrect: Walking to the store, the ice cream melted.
+Correct: The ice cream melted as I walked to the store.
+
+Modifiers should clearly describe the correct word!",english_course_student_13,english_course,Clarification,0.99944824,Clarification,0.9836925
+5,Thanks! One last question: what's a good way to practice avoiding these mistakes?,"Practice by:
+
+1. Reading & editing others' work
+2. Writing short sentences & revising
+3. Using grammar apps or websites
+4. Reading widely to see proper usage
+
+Consistent practice helps!",english_course_student_13,english_course,Small Talk,0.62549615,Question,0.54853517
+6,"Thank you, that makes sense. I'll focus on those strategies. One more quick question: which grammar rules do people often overlook?","Many people overlook:
+- Split infinitives
+- It's vs. its
+- Affect vs. effect
+- Who vs. whom
+
+Focus on these for extra practice!",english_course_student_13,english_course,Clarification,0.99900323,Statement,0.8270855
+7,"Got it. Thanks for the examples. I'll make sure to watch out for those. One last thing, do you have any tips for improving my overall grammar in writing?","Great question! Here’s a tip:
+
+1. Write first, then edit. Focus on content first, then go back and polish grammar.
+
+This helps avoid rushing through writing.",english_course_student_13,english_course,Small Talk,0.99753726,Clarification,0.9706297
+8,Thank you! That's really helpful. I'll follow that advice. One last quick question: is there a specific type of grammar mistake that's most common in writing?,"Yes, sentence fragments are very common. For example:
+
+Incorrect: Running to the store. Forgot my keys.
+Correct: Running to the store, I forgot my keys.
+
+Pay extra attention to complete sentences!",english_course_student_13,english_course,Clarification,0.9961946,Clarification,0.9787532
+1,"Hi, How can I expand my vocabulary effectively?","Read widely, use a dictionary, and practice using new words in sentences.",english_course_student_14,english_course,Clarification,0.9966583,Statement,0.9987852
+2,Could you give me an example of how to practice using new words in sentences?,"Sure! If you learn ""eloquent,"" practice by saying, ""She spoke with great eloquence.""",english_course_student_14,english_course,Clarification,0.99967825,Clarification,0.99827456
+3,Thank you! What are some other effective ways to expand my vocabulary?,"Try word games, watch educational shows, and teach new words to someone.",english_course_student_14,english_course,Clarification,0.51141286,Statement,0.9934623
+4,Could you suggest a specific word game that helps with vocabulary?,Crossword puzzles or Scrabble are great! They challenge you to think of words and their meanings.,english_course_student_14,english_course,Clarification,0.9996629,Clarification,0.68476856
+5,Thank you! How about watching educational shows? Could you recommend one?,"How about ""Nature"" or ""TED Talks"" on TV or YouTube? They introduce new concepts and vocabulary.",english_course_student_14,english_course,Small Talk,0.99774903,Question,0.9962341
+6,Great! What about teaching new words? How can I do that effectively?,Teach a friend or use social media to share new words with definitions. It reinforces your own understanding.,english_course_student_14,english_course,Clarification,0.99890363,Statement,0.5218705
+7,Thank you! Are there any other strategies you recommend for expanding vocabulary?,Try keeping a vocabulary notebook and writing new words daily. Review them regularly!,english_course_student_14,english_course,Clarification,0.8955657,Small Talk,0.9041328
+8,"That sounds helpful. Should I focus on words from a specific field, like science or literature?","Yes, focus on fields you're interested in or those relevant to your studies. It makes learning more meaningful and useful.",english_course_student_14,english_course,Clarification,0.9995161,Clarification,0.9981192
+1,"Hi, Can you help me analyze this short story for class?","Of course! Please share the story or key details, and what aspects you need help analyzing.",english_course_student_15,english_course,Clarification,0.95616764,Clarification,0.99953544
+2,Could you please provide the first paragraph of the story so I can better understand its context and themes?,"Sure, please share the first paragraph, and let me know what specific elements you're focusing on for analysis.",english_course_student_15,english_course,Clarification,0.9996706,Clarification,0.9996482
+3,"Got it. Here’s the first paragraph: ""Sara walked through the dimly lit hallway, the sound of her footsteps echoing off the walls. She could hear faint whispers coming from the rooms on either side of her."" 
+
+Now, what specific elements should I focus on for analysis?","Great start! Focus on:
+1. Setting (time, place, atmosphere)
+2. Mood and tone
+3. Characterization (Sara's emotional state)
+4. Foreshadowing clues
+
+What areas are you most curious about?",english_course_student_15,english_course,Clarification,0.99729985,Question,0.48817557
+4,I'm particularly curious about the mood and how it sets up the overall atmosphere of the story. Can you help me identify more about that?,"Absolutely! The dim lighting, echoing footsteps, and faint whispers create a suspenseful and eerie mood. This sets up an atmosphere of uncertainty and potential danger. Sara's quiet actions suggest she’s cautious or perhaps afraid. 
+
+Does this help? Let me know if you need more details!",english_course_student_15,english_course,Clarification,0.999648,Clarification,0.9970409
+5,That makes sense! Can you also help me identify any potential foreshadowing clues in the first paragraph?,"Sure! The faint whispers could foreshadow mysterious or threatening elements. The dim lighting and Sara's cautious movements hint at an environment where something unusual or dangerous might happen.
+
+Does this help? Let me know if you need more insights!",english_course_student_15,english_course,Clarification,0.99967265,Clarification,0.9985934
+6,Thanks! One more question: How can I analyze the character's emotional state based on her actions and the setting?,"You're welcome! Sara's cautious movements and the dim, echoing environment likely reflect her fear or anxiety. The setting amplifies her emotional state, making her actions more meaningful.
+
+Feel free to ask if you need more details!",english_course_student_15,english_course,Clarification,0.9993942,Clarification,0.6499525
+7,Got it! Thank you for the help. I think I have enough to start analyzing the story now.,Great! I'm glad it helped. Good luck with your analysis! Let me know if you need more assistance.,english_course_student_15,english_course,Clarification,0.7834367,Small Talk,0.9955978
+8,Thanks! I will. One last thing—do you have any tips for summarizing my key findings?,"Sure! Summarize key points concisely:
+1. Main mood and atmosphere
+2. Foreshadowing clues
+3. Character's emotional state and actions
+
+Keep it brief but comprehensive! Let me know if you need more tips.",english_course_student_15,english_course,Small Talk,0.97113806,Clarification,0.9992823
+1,"Hi, I'm struggling with writing essays. Can you help me improve?","Sure! Start by outlining your main points and practicing clear, concise writing.",english_course_student_16,english_course,Small Talk,0.92861086,Clarification,0.99882644
+2,Could you provide an example of an essay I should practice on?,"Sure! Try writing an argumentative essay on ""Is technology making us more connected or more isolated?""",english_course_student_16,english_course,Clarification,0.99967086,Clarification,0.99646205
+3,Got it. What should I focus on first in my practice?,Start by outlining your main points. Then focus on writing a strong introduction and clear thesis statement.,english_course_student_16,english_course,Clarification,0.7947742,Clarification,0.9989447
+4,Can you give me a brief example of a good thesis statement for the essay topic you suggested?,"Sure! Here’s an example: ""While technology offers platforms for global communication, it often isolates individuals by prioritizing superficial interactions over meaningful connections.""",english_course_student_16,english_course,Clarification,0.99964666,Clarification,0.98880696
+5,Thanks! What should I do next after writing the thesis statement?,"After your thesis, write introductory paragraphs for each main point, supporting your argument with evidence.",english_course_student_16,english_course,Clarification,0.5081574,Clarification,0.9980519
+6,Got it. And what about concluding the essay?,Summarize your main points and restate your thesis in a compelling way. End with a strong closing statement!,english_course_student_16,english_course,Clarification,0.90367925,Clarification,0.9994043
+7,"Thanks! One last thing, how do I avoid plagiarism in my writing?",Cite sources for any ideas or quotes you use. Use quotation marks for direct quotes and summarize in your own words. Always check with citations.,english_course_student_16,english_course,Small Talk,0.5541178,Clarification,0.9969633
+8,Got it. Thanks for the help!,"You're welcome! If you have more questions, feel free to ask. Good luck with your essay!",english_course_student_16,english_course,Small Talk,0.9953343,Small Talk,0.99835867
+1,"Hi, Can you explain how to use the passive voice in English?","Sure! The passive voice in English is used when you want to emphasize the action or the result, not the doer. To form it, use ""be + past participle."" Example: ""The cake is eaten"" (not specifying who ate it).
+
+Do you need examples or practice?",english_course_student_17,english_course,Clarification,0.9996388,Clarification,0.99891186
+2,Can you give me an example where the doer of the action is unknown or unimportant?,"Sure! Consider: ""The cake was eaten."" Here, we don't know who ate it, and it's not crucial to the meaning.",english_course_student_17,english_course,Clarification,0.99967086,Clarification,0.9727864
+3,Got it. Can you provide another example where the doer is known but not emphasized?,"Of course! Try: ""The letter was written by Emily."" Here, Emily is known but not the focus.",english_course_student_17,english_course,Clarification,0.9996629,Clarification,0.998809
+4,Got it. Can you give me an example where the doer is unknown and unimportant?,"Sure! ""The meeting was postponed."" No specific doer is needed or emphasized.",english_course_student_17,english_course,Clarification,0.999655,Clarification,0.99759054
+5,Thanks! Can you give me one more example where the doer is known but not emphasized?,"Absolutely! ""The book was written by Jane Austen."" Focus is on the book, not necessarily on Austen.",english_course_student_17,english_course,Clarification,0.99960655,Clarification,0.79073596
+6,"Great, thanks! One last question: When should I use the passive voice in English?","Use passive when the doer is unknown, unimportant, or when focusing on the action/result. Examples: ""The door was opened."" or ""Mistakes were avoided.""",english_course_student_17,english_course,Clarification,0.9919485,Statement,0.9833788
+7,Got it! Thanks for the examples. Can you give me a practice sentence to try?,"Sure! Try: ""The report was finished yesterday.""
+
+Now, can you tell me who finished it?",english_course_student_17,english_course,Clarification,0.991602,Clarification,0.9587061
+8,"I think it was finished by our team. So, the sentence could be: ""The report was finished by our team yesterday.""","Exactly! Well done! That's correct: ""The report was finished by our team yesterday."" Great job!",english_course_student_17,english_course,Clarification,0.99888533,Small Talk,0.9987055
+1,"Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?","Common mistakes include:
+- Subject-verb agreement
+- Misusing homophones
+- Incorrect tense usage
+- Preposition errors
+- Comma splices
+
+Focus on these to improve!",english_course_student_18,english_course,Small Talk,0.9972625,Statement,0.9349401
+2,"Got it. To clarify, could you give me an example of each type of mistake you mentioned?","Sure:
+1. Subject-verb: ""The cat (subject) play (verb)."" → ""The cat plays.""
+2. Homophones: ""Their/there/they're, there's/its/it's.""
+3. Tense: ""She goesto the store."" → ""She goes to the store.""
+4. Prepositions: ""He is interested about the book."" → ""He is interested in the book.""
+5. Comma splices: ""I wanted to visit, I had no time."" → ""I wanted to visit, but I had no time.""",english_course_student_18,english_course,Clarification,0.99965274,Statement,0.4418338
+3,Thanks for the examples! Could you provide another one for each category to help me practice spotting them?,"Of course! Here are more examples:
+
+1. **Subject-verb**: ""The students (subject) are going (verb)."" → ""The student is going.""
+
+2. **Homophones**: ""Your/you're, your's/yours.""
+
+3. **Tense**: ""She go to the party."" → ""She goes to the party.""
+
+4. **Prepositions**: ""She is interested in the book about science."" → ""She is interested in science.""
+
+5. **Comma splices**: ""I wanted to visit, my friend arrived."" → ""I wanted to visit, but my friend arrived.""",english_course_student_18,english_course,Clarification,0.99910706,Clarification,0.78313833
+4,"Great, thanks! Could you also explain why these mistakes are common and how they can affect the meaning of a sentence?","Sure!
+
+1. **Subject-verb**: A common issue because of singular-plural mismatches. It affects clarity by confusing the number of subjects.
+
+2. **Homophones**: Easily confused because they sound alike. They can change the meaning by using the wrong word.
+
+3. **Tense**: Using the wrong tense can change when the action happened. Past tense can become present if mixed up.
+
+4. **Prepositions**: Incorrectly placed changes the relationship between words. It affects precise meaning by misplacing ideas.
+
+5. **Comma Splices**: Forgetting commas changes the sentence structure. It can confuse the meaning or create run-on sentences.
+
+Understanding these helps avoid ambiguity and improves readability.",english_course_student_18,english_course,Clarification,0.9995659,Statement,0.9672976
+5,Thanks! That helps a lot. Could you give me a sentence that combines a couple of these mistakes for practice?,"Absolutely! Here's one:
+
+""Yesterday I wanted to go to the park but I couldn’t because I had too much homework.""
+
+Try to identify and correct the mistakes!",english_course_student_18,english_course,Clarification,0.99204344,Small Talk,0.9890148
+6,"Got it! Here’s my attempt:
+- ""I wanted"" and ""but I couldn’t"" should be separated by a comma or a conjunction like ""because.""
+- ""had too much"" is better as ""had too much"" or ""had so much.""
+
+So, it could be: ""Yesterday, I wanted to go to the park, but I couldn’t because I had too much homework.""","Great job! Here’s the corrected version:
+
+""Yesterday, I wanted to go to the park, but I couldn’t because I had **so much** homework.""
+
+You're correct about the comma and conjunction. Just a small tweak: ""too much"" should be ""so much"" for better flow. Well done!",english_course_student_18,english_course,Small Talk,0.60791475,Small Talk,0.9976801
+7,Got it! Thank you for the detailed feedback. I'll keep practicing with these examples.,"You're welcome! Keep practicing, and you'll improve. Good luck with your exam!",english_course_student_18,english_course,Small Talk,0.6000666,Small Talk,0.9990835
+8,Thanks! I will. Do you have any more examples I can practice with?,"Of course! Try this one:
+
+Incorrect: ""She always eats lunch at noon and finishes her work early so she can leave early.""
+
+Correct: ""She always eats lunch at noon and finishes her work early, so she can leave early.""
+
+Or: ""She always eats lunch at noon and finishes her work early so that she can leave early.""
+
+This helps with comma usage and conjunctions. Practice more sentences to solidify these skills!",english_course_student_18,english_course,Small Talk,0.76940703,Clarification,0.9969771
+1,"Hi, How can I expand my vocabulary effectively?","Read widely, use a dictionary, and practice using new words.",english_course_student_19,english_course,Clarification,0.9966583,Statement,0.998691
+2,Could you provide more details on how to read widely?,"Read books, magazines, and news from various topics. Write down new words and their meanings.",english_course_student_19,english_course,Clarification,0.99966824,Statement,0.99725384
+3,Can you give me an example of how to use a new word in a sentence?,"Sure! If you learn ""loquacious"" (talkative), use it in: ""She's very loquacious; she never seems to run out of things to talk about.""",english_course_student_19,english_course,Clarification,0.9996793,Clarification,0.9079026
+4,What are some fun ways to practice using new words?,"Create word games, use new words in stories, or play word bingo. Practice in daily conversations too!",english_course_student_19,english_course,Question,0.9991742,Statement,0.97044003
+5,Thanks for the suggestions! Can you recommend any apps or tools for learning new words?,"Sure! Try Anki, Quizlet, or Wordly Wise. They offer flashcards and games to make learning fun.",english_course_student_19,english_course,Clarification,0.9849208,Small Talk,0.97263205
+6,Are there any specific topics or subjects that can help expand vocabulary in a particular area?,"Yes! Try reading or studying topics like science, art, or philosophy. Each field introduces unique vocabulary.",english_course_student_19,english_course,Clarification,0.51926863,Small Talk,0.60200745
+7,Thank you! I'll start by reading more in my field of study.,Great choice! Start a notebook for new terms and their contexts. Good luck!,english_course_student_19,english_course,Small Talk,0.9978097,Small Talk,0.99837923
+8,Will do! Thanks for all the helpful tips.,You're welcome! Happy learning. Let me know if you need more tips.,english_course_student_19,english_course,Small Talk,0.9958688,Small Talk,0.9986205
+1,"Hi, Can you help me analyze this short story for class?",Of course! Please share the story or details you need help with.,english_course_student_20,english_course,Clarification,0.95616764,Clarification,0.9994443
+2,Could you please provide the title and a brief summary of the story?,"Sure, please share the title and a brief summary of the story. This will help in providing a focused analysis.",english_course_student_20,english_course,Clarification,0.99965334,Clarification,0.999551
+3,"Got it! Here's a brief summary: A young boy finds a magical stone. When he touches it, he gains the ability to control plants. He uses this power to help people and solve problems. However, he also learns that using his gift comes with responsibilities. Could you suggest what aspects I should focus on for analysis?","Great summary! Here are key aspects to focus on:
+- Themes: Responsibility, power, and nature
+- Character development: The boy's growth and challenges
+- Plot: The journey from discovery to responsibility
+- Symbols: The magical stone
+Let me know if you need more specific guidance!",english_course_student_20,english_course,Clarification,0.9992455,Clarification,0.99351865
+4,Could you suggest which theme I should focus on more deeply in my analysis?,"Sure, focusing on ""responsibility"" could be powerful. It shows the boy's growth and the ethical dilemmas he faces. This theme ties directly to his learning about his gift and its consequences.",english_course_student_20,english_course,Clarification,0.9996618,Statement,0.9612116
+5,That makes sense. How can I analyze the character development related to responsibility in the story?,"Analyze how the boy's actions change from selfish or naive to thoughtful and responsible. Look at specific moments where he learns about responsibility, like when he first uses his power or faces a challenge.",english_course_student_20,english_course,Clarification,0.997361,Statement,0.65124726
+6,Got it! Could you give me an example of a moment where the boy learns about responsibility?,Sure! Consider when he first uses his power to help but then learns about unintended consequences. This moment likely shows his growing awareness of responsibility.,english_course_student_20,english_course,Clarification,0.99948275,Clarification,0.9989802
+7,Thank you! Can you suggest how I should structure my analysis for class?,"Absolutely! Here’s a simple structure:
+1. Introduction: Brief overview & thesis (focus on responsibility)
+2. Body: Specific examples (moments of learning responsibility)
+3. Conclusion: Summary & significance
+
+This will help organize your thoughts!",english_course_student_20,english_course,Clarification,0.9995369,Clarification,0.9875481
+8,Great! What specific examples should I focus on for the body of my analysis?,"Focus on:
+1. When he first uses his power to help others
+2. A moment of unintended consequences
+3. A turning point where he fully embraces responsibility
+
+Each should show his growing understanding.",english_course_student_20,english_course,Clarification,0.99930584,Question,0.44414395
+1,"Hi, I'm struggling with writing essays. Can you help me improve?","Absolutely! Let's focus on planning, structure, and practice. Start by outlining key points, then draft and revise. Would you like tips on a specific part of the process?",english_course_student_21,english_course,Small Talk,0.92861086,Clarification,0.99866533
+2,"Sure, let's start with the introduction. What's the best way to begin an essay?","Start with a strong hook, followed by some context, and end with your thesis. This sets up a clear roadmap for your essay. Want examples?",english_course_student_21,english_course,Clarification,0.95280915,Clarification,0.99875605
+3,Can you give me an example of a good hook for an essay about climate change?,"Sure! Try: ""As polar ice caps melt at unprecedented rates, the urgency of addressing climate change cannot be overstated.""",english_course_student_21,english_course,Clarification,0.99962294,Clarification,0.9688047
+4,"Thanks! Now, what should I focus on for the body paragraphs?","Focus on one main point per paragraph. Include evidence, examples, and analysis. Transition smoothly between paragraphs. Need tips on specific techniques?",english_course_student_21,english_course,Clarification,0.92778665,Clarification,0.96531373
+5,Can you give me an example of a transition sentence between paragraphs?,"Absolutely! Try: ""While the first challenge is reducing emissions, equally important is adapting to the changes already occurring.""",english_course_student_21,english_course,Clarification,0.9996766,Clarification,0.96837765
+6,Got it. And what about the conclusion? How should it wrap up the essay?,"Summarize key points & restate thesis. End with a strong, impactful statement. Need more on conclusions?",english_course_student_21,english_course,Clarification,0.9963678,Clarification,0.99782026
+7,"Thanks for the examples! One last thing, how do I know if my essay is well-written?","Check structure, clarity, evidence, and transitions. Get feedback from others. Review for coherence and grammar. Ready to start?",english_course_student_21,english_course,Small Talk,0.9737249,Clarification,0.8367282
+8,That sounds good! Let's focus on the structure first. How do I make sure my essay has a strong structure?,"Good start! Structure your essay with: 
+1. Clear introduction
+2. Strong body paragraphs
+3. Strong conclusion
+Focus on each section to build a solid essay. Need help with any part?",english_course_student_21,english_course,Clarification,0.8003091,Clarification,0.97420067
+1,"Hi, Can you explain how to use the passive voice in English?","Sure! In passive voice, the subject receives the action. Format: ""Be + Past Participle"" Example: ""The cake was eaten."" Checking understanding: Can you give an example?",english_course_student_22,english_course,Clarification,0.9996388,Clarification,0.99931955
+2,"Got it! An example would be: ""The cake was eaten by the children."" Could you also explain how to form the passive voice with different verb tenses?","Got it! Example: ""The cake was eaten by the children.""
+
+For different tenses:
+- Simple Past: ""The cake was eaten.""
+- Present Perfect: ""The cake has been eaten.""
+- Past Perfect: ""The cake had been eaten.""
+- Future: ""The cake will be eaten.""
+
+Does this help?",english_course_student_22,english_course,Clarification,0.99962986,Clarification,0.98643374
+3,That makes sense! Could you give me a sentence in the past perfect passive voice?,"Sure! ""The letter had been written.""",english_course_student_22,english_course,Clarification,0.99962234,Small Talk,0.9374182
+4,Got it! One more example in the future passive voice?,"Absolutely! ""The gift will be bought.""",english_course_student_22,english_course,Clarification,0.9956851,Small Talk,0.9908716
+5,Great! Thanks for the examples. Could you clarify when it's best to use the passive voice?,"You're welcome! Use passive when:
+
+- You don't know who did the action.
+- The doer is unimportant.
+- Emphasizing the action, not the doer.
+
+Example: ""The report was completed.""",english_course_student_22,english_course,Clarification,0.9981792,Clarification,0.99882406
+6,Got it! One last question: Can you give an example where using the active voice might be better?,"Sure! For active: ""John wrote the report."" 
+
+Active shows who did the action, making it clearer and more direct.",english_course_student_22,english_course,Clarification,0.9996258,Clarification,0.99275947
+7,Perfect! Thanks for the examples. Is there anything else I should know about when to use active vs. passive?,"You're welcome! Just remember:
+
+- Use active when you want to highlight the doer.
+- Use passive when the doer is unknown or unimportant.
+
+This should help you choose the right voice!",english_course_student_22,english_course,Clarification,0.9981933,Clarification,0.9984793
+8,"Great, thanks! One more quick question: Can you give an example of a sentence that could be ambiguous in the active voice but clearer in the passive?","Sure! Active: ""Someone stole the money.""  
+Passive: ""The money was stolen.""  
+Passive clarifies that the money is the focus, not who stole it.",english_course_student_22,english_course,Clarification,0.9995427,Clarification,0.72563165
+1,"Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?","Common mistakes include:
+- Subject-verb agreement
+- Misplaced or missing punctuation
+- Confusing homophones
+- Incorrect pronoun usage
+- Run-on sentences vs. fragments
+Be sure to review these!",english_course_student_23,english_course,Small Talk,0.9972625,Statement,0.71216667
+2,Thank you for the examples. Could you give me an example of a subject-verb agreement error?,"Sure! ""The group of friends was going to the park"" (correct).
+
+Common error: ""The group of friends are going to the park"" (incorrect).",english_course_student_23,english_course,Clarification,0.9995658,Clarification,0.8746054
+3,Got it! Could you give me an example of a misplaced comma?,"Of course! Compare:
+- ""She bought milk, eggs, and bread for breakfast.""
+- *""She bought, milk, eggs, and bread for breakfast.""* (Incorrect: comma misplaced)
+
+The comma before ""and"" in the list should come after the second item.",english_course_student_23,english_course,Clarification,0.99944955,Clarification,0.91789263
+4,Thanks! Could you give me an example of a run-on sentence?,"Sure! Here's a run-on:  
+""Mom went to the store she bought apples and oranges.""
+
+Better:  
+""Mom went to the store, and she bought apples and oranges.""",english_course_student_23,english_course,Clarification,0.9978403,Small Talk,0.99892175
+5,Got it! What about a fragment? Can you give me an example of that?,"Sure! Here's a fragment:
+""Because it was raining.""
+
+Better:  
+""It was raining.""",english_course_student_23,english_course,Clarification,0.9993759,Small Talk,0.9943944
+6,"Thank you! That helps a lot. One last thing, what's the difference between a fragment and a run-on sentence?","No problem! Fragments are incomplete sentences, while run-on sentences have two or more independent clauses without proper punctuation.",english_course_student_23,english_course,Small Talk,0.77384764,Statement,0.9932312
+7,Got it! Thank you for the clarification. Is there anything else I should be aware of?,"You're welcome! Just review:
+- Sentence structure
+- Punctuation
+- Common homophones
+
+Good luck with your exam!",english_course_student_23,english_course,Clarification,0.9986571,Small Talk,0.9984926
+8,"Thank you! One last thing, are there any specific types of homophones I should focus on?","Great question! Focus on:
+- Their/there/they're
+- Your/you're
+- Too/to
+- Principle/principle
+- Discreet/descriptive
+
+Review these often!",english_course_student_23,english_course,Clarification,0.99667203,Clarification,0.55320376
+1,"Hi, How can I expand my vocabulary effectively?","Read widely, use new words in sentences, and carry a notebook.",english_course_student_24,english_course,Clarification,0.9966583,Statement,0.9988978
+2,Could you suggest specific types of reading materials that are best for expanding vocabulary?,"Try reading novels, newspapers, and academic articles.",english_course_student_24,english_course,Clarification,0.9996275,Statement,0.970647
+3,Which type of articles would you recommend for a beginner?,Start with general interest magazines or basic news articles.,english_course_student_24,english_course,Clarification,0.98573214,Statement,0.98015976
+4,Are there any specific magazines you recommend for beginners?,"Try ""National Geographic"" or ""Time"" for interesting topics and clear writing.",english_course_student_24,english_course,Clarification,0.98099476,Clarification,0.44995898
+5,How can I ensure I remember new words I learn from reading?,"Write them down, use in sentences, and review regularly.",english_course_student_24,english_course,Clarification,0.9989754,Statement,0.9870014
+6,Can you suggest a specific method for reviewing words regularly?,Use flashcards and apps like Anki for spaced repetition.,english_course_student_24,english_course,Clarification,0.99967,Statement,0.9981414
+7,Are there any apps you recommend for vocabulary building?,"Yes, Anki, Quizlet, and Duolingo are great for vocabulary building.",english_course_student_24,english_course,Small Talk,0.85243213,Statement,0.64419043
+8,Thanks! Could you recommend a specific app that focuses on expanding vocabulary?,Anki focuses on spaced repetition and is excellent for expanding vocabulary.,english_course_student_24,english_course,Clarification,0.99443567,Statement,0.9991066
+1,"Hi, Can you help me analyze this short story for class?",Of course! Please share the story or key details.,english_course_student_25,english_course,Clarification,0.95616764,Clarification,0.99949825
+2,Could you please provide the title and a brief overview of the story?,"Sure, please share the title and a brief overview or key points from the story.",english_course_student_25,english_course,Clarification,0.9996369,Clarification,0.9992951
+3,Got it! Could you share the title and a few key events or themes from the story?,"Title: ""The Secret in the Old Clock""
+
+Key Events:
+1. An elderly couple finds an old clock with a hidden compartment.
+2. They discover a letter from the past containing a secret.
+3. Deciding to investigate, they learn about a long-lost relative's hidden inheritance.
+4. The couple must decide whether to honor the secret or keep it hidden.
+
+Themes:
+- The power of secrets and their consequences
+- The importance of family and heritage
+- Rediscovering the past to solve current mysteries
+
+Let me know if you need more details!",english_course_student_25,english_course,Clarification,0.99652666,Clarification,0.975348
+4,"Got it! So, the story revolves around an elderly couple finding an old clock that contains a hidden letter with a secret about an inheritance. They then decide to investigate further. 
+
+My question is: How does the discovery of the secret change the couple's relationship with their family?",The discovery of the secret likely deepens the couple's connection to their family by uncovering lost history and shared ancestry. It may also challenge or strengthen their relationship based on how they handle the newfound knowledge together.,english_course_student_25,english_course,Clarification,0.991394,Statement,0.9986897
+5,Could you provide more details on how the couple's relationship with their family changes after uncovering the secret?,"After uncovering the secret, the couple's relationship with their family likely evolves in several ways:
+
+1. **Closer Bonds**: They might feel a stronger connection to their relatives, especially if the secret reveals shared hardships or triumphs.
+
+2. **Trust and Honesty**: The experience may make them more open about other family secrets or past issues, enhancing trust.
+
+3. **Honor and Loyalty**: If they decide to act on the secret, it shows loyalty to their family by honoring their legacy or solving historical injustices.
+
+4. **Conflicts**: Alternatively, if they choose not to act, it could create tension or regret, affecting their relationship with family members who learn about the secret later.
+
+Each reaction depends on their personal values and the specific details of the secret.",english_course_student_25,english_course,Clarification,0.99965227,Statement,0.9867029
+6,That makes sense. Could you give an example of how the couple might handle the secret to honor their family?,"Sure! Here's an example:
+
+The couple discovers the secret about an inheritance tied to a family member who suffered injustice. They decide to use the money to right the wrong by funding a scholarship for underprivileged students, continuing the family’s legacy of helping others. This action honors their family's memory and strengthens their bond by aligning their actions with their family values.",english_course_student_25,english_course,Clarification,0.99965334,Clarification,0.98301125
+7,Great example! What other ways could the couple handle the secret differently?,"Certainly! Here are a few other ways the couple might handle the secret differently:
+
+1. **Ignore the Secret**: Keep the secret hidden and maintain the status quo in their family.
+2. **Ignore the Family**: Use the secret for personal gain without involving family members.
+3. **Expose the Secret**: Share the secret with the family, causing potential conflict but also revealing the truth.
+4. **Honor the Secret**: Act on the secret to honor their family’s history, like restoring an abandoned family home or helping distant relatives.
+
+Each choice would have different impacts on their relationship with family.",english_course_student_25,english_course,Clarification,0.99593925,Clarification,0.99582314
+8,Thank you! I think I understand the different ways the couple could handle the secret now. Can you give me a brief summary of how the couple's relationship with their family changes in each scenario?,"Sure! Here’s a brief summary:
+
+1. **Ignore the Secret**: No change in family relationship; they keep family secrets hidden.
+2. **Ignore the Family**: Strain in family relationship; they focus on personal gain.
+3. **Expose the Secret**: Strengthen or strain in family relationship; trust or conflict depends on how family reacts.
+4. **Honor the Secret**: Deepen family relationship; actions align with family values, fostering a stronger bond.
+
+Each approach leads to different outcomes based on family dynamics and values.",english_course_student_25,english_course,Clarification,0.99946946,Clarification,0.9408738
+1,"Hi, I'm struggling with writing essays. Can you help me improve?","Sure! Focus on a clear thesis, good structure, and supporting evidence. Practice writing regularly and get feedback.",english_course_student_26,english_course,Small Talk,0.92861086,Clarification,0.87489176
+2,Could you give me an example of a clear thesis statement for an essay?,"Certainly! A clear thesis statement, like: ""The impact of social media on mental health is primarily negative due to increased anxiety and loneliness.""",english_course_student_26,english_course,Clarification,0.9996778,Clarification,0.9841861
+3,Got it. Could you explain more about structuring an essay?,"Sure! Typically, essays have an introduction, body paragraphs with evidence, and a conclusion summarizing points.",english_course_student_26,english_course,Clarification,0.9996207,Clarification,0.7224888
+4,Can you give me an example of a body paragraph structure?,"Of course! Start with a topic sentence, followed by evidence and analysis, then wrap up with a transition to next point.",english_course_student_26,english_course,Clarification,0.99966955,Clarification,0.99576724
+5,Got that. What about supporting evidence? How detailed should it be?,"Supporting evidence should be detailed but concise. Use facts, examples, and quotes to back up your points clearly.",english_course_student_26,english_course,Clarification,0.9991743,Clarification,0.9989642
+6,Thanks! What about transitions between paragraphs? How do they help?,"Transitions help smoothly move ideas. Use phrases like ""furthermore,"" ""however,"" or ""similarly"" to connect thoughts and ideas.",english_course_student_26,english_course,Small Talk,0.58231163,Statement,0.9987361
+7,That makes sense. Thanks for the examples! One last question: How do I conclude an essay effectively?,Summarize key points and restate your thesis. End with a strong closing statement that leaves a lasting impression.,english_course_student_26,english_course,Clarification,0.9990086,Clarification,0.9982583
+8,Got it. Thanks! One last thing: How do I avoid plagiarism when using sources?,"Always quote directly & use paraphrasing. Cite sources properly using formats like APA, MLA. Keep your ideas in your own words.",english_course_student_26,english_course,Clarification,0.955559,Clarification,0.99629825
+1,"Hi, Can you explain how to use the passive voice in English?","The passive voice is used when the action is more important than the doer. It's formed with ""to be"" + past participle. Example: ""The cake is baked."" 
+
+Check if you understand: Can you give an example of the passive voice?",english_course_student_27,english_course,Clarification,0.9996388,Clarification,0.999091
+2,"Sure, here's another example: ""The car was repaired yesterday."" Is this correct?","Yes, that's correct! ""The car was repaired yesterday"" is a good example of the passive voice.",english_course_student_27,english_course,Clarification,0.9481247,Small Talk,0.6133037
+3,Can you give me another example where the doer of the action is unknown?,"Sure! ""The room was cleaned just now."" 
+
+The doer is unknown.",english_course_student_27,english_course,Clarification,0.9996706,Small Talk,0.99482036
+4,Got it! Thank you. Can you give me an example where the doer is known but we choose not to mention them?,"Of course! ""The cake was baked by Sarah."" (Doer known but not mentioned.)",english_course_student_27,english_course,Clarification,0.9995127,Clarification,0.5089256
+5,"Got it! One last thing, when should I use the active voice instead of the passive voice?","Use active voice when the doer is important or known. It's more direct. Example: ""Sarah baked the cake.""",english_course_student_27,english_course,Clarification,0.99549884,Statement,0.91505104
+6,"Thanks! That makes sense. One more quick question: Is ""The door was locked"" passive, and ""Someone locked the door"" active?","Yes, exactly! ""The door was locked"" is passive, and ""Someone locked the door"" is active.",english_course_student_27,english_course,Clarification,0.99555933,Clarification,0.78514445
+7,Got it! Thanks for the clarification. One last quick question: Is the passive voice used more in formal or informal writing?,The passive voice is often used in formal writing because it emphasizes the action. Informal writing usually uses active voice more.,english_course_student_27,english_course,Clarification,0.99726874,Statement,0.99916184
+8,Thank you! This has been really helpful.,"You're welcome! Glad it helped. If you have more questions, feel free to ask.",english_course_student_27,english_course,Small Talk,0.9979207,Small Talk,0.9905815
+1,"Hi, I'm preparing for an English exam—what are common grammar mistakes to watch out for?","Common mistakes include:
+1. Subject-verb agreement
+2. Punctuation errors
+3. Misusing homophones
+4. Incorrect prepositions
+5. Confusing active vs passive voice
+
+Focus on these to improve your score!",english_course_student_28,english_course,Small Talk,0.9972625,Statement,0.6117956
+2,Could you give me an example of each type of mistake you mentioned?,"Sure! Here are examples:
+1. Subject-verb agreement: ""The group of players was run by a coach."" (Should be ""was run"" or ""were run"")
+2. Punctuation: Missing comma in list: ""She likes apples oranges and bananas.""
+3. Homophones: ""Accept"" instead of ""except""
+4. Prepositions: ""She wrote the book in the table"" (Should be ""on"" or ""at"")
+5. Voice: ""The cake was eaten by him"" (Active: ""He ate the cake"")
+
+Practice these to improve!",english_course_student_28,english_course,Clarification,0.99966097,Question,0.46947572
+3,Could you give me more examples specifically for subject-verb agreement?,"Of course! Here are more examples:
+
+1. Incorrect: ""Many people goes to the park.""  
+   Correct: ""Many people go to the park.""
+
+2. Incorrect: ""Either you or your friends is responsible.""  
+   Correct: ""Either you or your friends are responsible.""
+
+3. Incorrect: ""The cat and the dog play in the garden.""  
+   Correct: ""The cat and the dog play in the garden.""
+
+4. Incorrect: ""Neither of the boys want to come.""  
+   Correct: ""Neither of the boys wants to come.""
+
+Practice identifying these in sentences!",english_course_student_28,english_course,Clarification,0.9996785,Clarification,0.99294126
+4,Thanks for the examples! Can you also give me a tricky one for subject-verb agreement?,"Sure! Here's a tricky one:
+
+Incorrect: ""The number of students attending the conference are growing.""
+
+Correct: ""The number of students attending the conference is growing.""
+
+Explanation: ""Number"" is singular, so ""is"" should be used.",english_course_student_28,english_course,Clarification,0.9993691,Clarification,0.99688005
+5,Got it! Thanks for the clarification. Can you give me another tricky example?,"Of course! Here’s another:
+
+Incorrect: ""After the movie finishes, the audience is giving their feedback.""
+
+Correct: ""After the movie finishes, the audience gives their feedback.""
+
+Explanation: ""Audience"" is typically treated as singular when referring to the group as a whole.",english_course_student_28,english_course,Clarification,0.9990086,Clarification,0.98891616
+6,Thanks for the examples! Could you give me one more tricky subject-verb agreement example?,"Sure! Here’s another tricky one:
+
+Incorrect: ""The team of experts is discussing their reports.""
+
+Correct: ""The team of experts are discussing their reports.""
+
+Explanation: ""Experts"" is plural, so the verb should be ""are.""",english_course_student_28,english_course,Clarification,0.999271,Clarification,0.998044
+7,Got it! Thanks for the examples. Can you give me a different kind of tricky grammar mistake to watch out for?,"Sure! Watch out for:
+
+Incorrect: ""Since I arrived, my friend and I been talking.""
+
+Correct: ""Since I arrived, my friend and I have been talking.""
+
+Explanation: Use ""have been"" for actions starting in the past and continuing present.",english_course_student_28,english_course,Clarification,0.9897379,Clarification,0.9169419
+8,"Thanks! One more example for the verb tense mistake, please.","Sure! Here’s another:
+
+Incorrect: ""She had studied for the exam before she went to bed.""
+
+Correct: ""She had studied for the exam when she went to bed.""
+
+Explanation: Use the simple past if the action is completed before another past action.",english_course_student_28,english_course,Clarification,0.9985971,Clarification,0.99724054
+1,"Hi, How can I expand my vocabulary effectively?","Read widely, use new words in sentences, and carry a dictionary.",english_course_student_29,english_course,Clarification,0.9966583,Statement,0.99878365
+2,Can you provide examples of how reading widely helps in expanding vocabulary?,"Sure! Reading books, articles, and essays introduces you to various words in context. See how they're used and try using them too.",english_course_student_29,english_course,Clarification,0.9996431,Clarification,0.88915545
+3,Could you give me an example of how using new words in sentences helps expand vocabulary?,"Yes! When you use new words in your own sentences, you remember and understand them better. Try writing short paragraphs using new terms you learn.",english_course_student_29,english_course,Clarification,0.99967253,Clarification,0.99784994
+4,Thank you. What is a good way to carry a dictionary effectively?,Carry a small dictionary app on your phone or a physical one in your bag. Look up words you're unsure about regularly.,english_course_student_29,english_course,Small Talk,0.95705926,Small Talk,0.99852824
+5,Can you suggest a specific app for carrying a dictionary?,"Sure! Try ""Dictionary.com"" or ""Google Dictionary"" apps. They're user-friendly and easy to access.",english_course_student_29,english_course,Clarification,0.99965155,Small Talk,0.9805494
+6,Thank you. How can reading books in different genres help expand vocabulary?,"Reading various genres exposes you to unique vocabulary. Fiction, non-fiction, science, and poetry each use distinct terms, broadening your range.",english_course_student_29,english_course,Clarification,0.65124214,Statement,0.9989207
+7,Could you give an example of how fiction and non-fiction use different terms?,"Fiction uses vivid, descriptive terms like ""phantasmagoria"" (from fantasy), while non-fiction might use precise terms like ""photosynthesis"" (from science).",english_course_student_29,english_course,Clarification,0.9996685,Statement,0.99931955
+8,Thank you. How can I remember words I learn from reading more effectively?,Review new words regularly. Try writing their meanings in sentences or flashcards. Teach them to someone else for better recall.,english_course_student_29,english_course,Clarification,0.99867827,Statement,0.8776755
+1,"Hi, Can you help me analyze this short story for class?","Of course! Please share the story, and we can start analyzing it together.",english_course_student_30,english_course,Clarification,0.95616764,Clarification,0.9994764
+2,"Sure, could you please provide the first paragraph of the story so we can begin analyzing it?","Sure, please share the first paragraph, and we'll begin analyzing it right away!",english_course_student_30,english_course,Clarification,0.99966514,Clarification,0.999141
+3,Thank you! Could you share the first paragraph of the story so we can start analyzing it?,"Sure! Please share the first paragraph, and we'll start analyzing it right away.",english_course_student_30,english_course,Clarification,0.9987344,Clarification,0.9983359
+4,"Great! Here's the first paragraph: 
+
+In a small village nestled between two mountains, there lived a young girl named Eliza who had a peculiar ability to communicate with animals.","Got it! The paragraph introduces Eliza and her unique ability. Let's start analyzing:
+
+1. **Setting**: The story opens with a specific, isolated setting (a small village between mountains). This suggests a peaceful, perhaps magical, environment.
+2. **Main Character**: Eliza is introduced as the protagonist with a distinctive trait.
+3. **Protagonist's Ability**: Her ability to communicate with animals hints at a potential journey or conflict involving this skill.
+
+Does this help start the analysis?",english_course_student_30,english_course,Small Talk,0.9884007,Clarification,0.99603003
+5,That's a great start! Let's focus on the first point about the setting. Why do you think the author chose a small village between two mountains for Eliza's story?,"The mountains and small village likely symbolize boundaries or barriers, which could foreshadow challenges for Eliza. The isolated setting might also emphasize the unique nature of her ability.",english_course_student_30,english_course,Small Talk,0.5980875,Statement,0.9992409
+6,Great insight! How do you think the isolated environment will affect Eliza's journey or the plot?,"An isolated environment could:
+1. Limit Eliza's exposure to the outside world, highlighting her unique ability.
+2. Create tension or conflict as she interacts with animals or discovers more about her powers.
+3. Provide a serene backdrop for exploring themes of nature or self-discovery.",english_course_student_30,english_course,Clarification,0.72103196,Statement,0.998546
+7,That makes sense! Could you think of any examples from the paragraph that support these ideas?,"Sure! The isolated village could:
+
+1. **Limit Exposure**: ""nestled between two mountains"" suggests limited contact with others, focusing attention on Eliza's abilities.
+2. **Potential Conflict**: The unique ability hints at potential conflict or discovery.
+3. **Theme Exploration**: The serene setting aligns with themes of nature and self-discovery.
+
+These elements set up a rich environment for Eliza's journey!",english_course_student_30,english_course,Clarification,0.9996656,Statement,0.9594958
+8,Great! Let's focus on Eliza's ability to communicate with animals. How do you think this unique ability will impact the story's plot?,"Eliza's ability likely:
+
+1. **Introduces Conflict**: She may face challenges or dangers related to her ability.
+2. **Drives Plot**: It could lead her on a journey to understand or control her powers.
+3. **Character Development**: Her interactions with animals can reveal more about her and the world.
+
+This ability sets the stage for an engaging and unique narrative!",english_course_student_30,english_course,Clarification,0.9483091,Statement,0.92814714

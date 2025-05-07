@@ -1,0 +1,740 @@
+turn,student_msg,tutor_msg,student_id,course,predicted_labels_student_msg,predicted_confidence_student_msg,predicted_labels_tutor_msg,predicted_confidence_tutor_msg
+1,"Hi, I’m learning Spanish and need help practising.","Great! Let's start with a simple sentence. Try saying ""Mi nombre es [your name]"" in Spanish.",spanish_course_student_1,spanish_course,Small Talk,0.9958335,Clarification,0.9851907
+2,"Got it! So, I would say ""Mi nombre es Juan"" if my name was Juan. Can you give me another example with a different name?","Exactly! For the name ""Ana,"" you'd say: ""Mi nombre es Ana."" Great job!",spanish_course_student_1,spanish_course,Clarification,0.9984968,Small Talk,0.94970936
+3,"Thank you! Could you give me another example with a different name, please?","Sure! For the name ""Carlos,"" you'd say: ""Mi nombre es Carlos."" Keep practicing!",spanish_course_student_1,spanish_course,Clarification,0.9983164,Clarification,0.6632631
+4,"Got it! ""Mi nombre es Carlos."" What's another simple sentence I can practice?","Great! Try: ""¿Cómo te llamas?"" (How do you name yourself?).",spanish_course_student_1,spanish_course,Small Talk,0.8224952,Small Talk,0.9761277
+5,"Is that the same as ""Mi nombre es [name]""?","No, those are different. ""¿Cómo te llamas?"" means ""What is your name?"" It's a question.",spanish_course_student_1,spanish_course,Clarification,0.9433122,Clarification,0.8993255
+6,"Got it! So, if someone asks me ""¿Cómo te llamas?"" I would answer with ""Mi nombre es [name]."" Thanks!","Exactly! You got it. Now try asking someone else: ""¿Cómo te llamas?""",spanish_course_student_1,spanish_course,Clarification,0.49835113,Small Talk,0.62823886
+7,"Sure! I'll try: ""¿Cómo te llamas? Mi nombre es Juan.""","Close, but not quite! When asking, you only say ""¿Cómo te llamas?"" Then, if someone asks back, you can say ""Mi nombre es Juan."" Practice the separate parts first!",spanish_course_student_1,spanish_course,Small Talk,0.54652476,Clarification,0.9982651
+8,"Got it! So, if someone asks ""¿Cómo te llamas?"" I should answer just ""Me llamo [name]."" Correct?","Yes, exactly! If someone asks ""¿Cómo te llamas?"" you can respond with ""Me llamo Juan."" Great job!",spanish_course_student_1,spanish_course,Clarification,0.9852858,Small Talk,0.7829782
+1,"Hi, how do I use past tense verbs in Spanish?","In Spanish, past tense is often expressed using ""yer"" (preterite) or ""haber"" (imperfect). 
+
+Yer: Used for specific, completed actions in the past.
+Haber: Used for actions that were happening or habitual in the past.
+
+Would you like examples of each?",spanish_course_student_2,spanish_course,Small Talk,0.8797519,Clarification,0.9892707
+2,"Sure, could you give me examples of each?","Sure!
+
+**Yer (Preterite):**  
+Yo comí una manzana. (I ate an apple.)
+
+**Haber (Imperfect):**  
+Yo comía manzanas todos los días. (I used to eat apples every day.)
+
+Do you see the difference? Let me know if you need more examples!",spanish_course_student_2,spanish_course,Clarification,0.99913317,Clarification,0.8036874
+3,"Got it! Thanks for the examples. Can you give me a simple sentence using the ""yer"" form and another using the ""haber"" form?","Of course!
+
+**Using ""yer"":**  
+Ella caminó a la ciudad ayer. (She walked to the city yesterday.)
+
+**Using ""había"":**  
+Había mucha gente en la playa anoche. (There were many people at the beach last night.)
+
+Let me know if you need more practice!",spanish_course_student_2,spanish_course,Clarification,0.99779785,Small Talk,0.9872677
+4,"That's helpful! Can you give me another sentence using the ""había"" form, but in the past perfect tense?","Sure! In Spanish, the past perfect tense is typically expressed using ""había + pasado"":
+
+Era de día y había comido antes. (It was daytime and I had eaten before.)
+
+Does this help? Let me know if you need more examples!",spanish_course_student_2,spanish_course,Clarification,0.9988299,Clarification,0.9957123
+5,"Great! Thank you. Could you also show me the difference between ""había"" and ""habíamos"" in a sentence?","Of course!
+
+**Había:**  
+Había lluvia en la mañana. (There was rain in the morning.)
+
+**Habíamos:**  
+Habíamos vuelto a casa antes del almuerzo. (We had come back home before lunch.)
+
+Does that clarify the difference?",spanish_course_student_2,spanish_course,Clarification,0.9913435,Clarification,0.74912477
+6,"Thank you! That's really helpful. Could you give me a sentence using ""habíamos"" in the past perfect tense?","Absolutely!
+
+**Habíamos:**  
+Habíamos terminado el trabajo antes de la cena. (We had finished the work before dinner.)",spanish_course_student_2,spanish_course,Clarification,0.9812589,Small Talk,0.9867889
+7,"Got it! Thanks a lot for the examples. One last question: When would I use ""había"" versus ""habíamos""?","Sure thing!
+
+**Había** (third person singular or impersonal):
+- Used when talking about a general state or condition.
+Example: Había paz en la ciudad. (There was peace in the city.)
+
+**Habíamos** (first person plural):
+- Used for actions or states shared by a group of people.
+Example: Habíamos terminado la clase. (We had finished the class.)
+
+Let me know if you have any more questions!",spanish_course_student_2,spanish_course,Clarification,0.9646081,Clarification,0.9925626
+8,"Thanks! One last clarification: ""Habíamos"" is for first person plural, right? So, if I'm talking about just myself, would I use ""había""?","Exactly right! 
+
+**Había** is for first person singular or impersonal:
+- For talking about a condition or action that applies to just you.
+Example: Había olvidado mi libro. (I had forgotten my book.)
+
+**Habíamos** is for first person plural:
+- For actions or states shared by a group.
+Example: Habíamos olvidado nuestros libros. (We had forgotten our books.)
+
+Got it? Let me know if you need more examples!",spanish_course_student_2,spanish_course,Clarification,0.99575436,Clarification,0.9895564
+1,"Hi, can you help me practice a short dialogue in Spanish?","Of course! Let's practice a simple greeting and introduction:
+
+Spanish: ¿Cómo te llamas?
+(English: What's your name?)
+Spanish: Me llamo [Your Name].
+(English: My name is [Your Name].)
+
+Try it out!",spanish_course_student_3,spanish_course,Clarification,0.9465755,Small Talk,0.8580941
+2,"Got it! So, for practicing, I should use:
+Spanish: ¿Cómo te llamas?
+And then respond with:
+Spanish: Me llamo [My Name].
+Is this correct?","Exactly! Perfect practice:
+
+Spanish: ¿Cómo te llamas?
+Spanish: Me llamo [Tu Nombre].
+
+You've got it!",spanish_course_student_3,spanish_course,Clarification,0.9969146,Small Talk,0.9924044
+3,"Great! Now, let's try a different simple phrase. Can you tell me how to ask ""What is your age?"" in Spanish?","Sure! You can ask ""What is your age?"" like this:
+
+Spanish: ¿Cuántos años tienes?",spanish_course_student_3,spanish_course,Clarification,0.9928746,Clarification,0.6650194
+4,"Got it! So, for practicing, I should use:
+Spanish: ¿Cuántos años tienes?
+And then respond with:
+Spanish: Tengo [Your Age] años.
+
+Is this correct?","Yes, perfect! You got it:
+
+Spanish: ¿Cuántos años tienes?
+Spanish: Tengo [Tu Edad] años.",spanish_course_student_3,spanish_course,Clarification,0.99620545,Small Talk,0.98480517
+5,"Great! Now, let's try another simple phrase. How do you say ""I like"" in Spanish?","Good! You say ""I like"" like this:
+
+Spanish: Me gusta.",spanish_course_student_3,spanish_course,Clarification,0.5871973,Small Talk,0.9960757
+6,"Got it! So, for practicing, I should use:
+Spanish: Me gusta.
+Is this correct?","Yes, perfect! You're doing great:
+
+Spanish: Me gusta.",spanish_course_student_3,spanish_course,Clarification,0.963281,Small Talk,0.99753904
+7,"Fantastic! Let's try one more. How do you say ""Do you like [subject]"" in Spanish?","Got it! You say:
+
+Spanish: ¿Te gusta [tema]?",spanish_course_student_3,spanish_course,Small Talk,0.97811764,Small Talk,0.9206247
+8,"Perfect! So, for practicing, I should use:
+Spanish: ¿Te gusta [Temita]?
+Is this correct?","Close! It should be:
+
+Spanish: ¿Te gusta [Tema]?",spanish_course_student_3,spanish_course,Clarification,0.9937091,Clarification,0.9205031
+1,"Hi, what are some tips for improving Spanish pronunciation?","Practice vowel sounds and roll the ""r."" Listen and repeat. Watch Spanish media. Listen to native speakers.",spanish_course_student_4,spanish_course,Small Talk,0.77229416,Statement,0.9872772
+2,"Could you please give me an example of how rolling the ""r"" sounds different from other letters?","Sure! An ""r"" in Spanish is rolled at the back of the throat, unlike in English where it's more of a flap. For example, ""perro"" sounds like ""peh-reh"" with a throaty roll.",spanish_course_student_4,spanish_course,Clarification,0.9991743,Statement,0.98240155
+3,Thank you! Can you recommend any specific Spanish media for listening practice?,"Sure! Try watching ""La Casa de Papel"" or listening to podcasts like ""Coffee Break Spanish.""",spanish_course_student_4,spanish_course,Clarification,0.97478414,Small Talk,0.97154903
+4,"That's helpful! Could you suggest a specific episode of ""La Casa de Papel"" for beginners?","For beginners, try Episode 1. It introduces key characters and has simpler dialogue.",spanish_course_student_4,spanish_course,Clarification,0.9986016,Statement,0.9025385
+5,Great! What other Spanish podcasts would you recommend for improving pronunciation?,"Try ""Coffee Break Spanish"" or ""Dilatación y contracción."" They offer clear pronunciation and beginner-friendly content.",spanish_course_student_4,spanish_course,Small Talk,0.8422967,Statement,0.9902204
+6,Thanks! Could you explain why listening to Spanish media helps with pronunciation?,"Listening helps you hear natural pronunciation. You pick up intonation and get used to different accents, improving your own speaking and pronunciation skills.",spanish_course_student_4,spanish_course,Clarification,0.9989679,Statement,0.9967534
+7,Got it! Thanks for the explanation. Can you recommend any Spanish language apps for practice?,"Yes! Try Duolingo, Memrise, or Babbel. They offer pronunciation practice and interactive lessons.",spanish_course_student_4,spanish_course,Clarification,0.7800796,Clarification,0.49557945
+8,"Great, thanks! One last question: What should I do if I feel frustrated while practicing?","Take a break, practice with friends, and don't be too hard on yourself. Improvement takes time!",spanish_course_student_4,spanish_course,Small Talk,0.6470461,Small Talk,0.9955291
+1,"Hi, can you explain when to use 'ser' vs 'estar' in Spanish?","Sure! Use ""ser"" for permanent states or characteristics (e.g., soy feliz). Use ""estar"" for temporary states or locations (e.g., estoy enfermo).",spanish_course_student_5,spanish_course,Clarification,0.9989096,Statement,0.9848798
+2,Got it! Could you give me an example of each?,"Sure! ""Soy feliz"" (I am happy, a permanent state). ""Estoy enfermo"" (I am sick, a temporary state).",spanish_course_student_5,spanish_course,Clarification,0.9985495,Small Talk,0.57206476
+3,"Thanks! And what about describing someone's appearance? Would you use ""ser"" or ""estar""?","For appearance, use ""ser"" because it's a permanent characteristic: ""Ella es alta"" (She is tall).",spanish_course_student_5,spanish_course,Clarification,0.983098,Statement,0.99167186
+4,"Got it! So for permanent states or descriptions, use ""ser,"" and for temporary states or locations, use ""estar."" Thanks!",Exactly! You've got it.,spanish_course_student_5,spanish_course,Clarification,0.8166909,Small Talk,0.99700326
+5,Great! Can you give me one more example for each to solidify my understanding?,"Sure! For ""ser"": ""Él es médico"" (He is a doctor, permanent profession).  
+For ""estar"": ""Estoy cansado"" (I am tired, temporary feeling).",spanish_course_student_5,spanish_course,Clarification,0.99904674,Clarification,0.5112454
+6,Thanks! That really helps. What about when it's not so clear—how do I decide?,"If unsure, think: is it permanent or temporary? If permanent, use ""ser."" If temporary or about a current state, use ""estar.""",spanish_course_student_5,spanish_course,Small Talk,0.6234432,Clarification,0.96563315
+7,"Got it! What about describing someone's mood or emotion? Would that be ""ser"" or ""estar""?","For mood or emotion, use ""estar"" because it's temporary: ""Estoy contento"" (I am happy right now).",spanish_course_student_5,spanish_course,Clarification,0.99592626,Statement,0.6449659
+8,"Thanks! One last thing—what if I want to describe someone's role or position in life? Would that be ""ser"" or ""estar""?","For role or position in life, use ""ser"" because it's permanent: ""Ella es profesora"" (She is a teacher).",spanish_course_student_5,spanish_course,Clarification,0.9984566,Statement,0.97717845
+1,"Hi, I’m learning Spanish and need help practising.","¡Hola! Of course, I can help. What would you like to practice?",spanish_course_student_6,spanish_course,Small Talk,0.9958335,Clarification,0.9402772
+2,Could you please give me an example of a Spanish sentence to work on?,"Sure! Try translating this: ""The cat sleeps on the mat."" 
+
+""El gato duerme en la alfombra."" 
+
+Practice saying it aloud!",spanish_course_student_6,spanish_course,Clarification,0.9991509,Clarification,0.9841456
+3,"Got it. Is ""duerme"" the correct verb form for ""sleeps""?","Yes, ""duerme"" is correct for ""sleeps"" in the third person singular. Good job!",spanish_course_student_6,spanish_course,Clarification,0.53550494,Small Talk,0.5172477
+4,Thanks! Can you suggest another sentence for me to practice?,"Of course! Try: ""They are eating dinner.""  
+""Están comiendo cena.""  
+
+Practice speaking it!",spanish_course_student_6,spanish_course,Clarification,0.9977506,Small Talk,0.78413683
+5,"Is ""están"" the correct form for ""they are""?","Yes, ""están"" is correct for ""they are"" in the present tense. Great job!",spanish_course_student_6,spanish_course,Question,0.99132854,Clarification,0.5442189
+6,Thanks! What's another sentence I could practice?,"How about:  
+""Where are you from?""  
+""¿De dónde eres?""  
+
+Practice speaking it!",spanish_course_student_6,spanish_course,Small Talk,0.9936127,Small Talk,0.6179883
+7,"Got it. Is ""¿De dónde eres?"" the right way to ask ""Where are you from""?","Yes, exactly! ""¿De dónde eres?"" means ""Where are you from?""",spanish_course_student_6,spanish_course,Clarification,0.49782705,Small Talk,0.93033844
+8,Perfect! Can you suggest another sentence for me to practice?,"Sure! Try:  
+""What do you like to eat?""  
+""¿Qué comes?""  
+
+Or more commonly:  
+""¿Qué comes?"" → ""¿Qué comes/tienes?""",spanish_course_student_6,spanish_course,Clarification,0.9989748,Clarification,0.7543965
+1,"Hi, how do I use past tense verbs in Spanish?","Past tense in Spanish is formed using ""había"", ""habíamos"", ""habías"", ""habían"" + past participle. For regular verbs: add -ar/-er/-ir ending changes. Check specific verb forms for details.",spanish_course_student_7,spanish_course,Small Talk,0.8797519,Statement,0.9662478
+2,Could you please give me an example of how to form the past tense for a regular -ar verb?,"Sure! For a regular -ar verb like ""hablar"" (to speak):
+
+- Hablé (I spoke)
+- Hablaste (You spoke)
+- Hablamos (We spoke)
+- Hablasteis/Ustedes hablaron (You all/They spoke)
+- Hablaron (They spoke)",spanish_course_student_7,spanish_course,Clarification,0.9991824,Clarification,0.90436816
+3,"Thank you. Can you show me how to form the past tense for a regular -er verb, please?","Of course! For a regular -er verb like ""correr"" (to run):
+
+- Corrí (I ran)
+- Corriste (You ran)
+- Corrimos (We ran)
+- Corristeis/Ustedes corrieron (You all/They ran)
+- Corrieron (They ran)",spanish_course_student_7,spanish_course,Clarification,0.99804,Clarification,0.9410697
+4,And what about a regular -ir verb? Could you give an example please?,"Sure! For a regular -ir verb like ""terminar"" (to finish):
+
+- Terminé (I finished)
+- Terminaste (You finished)
+- Terminamos (We finished)
+- Terminasteis/Ustedes terminaron (You all/They finished)
+- Terminaron (They finished)",spanish_course_student_7,spanish_course,Clarification,0.9990588,Clarification,0.839057
+5,"Thank you. Can you clarify when to use ""ustedes"" and when to use ""vosotros""?","Got it! Use ""ustedes"" for formal or plural ""you"" (when addressing one or more people politely). Use ""vosotros"" for informal plural ""you"" (when speaking to one or more friends or family).",spanish_course_student_7,spanish_course,Clarification,0.99900097,Clarification,0.93483955
+6,"Got it! Can you give me an example of how to form the past tense using ""había"" + past participle?","Sure! For ""había"" + past participle:
+
+- Había hablado (There had been spoken)
+- Habían corrido (They had run)
+- Habíamos terminado (We had finished)
+
+This structure is for the past perfect tense.",spanish_course_student_7,spanish_course,Clarification,0.9989693,Clarification,0.5947069
+7,"Got it! Thank you for the clarification. Can you provide one more example for the past perfect tense using ""habían"" + past participle?","Of course! Here's another example:
+
+- Habían vivido (They had lived)",spanish_course_student_7,spanish_course,Clarification,0.9985038,Clarification,0.9177473
+8,Thank you! That's helpful. Could you also explain how to form the past tense for irregular verbs in Spanish?,"Sure! Irregular verbs don't follow a pattern:
+
+- ""hablar"" → ""hablé"" (I spoke)
+- ""correr"" → ""corrí"" (I ran)
+- ""terminar"" → ""terminé"" (I finished)
+
+Each verb has its own specific forms. You'll need to memorize them.",spanish_course_student_7,spanish_course,Clarification,0.9987135,Clarification,0.985518
+1,"Hi, can you help me practice a short dialogue in Spanish?","Of course! Let's practice a simple greeting. Here's a short dialogue:
+
+**A:** Hola, ¿cómo estás?  
+**B:** Estoy bien, gracias. ¿Y tú?  
+
+Practice saying these phrases!",spanish_course_student_8,spanish_course,Clarification,0.9465755,Small Talk,0.9525562
+2,"Got it. So for practice, I should say both parts of the dialogue?","Exactly! Try saying both parts. Here's how it looks:
+
+**A:** Hola, ¿cómo estás?  
+**B:** Estoy bien, gracias. ¿Y tú?  
+
+Switch roles and practice saying both sides.",spanish_course_student_8,spanish_course,Clarification,0.9933576,Clarification,0.5797951
+3,"Great, so for my turn, I would say:
+**A:** Hola, ¿cómo estás?","Perfect! Now for part B, you could say:
+**B:** Estoy bien, gracias. ¿Y tú?",spanish_course_student_8,spanish_course,Small Talk,0.9665151,Small Talk,0.9563931
+4,Got it! Now I should switch roles and practice saying part B back to you.,"Great! Here's your turn for part B:
+
+**B:** Estoy bien, gracias. ¿Y tú?",spanish_course_student_8,spanish_course,Small Talk,0.5581007,Small Talk,0.9971316
+5,"Got it! Now it's my turn to respond: **B:** Estoy bien, gracias. ¿Y tú?","Perfect! Now you switch back to part A and ask:
+
+**A:** ¿Y tú?",spanish_course_student_8,spanish_course,Small Talk,0.98847497,Small Talk,0.9930286
+6,"Got it! Now I will say:
+
+**A:** ¿Y tú?","Great! Now you can respond as part B:
+
+**B:** Estoy bien, gracias. ¿Y tú?",spanish_course_student_8,spanish_course,Small Talk,0.96745545,Small Talk,0.95721686
+7,"Perfect! Let's do it again to practice the flow. Here is part A:
+
+**A:** Hola, ¿cómo estás?","Perfect! Now continue with part B:
+
+**B:** Estoy bien, gracias. ¿Y tú?",spanish_course_student_8,spanish_course,Small Talk,0.7628293,Small Talk,0.9453881
+8,Good job! Now you can say part A again to complete the loop.,"Great! Here’s part A:
+
+**A:** Hola, ¿cómo estás? 😊",spanish_course_student_8,spanish_course,Clarification,0.9338616,Small Talk,0.9938823
+1,"Hi, what are some tips for improving Spanish pronunciation?","Practice daily with native speakers, use apps like Duolingo, and focus on vowel sounds.",spanish_course_student_9,spanish_course,Small Talk,0.77229416,Statement,0.9963391
+2,Thank you for the suggestions. Could you please give me an example of how practicing vowel sounds can improve Spanish pronunciation?,"Sure! Focus on distinct sounds like ""ae"" in ""hace"" vs. ""a"" in ""casa."" Practice each separately and together in words.",spanish_course_student_9,spanish_course,Clarification,0.998946,Clarification,0.61753577
+3,Got it. Could you suggest a specific app that focuses on vowel sounds for Spanish pronunciation?,"Try ""SpanishDict"" or ""HelloTalk"" for vowel sound practice and conversations.",spanish_course_student_9,spanish_course,Clarification,0.99903667,Statement,0.87685144
+4,"Great, thanks! Is there anything else I should focus on besides vowel sounds?","Yes, practice rolling the ""r"" and pronouncing ""ll"" and ""y"" distinctly. Regular practice with audio will help.",spanish_course_student_9,spanish_course,Small Talk,0.8785384,Clarification,0.9012601
+5,"Thank you! One last question: Are there any specific resources or exercises you recommend for practicing the roll of the ""r""?","Yes, try saying ""rrrr"" gently at first, then try ""perro"" and ""carro."" Also, watch Spanish movies with subtitles.",spanish_course_student_9,spanish_course,Clarification,0.99691546,Clarification,0.9860178
+6,"Perfect, thanks! One more quick question: What are some fun ways to practice Spanish pronunciation regularly?","Try singing Spanish songs, watching subtitled shows, or joining a language exchange group!",spanish_course_student_9,spanish_course,Small Talk,0.8161482,Question,0.30605727
+7,Got it. Thanks for all the helpful tips! This should really improve my Spanish pronunciation.,You're welcome! Regular practice will make a big difference. Happy learning! 😊,spanish_course_student_9,spanish_course,Small Talk,0.98790157,Small Talk,0.9974935
+8,Thank you! I'll make sure to stay consistent with my practice.,"Great choice! Consistency is key. Keep at it, and you'll see improvement! 🎉",spanish_course_student_9,spanish_course,Small Talk,0.93287927,Clarification,0.49831578
+1,"Hi, can you explain when to use 'ser' vs 'estar' in Spanish?","Sure! Use ""ser"" for permanent states or characteristics. Use ""estar"" for temporary states or locations. For example: ""Yo soy estudiante"" (I am a student, permanent) vs. ""Yo estoy enfermo"" (I am sick, temporary).",spanish_course_student_10,spanish_course,Clarification,0.9989096,Statement,0.4632145
+2,"Got it! Can you give me another example for ""ser"" and ""estar""?","Of course! For ""ser"": ""Ella es maestra."" (She is a teacher, permanent role.) For ""estar"": ""Ella está enferma."" (She is sick, temporary condition.)",spanish_course_student_10,spanish_course,Clarification,0.9989039,Clarification,0.79151964
+3,Thanks! Can you provide one more example for each?,"Sure! More examples:
+For ""ser"": ""Mi casa es grande."" (My house is big, permanent.)
+For ""estar"": ""Mi casa está cerca del parque."" (My house is near the park, temporary/proximity.)",spanish_course_student_10,spanish_course,Clarification,0.9983352,Clarification,0.75280106
+4,"Got it! Thanks for the examples. Can you clarify the difference between using ""estar"" for location and for states or conditions?","Sure! Use ""estar"" for location: ""Mi casa está cerca.""  
+Use ""estar"" for states or conditions: ""Estoy cansado.""  
+The key is whether the situation or state is temporary.",spanish_course_student_10,spanish_course,Clarification,0.99876475,Clarification,0.9167655
+5,Got it! Thanks for the clarification. Can you give me a quick example for each?,"Of course! Location: ""Mi casa está en el centro.""  
+State or condition: ""Estoy feliz.""",spanish_course_student_10,spanish_course,Clarification,0.99210244,Small Talk,0.59751314
+6,Thanks! That makes sense. Can you give me one more example for each just to be sure?,"Sure!  
+Location: ""El coche está en el garaje.""  
+State or condition: ""Está lloviendo.""",spanish_course_student_10,spanish_course,Clarification,0.9985856,Small Talk,0.63262683
+7,Great! Thanks for the examples. I think I understand now.,You're welcome! Glad it helped. Let me know if you have more questions!,spanish_course_student_10,spanish_course,Small Talk,0.7233902,Small Talk,0.9419491
+8,Thanks! I think I understand the difference now.,"Great! If you have any more questions, feel free to ask. Happy studying!",spanish_course_student_10,spanish_course,Clarification,0.9656541,Small Talk,0.99273974
+1,"Hi, I’m learning Spanish and need help practising.","Sure, let's start with a simple sentence. Try saying ""Mi nombre es [Your name].""",spanish_course_student_11,spanish_course,Small Talk,0.9958335,Clarification,0.9983718
+2,"Got it. So, I would say ""Mi nombre es Juan."" Is that correct?","Exactly! Well done. ""Mi nombre es Juan"" is correct.",spanish_course_student_11,spanish_course,Clarification,0.9980399,Small Talk,0.87743294
+3,"Thank you! Now, can you give me an example of how to use the verb ""estar"" in a sentence?","Sure! ""Estoy listo"" means ""I am ready.""",spanish_course_student_11,spanish_course,Clarification,0.99895763,Small Talk,0.99144334
+4,"Got it. So, ""estoy"" is the conjugation of ""estar"" for ""I""?","Yes, exactly! ""Estoy"" is the ""I am"" form of ""estar."" Good job!",spanish_course_student_11,spanish_course,Clarification,0.98151463,Small Talk,0.9664922
+5,Great! Can you give me another example with a different subject?,"Of course! ""Estamos listos"" means ""We are ready.""",spanish_course_student_11,spanish_course,Clarification,0.99850273,Small Talk,0.8596498
+6,"Got it! So, the ""am"" in ""estamos"" stands for ""we,"" just like in English?","Yes, exactly! ""Estamos"" means ""we are."" Great job!",spanish_course_student_11,spanish_course,Small Talk,0.7257342,Small Talk,0.99242765
+7,"Thank you! Now, can you give me a sentence using ""estar"" with a different verb, like ""hablar""?","Sure! ""Están hablando"" means ""They are speaking.""",spanish_course_student_11,spanish_course,Clarification,0.9980915,Clarification,0.8405583
+8,"Got it! So, ""están"" is the plural form of ""estar"" for ""they,"" right?","Correct! ""Están"" is the plural ""are"" form for ""estar."" Great job!",spanish_course_student_11,spanish_course,Clarification,0.9170788,Clarification,0.53689516
+1,"Hi, how do I use past tense verbs in Spanish?","Use ""habí"" + past participle for regular verbs. For example, ""habí comido"" (I had eaten). Check irregulars separately.",spanish_course_student_12,spanish_course,Small Talk,0.8797519,Clarification,0.59995353
+2,"Could you give me an example with an irregular verb, please?","Sure! For ""ir"" (to go), the past tense forms are: ""í"" (I went), ""iste"" (you went), ""ió"" (he/she went), ""imos"" (we went), ""isteis"" (you all went), ""ieron"" (they went).",spanish_course_student_12,spanish_course,Clarification,0.9991781,Statement,0.70180154
+3,"Got it. Can you show me how to form the past tense for ""hablar"" (to speak)?","For ""hablar,"" add ""é"" (I spoke), ""aste"" (you spoke), ""ó"" (he/she spoke), ""amos"" (we spoke), ""asteis"" (you all spoke), ""aron"" (they spoke).",spanish_course_student_12,spanish_course,Clarification,0.9990376,Statement,0.95510274
+4,"Thank you! Can you give me an example sentence using the past tense of ""hablar""?","Claro! "" ayer hablé"" (I spoke yesterday).",spanish_course_student_12,spanish_course,Clarification,0.99885714,Small Talk,0.9826082
+5,Got it! Can you give me another example with a different time?,"Sure! ""Hablaban"" (They were speaking) in the past.",spanish_course_student_12,spanish_course,Clarification,0.99663275,Small Talk,0.84166634
+6,"Thanks! Can you show me how to form the past tense of an irregular verb like ""ver""?","For ""ver"" (to see), ""vi"" (I saw), ""viste"" (you saw), ""vio"" (he/she saw), ""vimos"" (we saw), ""visteis"" (you all saw), ""vieron"" (they saw). Example: ""ayer vi una película"" (I saw a movie yesterday).",spanish_course_student_12,spanish_course,Clarification,0.9977049,Statement,0.42149264
+7,"Thanks! Can you give me a sentence using the past tense of ""ver""?","Of course! ""Hace una semana, vi un eclipse"" (A week ago, I saw an eclipse).",spanish_course_student_12,spanish_course,Clarification,0.9975491,Small Talk,0.9714948
+8,Great! Is there anything else I should know about using past tense verbs in Spanish?,"Just remember to match the subject (I, you, he/she, etc.) to the correct conjugation. Practice with different verbs and tenses to improve!",spanish_course_student_12,spanish_course,Clarification,0.9953681,Clarification,0.98715985
+1,"Hi, can you help me practice a short dialogue in Spanish?","Of course! Let's practice a simple greeting. 
+
+Spanish: ¿Cómo estás?  
+English: How are you?
+  
+Spanish: Estoy bien, gracias. ¿Y tú?  
+English: I'm good, thanks. And you?",spanish_course_student_13,spanish_course,Clarification,0.9465755,Small Talk,0.99510765
+2,"Got it. Now, let's role-play: If I say ""Estoy bien, gracias,"" what should I say in response if the other person asks ""Y tú?""","You should say: ""Estoy bien, gracias. ¿Y tú?""",spanish_course_student_13,spanish_course,Clarification,0.9981304,Clarification,0.9588027
+3,"Got it. Now, what if the other person says ""Estoy bien, gracias. ¿Y tú?"" How should I respond?","You can respond with: ""Estoy bien, gracias. ¿Y tú?""",spanish_course_student_13,spanish_course,Clarification,0.9928098,Clarification,0.9960821
+4,"Perfect. Now, what if I want to say ""I'm not well"" in Spanish?","You can say: ""No estoy bien.""",spanish_course_student_13,spanish_course,Clarification,0.9890765,Clarification,0.9963031
+5,"Great! And if someone asks ""¿Y tú?"" in response, what should I say?","You can say: ""No estoy bien, gracias.""",spanish_course_student_13,spanish_course,Clarification,0.99604166,Clarification,0.99674976
+6,"Perfect! One last question: How do I ask ""And you?"" in Spanish?","You say: ""¿Y tú?""",spanish_course_student_13,spanish_course,Clarification,0.5416288,Small Talk,0.71788865
+7,Got it. Thank you! Could you provide a few more simple dialogues for practice?,"Sure! Here are a few simple dialogues:
+
+1. A: ¿Qué hace?  
+   B: Estoy leyendo.  
+
+2. A: ¿Dónde está tu casa?  
+   B: Está cerca del parque.  
+
+3. A: ¿Qué comes?  
+   B: Como arroz y pollo.  
+
+Practice these by asking and answering!",spanish_course_student_13,spanish_course,Small Talk,0.57781273,Clarification,0.7934875
+8,"Thanks! Let's practice the first one: 
+A: ¿Qué hace?  
+B: Estoy leyendo.  
+
+How would this conversation go in English?","A: What are you doing?  
+B: I am reading.",spanish_course_student_13,spanish_course,Small Talk,0.88319814,Small Talk,0.99489415
+1,"Hi, what are some tips for improving Spanish pronunciation?",Practice vowel sounds and consonant combinations. Listen and mimic native speakers. Use apps for pronunciation exercises. Record yourself and compare.,spanish_course_student_14,spanish_course,Small Talk,0.77229416,Statement,0.9916113
+2,"Sure, let's focus on one tip at a time. What would you think about starting with practice of vowel sounds and consonant combinations?","Great start! Focus on 'ae' for 'a' sound, 'ee' for 'e' sound, and 'oh' for 'o' sound. Practice 'll' and 'rr' distinctly.",spanish_course_student_14,spanish_course,Clarification,0.99839944,Clarification,0.5348564
+3,Got it! Let's focus on one vowel sound at a time. Could you give me an example of how to practice the 'ae' sound for 'a'?,"Sure! Practice words like ""zapato"" (鞋) and ""grasa"" (脂肪). Say them slowly, emphasizing the 'ae' sound.",spanish_course_student_14,spanish_course,Clarification,0.99861264,Clarification,0.48433754
+4,Thank you! That's helpful. Can you suggest some specific words or phrases to practice the 'll' and 'rr' sounds?,"Absolutely! For 'll': ""relleno"" (填充), ""tullido"" (麻痹的). For 'rr': ""cerrar"" (关闭), ""terror"" (恐怖). Practice pronouncing them slowly.",spanish_course_student_14,spanish_course,Clarification,0.99813735,Statement,0.85671246
+5,Thanks! That helps a lot. How about practice exercises for the 'rr' sound?,"Great question! Try reading ""Castaña"" (chestnut) or ""arrullo"" (caress). Listen to native speakers and mimic their pronunciation.",spanish_course_student_14,spanish_course,Small Talk,0.99436945,Clarification,0.6499652
+6,That's clear. Can you recommend any specific Spanish podcast or app for practicing these sounds?,"Sure! Try ""La Joven Cubana"" podcast or Duolingo for targeted exercises. Listen and repeat to improve.",spanish_course_student_14,spanish_course,Clarification,0.9971348,Clarification,0.6637154
+7,Perfect! Let's focus on one resource. Could you suggest a short Spanish podcast episode specifically for practicing 'rr' sounds?,"Yes! Try ""Coffee Shop Spanish"" episodes. They focus on conversational Spanish with clear pronunciation.",spanish_course_student_14,spanish_course,Clarification,0.95196027,Small Talk,0.88826126
+8,Thank you! Can you give me the link to one of those episodes for practice?,"I can't provide links, but you can search for ""Coffee Shop Spanish"" on your podcast app. Look for episodes with cafe conversations!",spanish_course_student_14,spanish_course,Clarification,0.85037607,Small Talk,0.84267694
+1,"Hi, can you explain when to use 'ser' vs 'estar' in Spanish?","Sure! Use ""ser"" for permanent states, identities, and characteristics. Use ""estar"" for temporary states, locations, or conditions.",spanish_course_student_15,spanish_course,Clarification,0.9989096,Statement,0.7669679
+2,Can you give me an example of each to better understand?,"Of course! 
+
+""Ser"": Soy médico. (I am a doctor.) Tiene hambre. (He is hungry.)
+
+""Estar"": Estoy cansado. (I am tired.) Están en la casa. (They are in the house.)",spanish_course_student_15,spanish_course,Clarification,0.9991922,Small Talk,0.8325661
+3,"Got it! Can you give me another example for ""estar"" to use with feelings and emotions?","Sure! 
+Estoy feliz. (I am happy.)
+Ella está triste. (She is sad.)",spanish_course_student_15,spanish_course,Clarification,0.999044,Small Talk,0.97568274
+4,"Thank you! Could you also give me an example using ""estar"" for location?","Of course!
+Estoy en el parque. (I am at the park.)
+El carro está en la casa. (The car is in the house.)",spanish_course_student_15,spanish_course,Clarification,0.9987326,Small Talk,0.97069925
+5,"Great examples! One last question: When would I use ""estar"" for conditions or situations?","Got it! Use ""estar"" for temporary conditions or situations, like:
+Estamos esperando. (We are waiting.)
+Ella está enferma. (She is sick.)",spanish_course_student_15,spanish_course,Clarification,0.99809664,Small Talk,0.5370574
+6,"Thanks! That helps a lot. Is there anything else I should know about ""estar""?","You're welcome! Just remember ""estar"" is mainly for temporary states or locations. If you have more questions, feel free to ask!",spanish_course_student_15,spanish_course,Clarification,0.83136076,Small Talk,0.98484844
+7,Thanks! I think I understand it better now.,Great! 😊 Let me know if you need more help. Happy studying!,spanish_course_student_15,spanish_course,Clarification,0.74939513,Small Talk,0.9892474
+8,I will. Thanks again for your help!,You're welcome! Glad to help. Good luck with Spanish! 😊,spanish_course_student_15,spanish_course,Small Talk,0.96008027,Small Talk,0.99728894
+1,"Hi, I’m learning Spanish and need help practising.","Great! Let's start with a simple sentence. Try to say ""I like to eat"" in Spanish.",spanish_course_student_16,spanish_course,Small Talk,0.9958335,Clarification,0.95668334
+2,"Got it! The sentence is ""Me gusta comer."" Would you like me to provide examples of similar sentences?","Perfect! ""Me gusta"" is well done. Yes, please provide more examples!",spanish_course_student_16,spanish_course,Clarification,0.99859005,Clarification,0.6818658
+3,"Sure! Here's another one: ""Me gusta el perro"" which means ""I like the dog.""","Great job! That's correct. ""Me gusta el perro."" Keep practicing!",spanish_course_student_16,spanish_course,Small Talk,0.99090123,Small Talk,0.99317694
+4,Thank you! Could you give me more examples using different verbs?,"Sure! How about:  
+- ""Me encanta estudiar"" (I love to study)  
+- ""No me gusta bailar"" (I don't like to dance)  
+
+Try them out!",spanish_course_student_16,spanish_course,Clarification,0.9984332,Small Talk,0.9761889
+5,"Got it! ""Me encanta estudiar"" and ""No me gusta bailar"" are perfect. Thank you!",Great! You're doing great. Keep practicing and asking if you need more examples! 😊,spanish_course_student_16,spanish_course,Small Talk,0.9940077,Small Talk,0.9963567
+6,"Sure, can you give me more sentences using different subjects?","Of course! Try these:
+
+- ""Me gusta el libro."" (I like the book.)
+- ""No me gustan las clases."" (I don't like classes.)
+- ""Me encantan las vacaciones."" (I love vacations.)
+
+How are you doing?",spanish_course_student_16,spanish_course,Clarification,0.99913365,Small Talk,0.98466635
+7,"That's helpful! How about sentences with reflexive verbs? Like ""Me lavo"" (I wash).","Perfect choice! Try these:
+
+- ""Me lavo"" (I wash myself)
+- ""Me peino"" (I brush my hair)
+- ""Me cambio"" (I change)
+
+Keep practicing!",spanish_course_student_16,spanish_course,Clarification,0.54082984,Small Talk,0.8699734
+8,"Got it! ""Me lavo,"" ""Me peino,"" and ""Me cambio"" are correct. Thank you!",Great! You're doing awesome. Keep it up! 😊,spanish_course_student_16,spanish_course,Small Talk,0.95555556,Small Talk,0.99750346
+1,"Hi, how do I use past tense verbs in Spanish?","Past tense in Spanish is commonly formed using ""había,"" ""había been,"" or specific endings like ""-é,"" ""-iste,"" ""-ó,"" ""-imos,"" ""-isteis,"" ""-aron."" Which specific past tense are you using?",spanish_course_student_17,spanish_course,Small Talk,0.8797519,Question,0.9327225
+2,Could you please give me an example of each type of past tense in Spanish?,"Sure! Here are examples:
+
+1. Imperfect tense (describe ongoing situations): ""Ella vivía en Madrid.""
+2. Preterite tense (completed actions): ""Ella vivió en Madrid.""
+3. Simple past (form of haber): ""Había vivido en Madrid.""
+
+Which one would you like to practice more?",spanish_course_student_17,spanish_course,Clarification,0.99916244,Clarification,0.98876905
+3,"Could you give me an example of each tense using the verb ""hablar"" (to speak)?","Of course!
+
+1. Imperfect: ""Ella solía hablar español.""
+2. Preterite: ""Ella habló español ayer.""
+3. Simple past (haber): ""Había hablado español antes.""",spanish_course_student_17,spanish_course,Clarification,0.99916303,Clarification,0.46635774
+4,"Got it. Could you provide another example for each tense using the verb ""hablar""?","Sure thing!
+
+1. Imperfect: ""Ellos solían hablar español todos los días.""
+2. Preterite: ""Ellos hablaron español ayer por la tarde.""
+3. Simple past: ""Habían hablado español antes de irse.""",spanish_course_student_17,spanish_course,Clarification,0.99908495,Clarification,0.5780407
+5,"Thank you! Could you explain when to use the imperfect versus the preterite tense for ""hablar""?","Sure! For ""hablar"":
+
+- Use **Imperfect** for ongoing or habitual actions in the past:  
+  Example: ""Ella solía hablar español."" (She used to speak Spanish.)
+
+- Use **Preterite** for a completed action:  
+  Example: ""Ella habló español ayer."" (She spoke Spanish yesterday.)
+
+Check if it helps!",spanish_course_student_17,spanish_course,Clarification,0.9990036,Clarification,0.97878873
+6,"That helps a lot! One last thing: how do I form the simple past (haber) with ""hablar""?","Great! For the simple past with ""hablar"" using ""haber"":
+
+- ""Había hablado"" (Past perfect): ""Había hablado español antes de salir.""  
+- ""Habíamos hablado"" (Past perfect plural): ""Habíamos hablado español antes de salir.""
+
+Let me know if you need more examples!",spanish_course_student_17,spanish_course,Clarification,0.9779537,Clarification,0.98648083
+7,"Got it! Thank you for the examples. One last clarification: when do I use ""había hablado"" versus ""habíamos hablado""?","Got it! Here's the distinction:
+
+- Use **""Había hablado""** when referring to a single person in the past:  
+  Example: ""Había hablado español antes de irse."" (She/He had spoken Spanish.)
+
+- Use **""Habíamos hablado""** when referring to a group (we, you, they):  
+  Example: ""Habíamos hablado español antes de irnos."" (We had spoken Spanish.)
+
+Let me know if you have more questions!",spanish_course_student_17,spanish_course,Clarification,0.9827419,Clarification,0.9957481
+8,Perfect! Thank you for the clear examples. I think I understand now.,"Great! 😊 I'm glad it helped. If you have any more questions, feel free to ask anytime! Buen viaje con tu español! 🇪🇸🚀",spanish_course_student_17,spanish_course,Clarification,0.94183975,Small Talk,0.989479
+1,"Hi, can you help me practice a short dialogue in Spanish?","Of course! Let's practice ordering food at a restaurant:
+
+Customer: ¿Puedo tener el menú?
+Chef: Claro, aquí está.
+
+You: ¿Y la ensalada?
+Chef: ¿Qué ensalada?
+You: La ensalada de lechuga y tomate.",spanish_course_student_18,spanish_course,Clarification,0.9465755,Small Talk,0.9915159
+2,"Got it. For the practice, should I role-play as the customer and you as the chef, or should we switch roles?",Role-play as the customer! It's a great way to practice. I'll be the chef. 😊,spanish_course_student_18,spanish_course,Clarification,0.99096984,Small Talk,0.9969289
+3,Perfect! I'll be the customer then. Let's start with me asking for the menu.,"Great! Start with:  
+**""¿Puedo tener el menú, por favor?""**  
+
+You're off to a good start! How did that feel?",spanish_course_student_18,spanish_course,Small Talk,0.99536824,Small Talk,0.99751544
+4,That feels good! What would be a natural follow-up from the chef?,"Perfect! A natural follow-up from the chef could be:  
+**""Claro, aquí está. ¿En qué puedo servirle?""**  
+
+This means, ""Sure, here it is. How can I assist you?""",spanish_course_student_18,spanish_course,Small Talk,0.99056363,Small Talk,0.55974776
+5,"Got it! So, after saying ""Claro, aquí está,"" I should ask for help or order something. What would be a simple order to practice with?","Great! A simple order like:  
+**""¿Y la ensalada de lechuga y tomate?""**  
+
+This means, ""And the lettuce and tomato salad?""",spanish_course_student_18,spanish_course,Clarification,0.99743015,Small Talk,0.97647935
+6,"Perfect! So, the conversation would flow like this:
+- Me: ""¿Puedo tener el menú, por favor?""  
+- Chef: ""Claro, aquí está. ¿En qué puedo servirle?""  
+- Me: ""¿Y la ensalada de lechuga y tomate?""  
+
+Is this correct so far?",Exactly! That's correct and natural. Great job! You're practicing wonderfully. How does it feel to role-play this way?,spanish_course_student_18,spanish_course,Clarification,0.6880423,Small Talk,0.9965437
+7,It feels great! I can really see how this dialogue would work in a restaurant. Should we try more examples or practice this one more time?,"Great feeling! Let's practice this one more time, then try a different order. Ready?",spanish_course_student_18,spanish_course,Clarification,0.6779628,Small Talk,0.99601066
+8,"Sure! Let's do it again. This time, I'll try ordering a pasta dish. How about **spaghetti carbonara**?","Perfect choice! Here’s how it can flow:
+
+You: **""¿Puedo tener la ensalada de lechuga y tomate?""**  
+Chef: **""Claro, aquí está. ¿Y para comer?""**  
+You: **""Laspaghetti carbonara, por favor.""**  
+Chef: **""¡Claro! ¡Enseguida!""**  
+
+How did that feel?",spanish_course_student_18,spanish_course,Small Talk,0.99596846,Small Talk,0.981024
+1,"Hi, what are some tips for improving Spanish pronunciation?","Practice vowels separately, then combine them in words. Listen and repeat. Record yourself to notice improvements. Focus on sounds unique to Spanish.",spanish_course_student_19,spanish_course,Small Talk,0.77229416,Statement,0.98718715
+2,"Sure, let's focus on one tip at a time. For now, could you explain more about practicing vowels separately?","Sure! Start by saying each vowel individually: /a/, /e/, /i/, /o/, /u/. Notice the mouth position. Then, practice pairs like /a/ and /e/, then /e/ and /i/, and so on.",spanish_course_student_19,spanish_course,Clarification,0.9988896,Clarification,0.85511297
+3,"Got it. Now, what would be a good way to combine vowels in words for practice?","Great! Start with simple words like ""ama"" (loves), ""ama"" (sore), ""ami"" (friend). Focus on the transition between vowels. Try to blend them smoothly without pauses.",spanish_course_student_19,spanish_course,Clarification,0.9920527,Clarification,0.74374765
+4,"Thank you! Now, how can listening and repeating help improve Spanish pronunciation?","Listening helps you hear native pronunciation. Repeat after the audio, mimicking tone and pace. This trains your ear and mouth to match native speech.",spanish_course_student_19,spanish_course,Clarification,0.96502256,Statement,0.99747854
+5,That makes sense. How can recording myself help improve Spanish pronunciation?,Recording helps you hear your own pronunciation. Compare it to native speakers. Identify differences and focus on areas needing improvement. Practice until you match.,spanish_course_student_19,spanish_course,Clarification,0.99323213,Statement,0.9710159
+6,Thank you! One last question: What are some unique Spanish sounds I should focus on?,"Focus on:
+1. The ""ll"" sound (as in ""llave"")
+2. The ""rr"" sound (as in ""perro"")
+3. The /j/ sound (as in ""yo"")
+Practice these sounds in isolation first, then in words and phrases.",spanish_course_student_19,spanish_course,Clarification,0.9824745,Statement,0.9647713
+7,"Got it! Thank you for the clear examples. I'll start with the ""ll"" and ""rr"" sounds first.","Great choice! Start with ""ll"" and ""rr"" first. Practice words like ""luna"" and ""llores."" Compare with ""perro"" and ""perro."" Keep up the practice!",spanish_course_student_19,spanish_course,Clarification,0.75221294,Clarification,0.80844337
+8,Thank you! I'll make sure to practice those sounds regularly.,"You're welcome! Regular practice is key. Focus on these sounds, then move to other unique Spanish sounds. Keep practicing!",spanish_course_student_19,spanish_course,Small Talk,0.9955113,Small Talk,0.9890161
+1,"Hi, can you explain when to use 'ser' vs 'estar' in Spanish?","Sure! Use ""ser"" for states, traits, and permanent conditions. Use ""estar"" for temporary states or situations.",spanish_course_student_20,spanish_course,Clarification,0.9989096,Statement,0.561734
+2,Can you give me an example of each?,"Of course! 
+- Ser: Soy médico. (I am a doctor. - permanent state)
+- Estar: Estoy enfermo. (I am sick. - temporary state)",spanish_course_student_20,spanish_course,Clarification,0.999191,Statement,0.5319648
+3,"Got it! What about physical characteristics? Would that also be ""ser""?","Yes, typically! Use ""ser"" for physical characteristics, like: Soy alto. (I am tall.)",spanish_course_student_20,spanish_course,Clarification,0.9968822,Clarification,0.50385976
+4,"And what about actions or states that can change? Would those be ""estar""?","Exactly! Use ""estar"" for actions or states that can change, like: Estoy leyendo. (I am reading.)",spanish_course_student_20,spanish_course,Question,0.86933166,Clarification,0.99383014
+5,"Thanks! What about states of mind or emotions? Would those be ""ser"" too?","Not always. Use ""estar"" for temporary states of mind/emotions: Estoy feliz. (I am happy.) Use ""ser"" for more permanent traits: Soy paciente. (I am patient.)",spanish_course_student_20,spanish_course,Clarification,0.9322077,Statement,0.63157487
+6,Got it! Thanks for the clarification!,"You're welcome! If you have more questions, feel free to ask. 😊",spanish_course_student_20,spanish_course,Small Talk,0.9815735,Small Talk,0.7929436
+7,Got it! Thanks for the examples and clarification!,Great! Glad to help. Let me know if you need more examples! 🌟,spanish_course_student_20,spanish_course,Small Talk,0.8766067,Clarification,0.85881203
+8,"Actually, could you give me one more example for each?","Sure thing!
+
+**""Ser"":** Soy inteligente. (I am intelligent.)  
+**""Estar"":** Estoy confundido. (I am confused.)",spanish_course_student_20,spanish_course,Clarification,0.9991416,Clarification,0.87736034
+1,"Hi, I’m learning Spanish and need help practising.","Sure, I can help! What would you like to practice?",spanish_course_student_21,spanish_course,Small Talk,0.9958335,Clarification,0.99616927
+2,Could you give me an example of a simple Spanish sentence to start with?,"Of course! Try: ""Me llamo María."" (My name is Maria.)",spanish_course_student_21,spanish_course,Clarification,0.9991755,Clarification,0.8928661
+3,"Got it! How would I respond if someone asks ""¿Cómo te llamas?""","You would respond with: ""Me llamo [Your name]."" For example, ""Me llamo María.""",spanish_course_student_21,spanish_course,Clarification,0.9951443,Clarification,0.99839646
+4,"Great! Now, how do I say ""Hello"" and ""Goodbye"" in Spanish?","Hello: ""Hola""  
+Goodbye: ""Adiós"" or ""Hasta luego""",spanish_course_student_21,spanish_course,Small Talk,0.9963111,Small Talk,0.49770615
+5,"Got that! Can you give me a sentence using ""adiós""?","Sure! ""Hasta luego, nos vemos mañana."" (Goodbye, see you tomorrow.)",spanish_course_student_21,spanish_course,Clarification,0.99857473,Small Talk,0.99581075
+6,"Thanks! Can you give me a simple sentence with ""nous"" as well?","It seems like you meant ""nos"" (us). Here's a simple sentence:  
+""Nos vemos luego."" (See you later.)",spanish_course_student_21,spanish_course,Clarification,0.9969126,Clarification,0.58196294
+7,"Great! Can you give me a sentence with ""me llamo"" and ""nos vemos""?","Of course!  
+""Me llamo María. Nos vemos luego.""  
+(Translation: My name is María. See you later.)",spanish_course_student_21,spanish_course,Clarification,0.986072,Small Talk,0.97511464
+8,Got it! Thanks! Can you suggest another Spanish greeting?,"Sure! ""Buenas tardes"" (Good afternoon)",spanish_course_student_21,spanish_course,Small Talk,0.99087125,Small Talk,0.9958526
+1,"Hi, how do I use past tense verbs in Spanish?","Past tense in Spanish is commonly formed using ""había,"" ""habíamos,"" ""habías,"" ""habíais,"" ""había,"" ""habían"" + past participle. Use ""había"" for singular and plural. Check specific verbs and context for correct usage.",spanish_course_student_22,spanish_course,Small Talk,0.8797519,Statement,0.9468577
+2,"Thank you for the information. Could you please provide an example using the verb ""hablar"" in the past tense?","Sure! ""Hablar"" in the past tense would be:
+
+Yo hablé.
+ tú hablaste.
+ él/ella/usted habló.
+ nosotros/nosotras hablamos.
+ vosotros/vosotras hablasteis.
+ ellos/ellas/ustedes hablaron.
+
+Check each context for the correct form!",spanish_course_student_22,spanish_course,Clarification,0.9989832,Clarification,0.97099847
+3,"Got it. Could you give me an example using ""había"" in a sentence?","Claro! Here's an example:
+
+Había mucha gente en el museo.",spanish_course_student_22,spanish_course,Clarification,0.999032,Small Talk,0.8941646
+4,"Thank you! Can you provide more examples of verbs used with ""había"" in different contexts?","Sure! Here are a few examples:
+
+1. Había un árbol grande en el jardín.  
+2. Había sido un día largo.  
+3. Había llorado mucho.  
+4. Había visto esa película antes.  
+5. Había cielo despejado esa mañana.  
+
+Each uses ""había"" to describe something that existed or happened in the past.",spanish_course_student_22,spanish_course,Clarification,0.99883217,Clarification,0.9721139
+5,"Thank you. Can you give me examples of verbs that are commonly used with ""había"" in different contexts?","Sure! Here are some common verbs used with ""había"":
+
+1. Había tenido una mala noche. (had slept badly)
+2. Había empezado a llover. (had started raining)
+3. Había comido poca comida. (had eaten little)
+4. Había estado enfermo. (had been sick)
+5. Había terminado el trabajo. (had finished the work)
+
+Check the context for the correct past tense form!",spanish_course_student_22,spanish_course,Clarification,0.99882096,Clarification,0.75393397
+6,"Thank you! Could you give me examples where ""había"" is used in both singular and plural contexts?","Of course!
+
+Singular:
+Había un gato en la ventana.  
+Había tenido un día difícil.
+
+Plural:
+Habían muchos libros en la biblioteca.  
+Habían ido al parque el fin de semana.",spanish_course_student_22,spanish_course,Clarification,0.99863833,Clarification,0.64568406
+7,"Thank you! Can you provide examples of verbs like ""tener"" and ""estar"" used with ""había""?","Sure! Here are examples:
+
+Singular:
+Había tenido una cita.  
+Había estado cansado.
+
+Plural:
+Habían tenido muchas citas.  
+Habían estado cansados.
+
+These use ""había"" to describe past states or conditions.",spanish_course_student_22,spanish_course,Clarification,0.998468,Clarification,0.9475368
+8,"Thank you! Can you give me a sentence using ""había"" with the verb ""estar""?","Of course! Here's a sentence:
+
+Había estado lloviendo todo el día.",spanish_course_student_22,spanish_course,Clarification,0.9984244,Small Talk,0.53444046
+1,"Hi, can you help me practice a short dialogue in Spanish?","Of course! Let's practice a simple greeting. Here's a short dialogue:
+
+**Person A:** ¿Cómo estás?
+
+**Person B:** Estoy bien, gracias. ¿Y tú?
+
+**Person A:** Me está bien. Gracias.
+
+Feel free to say it back to me!",spanish_course_student_23,spanish_course,Clarification,0.9465755,Small Talk,0.81540304
+2,"Got it. So for Person A, they're asking ""How are you?"" and for Person B, they're responding ""I'm good, thanks. And you?"" And for Person A's response, they're saying ""I'm good too. Thanks."" Is that correct?","Yes, exactly! Well done! Your translation is correct.",spanish_course_student_23,spanish_course,Small Talk,0.965381,Clarification,0.5728115
+3,Great! Can you give me another example of a short Spanish dialogue please?,"Sure! Here's another simple dialogue:
+
+**Person A:** ¿Quieres un café?
+
+**Person B:** Sí, por favor. Gracias.
+
+**Person A:** Claro, aquí tienes. 
+
+This translates to:
+
+**Person A:** Would you like a coffee?
+
+**Person B:** Yes, please. Thanks.
+
+**Person A:** Sure, here you go.",spanish_course_student_23,spanish_course,Clarification,0.9971047,Small Talk,0.9914057
+4,"Got it. So for Person A, they're asking ""Would you like a coffee?"" For Person B, they're saying ""Yes, please. Thanks."" And for Person A, they're saying ""Sure, here you go."" Is this correct?","Yes, exactly! Well done!",spanish_course_student_23,spanish_course,Small Talk,0.96917087,Small Talk,0.99277765
+5,Can you give me another dialogue example please?,"Sure! Here's another one:
+
+**Person A:** ¿Qué hace el fin de semana?
+
+**Person B:** Me gusta ir al parque.
+
+**Person A:** ¡Eso suena divertido! ¿Te gusta caminar?
+
+This translates to:
+
+**Person A:** What do you do on the weekend?
+
+**Person B:** I like to go to the park.
+
+**Person A:** That sounds fun! Do you like walking?",spanish_course_student_23,spanish_course,Clarification,0.9991616,Small Talk,0.9953685
+6,"Got it. So for Person A, they're asking ""What do you do on the weekend?"" For Person B, they're saying ""I like to go to the park."" And for Person A, they're saying ""That sounds fun! Do you like walking?"" Is this correct?","Yes, exactly! Great job!",spanish_course_student_23,spanish_course,Small Talk,0.9924332,Small Talk,0.9967584
+7,Thank you! Can you give me one more dialogue example please?,"Of course! Here’s another one:
+
+**Person A:** ¿Te gusta leer libros?
+
+**Person B:** Sí, me encanta. ¿Y tú?
+
+**Person A:** También me gusta. ¿Qué libros prefieres?
+
+This translates to:
+
+**Person A:** Do you like reading books?
+
+**Person B:** Yes, I love it. And you?
+
+**Person A:** Me too. What kinds of books do you prefer?",spanish_course_student_23,spanish_course,Clarification,0.9980648,Small Talk,0.99008596
+8,"Got it. So for Person A, they're asking ""Do you like reading books?"" For Person B, they're saying ""Yes, I love it. And you?"" And for Person A, they're asking ""Me too. What kinds of books do you prefer?"" Is this correct?","Yes, perfect! Well done!",spanish_course_student_23,spanish_course,Small Talk,0.89853704,Small Talk,0.9967174
+1,"Hi, what are some tips for improving Spanish pronunciation?",Practice vowel sounds and nasal consonants. Listen and mimic native speakers. Use apps for pronunciation practice.,spanish_course_student_24,spanish_course,Small Talk,0.77229416,Statement,0.996349
+2,Could you give me an example of a Spanish vowel sound that often causes difficulties for non-native speakers?,"The ""ü"" (u) sound is often tricky. It's like the ""u"" in ""cut"" in English. Practice words like ""río"" and ""lugar.""",spanish_course_student_24,spanish_course,Clarification,0.9991239,Statement,0.99720556
+3,"Are there any specific exercises I can do to improve my ""ü"" sound?","Try this: 
+1. Say ""ru"" slowly. 
+2. Try ""ruuu"" emphasizing the ""u"" sound. 
+3. Practice words like ""sueño"" and ""fruta.""",spanish_course_student_24,spanish_course,Clarification,0.998486,Clarification,0.87956727
+4,Thank you! Are there any common mistakes to avoid when practicing Spanish vowels?,"Yes! Avoid:
+1. Making the ""u"" too short or like in ""cut.""
+2. Forcing the ""ü"" sound too much.
+3. Focusing only on length, not the quality of the sound.",spanish_course_student_24,spanish_course,Clarification,0.98895514,Clarification,0.79895836
+5,Got it! What about consonants? Are there any particular ones that are challenging for beginners?,"Yes, the ""ll"" and ""ch"" sounds are common challenges. The ""ll"" is similar to the ""y"" in ""yes,"" and ""ch"" is like ""ch"" in ""church."" Practice words like ""llave"" and ""chica.""",spanish_course_student_24,spanish_course,Clarification,0.8826182,Statement,0.99358106
+6,"Thanks! Can you suggest a simple exercise for practicing the ""ll"" sound?","Sure! Try saying ""ella"" slowly, focusing on the ""ll"" sound. Practice other words like ""callar"" and ""polla.""",spanish_course_student_24,spanish_course,Clarification,0.9867517,Clarification,0.993772
+7,"Got it. And what about the ""ch"" sound? Any tips for practicing that?","Yes! Try saying ""chica"" slowly, emphasizing the ""ch"" sound. Practice other words like ""chocar"" and ""chica.""",spanish_course_student_24,spanish_course,Small Talk,0.9317397,Clarification,0.9927772
+8,Thanks! One last question: Are there any apps or resources you recommend for improving Spanish pronunciation?,"Yes! Try:
+1. Duolingo for pronunciation practice.
+2. Forvo for word pronunciations.
+3. HelloTalk or Tandem for speaking with native speakers.
+
+Hope this helps!",spanish_course_student_24,spanish_course,Clarification,0.9217337,Clarification,0.9406335
+1,"Hi, can you explain when to use 'ser' vs 'estar' in Spanish?","Sure! Use ""ser"" for permanent states or descriptions (e.g., "" Soy alto"") and ""estar"" for temporary states or locations (e.g., "" Estoy enfermo"").",spanish_course_student_25,spanish_course,Clarification,0.9989096,Statement,0.97405404
+2,"Can you give me an example of when to use ""ser"" for a permanent state?","Of course! Use ""ser"" for permanent states like ""Soy español"" (I am Spanish) or ""Ella es maestra"" (She is a teacher).",spanish_course_student_25,spanish_course,Clarification,0.99917114,Statement,0.6274156
+3,"Got it. And when would I use ""estar"" for a temporary state?","Great! Use ""estar"" for temporary states like ""Estoy cansado"" (I am tired) or ""Están en la escuela"" (They are at school).",spanish_course_student_25,spanish_course,Clarification,0.99593383,Small Talk,0.5107208
+4,"Thanks! Can you give me an example of ""estar"" for a location?","Sure! Use ""estar"" for locations: ""Ella está en el trabajo"" (She is at work).",spanish_course_student_25,spanish_course,Clarification,0.9964741,Clarification,0.5541296
+5,Got it. Thanks! Can you give me one more quick example of each?,"Of course!  
+""Ser"": Soy estudiante (I am a student).  
+""Estar"": Estoy enfermo (I am sick).",spanish_course_student_25,spanish_course,Clarification,0.8591639,Small Talk,0.39828122
+6,Thanks! One more quick one if you don't mind.,"No problem!  
+""Ser"": Soy venezolano (I am Venezuelan).  
+""Estar"": Estoy triste (I am sad).",spanish_course_student_25,spanish_course,Small Talk,0.99155605,Small Talk,0.60999686
+7,Thanks! That really clears things up for me.,Great! I'm glad it helped. Let me know if you have more questions!,spanish_course_student_25,spanish_course,Small Talk,0.9967803,Small Talk,0.94241726
+8,Got it. Thanks for the examples!,You're welcome! Glad it helped. 😊 Let me know if you need more practice!,spanish_course_student_25,spanish_course,Small Talk,0.9739258,Small Talk,0.9952058
+1,"Hi, I’m learning Spanish and need help practising.","Great! Let's practice. How about translating this sentence: ""The cat is sleeping.""",spanish_course_student_26,spanish_course,Small Talk,0.9958335,Small Talk,0.5409676
+2,"Got it. To translate ""The cat is sleeping."" into Spanish, it would be ""El gato está durmiendo."" Would you like to try translating another sentence?","Perfect! That's correct: ""El gato está durmiendo."" Would you like to try another sentence?",spanish_course_student_26,spanish_course,Clarification,0.99806744,Clarification,0.9848803
+3,"Sure! Let's try: ""I like to eat tacos."" How would I say that in Spanish?","Great choice! ""Me gusta comer tacos.""",spanish_course_student_26,spanish_course,Clarification,0.8911279,Small Talk,0.9955728
+4,"Got it! So, ""Me gusta comer tacos"" means ""I like to eat tacos."" Could you give me another sentence to practice?","Exactly! And sure, how about: ""El perro come rápidamente."" 
+
+This means: ""The dog eats quickly.""",spanish_course_student_26,spanish_course,Clarification,0.9579258,Clarification,0.9767352
+5,"Perfect! That's correct: ""El perro come rápidamente."" 
+
+Would you like to practice more sentences?",Great! Would you like to practice more sentences?,spanish_course_student_26,spanish_course,Clarification,0.9571726,Small Talk,0.78816265
+6,"Yes, please! Could you give me another sentence to translate into Spanish?","Of course! Try: ""She sings beautifully."" 
+
+Translate that into Spanish: ""Ella canta bellamente.""",spanish_course_student_26,spanish_course,Clarification,0.99905616,Clarification,0.9892027
+7,"Perfect! So, ""Ella canta bellamente"" means ""She sings beautifully."" 
+
+Thanks for the practice! Could you give me another sentence?","You're doing great! Try: ""We play soccer every day."" 
+
+Translate: ""Jugamos fútbol todos los días.""",spanish_course_student_26,spanish_course,Small Talk,0.86359566,Small Talk,0.99700314
+8,"Got it! So, ""Jugamos fútbol todos los días"" means ""We play soccer every day.""
+
+Thank you! Could you give me another sentence to practice?","Absolutely! How about: ""They are reading a book."" 
+
+Translate: ""Están leyendo un libro.""",spanish_course_student_26,spanish_course,Small Talk,0.89705867,Small Talk,0.8048531
+1,"Hi, how do I use past tense verbs in Spanish?","Past tense in Spanish is commonly formed using ""había,"" ""habíamos,"" ""habías,"" ""habían"" for ""haber"" (to have) + past participle. Example: ""Yo había comido"" (I had eaten).",spanish_course_student_27,spanish_course,Small Talk,0.8797519,Statement,0.9873251
+2,"Could you give me an example of how to form the past tense using ""había""?","Sure! Using ""había"" (had + past participle): 
+""Ella había estudiado todo el día."" (She had studied all day.)",spanish_course_student_27,spanish_course,Clarification,0.9991824,Small Talk,0.5104182
+3,Got it. Can you give me another example with a different verb?,"Of course! Try:  
+""Yo había caminado largo rato."" (I had walked for a long time.)",spanish_course_student_27,spanish_course,Clarification,0.9989784,Small Talk,0.74753666
+4,"Thanks! Can you also explain when to use ""había"" vs. ""habíamos""?","Use ""había"" for singular subjects (""yo,"" ""él/ella"") or when emphasizing one person.  
+Use ""habíamos"" for plural subjects (""nosotros/nosotras"") or when emphasizing more than one person.",spanish_course_student_27,spanish_course,Clarification,0.9989644,Statement,0.9270392
+5,"Got it. And what about the other forms like ""habías"" and ""habían""? When would I use those?","Good question! Use:
+- ""habías"" for ""you"" (formal or informal singular).
+- ""habían"" for ""they"" or ""you"" (formal plural or informal plural).
+
+Use these based on the subject. Example:
+""Ella había comido."" (She had eaten.)
+""Tú habías comido."" (You had eaten.)
+""Ellos habían comido."" (They had eaten.)",spanish_course_student_27,spanish_course,Clarification,0.9896618,Clarification,0.9797021
+6,"Thanks! One last question: When should I use ""había"" instead of ""habíamos""?","Use ""había"" for singular subjects or when emphasizing one person.  
+Use ""habíamos"" for plural subjects or when emphasizing ""we"" or ""you"" (formal/plural).",spanish_course_student_27,spanish_course,Clarification,0.9935534,Statement,0.8442012
+7,"Got it! Thanks for the clarification. One more quick example:  
+""Yo había"" vs. ""Nosotros habíamos""?","Sure!  
+- ""Yo había comido"" means ""I had eaten.""  
+- ""Nosotros habíamos comido"" means ""We had eaten.""  
+
+Use ""había"" for singular (""yo"") and ""habíamos"" for plural (""nosotros"").",spanish_course_student_27,spanish_course,Clarification,0.9694439,Clarification,0.62522525
+8,"Great, I think I understand now. Thanks for the examples!","You're welcome! Glad to help. If you have any more questions, feel free to ask. Happy studying!",spanish_course_student_27,spanish_course,Small Talk,0.71135145,Small Talk,0.9927549
+1,"Hi, can you help me practice a short dialogue in Spanish?","Of course! Let's do this:
+
+Person A: Hola, ¿cómo estás?
+Person B: Estoy bien, gracias. ¿Y tú?
+
+Do you want to practice this?",spanish_course_student_28,spanish_course,Clarification,0.9465755,Small Talk,0.5717022
+2,Thank you! Could you please give me another example with different greetings?,"Sure!
+
+Person A: Buenos días, ¿qué tal?
+Person B: Buenos días. Estoy bien, gracias.
+
+Person A: ¿Te apetece salir hoy?
+Person B: Sí, me apetece mucho. ¿Dónde?",spanish_course_student_28,spanish_course,Clarification,0.99620605,Clarification,0.3502318
+3,"Got it! Thanks. One more thing - could you show me how to respond if someone asks ""¿Dónde?""","No problem! If someone asks ""¿Dónde?"" (Where?), you can respond like this:
+
+Person A: ¿Dónde?
+Person B: Estoy en el parque. ¿Y tú?
+
+Or you can say:
+Person B: Estoy en la biblioteca. ¿Y tú?",spanish_course_student_28,spanish_course,Clarification,0.98969835,Clarification,0.9970086
+4,"Thanks! One more question - how would I respond if someone asks ""¿Te apetece salir hoy?""","You can respond in several ways:
+
+- Sí, me apetece mucho. ¿Dónde?
+- No, hoy no me apetece. ¿Otro día?
+- Quizás. Depende.",spanish_course_student_28,spanish_course,Clarification,0.9979722,Clarification,0.98417884
+5,Got it! Thanks so much for the examples. Could you give me a chance to practice a simple response?,"Great choice! Try:
+
+Person A: ¿Te apetece salir hoy?
+You could respond:
+Person B: Sí, me apetece mucho. ¿Dónde?",spanish_course_student_28,spanish_course,Clarification,0.97212213,Clarification,0.88323915
+6,"Thank you! Let's try: Person A asks, ""¿Quieres ir al cine?"" How would I respond?","Person B: Claro, ¡vamos! ¿Qué película?",spanish_course_student_28,spanish_course,Clarification,0.89946264,Clarification,0.41412193
+7,Got it! Thanks again for the practice. I think I'm ready to try this on my own now. 😊,You're welcome! 😊 Great job! Go practice with friends or family. Good luck!,spanish_course_student_28,spanish_course,Small Talk,0.9961842,Small Talk,0.99766433
+8,Thank you! I will. Do you have any more short dialogues you could suggest?,"Sure! Here's a fun one:
+
+Person A: ¿Qué tal si tomamos café?
+Person B: ¡Perfecto! ¿Dónde quieres ir?
+
+Practice by taking turns asking and responding!",spanish_course_student_28,spanish_course,Clarification,0.9460407,Small Talk,0.9925391
+1,"Hi, what are some tips for improving Spanish pronunciation?","Practice pronouncing vowels and consonants separately first. Then try words, phrases, and finally conversations. Listen to native speakers and mimic their sounds. Record yourself to notice improvements.",spanish_course_student_29,spanish_course,Small Talk,0.77229416,Statement,0.98243654
+2,"Got it. To focus on vowels and consonants separately, should I start with individual sounds or with syllables?",Start with individual sounds. Master each vowel and consonant separately before moving to syllables. This builds confidence and accuracy.,spanish_course_student_29,spanish_course,Clarification,0.9984243,Statement,0.99705887
+3,Thank you. What are some common Spanish sounds that are hard for English speakers to pronounce?,"Good question! Commonly tricky sounds include:
+- The ""ll"" sound (like ""y"" in ""yes"")
+- The ""ñ"" sound
+- The trill (""rr"" in ""perro"")
+Focus on these to improve your pronunciation.",spanish_course_student_29,spanish_course,Clarification,0.6117687,Statement,0.9047594
+4,"That's helpful. Can you give me an example of words with the ""ll"" sound and ""rr"" sound?","Sure! For ""ll"":
+- ""Bella"" (beautiful)
+- ""Juego"" (game)
+
+For ""rr"":
+- ""Perro"" (dog)
+- ""España"" (Spain)",spanish_course_student_29,spanish_course,Clarification,0.9990753,Small Talk,0.36837813
+5,Got it. What should I do next to practice these sounds?,"Great! Practice these words by repeating them out loud. Try:
+1. Reading sentences with these sounds.
+2. Recording yourself and comparing with native pronunciation.
+3. Using apps or videos that focus on these sounds.",spanish_course_student_29,spanish_course,Clarification,0.98270345,Clarification,0.9292836
+6,Thanks! What are some good apps or videos for practicing Spanish pronunciation?,"For apps: 
+- Duolingo
+- Memrise
+- Babbel
+
+For videos:
+- SpanishDict YouTube channel
+- FluentU
+- Transparent Language Videos
+
+Try using these for short, daily practice sessions.",spanish_course_student_29,spanish_course,Small Talk,0.99598396,Statement,0.9738709
+7,"Perfect, I'll start with the ""ll"" and ""rr"" sounds. Is there anything else I should focus on besides these?","Yes! Focus also on:
+- Stress and accent marks
+- Rolling the ""r"" correctly
+- Vowel sounds (like ""a"" in ""father"" vs. ""a"" in ""fan"")
+Practice these along with ""ll"" and ""rr"" for well-rounded pronunciation improvement.",spanish_course_student_29,spanish_course,Clarification,0.99647224,Statement,0.6993705
+8,Got it. I'll start with the stress and accent marks too. Thanks for all the helpful tips!,You're welcome! Start with stress and accent marks. Practice makes perfect—keep at it! 😊,spanish_course_student_29,spanish_course,Small Talk,0.992136,Small Talk,0.99111533
+1,"Hi, can you explain when to use 'ser' vs 'estar' in Spanish?","Sure! Use ""ser"" for permanent traits or states: soy feliz (I am happy). Use ""estar"" for temporary conditions: estoy enfermo (I am sick).",spanish_course_student_30,spanish_course,Clarification,0.9989096,Statement,0.93258274
+2,Got it. Can you give me another example for each?,"Of course! For ""ser"": Soy estudiante (I am a student). For ""estar"": Estoy cansado (I am tired).",spanish_course_student_30,spanish_course,Clarification,0.9987124,Clarification,0.6314978
+3,"Thanks! Can you also explain when to use ""estar"" for location?","Sure! Use ""estar"" for location: Estoy en la casa (I am at the house). It indicates a temporary state or specific place.",spanish_course_student_30,spanish_course,Clarification,0.9989905,Clarification,0.95811325
+4,"Got it. And when should I use ""ser"" for characteristics?","Got it! Use ""ser"" for characteristics: Soy inteligente (I am intelligent). It's for permanent traits or states.",spanish_course_student_30,spanish_course,Clarification,0.99679106,Statement,0.6623823
+5,Thank you! One more quick question: Is there ever a case where both could apply?,"Good question! Generally, one fits better than the other. However, for characteristics, ""ser"" is more common. For location, ""estar"" is preferred. Both rarely mix for the same meaning.",spanish_course_student_30,spanish_course,Clarification,0.99767786,Statement,0.9762399
+6,Thanks! That makes sense. Can you give me a quick example where both might be used in the same sentence?,"Sure! Consider: ""Estoy en el parque porque soy fanático del rugby."" (I am at the park because I am a rugby fan.)",spanish_course_student_30,spanish_course,Clarification,0.998912,Clarification,0.6607095
+7,Got it! Thanks for the examples!,You're welcome! Glad it helped. 😊 Let me know if you have more questions!,spanish_course_student_30,spanish_course,Small Talk,0.9947009,Small Talk,0.9432536
+8,Great! I think I understand it now. Thanks for your help!,You're welcome! Glad to help. Let me know if you need more practice! 😊,spanish_course_student_30,spanish_course,Small Talk,0.9683691,Small Talk,0.98941725
