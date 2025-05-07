@@ -147,7 +147,6 @@ viz.plot_history_interaction(
 <br>
 
 <br>
-
 --- 
 
 ## 📖 Documentation
@@ -171,7 +170,7 @@ The package is made by **Laura Wulff Paaby**
 Feel free to reach out via:
 
 - 🌐 [LinkedIn](https://www.linkedin.com/in/laura-wulff-paaby-9131a0238/)
-- 📧 [laurapaaby18@gmail.com](mailto:laurapaaby18@gmail.com)
+- 📧 [Mail](mailto:laurapaaby18@gmail.com)
 - 🐙 [GitHub](https://github.com/laurawpaaby) 
 <br>
 
