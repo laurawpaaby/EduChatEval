@@ -830,9 +830,7 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 
             <details class="quote">
               <summary>Source code in <code>src/educhateval/descriptive_results/display_results.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
@@ -913,7 +911,9 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
-<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_category_bars</span><span class="p">(</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_category_bars</span><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span>
     <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1084,9 +1084,7 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 
             <details class="quote">
               <summary>Source code in <code>src/educhateval/descriptive_results/display_results.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
@@ -1124,7 +1122,9 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 <span class="normal">231</span>
 <span class="normal">232</span>
 <span class="normal">233</span>
-<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_prediction_summary_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_prediction_summary_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">student_col</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">tutor_col</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide at least one of student_col or tutor_col.&quot;</span><span class="p">)</span>
 
@@ -1322,13 +1322,16 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
-<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_predicted_categories</span><span class="p">(</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_predicted_categories</span><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span>
     <span class="n">student_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;icefire&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Category Distribution&quot;</span><span class="p">,</span>
+    <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">student_col</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">tutor_col</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide at least one of student_col or tutor_col.&quot;</span><span class="p">)</span>
@@ -1387,6 +1390,7 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
         <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
         <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
         <span class="n">hue_order</span><span class="o">=</span><span class="n">all_labels</span><span class="p">,</span>
+        <span class="n">errorbar</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;ci&#39;</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span> <span class="k">if</span> <span class="n">show_ci</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">student_col</span> <span class="ow">and</span> <span class="n">tutor_col</span><span class="p">:</span>
@@ -1499,9 +1503,7 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 
             <details class="quote">
               <summary>Source code in <code>src/educhateval/descriptive_results/display_results.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">245</span>
 <span class="normal">246</span>
 <span class="normal">247</span>
 <span class="normal">248</span>
@@ -1639,13 +1641,20 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 <span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span>
-<span class="normal">383</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_previous_turn_distribution</span><span class="p">(</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_previous_turn_distribution</span><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span>
     <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
     <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
     <span class="n">focus_agent</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span>
     <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;icefire&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot the distribution of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.</span>
@@ -1777,6 +1786,9 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
     <span class="n">g</span><span class="o">.</span><span class="n">_legend</span><span class="o">.</span><span class="n">set_bbox_to_anchor</span><span class="p">((</span><span class="mf">1.12</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
     <span class="n">g</span><span class="o">.</span><span class="n">_legend</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">g</span><span class="o">.</span><span class="n">_legend</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">opposite_label</span><span class="si">}</span><span class="s2"> Category (Turn - 1)&quot;</span><span class="p">)</span>
+
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
