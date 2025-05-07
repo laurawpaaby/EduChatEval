@@ -17,4 +17,4 @@ To run the full pipeline, the package requires integration with LM Studio (for l
 
 Detailed information on the available classes, functions, and configuration options can be found in the [API reference](api/api_frame_gen.md/).
 
-**Be aware**, that the package can be run on python >=3.12,<3.13 due to the dependency on ... 
+**Be aware**, that the package currently requires [`Python 3.12`](https://www.python.org/downloads/release/python-3120/) due to version constraints in core dependencies, particularly [`outlines`](https://github.com/dottxt-ai/outlines?tab=readme-ov-file#type-constraint).

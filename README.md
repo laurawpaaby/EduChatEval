@@ -22,6 +22,8 @@ Overview of the system architecture:
 ## 🤗 Integration 
 Note that the framework and dialogue generation is integrated with [LM Studio](https://lmstudio.ai/), and the wrapper and classifiers with [Hugging Face](https://huggingface.co/).
 
+The package currently requires [`Python 3.12`](https://www.python.org/downloads/release/python-3120/) due to version constraints in core dependencies, particularly [`outlines`](https://github.com/dottxt-ai/outlines?tab=readme-ov-file#type-constraint).
+
 <br>
 
 ## ⚙️ Installation
@@ -144,9 +146,11 @@ viz.plot_history_interaction(
     focus_agent="student"                      # the agent to visualize category dependencies for
 )
 ```
+
 <br>
 
 <br>
+
 --- 
 
 ## 📖 Documentation
@@ -206,7 +210,7 @@ This project builds on existing tools and ideas from the open-source community. 
 │   ├── Final_output/                      # Final classified data 
 │   ├── templates/                         # Prompt and seed templates
 │
-├── models/                                # (ignored) Folder for trained models and checkpoints (ignored)
+├── docs/                                  # Markdowns to publish with MKDocs
 │
 ├── src/educhateval/                       # Main source code for all components
 │   ├── chat_ui.py                         # CLI interface for wrapping interactions
@@ -226,7 +230,15 @@ This project builds on existing tools and ideas from the open-source community. 
 │   │   ├── outline_synth_LMSRIPT.py       # Synthetic outline generation pipeline
 │   │   └── train_tinylabel_classifier.py  # Training small classifier on manually made true data
 │
+├── tutorials/                             # Tutorials on how to use the package in different settings
+│
+├── mkdocs.yml                             # MKDocs configuration file
+├── LICENSE                                # MIT License
 ├── .python-version                        # Python version file for (Poetry)
 ├── poetry.lock                            # Locked dependency versions (Poetry)
 ├── pyproject.toml                         # Main project config and dependencies
+│
+├── models/                                # (ignored) Folder for trained models 
+├── results/                               # (ignored) Folder for training checkpoints
+├── site/                                  # (ignored) MKDocs files for documentation
 ``` 
