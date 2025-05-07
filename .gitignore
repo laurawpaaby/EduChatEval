@@ -17,10 +17,15 @@ tutorials/results
 
 site/
 
-update_website.txt
+
 
 dist/
 ~/
 
 
 /src/educhateval/dialogue_wrapper/
+
+# no longer used:
+
+update_website.txt
+testing_mypython_package.ipynb
