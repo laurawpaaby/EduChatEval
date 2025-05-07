@@ -147,7 +147,9 @@ viz.plot_history_interaction(
 <br>
 
 <br>
+
 --- 
+
 ## 📖 Documentation
 
 | **Documentation** | **Description** |
@@ -159,6 +161,7 @@ viz.plot_history_interaction(
 <br>
 
 <br>
+
 ---
 
 
