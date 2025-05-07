@@ -17,17 +17,20 @@ The package is designed to:
 Overview of the system architecture:
 
 ![flowchart](docs/pics/new_flowchart.png)
-
+<br>
 ---
 ## 🤗 Integration 
 Note that the framework and dialogue generation is integrated with [LM Studio](https://lmstudio.ai/), and the wrapper and classifiers with [Hugging Face](https://huggingface.co/).
 
+<br>
 
 ## ⚙️ Installation
 
 ```bash
 pip install educhateval
 ```
+<br>
+
 
 
 ## ⚙️ Usage
@@ -141,6 +144,9 @@ viz.plot_history_interaction(
     focus_agent="student"                      # the agent to visualize category dependencies for
 )
 ```
+<br>
+
+<br>
 --- 
 ## 📖 Documentation
 
@@ -150,7 +156,9 @@ viz.plot_history_interaction(
 | 💡 [Prompt Templates](https://laurawpaaby.github.io/EduChatEval/user_guides/frameworks/) | Overview of system prompts, role behaviors, and instructional strategies |
 | 🧠 [API References](https://laurawpaaby.github.io/EduChatEval/api/api_frame_gen/) | Full reference for the `educhateval` API: classes, methods, and usage |
 | 🤔 [About](https://laurawpaaby.github.io/EduChatEval/about/) | Learn more about the thesis project, context, and contributors |
+<br>
 
+<br>
 ---
 
 
@@ -162,7 +170,9 @@ Feel free to reach out via:
 - 🌐 [LinkedIn](https://www.linkedin.com/in/laura-wulff-paaby-9131a0238/)
 - 📧 [laurapaaby18@gmail.com](mailto:laurapaaby18@gmail.com)
 - 🐙 [GitHub](https://github.com/laurawpaaby) 
+<br>
 
+<br>
 
 
 ## 🫶🏼 Acknowdledgement 
