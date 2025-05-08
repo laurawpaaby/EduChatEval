@@ -538,9 +538,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linguistic-example" class="md-nav__link">
+  <a href="#intention-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Linguistic Example
+      Intention Example
     </span>
   </a>
   
@@ -846,7 +846,7 @@ Initialize the generator with your chosen model and API, and generate labeled sa
 <span class="n">prompt</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="p">[</span><span class="s2">&quot;conversation_types&quot;</span><span class="p">][</span><span class="s2">&quot;feedback&quot;</span><span class="p">]</span>
 <span class="n">seed_message</span> <span class="o">=</span> <span class="s2">&quot;I&#39;ve written this paragraph, please help me polish it: flowers are nice and they grow in gardens. some are red or yellow. people give them on birthdays and stuff. bees like them too.&quot;</span> 
 </code></pre></div></p>
-<p>In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a <code>DataFrame</code> look at the <a href="Linguistic-Example">linguistic example</a>. </p>
+<p>In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a <code>DataFrame</code> look at the intention scenario. </p>
 <div class="highlight"><pre><span></span><code><span class="n">df_single_feedback</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">simulate_dialogue</span><span class="p">(</span>
     <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;feedback&quot;</span><span class="p">,</span>
     <span class="n">turns</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
@@ -882,12 +882,13 @@ Initialize the generator with your chosen model and API, and generate labeled sa
     <span class="n">df</span><span class="o">=</span><span class="n">annotaded_feedback</span><span class="p">,</span>
     <span class="n">label_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span> <span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">],</span>
     <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of Predicted Feedback Classes&quot;</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of Predicted Feedback Classes&quot;</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;twilight&quot;</span>
 <span class="p">)</span>
 </code></pre></div></p>
 <p>Returns:</p>
-<div style="text-align: center">
-![Bar Chart](../pics/feedback_bar.png)
+<div align="center">
+  <img src="../pics/feedback_bar.png" alt="Bar Chart" width="80%">
 </div>
 
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Trend plot of predicted categories over turns</span>
@@ -896,16 +897,17 @@ Initialize the generator with your chosen model and API, and generate labeled sa
     <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
     <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Feedback Distribution over Turns&quot;</span><span class="p">,</span>
+    <span class="n">show_ci</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </code></pre></div>
 Returns:</p>
-<div style="text-align: center">
-![Bar Chart](../pics/feedback_turns.png)
+<div align="center">
+  <img src="../pics/feedback_turns.png" alt="Bar Chart" width="80%">
 </div>
 
 <hr />
-<h2 id="linguistic-example">Linguistic Example</h2>
-<p>The second example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>).</p>
+<h2 id="intention-example">Intention Example</h2>
+<p>The second example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on intentions behind messages: (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>).</p>
 <p>First install the package:
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>educhateval
 </code></pre></div></p>
@@ -1054,12 +1056,12 @@ Import the visualizer and plot results:
 <span class="p">)</span>
 </code></pre></div></p>
 <p>Returns:</p>
-<div style="text-align: center">
-![Summary Table](../pics/sum_table.png)   
+<div align="center">
+  <img src="../pics/sum_table.png" alt="Bar Chart" width="80%">
 </div>
 
-<div style="text-align: center">
-![Bar Chart](../pics/simple_bar.png)
+<div align="center">
+  <img src="../pics/simple_bar.png" alt="Bar Chart" width="80%">
 </div>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># Trend plot of predicted categories over turns</span>
@@ -1072,8 +1074,8 @@ Import the visualizer and plot results:
 <span class="p">)</span>
 </code></pre></div>
 <p>Returns:</p>
-<div style="text-align: center">
-![Bar Chart](../pics/turns_line.png)
+<div align="center">
+  <img src="../pics/turns_line.png" alt="Bar Chart" width="80%">
 </div>
 
 <p>Lastly the tutor–student interaction patterns can be visualized as sequential category dependencies, here with a student focus. The x-axis represents the student's current input category, while each bar shows the distribution of tutor response types from the previous turn. This is possible when both student and tutor inputs are predicted and labeled. </p>
@@ -1087,8 +1089,8 @@ Import the visualizer and plot results:
 <span class="p">)</span>
 </code></pre></div>
 Returns:</p>
-<div style="text-align: center">
-![Bar Chart](../pics/interaction.png)
+<div align="center">
+  <img src="../pics/interaction.png" alt="Bar Chart" width="80%">
 </div>
 
 <hr />
