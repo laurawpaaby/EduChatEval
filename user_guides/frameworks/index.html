@@ -585,13 +585,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linguistic-templates" class="md-nav__link">
+  <a href="#intention-templates" class="md-nav__link">
     <span class="md-ellipsis">
-      Linguistic Templates
+      Intention Templates
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Linguistic Templates">
+    <nav class="md-nav" aria-label="Intention Templates">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -874,7 +874,7 @@
 
   <h1>Templates</h1>
 
-<p>Several modules within the pipeline accept <strong>customized prompts</strong> and <strong>seed messages</strong> to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. Below are templates of both prompts and seed provided to illustrate how such customization can guide the generation process and support targeted use cases.</p>
+<p>Several modules within the pipeline accept <strong>customized prompts</strong> and <strong>seed messages</strong> to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. Below are templates of both prompts and seed provided to illustrate how such customization can guide the generation process and support targeted use cases. There are two use cases: first for a <em>feedback</em> focused scenario, the second for a <em>intention</em> focused scenario.  </p>
 <hr />
 <h2 id="feedback-templates"><strong>Feedback Templates</strong></h2>
 <p>This section demonstrates a pipeline configuration centered on feedback types, inspired by the work of <a href="https://doi.org/10.7146/lom.v17i31.148831">Hansen et al. 2025</a>. The template framework focuses on the following categories: <em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>. </p>
@@ -882,7 +882,7 @@
 <p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. </p>
 <p>For the generation of a framework for the eight categories (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>), the model was provided with the template presented below. </p>
 <details class="example">
-<summary>Prompt Template for Feedback: YAML</summary>
+<summary>Prompt Template for Feedback</summary>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">prompt_dict = {</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># ADVICE</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&quot;Advice&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
@@ -1072,14 +1072,14 @@ Seed messages can be passed directly as strings or organized in a <code>YAML</co
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Hi,</span><span class="nv"> </span><span class="s">I’m</span><span class="nv"> </span><span class="s">trying</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">make</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">argument</span><span class="nv"> </span><span class="s">stronger—can</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">help</span><span class="nv"> </span><span class="s">me</span><span class="nv"> </span><span class="s">refine</span><span class="nv"> </span><span class="s">it?&quot;</span>
 </code></pre></div></p>
 <hr />
-<h2 id="linguistic-templates"><strong>Linguistic Templates</strong></h2>
+<h2 id="intention-templates"><strong>Intention Templates</strong></h2>
 <p>This section demonstrates a pipeline configuration centered on simple linguistic interaction types, inspired by the communicative categories proposed by <a href="https://doi.org/10.1016/j.ipm.2021.102838">Wei et al. (2022)</a>. The template framework focuses on the following categories: <em>Clarification, Question, Small Talk</em>, and <em>Statement</em>. These categories reflect the communicative intent behind user inputs—whether from the student or the LLM-driven tutor.</p>
 <p>While <em>Clarification</em>, <em>Question</em>, and <em>Small Talk</em> are directly derived from the study, the <em>Statement</em> category has been added to capture direct, informative responses that serve an answering function. It reflects utterances that do not seek new information but instead contribute content to the dialogue, as frequently observed in educational contexts.</p>
 <h3 id="framework-generation_1">Framework Generation</h3>
 <p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. Notably, only the <em>Statement</em> category involves full question–answer pairs, ensuring that responses align with the discourse patterns typically found in learning environments.</p>
 <p>For the generation of a framework for the four categories (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>), the model was provided with the prompt template presented below. </p>
 <details class="example">
-<summary>Prompt Template for Four Linguistic Categories: YAML</summary>
+<summary>Prompt Template for Four Intention Categories</summary>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">prompt_dict = {</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># CLARIFICATION</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&quot;Clarification&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
@@ -1189,7 +1189,7 @@ Seed messages can be passed directly as strings or organized in a <code>YAML</co
 <span class="n">system_prompts</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="p">[</span><span class="s2">&quot;conversation_types&quot;</span><span class="p">][</span><span class="s2">&quot;general_task_solving&quot;</span><span class="p">]</span>
 </code></pre></div></p>
 <p><strong>YAML Scheme:</strong>
-The yaml template for this task are the same as used in the <a href="#synthesizing-interactions---feedback">synthesization of feedback data</a>.</p>
+The yaml template for this task are the same as used in the synthesization of feedback data.</p>
 <p>As mentioned above, the <a href="../../api/api_synth_int/">interaction generator</a> requires a <strong>seed message</strong> to initiate the dialogue. The example below illustrates both formats, based on an English course context.</p>
 <p><strong>Example of single seed:</strong>
 <div class="highlight"><pre><span></span><code><span class="n">seed_msg</span> <span class="o">=</span> <span class="s2">&quot;Hi, I&#39;m a student seeking assistance with my studies in English. I need precise and easy-to-understand answers.&quot;</span>

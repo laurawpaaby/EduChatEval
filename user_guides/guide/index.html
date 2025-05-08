@@ -808,8 +808,11 @@
 <p>The first example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on different feedback types: (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>). </p>
 <p>First install the package:
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>educhateval
-</code></pre></div>
-Initialize the generator with your chosen model and API, and generate labeled samples:
+</code></pre></div></p>
+<p>Then import the framework generator: 
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
+</code></pre></div></p>
+<p>Initialize the generator with your downloaded and loaded model (<code>model_name</code>) and adress of the locally hosted LM Studio API endpoint that handles generation requests (<code>api_url</code>), and generate labeled samples. </p>
 <div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span>
 
 <span class="c1"># Generating the raw data </span>
@@ -825,10 +828,12 @@ Initialize the generator with your chosen model and API, and generate labeled sa
     <span class="n">synth_data</span><span class="o">=</span><span class="n">df_feedback</span><span class="p">,</span>
     <span class="n">classifier_model_name</span> <span class="o">=</span> <span class="s2">&quot;distilbert-base-uncased&quot;</span>
 <span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>Synthesize Interaction</strong></p>
 <p>Import and initialize the dialogue simulator:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">DialogueSimulator</span>
+
+<span class="c1"># choose either mlx or Huggingface (HF) backend depending on the host of the model</span>
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">DialogueSimulator</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mlx&quot;</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>In this example a system prompt and seed message is given directly, see <a href="../frameworks/">Templates</a> for how to structure a <code>YAML</code> input instead. 
@@ -909,9 +914,10 @@ Returns:</p>
 <p>Import the framework generator:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
 </code></pre></div></p>
-<p>Initialize the generator with your chosen model and API, and generate labeled samples. In this example a dictionary is provided as prompt. 
+<p>Initialize the generator with your downloaded and loaded model (<code>model_name</code>) and adress of the locally hosted LM Studio API endpoint that handles generation requests (<code>api_url</code>), and generate labeled samples. </p>
+<p>In this example a dictionary is provided as prompt. 
 See <a href="../frameworks/">Templates</a> for how to structure a <code>YAML</code> prompt input instead. </p>
-<div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span> 
 
 <span class="c1"># Dictionary of prompts</span>
 <span class="n">custom_prompt_dict</span> <span class="o">=</span> <span class="p">{</span>
