@@ -1,5 +1,5 @@
 
-Several modules within the pipeline accept **customized prompts** and **seed messages** to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. Below are templates of both prompts and seed provided to illustrate how such customization can guide the generation process and support targeted use cases.
+Several modules within the pipeline accept **customized prompts** and **seed messages** to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. Below are templates of both prompts and seed provided to illustrate how such customization can guide the generation process and support targeted use cases. There are two use cases: first for a *feedback* focused scenario, the second for a *intention* focused scenario.  
 
 ---
 
@@ -12,7 +12,7 @@ The goal of this setup is to expose the language model to targeted examples of i
 
 For the generation of a framework for the eight categories (*Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity*, and *Style*), the model was provided with the template presented below. 
 
-??? example "Prompt Template for Feedback: YAML"
+??? example "Prompt Template for Feedback"
     ```yaml
     prompt_dict = {
         # ADVICE
@@ -217,7 +217,7 @@ feedback_session:
 
 ---
 
-## **Linguistic Templates**
+## **Intention Templates**
 
 This section demonstrates a pipeline configuration centered on simple linguistic interaction types, inspired by the communicative categories proposed by [Wei et al. (2022)](https://doi.org/10.1016/j.ipm.2021.102838). The template framework focuses on the following categories: *Clarification, Question, Small Talk*, and *Statement*. These categories reflect the communicative intent behind user inputs—whether from the student or the LLM-driven tutor.
 
@@ -230,7 +230,7 @@ The goal of this setup is to expose the language model to targeted examples of i
 
 For the generation of a framework for the four categories (*Clarification*, *Question*, *Small Talk* and *Statement*), the model was provided with the prompt template presented below. 
 
-??? example "Prompt Template for Four Linguistic Categories: YAML"
+??? example "Prompt Template for Four Intention Categories"
     ```yaml
     prompt_dict = {
         # CLARIFICATION
@@ -347,7 +347,7 @@ system_prompts = custom_prompts["conversation_types"]["general_task_solving"]
 ```
 
 **YAML Scheme:**
-The yaml template for this task are the same as used in the [synthesization of feedback data](#synthesizing-interactions---feedback).
+The yaml template for this task are the same as used in the synthesization of feedback data.
 
 As mentioned above, the [interaction generator](../api/api_synth_int.md/) requires a **seed message** to initiate the dialogue. The example below illustrates both formats, based on an English course context.
 

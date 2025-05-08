@@ -1,4 +1,4 @@
-Below are two example workflows demonstrating how to use each module in the package to synthesize, classify, and visualize dialogue interactions between a student and tutor agent. In practice, users are encouraged to incorporate real-world data where available, which may slightly alter certain steps in the pipeline.
+Below are two example workflows demonstrating how to use each module in the package to synthesize, classify, and visualize dialogue interactions between a student and tutor agent. There are two use cases: first for a *feedback* focused scenario, the second for a *intention* focused scenario.  In practice, users are encouraged to incorporate real-world data where available, which may slightly alter certain steps in the pipeline.
 
 ## Feedback Example
 
@@ -11,7 +11,14 @@ First install the package:
 ```bash
 pip install educhateval
 ```
-Initialize the generator with your chosen model and API, and generate labeled samples:
+
+Then import the framework generator: 
+```python
+from educhateval import FrameworkGenerator
+```
+
+Initialize the generator with your downloaded and loaded model (`model_name`) and adress of the locally hosted LM Studio API endpoint that handles generation requests (`api_url`), and generate labeled samples. 
+
 ```python
 generator = FrameworkGenerator(model_name="llama-3.2-3b-instruct", api_url="http://localhost:1234/v1/completions")
 
@@ -36,6 +43,8 @@ Import and initialize the dialogue simulator:
 
 ```python
 from educhateval import DialogueSimulator
+
+# choose either mlx or Huggingface (HF) backend depending on the host of the model
 simulator = DialogueSimulator(backend="mlx", model_id="mlx-community/Qwen2.5-7B-Instruct-1M-4bit")
 ```
 
@@ -58,7 +67,7 @@ seed_message = "I've written this paragraph, please help me polish it: flowers a
 
 ```
 
-In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a `DataFrame` look at the [linguistic example](Linguistic-Example). 
+In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a `DataFrame` look at the intention scenario. 
 
 ```python
 df_single_feedback = simulator.simulate_dialogue(
@@ -104,12 +113,14 @@ viz.plot_category_bars(
     df=annotaded_feedback,
     label_columns=["predicted_labels_student_msg", "predicted_labels_tutor_msg"],
     use_percent=True,
-    title="Distribution of Predicted Feedback Classes"
+    title="Predicted Categories of Feedback",
+    palette="twilight"
 )
 ```
 
 Returns:
-[Bar Chart](../pics/simple_bar.png)
+
+![Bar Feedback](../pics/feedback_bar.png){ width="400" }
 
 ```python
 # Trend plot of predicted categories over turns
@@ -117,19 +128,20 @@ viz.plot_turn_trends(
     df=annotaded_feedback,
     student_col="predicted_labels_student_msg",
     tutor_col="predicted_labels_tutor_msg",
-    title="Feedback Distribution over Turns",
+    title="Categories of Feedback over Turns",
+    show_ci=True
 )
 ```
 Returns:
-[Bar Chart](../pics/simple_bar.png)
 
 
+![Turn Feedback](../pics/feedback_turns.png){ width="600" }
 
 ---
 
-## Linguistic Example
+## Intention Example
 
-The second example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on simple linguistic categories: (*Clarification*, *Question*, *Small Talk* and *Statement*).
+The second example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on intentions behind messages: (*Clarification*, *Question*, *Small Talk* and *Statement*).
 
 First install the package:
 ```bash
@@ -143,12 +155,14 @@ Import the framework generator:
 from educhateval import FrameworkGenerator
 ```
 
-Initialize the generator with your chosen model and API, and generate labeled samples. In this example a dictionary is provided as prompt. 
+Initialize the generator with your downloaded and loaded model (`model_name`) and adress of the locally hosted LM Studio API endpoint that handles generation requests (`api_url`), and generate labeled samples. 
+
+In this example a dictionary is provided as prompt. 
 See [Templates](frameworks.md) for how to structure a `YAML` prompt input instead. 
 
 
 ```python
-generator = FrameworkGenerator(model_name="llama-3.2-3b-instruct", api_url="http://localhost:1234/v1/completions")
+generator = FrameworkGenerator(model_name="llama-3.2-3b-instruct", api_url="http://localhost:1234/v1/completions") 
 
 # Dictionary of prompts
 custom_prompt_dict = {
@@ -287,22 +301,31 @@ Generate summary tables and plots:
 # Summary table of predicted categories
 summary = viz.create_summary_table(
     df=annotaded_df, 
-    label_columns=["predicted_labels_student_msg", "predicted_labels_tutor_msg"]
+    student_col="predicted_labels_student_msg",
+    tutor_col="predicted_labels_tutor_msg"
 )
 print(summary)
 
 # Bar plot of class distributions
 viz.plot_category_bars(
     df=annotaded_df,
-    label_columns=["predicted_labels_student_msg", "predicted_labels_tutor_msg"],
+    student_col="predicted_labels_student_msg",
+    tutor_col="predicted_labels_tutor_msg",
     use_percent=True,
-    title="Distribution of Predicted Classes"
+    title="Frequency of Predicted Classes"
 )
 ```
 
 Returns:
-![Summary Table](../pics/sum_table.png)   THIS NEEDS AN UPDATE LAURA !!!!!!!!
-![Bar Chart](../pics/simple_bar.png)
+
+
+![Table](../pics/sum_table.png){ width="400" }
+
+And:
+
+![Bar](../pics/simple_bar.png){ width="400" }
+
+
 
 ```python
 # Trend plot of predicted categories over turns
@@ -310,17 +333,20 @@ viz.plot_turn_trends(
     df=annotated_df,
     student_col="predicted_labels_student_msg",
     tutor_col="predicted_labels_tutor_msg",
-    title="Category Distribution over Turns",
+    title="Category Frequencies over Turns",
+    show_ci=False,
 )
 ```
 
 Returns:
-![Line Chart](../pics/turns_line.png)
 
-Lastly the tutor–student interaction patterns can be visualized, here with a student focus. The x-axis represents the student's current input category, while each bar shows the distribution of tutor response types from the previous turn. This is possible when both student and tutor inputs are predicted and labeled. 
+![Bar](../pics/turns_line.png){ width="600" }
+
+
+Lastly the tutor–student interaction patterns can be visualized as sequential category dependencies, here with a student focus. The x-axis represents the student's current input category, while each bar shows the distribution of tutor response types from the previous turn. This is possible when both student and tutor inputs are predicted and labeled. 
 
 ```python
-# Interaction plot
+# Dependency plot
 viz.plot_history_interaction(
     df=annotated_df,
     student_col="predicted_labels_student_msg",
@@ -330,8 +356,8 @@ viz.plot_history_interaction(
 )
 ```
 Returns:
-![interactions](../pics/interaction.png)
 
+![Int](../pics/interaction.png){ width="600" }
 
 ---
 
@@ -355,9 +381,10 @@ chat-ui \
 
 ```
 
-Returns: 
+Opens: 
 
-![ui](../pics/ui.png)
+
+![UI](../pics/ui.png)
 
 
 Find more detailed instructions in the [Chat Wrap Tutorial](https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md).

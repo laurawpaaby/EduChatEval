@@ -54,8 +54,8 @@ class FrameworkGenerator:
     Module for generating synthetic annotated datasets (frameworks) using instruction-tuned models hosted locally and filtering of low-quality examples via classifier agreement.
 
     Attributes:
-        model_name (str): Name of the local model to use for generation (default: "llama-3.2-3b-instruct").
-        api_url (str): URL for the local model API (default: "http://localhost:1234/v1/completions").
+        model_name (str): Name of the local model loaded in LM Studio and referenced in generation requests  (default: "llama-3.2-3b-instruct").
+        api_url (str): Full URL of the locally hosted LM Studio API endpoint that handles generation requests. This includes the server host, port, and path (default: "http://localhost:1234/v1/completions").
 
     Methods:
         generate_framework(...): Simulates a dialogue and returns it as a pandas DataFrame.

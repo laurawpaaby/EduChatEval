@@ -1,14 +1,14 @@
 ![Screenshot](pics/frontpage.png)
 
-This package offers a framework for researchers to map and quantify interactions between students and LLM-based tutors in educational settings. It supports structured, objective evaluation through classification, simulation, and visualization tools, and is designed for flexible use across tasks of any scale. The framework accommodates both researchers analyzing pre-collected, annotated data and those starting from scratch, providing modular support through each step of the evaluation process.
+This package offers a framework for researchers to log and classify interactions between students and LLM-based tutors in educational settings. It supports structured, objective evaluation through classification, simulation, and visualization utilities, and is designed for flexible use across tasks of any scale. The framework supports both researchers with pre-collected datasets and those operating in data-sparse contexts. It designed as a modular tool that can be integrated at any stage of the evaluation process.
 
 The package is designed to:
 
-- Provide a customized framework for classification, evaluation, and fine-tuning
-- Simulate student–tutor interactions using role-based prompts and seed messages when real data is unavailable
-- Initiate an interface with locally hosted, open-source models (e.g., via LM Studio or Hugging Face)
-- Log interactions in structured formats (JSON/CSV) for downstream analysis
-- Train and applu classifiers to predict customized interaction classes and visualize patterns across conversations
+- Synthesize a labeled classification framework using user-defined categories 
+- Simulate multi-turn student–tutor dialogues via role-based prompting and structured seed messages
+- Wrap direct student-tutors interaction with locally hosted LLMs through a terminal-based interface 
+- Fine-tune and apply classification models to label conversational turns
+- Visualize dialogue patterns with summary tables, frequency plots, temporal trends, and sequential dependencies
 
 ---
 
