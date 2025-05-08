@@ -835,7 +835,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Name of the local model to use for generation (default: "llama-3.2-3b-instruct").</p>
+                <p>Name of the local model loaded in LM Studio and referenced in generation requests  (default: "llama-3.2-3b-instruct").</p>
               </div>
             </td>
           </tr>
@@ -846,7 +846,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>URL for the local model API (default: "http://localhost:1234/v1/completions").</p>
+                <p>Full URL of the locally hosted LM Studio API endpoint that handles generation requests. This includes the server host, port, and path (default: "http://localhost:1234/v1/completions").</p>
               </div>
             </td>
           </tr>
@@ -1034,8 +1034,8 @@
 <span class="sd">    Module for generating synthetic annotated datasets (frameworks) using instruction-tuned models hosted locally and filtering of low-quality examples via classifier agreement.</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        model_name (str): Name of the local model to use for generation (default: &quot;llama-3.2-3b-instruct&quot;).</span>
-<span class="sd">        api_url (str): URL for the local model API (default: &quot;http://localhost:1234/v1/completions&quot;).</span>
+<span class="sd">        model_name (str): Name of the local model loaded in LM Studio and referenced in generation requests  (default: &quot;llama-3.2-3b-instruct&quot;).</span>
+<span class="sd">        api_url (str): Full URL of the locally hosted LM Studio API endpoint that handles generation requests. This includes the server host, port, and path (default: &quot;http://localhost:1234/v1/completions&quot;).</span>
 
 <span class="sd">    Methods:</span>
 <span class="sd">        generate_framework(...): Simulates a dialogue and returns it as a pandas DataFrame.</span>
