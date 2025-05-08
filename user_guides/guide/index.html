@@ -882,7 +882,7 @@ Initialize the generator with your chosen model and API, and generate labeled sa
     <span class="n">df</span><span class="o">=</span><span class="n">annotaded_feedback</span><span class="p">,</span>
     <span class="n">label_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span> <span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">],</span>
     <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of Predicted Feedback Classes&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Categories of Feedback&quot;</span><span class="p">,</span>
     <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;twilight&quot;</span>
 <span class="p">)</span>
 </code></pre></div></p>
@@ -893,12 +893,12 @@ Initialize the generator with your chosen model and API, and generate labeled sa
     <span class="n">df</span><span class="o">=</span><span class="n">annotaded_feedback</span><span class="p">,</span>
     <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
     <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Feedback Distribution over Turns&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Categories of Feedback over Turns&quot;</span><span class="p">,</span>
     <span class="n">show_ci</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </code></pre></div>
 Returns:</p>
-<p><img alt="Turn Feedback" src="../../pics/feedback_turns.png" width="400" /></p>
+<p><img alt="Turn Feedback" src="../../pics/feedback_turns.png" width="600" /></p>
 <hr />
 <h2 id="intention-example">Intention Example</h2>
 <p>The second example walks through the full pipeline for generating, classifying, and visualizing dialogue interactions focused on intentions behind messages: (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>).</p>
@@ -1063,7 +1063,7 @@ Import the visualizer and plot results:
 <span class="p">)</span>
 </code></pre></div>
 <p>Returns:</p>
-<p><img alt="Bar" src="../../pics/turns_line.png" width="400" /></p>
+<p><img alt="Bar" src="../../pics/turns_line.png" width="600" /></p>
 <p>Lastly the tutor–student interaction patterns can be visualized as sequential category dependencies, here with a student focus. The x-axis represents the student's current input category, while each bar shows the distribution of tutor response types from the previous turn. This is possible when both student and tutor inputs are predicted and labeled. </p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Dependency plot</span>
 <span class="n">viz</span><span class="o">.</span><span class="n">plot_history_interaction</span><span class="p">(</span>
@@ -1075,7 +1075,7 @@ Import the visualizer and plot results:
 <span class="p">)</span>
 </code></pre></div>
 Returns:</p>
-<p><img alt="Int" src="../../pics/interaction.png" width="400" /></p>
+<p><img alt="Int" src="../../pics/interaction.png" width="600" /></p>
 <hr />
 <h2 id="direct-wrap-of-interactions">Direct Wrap of Interactions</h2>
 <p>Instead of generating or using pre-existing interaction data, users can collect it directly using the package’s <code>chat_ui</code> wrapper. 
@@ -1090,10 +1090,7 @@ his replaces the <em>synthesizing interactions</em> step above and is executed a
 <span class="w">  </span>--save_dir<span class="w"> </span>data/logged_dialogue_data
 </code></pre></div>
 <p>Opens: </p>
-<div style="text-align: center">
-![ui](../pics/ui.png)
-</div>
-
+<p><img alt="UI" src="../../pics/ui.png" /></p>
 <p>Find more detailed instructions in the <a href="https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md">Chat Wrap Tutorial</a>.</p>
 
 
