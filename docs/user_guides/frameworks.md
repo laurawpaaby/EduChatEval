@@ -10,7 +10,7 @@ This section demonstrates a pipeline configuration centered on feedback types, i
 ### Framework Generation
 The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. 
 
-For the generation of a framework for the eight categories (*Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity*, and *Style*), the model was provided with the template presented below. 
+For the generation of a framework for the eight categories, the model was provided with the template presented below. 
 
 ??? example "Prompt Template for Feedback"
     ```yaml
@@ -228,7 +228,7 @@ While *Clarification*, *Question*, and *Small Talk* are directly derived from th
 
 The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. Notably, only the *Statement* category involves full question–answer pairs, ensuring that responses align with the discourse patterns typically found in learning environments.
 
-For the generation of a framework for the four categories (*Clarification*, *Question*, *Small Talk* and *Statement*), the model was provided with the prompt template presented below. 
+For the generation of a framework for the four categories, the model was provided with the prompt template presented below. 
 
 ??? example "Prompt Template for Four Intention Categories"
     ```yaml

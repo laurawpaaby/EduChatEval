@@ -17,7 +17,7 @@ For questions or collaboration inquiries, feel free to reach out to [Laura W Paa
 
 This project builds on existing tools and ideas from the open-source community. While specific references are provided within the relevant scripts throughout the repository, the key sources of inspiration are also acknowledged here to highlight the contributions that have shaped the development of this package.
 
-- *Constraint-Based Data Generation – Outlines Package*: [Willard, Brandon T. & Louf, Rémi (2023). *Efficient Guided Generation for LLMs.*](https://arxiv.org/abs/2307.09702) 
+- *Constraint-Based Data Generation – Outlines*: [Willard, Brandon T. & Louf, Rémi (2023). *Efficient Guided Generation for LLMs.*](https://arxiv.org/abs/2307.09702) 
 
 - *Chat Interface and Wrapper – Textual*: [McGugan, W. (2024, Sep). *Anatomy of a Textual User Interface.*](https://textual.textualize.io/blog/2024/09/15/anatomy-of-a-textual-user-interface/#were-in-the-pipe-five-by-five)
 

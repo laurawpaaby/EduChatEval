@@ -385,6 +385,8 @@ Opens:
 
 
 ![UI](../pics/ui.png)
+![UI](../pics/ui_chat.png)
+![UI](../pics/ui_end.png)
 
 
 Find more detailed instructions in the [Chat Wrap Tutorial](https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md).
