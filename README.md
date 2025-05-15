@@ -44,7 +44,7 @@ pip install git+https://github.com/laurawpaaby/EduChatEval.git
 <br>
 
 
-## ⚙️ Usage
+## 🧭 Usage
 
 Below is the simplest example of how to use the package. For more detailed and explained application examples, see the [user guides in the documentation](https://laurawpaaby.github.io/EduChatEval/user_guides/userguide_intro/) or explore the [tutorial notebooks](https://github.com/laurawpaaby/EduChatEval/tree/main/tutorials).
 
@@ -57,7 +57,7 @@ from educhateval import FrameworkGenerator,
                         Visualizer
 ```
 
-**1.** Generate Label Framework
+**1.** Generate Label Framework <br>
 An annotated dataset of is created using downloaded LLM, LM Studio, and a prompt template of the desired labels. (1.1) 
 The data is quality assessed and filtered in a few shot approach (1.2)
 
@@ -83,7 +83,7 @@ filtered_df = generator.filter_with_classifier(
 )
 ```
 
-**2.** Synthesize Interaction
+**2.** Synthesize Interaction <br>
 Dialogues between two agents, a student and a tutor, are simulated to mimic student-chatbot interactions in real deployments.
 Seed message and prompts are defined to guide the agent behavior.
 
@@ -118,7 +118,7 @@ df_sim = simulator.simulate_dialogue(
 
 ```
 
-**3.** Classify and Predict
+**3.** Classify and Predict<br>
 The annotaded data generated in Step 1 is used to train a classification model, which is then directly deployed to classify the messages of the dialogues from Step 2. 
 
 ```python
@@ -135,7 +135,7 @@ annotaded_df = predictor.run_pipeline(
 )
 ```
 
-**4.** Visualize
+**4.** Visualize<br>
 The predicted dialogue classes of Step 3 are summarised and visualized for interpretation. 
 
 ```python
