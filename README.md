@@ -29,15 +29,26 @@ The package currently requires [`Python 3.12`](https://www.python.org/downloads/
 <br>
 
 ## ⚙️ Installation
+EduChatEval can be installed via pip from PyPI:
 
 ```bash
 pip install educhateval
 ```
+
+Or from [Github](https://github.com/laurawpaaby/EduChatEval/tree/main):
+
+```bash
+pip install git+https://github.com/laurawpaaby/EduChatEval.git
+```
+
 <br>
 
 
-
 ## ⚙️ Usage
+
+Below is the simplest example of how to use the package. For more detailed and explained application examples, see the [user guides in the documentation](https://laurawpaaby.github.io/EduChatEval/user_guides/userguide_intro/) or explore the [tutorial notebooks](https://github.com/laurawpaaby/EduChatEval/tree/main/tutorials).
+
+Import of each module:
 ```python
 # import modules
 from educhateval import FrameworkGenerator, 
@@ -47,7 +58,11 @@ from educhateval import FrameworkGenerator,
 ```
 
 **1.** Generate Label Framework
+An annotated dataset of is created using downloaded LLM, LM Studio, and a prompt template of the desired labels. (1.1) 
+The data is quality assessed and filtered in a few shot approach (1.2)
+
 ```python
+# 1.1
 # initiate generator 
 generator = FrameworkGenerator(
     model_name="llama-3.2-3b-instruct", # the model already downloaded and loaded via LM Studio
@@ -60,6 +75,7 @@ df_4 = generator.generate_framework(
     num_samples=200                                      # number of samples per category to simulate
 )
 
+# 1.2 
 # quality check and filter the data with classifier trained on a few true examples
 filtered_df = generator.filter_with_classifier(
     train_data="../templates/manual_labeled.csv", # manually labeled training data
@@ -68,6 +84,9 @@ filtered_df = generator.filter_with_classifier(
 ```
 
 **2.** Synthesize Interaction
+Dialogues between two agents, a student and a tutor, are simulated to mimic student-chatbot interactions in real deployments.
+Seed message and prompts are defined to guide the agent behavior.
+
 ```python
 # initiate simulater
 simulator = DialogueSimulator(
@@ -100,6 +119,8 @@ df_sim = simulator.simulate_dialogue(
 ```
 
 **3.** Classify and Predict
+The annotaded data generated in Step 1 is used to train a classification model, which is then directly deployed to classify the messages of the dialogues from Step 2. 
+
 ```python
 # initiate module to classify and predict labels
 predictor = PredictLabels(model_name="distilbert/distilroberta-base") # model to be trained and used for predictions
@@ -115,6 +136,8 @@ annotaded_df = predictor.run_pipeline(
 ```
 
 **4.** Visualize
+The predicted dialogue classes of Step 3 are summarised and visualized for interpretation. 
+
 ```python
 # initiate the module for descriptive visualizations 
 viz = Visualizer()

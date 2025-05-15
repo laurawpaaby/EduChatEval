@@ -1,4 +1,4 @@
-You can install EduChatEval using via pip from PyPI:
+You can install EduChatEval via pip from PyPI:
 
 ```pip install educhateval```
 
