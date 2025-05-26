@@ -817,7 +817,7 @@
 
 <span class="c1"># Generating the raw data </span>
 <span class="n">df_feedback</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_framework</span><span class="p">(</span>
-    <span class="n">prompt_path</span><span class="o">=</span><span class="s2">&quot;/outline_prompts/prompt_feedback.py&quot;</span><span class="p">,</span> 
+    <span class="n">prompt_path</span><span class="o">=</span><span class="s2">&quot;/templates/prompt_feedback.yaml&quot;</span><span class="p">,</span> 
     <span class="n">num_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
     <span class="n">csv_out</span><span class="o">=</span><span class="s2">&quot;/data/labeled_feedback_data.csv&quot;</span>
 <span class="p">)</span>
@@ -1031,8 +1031,8 @@ In this example, multiple dialogues are simulated representing different student
     <span class="n">split_ratio</span><span class="o">=</span><span class="mf">0.20</span>
 <span class="p">)</span>
 </code></pre></div></p>
-<p><strong>Visualize</strong>
-Import the visualizer and plot results:
+<p><strong>Visualize</strong></p>
+<p>Import the visualizer and plot results:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">Visualizer</span>
 
 <span class="n">viz</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>

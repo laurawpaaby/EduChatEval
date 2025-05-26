@@ -1330,7 +1330,7 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
     <span class="n">tutor_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;icefire&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Category Distribution&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Category Frequency&quot;</span><span class="p">,</span>
     <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">student_col</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">tutor_col</span><span class="p">:</span>
@@ -1498,7 +1498,7 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
 <a id="educhateval.descriptive_results.display_results.plot_previous_turn_distribution"></a>
     <div class="doc doc-contents first">
 
-        <p>Plot the distribution of predicted categories in the previous turn of the <em>opposite</em> agent. Both student and tutor is required.</p>
+        <p>Plot the frequency of predicted categories in the previous turn of the <em>opposite</em> agent. Both student and tutor is required.</p>
 
 
             <details class="quote">
@@ -1657,7 +1657,7 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
     <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Plot the distribution of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.</span>
+<span class="sd">    Plot the frequency of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">student_col</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">tutor_col</span><span class="p">:</span>
@@ -1755,7 +1755,7 @@ Every visualization besides the <em>4. Interaction Distribution</em> plot can be
     <span class="c1"># Labels and title</span>
     <span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Category in Current Turn for </span><span class="si">{</span><span class="n">focus_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">y_label</span><span class="p">)</span>
     <span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Distribution of Interactions: </span><span class="si">{</span><span class="n">focus_label</span><span class="si">}</span><span class="s2"> Focus&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;Frequency of Interactions: </span><span class="si">{</span><span class="n">focus_label</span><span class="si">}</span><span class="s2"> Focus&quot;</span><span class="p">,</span>
         <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
         <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
         <span class="n">y</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>

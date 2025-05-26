@@ -875,134 +875,131 @@
   <h1>Templates</h1>
 
 <p>Several modules within the pipeline accept <strong>customized prompts</strong> and <strong>seed messages</strong> to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. Below are templates of both prompts and seed provided to illustrate how such customization can guide the generation process and support targeted use cases. There are two use cases: first for a <em>feedback</em> focused scenario, the second for a <em>intention</em> focused scenario.  </p>
+<p><strong>Be aware:</strong> For <em>Framework Generation</em> in both scenarioes, generation is conducted using conversational prompt templates that incorporate <code>&lt;|im_start|&gt;</code> and <code>&lt;|im_end|&gt;</code> delimiters to comply with the expected formatting schema of the default instruction-tuned LLaMA model (<code>llama-3.2-3b-instruct</code>). As formatting conventions vary across models, these templates are designed to be easily adapted to accommodate different input schemas and instruction-following behaviors, ensuring compatibility with model-specific decoding and alignment settings. Users should make sure that their prompting scheme mathces the model used.</p>
 <hr />
 <h2 id="feedback-templates"><strong>Feedback Templates</strong></h2>
 <p>This section demonstrates a pipeline configuration centered on feedback types, inspired by the work of <a href="https://doi.org/10.7146/lom.v17i31.148831">Hansen et al. 2025</a>. The template framework focuses on the following categories: <em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>. </p>
 <h3 id="framework-generation">Framework Generation</h3>
 <p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. </p>
-<p>For the generation of a framework for the eight categories (<em>Advice, Content, Encouragement, Explanation, Posed Question, Small Talk, Specificity</em>, and <em>Style</em>), the model was provided with the template presented below. </p>
+<p>For the generation of a framework for the eight categories, the model was provided with the template presented below. </p>
 <details class="example">
 <summary>Prompt Template for Feedback</summary>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">prompt_dict = {</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># ADVICE</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&quot;Advice&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">provide</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">advice</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">educational</span><span class="nv"> </span><span class="s">setting.</span>
-<span class="s">The</span><span class="nv"> </span><span class="s">advice</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">constructive,</span><span class="nv"> </span><span class="s">context-appropriate,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">expressed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">helpful</span><span class="nv"> </span><span class="s">tone.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">yourself.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="nt">Advice</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You provide a single sentence of advice in an educational setting.</span>
+<span class="l l-Scalar l-Scalar-Plain">The advice should be constructive, context-appropriate, and expressed in a helpful tone. You never repeat yourself.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Give</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">advice.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Give a sentence of advice.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="w">    </span><span class="c1"># CONTENT</span>
-<span class="w">    </span><span class="s">&quot;Content&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">academic</span><span class="nv"> </span><span class="s">fact</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">piece</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">content</span><span class="nv"> </span><span class="s">relevant</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">student&#39;s</span><span class="nv"> </span><span class="s">learning.</span>
-<span class="s">Each</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">informative,</span><span class="nv"> </span><span class="s">domain-relevant,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">suited</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">tutoring.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">yourself.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">Content</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You state an academic fact or piece of content relevant to a student&#39;s learning.</span>
+<span class="l l-Scalar l-Scalar-Plain">Each sentence should be informative, domain-relevant, and suited for tutoring. You never repeat yourself.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Provide</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">factual</span><span class="nv"> </span><span class="s">statement.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Provide a factual statement.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="w">    </span><span class="c1"># ENCOURAGEMENT</span>
-<span class="w">    </span><span class="s">&quot;Encouragement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">generate</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">offering</span><span class="nv"> </span><span class="s">encouragement</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">student.</span>
-<span class="s">The</span><span class="nv"> </span><span class="s">tone</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">warm,</span><span class="nv"> </span><span class="s">supportive,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">appropriate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">educational</span><span class="nv"> </span><span class="s">feedback.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">yourself.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="nt">Encouragement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You generate a single sentence offering encouragement to a student.</span>
+<span class="l l-Scalar l-Scalar-Plain">The tone should be warm, supportive, and appropriate for educational feedback. You never repeat yourself.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Say</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">encouraging.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Say something encouraging.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="w">    </span><span class="c1"># EXPLANATION</span>
-<span class="w">    </span><span class="s">&quot;Explanation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">provide</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">one-sentence</span><span class="nv"> </span><span class="s">explanation</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">concept</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">process</span><span class="nv"> </span><span class="s">relevant</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">education.</span>
-<span class="s">Your</span><span class="nv"> </span><span class="s">explanations</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">clear,</span><span class="nv"> </span><span class="s">concise,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">accurate.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">yourself.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You provide a one-sentence explanation of a concept or process relevant in education.</span>
+<span class="l l-Scalar l-Scalar-Plain">Your explanations should be clear, concise, and accurate. You never repeat yourself.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Explain</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">concept</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">sentence.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Explain a concept in one sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="w">    </span><span class="c1"># POSED QUESTION</span>
-<span class="w">    </span><span class="s">&quot;Posed</span><span class="nv"> </span><span class="s">Question&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">pose</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">open-ended</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">reflective</span><span class="nv"> </span><span class="s">question</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">stimulate</span><span class="nv"> </span><span class="s">learning.</span>
-<span class="s">The</span><span class="nv"> </span><span class="s">questions</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">clear,</span><span class="nv"> </span><span class="s">relevant,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">suitable</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">tutor</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">ask</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">student.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">question.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="nt">Posed Question</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You pose an open-ended or reflective question to stimulate learning.</span>
+<span class="l l-Scalar l-Scalar-Plain">The questions should be clear, relevant, and suitable for a tutor to ask a student. You never repeat the same question.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Pose</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">thoughtful</span><span class="nv"> </span><span class="s">question.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Pose a thoughtful question.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="w">    </span><span class="c1"># SMALL TALK</span>
-<span class="w">    </span><span class="s">&quot;Small</span><span class="nv"> </span><span class="s">Talk&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">generate</span><span class="nv"> </span><span class="s">short,</span><span class="nv"> </span><span class="s">friendly</span><span class="nv"> </span><span class="s">small</span><span class="nv"> </span><span class="s">talk</span><span class="nv"> </span><span class="s">suitable</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">casual</span><span class="nv"> </span><span class="s">rapport</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">student</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">tutor.</span>
-<span class="s">Keep</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">relaxed</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">appropriate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">educational</span><span class="nv"> </span><span class="s">setting.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">yourself.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="nt">Small Talk</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You generate short, friendly small talk suitable for casual rapport between student and tutor.</span>
+<span class="l l-Scalar l-Scalar-Plain">Keep it relaxed and appropriate for an educational setting. You never repeat yourself.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Say</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">casual.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Say something casual.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
+<span class="nt">Specificity</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You generate a sentence that highlights a specific part of the user’s message by referencing it directly.</span>
+<span class="l l-Scalar l-Scalar-Plain">This may include precise feedback, correction, or specific praise. Be educational and avoid repetition.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="c1"># SPECIFICITY</span>
-<span class="s">&quot;Specificity&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">generate</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">highlights</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">specific</span><span class="nv"> </span><span class="s">part</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">user’s</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">referencing</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">directly.</span>
-<span class="s">This</span><span class="nv"> </span><span class="s">may</span><span class="nv"> </span><span class="s">include</span><span class="nv"> </span><span class="s">precise</span><span class="nv"> </span><span class="s">feedback,</span><span class="nv"> </span><span class="s">correction,</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">specific</span><span class="nv"> </span><span class="s">praise.</span><span class="nv"> </span><span class="s">Be</span><span class="nv"> </span><span class="s">educational</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">avoid</span><span class="nv"> </span><span class="s">repetition.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="nt">Here is my sentence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">I has always enjoyed to learn new things.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">The phrase “I has always enjoyed” should be corrected to “I have always enjoyed” to match subject-verb agreement.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">I think my main argument was strong.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Yes, the statement “my main argument was strong” is supported well by the example you gave about online learning.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Give a new specific comment on a new sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Here</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">sentence:</span><span class="nv"> </span><span class="s">I</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">always</span><span class="nv"> </span><span class="s">enjoyed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">learn</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">things.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">The</span><span class="nv"> </span><span class="s">phrase</span><span class="nv"> </span><span class="s">“I</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">always</span><span class="nv"> </span><span class="s">enjoyed”</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">corrected</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">“I</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">always</span><span class="nv"> </span><span class="s">enjoyed”</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">match</span><span class="nv"> </span><span class="s">subject-verb</span><span class="nv"> </span><span class="s">agreement.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">I</span><span class="nv"> </span><span class="s">think</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">main</span><span class="nv"> </span><span class="s">argument</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">strong.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">Yes,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">statement</span><span class="nv"> </span><span class="s">“my</span><span class="nv"> </span><span class="s">main</span><span class="nv"> </span><span class="s">argument</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">strong”</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">supported</span><span class="nv"> </span><span class="s">well</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">example</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">gave</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">online</span><span class="nv"> </span><span class="s">learning.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Give</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">specific</span><span class="nv"> </span><span class="s">comment</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">sentence.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="nt">Style</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You highlight a stylistic feature in the user&#39;s sentence. This can include vivid language, varied sentence structure, tone shifts, or rhetorical devices.</span>
+<span class="l l-Scalar l-Scalar-Plain">Make sure your response is educational, concise, and never repeats itself. Do not rephrase the user&#39;s sentence or generate a new one.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="w">    </span><span class="c1"># STYLE</span>
-<span class="w">    </span><span class="s">&quot;Style&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">highlight</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">stylistic</span><span class="nv"> </span><span class="s">feature</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">user&#39;s</span><span class="nv"> </span><span class="s">sentence.</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">include</span><span class="nv"> </span><span class="s">vivid</span><span class="nv"> </span><span class="s">language,</span><span class="nv"> </span><span class="s">varied</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">structure,</span><span class="nv"> </span><span class="s">tone</span><span class="nv"> </span><span class="s">shifts,</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rhetorical</span><span class="nv"> </span><span class="s">devices.</span>
-<span class="s">Make</span><span class="nv"> </span><span class="s">sure</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">response</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">educational,</span><span class="nv"> </span><span class="s">concise,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeats</span><span class="nv"> </span><span class="s">itself.</span><span class="nv"> </span><span class="s">Do</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">rephrase</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">user&#39;s</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">generate</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">one.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">The</span><span class="nv"> </span><span class="s">thunder</span><span class="nv"> </span><span class="s">cracked</span><span class="nv"> </span><span class="s">like</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">whip,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sky</span><span class="nv"> </span><span class="s">spilled</span><span class="nv"> </span><span class="s">open</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">furious</span><span class="nv"> </span><span class="s">storm.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">Your</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">uses</span><span class="nv"> </span><span class="s">vivid</span><span class="nv"> </span><span class="s">imagery</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">simile</span><span class="nv"> </span><span class="s">(“cracked</span><span class="nv"> </span><span class="s">like</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">whip”)</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">dramatic,</span><span class="nv"> </span><span class="s">sensory-rich</span><span class="nv"> </span><span class="s">description.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Her</span><span class="nv"> </span><span class="s">words,</span><span class="nv"> </span><span class="s">soft</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">feathers,</span><span class="nv"> </span><span class="s">floated</span><span class="nv"> </span><span class="s">across</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">room</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">lingered</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">silence.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">This</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">demonstrates</span><span class="nv"> </span><span class="s">strong</span><span class="nv"> </span><span class="s">style</span><span class="nv"> </span><span class="s">through</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">gentle</span><span class="nv"> </span><span class="s">simile</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">poetic</span><span class="nv"> </span><span class="s">rhythm,</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">evoke</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">calm,</span><span class="nv"> </span><span class="s">reflective</span><span class="nv"> </span><span class="s">mood.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Give</span><span class="nv"> </span><span class="s">another</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">highlight</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">stylistic</span><span class="nv"> </span><span class="s">feature.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span>
-
-<span class="err">}</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">The thunder cracked like a whip, and the sky spilled open in a furious storm.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Your sentence uses vivid imagery and a simile (“cracked like a whip”) to create a dramatic, sensory-rich description.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Her words, soft as feathers, floated across the room and lingered in the silence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">This sentence demonstrates strong style through its gentle simile and poetic rhythm, which evoke a calm, reflective mood.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Give another sentence and highlight a stylistic feature.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 </code></pre></div>
 </details>
 <h3 id="synthesizing-interactions">Synthesizing Interactions</h3>
 <p>To generate synthetic dialogues, the <a href="../../api/api_synth_int/">interaction generator</a> relies on system prompts for both the <strong>student</strong> and <strong>tutor</strong> agents. These prompts must be structured under a top-level key named <code>conversation_types</code>, whether passed as a <code>dictionary</code> or a <code>YAML</code> file. This format allows multiple interaction modes to be stored in a single configuration. If no prompting scheme is provided, a simple default prompt is used.</p>
-<p>Below are examples of the expected format in both a <code>dictionary</code> and a <code>YAML</code> file. The <code>YAML</code> template demonstrates how to store multiple frameworks, in this example for both <strong>feedback</strong> and <strong>linguistic</strong> categories.</p>
+<p>Below are examples of the expected format in both a <code>dictionary</code> and a <code>YAML</code> file. The <code>YAML</code> template demonstrates how to store multiple frameworks, in this example for both <strong>feedback</strong> and <strong>general</strong> categories.</p>
 <p><strong>Dictionary Template:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1"># a dictionary of system prompts</span>
 <span class="n">custom_prompts</span> <span class="o">=</span> <span class="p">{</span>
@@ -1077,99 +1074,136 @@ Seed messages can be passed directly as strings or organized in a <code>YAML</co
 <p>While <em>Clarification</em>, <em>Question</em>, and <em>Small Talk</em> are directly derived from the study, the <em>Statement</em> category has been added to capture direct, informative responses that serve an answering function. It reflects utterances that do not seek new information but instead contribute content to the dialogue, as frequently observed in educational contexts.</p>
 <h3 id="framework-generation_1">Framework Generation</h3>
 <p>The goal of this setup is to expose the language model to targeted examples of interaction types it is expected to simulate. Each prompt encourages the model to produce sentences belonging to a specific category. Notably, only the <em>Statement</em> category involves full question–answer pairs, ensuring that responses align with the discourse patterns typically found in learning environments.</p>
-<p>For the generation of a framework for the four categories (<em>Clarification</em>, <em>Question</em>, <em>Small Talk</em> and <em>Statement</em>), the model was provided with the prompt template presented below. </p>
+<p>For the generation of a framework for the four categories, the model was provided with the prompt template presented below. </p>
 <details class="example">
 <summary>Prompt Template for Four Intention Categories</summary>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">prompt_dict = {</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># CLARIFICATION</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&quot;Clarification&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">generate</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">conversational</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">seeks</span><span class="nv"> </span><span class="s">clarification</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">context.</span><span class="w"> </span>
-<span class="s">It</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">polite,</span><span class="nv"> </span><span class="s">concise,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">appropriate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">educational</span><span class="nv"> </span><span class="s">setting.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">yourself.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">Clarification</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You generate a conversational sentence that seeks clarification or context.</span><span class="w"> </span>
+<span class="l l-Scalar l-Scalar-Plain">It should be polite, concise, and appropriate for an educational setting. You never repeat yourself.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">clarification</span><span class="nv"> </span><span class="s">sentence.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">Could</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">explain</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">meant</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">term</span><span class="nv"> </span><span class="s">&#39;distributed</span><span class="nv"> </span><span class="s">cognition&#39;?</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Create</span><span class="nv"> </span><span class="s">another</span><span class="nv"> </span><span class="s">clarification</span><span class="nv"> </span><span class="s">sentence.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">Please</span><span class="nv"> </span><span class="s">provide</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">details</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">assignment</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">asking</span><span class="nv"> </span><span class="s">for?</span><span class="w">    </span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">clarification</span><span class="nv"> </span><span class="s">sentence.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a clarification sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Could you explain what you meant by the term &quot;distributed cognition&quot;?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create another clarification sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Please provide more details about what the assignment is asking for?</span><span class="w">    </span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a clarification sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Can you clarify or rephrase what this text is about?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a clarification sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a clarification sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="w">    </span><span class="c1"># SMALL TALK</span>
-<span class="w">    </span><span class="s">&quot;Small</span><span class="nv"> </span><span class="s">Talk&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">generate</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">short</span><span class="nv"> </span><span class="s">small</span><span class="nv"> </span><span class="s">talk</span><span class="nv"> </span><span class="s">sentence</span><span class="nv"> </span><span class="s">suitable</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">casual</span><span class="nv"> </span><span class="s">setting.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">yourself.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="nt">Small Talk</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You generate a short small talk sentence suitable in a casual setting. You never repeat yourself.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">small</span><span class="nv"> </span><span class="s">talk</span><span class="nv"> </span><span class="s">sentence.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">Hi,</span><span class="nv"> </span><span class="s">how</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">you?</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Create</span><span class="nv"> </span><span class="s">another</span><span class="nv"> </span><span class="s">small</span><span class="nv"> </span><span class="s">talk</span><span class="nv"> </span><span class="s">sentence.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a small talk sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Hi, how are you?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create another small talk sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Have you had your morning coffee yet?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a small talk sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Did you catch the sunrise this morning? It was beautiful.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a small talk sentence.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="w">    </span><span class="c1"># QUESTION</span>
-<span class="w">    </span><span class="s">&quot;Question&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">generate</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">factual</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">thoughtful</span><span class="nv"> </span><span class="s">question</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">conversation</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">educational</span><span class="nv"> </span><span class="s">setting.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">repeat</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">question.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="nt">Question</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You generate a factual or thoughtful question that can be used in a conversation or educational setting. You never repeat the same question.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">question.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">What</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">capital</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">France?</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">question.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">What</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">24</span><span class="nv"> </span><span class="s">times</span><span class="nv"> </span><span class="s">25?</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">question.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a question.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">What is the capital of France?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create another question.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">How does working memory influence problem-solving?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a question.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">What is 24 times 25?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a question.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 
-<span class="w">    </span><span class="c1"># STATEMENT</span>
-<span class="w">    </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;&lt;|im_start|&gt;system</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">helpful</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">knowledgeable</span><span class="nv"> </span><span class="s">assistant</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">educational</span><span class="nv"> </span><span class="s">setting.</span>
-<span class="s">You</span><span class="nv"> </span><span class="s">respond</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">student</span><span class="nv"> </span><span class="s">questions</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">friendly</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">conversational</span><span class="nv"> </span><span class="s">tone,</span><span class="nv"> </span><span class="s">aiming</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">explain</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">clarify</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">sentence.</span>
-<span class="s">Each</span><span class="nv"> </span><span class="s">response</span><span class="nv"> </span><span class="s">should:</span>
-<span class="s">-</span><span class="nv"> </span><span class="s">Address</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">question</span><span class="nv"> </span><span class="s">naturally,</span><span class="nv"> </span><span class="s">like</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">tutor</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">teacher</span><span class="nv"> </span><span class="s">would.</span>
-<span class="s">-</span><span class="nv"> </span><span class="s">Stick</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">main</span><span class="nv"> </span><span class="s">idea</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">explanation</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">response.</span>
-<span class="s">-</span><span class="nv"> </span><span class="s">Avoid</span><span class="nv"> </span><span class="s">repeating</span><span class="nv"> </span><span class="s">previous</span><span class="nv"> </span><span class="s">answers</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">stating</span><span class="nv"> </span><span class="s">obvious</span><span class="nv"> </span><span class="s">facts.</span><span class="w"> </span>
-<span class="s">-</span><span class="nv"> </span><span class="s">Don&#39;t</span><span class="nv"> </span><span class="s">write</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">question</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">answering.</span>
-<span class="s">&lt;|im_end|&gt;</span>
+<span class="nt">Statement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;system</span>
+<span class="l l-Scalar l-Scalar-Plain">You are a helpful and knowledgeable assistant in an educational setting.</span>
+<span class="l l-Scalar l-Scalar-Plain">You respond to student questions in a friendly and conversational tone, aiming to explain or clarify in one sentence.</span>
+<span class="nt">Each response should</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Address the question naturally, like a tutor or teacher would.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Stick to one main idea or explanation per response.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Avoid repeating previous answers or stating obvious facts.</span><span class="w"> </span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Don&#39;t write the question you are answering.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
 
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Why</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">we</span><span class="nv"> </span><span class="s">need</span><span class="nv"> </span><span class="s">sleep?</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">Sleep</span><span class="nv"> </span><span class="s">helps</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">brain</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">body</span><span class="nv"> </span><span class="s">recover</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">process</span><span class="nv"> </span><span class="s">everything</span><span class="nv"> </span><span class="s">you’ve</span><span class="nv"> </span><span class="s">learned</span><span class="nv"> </span><span class="s">during</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">day.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">what</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">translation</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">hi</span><span class="nv"> </span><span class="s">how</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">doing</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">portugese?</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant</span>
-<span class="s">The</span><span class="nv"> </span><span class="s">translation</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">&#39;Hi,</span><span class="nv"> </span><span class="s">how</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">doing?&quot;</span><span class="w"> </span><span class="nt">in Portuguese is</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Oi,</span><span class="nv"> </span><span class="s">como</span><span class="nv"> </span><span class="s">você</span><span class="nv"> </span><span class="s">está?&#39;</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;user</span>
-<span class="s">Give</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">new,</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">one-sentence</span><span class="nv"> </span><span class="s">answer</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">different</span><span class="nv"> </span><span class="s">question.</span>
-<span class="s">&lt;|im_end|&gt;</span>
-<span class="s">&lt;|im_start|&gt;assistant&quot;&quot;&quot;</span><span class="err">,</span>
-<span class="err">}</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Why do we need sleep?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Sleep helps your brain and body recover and process everything you’ve learned during the day.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">How do plants eat sunlight?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Plants use a process called photosynthesis to turn sunlight into energy they can store and use.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Can you explain what a neuron does?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">Sure! A neuron sends signals in the brain and body, helping you think, move, and feel things.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">what is the translation of hi how are you doing in portugese?</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">The translation of &quot;Hi, how are you doing?&quot; in Portuguese is</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Oi,</span><span class="nv"> </span><span class="s">como</span><span class="nv"> </span><span class="s">você</span><span class="nv"> </span><span class="s">está?&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;user</span>
+<span class="l l-Scalar l-Scalar-Plain">Give a new, unique one-sentence answer to a new and different question.</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_end|&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;|im_start|&gt;assistant</span>
 </code></pre></div>
 </details>
 <h3 id="synthesizing-interactions_1">Synthesizing Interactions</h3>
