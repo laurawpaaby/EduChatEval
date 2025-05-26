@@ -1,6 +1,8 @@
 
 Several modules within the pipeline accept **customized prompts** and **seed messages** to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. Below are templates of both prompts and seed provided to illustrate how such customization can guide the generation process and support targeted use cases. There are two use cases: first for a *feedback* focused scenario, the second for a *intention* focused scenario.  
 
+For *Framework Generation*, generation is conducted using conversational prompt templates that incorporate `<|im_start|>` and `<|im_end|>` delimiters to comply with the expected formatting schema of the default instruction-tuned LLaMA model (`llama-3.2-3b-instruct`). As formatting conventions vary across models, these templates are designed to be easily adapted to accommodate different input schemas and instruction-following behaviors, ensuring compatibility with model-specific decoding and alignment settings.
+
 ---
 
 ## **Feedback Templates**
@@ -135,7 +137,7 @@ For the generation of a framework for the eight categories, the model was provid
 ### Synthesizing Interactions 
 To generate synthetic dialogues, the [interaction generator](../api/api_synth_int.md/) relies on system prompts for both the **student** and **tutor** agents. These prompts must be structured under a top-level key named `conversation_types`, whether passed as a `dictionary` or a `YAML` file. This format allows multiple interaction modes to be stored in a single configuration. If no prompting scheme is provided, a simple default prompt is used.
 
-Below are examples of the expected format in both a `dictionary` and a `YAML` file. The `YAML` template demonstrates how to store multiple frameworks, in this example for both **feedback** and **linguistic** categories.
+Below are examples of the expected format in both a `dictionary` and a `YAML` file. The `YAML` template demonstrates how to store multiple frameworks, in this example for both **feedback** and **general** categories.
 
 **Dictionary Template:**
 ```python

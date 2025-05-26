@@ -289,6 +289,7 @@ annotaded_df = predictor.run_pipeline(
 ```
 
 **Visualize**
+
 Import the visualizer and plot results:
 ```python
 from educhateval import Visualizer
