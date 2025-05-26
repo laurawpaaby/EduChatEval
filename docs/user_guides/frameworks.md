@@ -1,7 +1,7 @@
 
 Several modules within the pipeline accept **customized prompts** and **seed messages** to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. Below are templates of both prompts and seed provided to illustrate how such customization can guide the generation process and support targeted use cases. There are two use cases: first for a *feedback* focused scenario, the second for a *intention* focused scenario.  
 
-For *Framework Generation*, generation is conducted using conversational prompt templates that incorporate `<|im_start|>` and `<|im_end|>` delimiters to comply with the expected formatting schema of the default instruction-tuned LLaMA model (`llama-3.2-3b-instruct`). As formatting conventions vary across models, these templates are designed to be easily adapted to accommodate different input schemas and instruction-following behaviors, ensuring compatibility with model-specific decoding and alignment settings.
+**Be aware:** For *Framework Generation* in both scenarioes, generation is conducted using conversational prompt templates that incorporate `<|im_start|>` and `<|im_end|>` delimiters to comply with the expected formatting schema of the default instruction-tuned LLaMA model (`llama-3.2-3b-instruct`). As formatting conventions vary across models, these templates are designed to be easily adapted to accommodate different input schemas and instruction-following behaviors, ensuring compatibility with model-specific decoding and alignment settings. Users should make sure that their prompting scheme mathces the model used.
 
 ---
 
@@ -16,9 +16,8 @@ For the generation of a framework for the eight categories, the model was provid
 
 ??? example "Prompt Template for Feedback"
     ```yaml
-    prompt_dict = {
-        # ADVICE
-        "Advice": """<|im_start|>system
+            Advice: |
+    <|im_start|>system
     You provide a single sentence of advice in an educational setting.
     The advice should be constructive, context-appropriate, and expressed in a helpful tone. You never repeat yourself.
     <|im_end|>
@@ -26,10 +25,10 @@ For the generation of a framework for the eight categories, the model was provid
     <|im_start|>user
     Give a sentence of advice.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
 
-        # CONTENT
-        "Content": """<|im_start|>system
+    Content: |
+    <|im_start|>system
     You state an academic fact or piece of content relevant to a student's learning.
     Each sentence should be informative, domain-relevant, and suited for tutoring. You never repeat yourself.
     <|im_end|>
@@ -37,10 +36,10 @@ For the generation of a framework for the eight categories, the model was provid
     <|im_start|>user
     Provide a factual statement.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
 
-        # ENCOURAGEMENT
-        "Encouragement": """<|im_start|>system
+    Encouragement: |
+    <|im_start|>system
     You generate a single sentence offering encouragement to a student.
     The tone should be warm, supportive, and appropriate for educational feedback. You never repeat yourself.
     <|im_end|>
@@ -48,10 +47,10 @@ For the generation of a framework for the eight categories, the model was provid
     <|im_start|>user
     Say something encouraging.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
 
-        # EXPLANATION
-        "Explanation": """<|im_start|>system
+    Explanation: |
+    <|im_start|>system
     You provide a one-sentence explanation of a concept or process relevant in education.
     Your explanations should be clear, concise, and accurate. You never repeat yourself.
     <|im_end|>
@@ -59,10 +58,10 @@ For the generation of a framework for the eight categories, the model was provid
     <|im_start|>user
     Explain a concept in one sentence.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
 
-        # POSED QUESTION
-        "Posed Question": """<|im_start|>system
+    Posed Question: |
+    <|im_start|>system
     You pose an open-ended or reflective question to stimulate learning.
     The questions should be clear, relevant, and suitable for a tutor to ask a student. You never repeat the same question.
     <|im_end|>
@@ -70,10 +69,10 @@ For the generation of a framework for the eight categories, the model was provid
     <|im_start|>user
     Pose a thoughtful question.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
 
-        # SMALL TALK
-        "Small Talk": """<|im_start|>system
+    Small Talk: |
+    <|im_start|>system
     You generate short, friendly small talk suitable for casual rapport between student and tutor.
     Keep it relaxed and appropriate for an educational setting. You never repeat yourself.
     <|im_end|>
@@ -81,11 +80,10 @@ For the generation of a framework for the eight categories, the model was provid
     <|im_start|>user
     Say something casual.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
 
-
-    # SPECIFICITY
-    "Specificity": """<|im_start|>system
+    Specificity: |
+    <|im_start|>system
     You generate a sentence that highlights a specific part of the user’s message by referencing it directly.
     This may include precise feedback, correction, or specific praise. Be educational and avoid repetition.
     <|im_end|>
@@ -105,10 +103,10 @@ For the generation of a framework for the eight categories, the model was provid
     <|im_start|>user
     Give a new specific comment on a new sentence.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
 
-        # STYLE
-        "Style": """<|im_start|>system
+    Style: |
+    <|im_start|>system
     You highlight a stylistic feature in the user's sentence. This can include vivid language, varied sentence structure, tone shifts, or rhetorical devices.
     Make sure your response is educational, concise, and never repeats itself. Do not rephrase the user's sentence or generate a new one.
     <|im_end|>
@@ -128,9 +126,8 @@ For the generation of a framework for the eight categories, the model was provid
     <|im_start|>user
     Give another sentence and highlight a stylistic feature.
     <|im_end|>
-    <|im_start|>assistant"""
+    <|im_start|>assistant
 
-    }
     ```
 
 
@@ -234,9 +231,8 @@ For the generation of a framework for the four categories, the model was provide
 
 ??? example "Prompt Template for Four Intention Categories"
     ```yaml
-    prompt_dict = {
-        # CLARIFICATION
-        "Clarification": """<|im_start|>system
+    Clarification: |
+    <|im_start|>system
     You generate a conversational sentence that seeks clarification or context. 
     It should be polite, concise, and appropriate for an educational setting. You never repeat yourself.
     <|im_end|>
@@ -245,7 +241,7 @@ For the generation of a framework for the four categories, the model was provide
     Create a clarification sentence.
     <|im_end|>
     <|im_start|>assistant
-    Could you explain what you meant by the term 'distributed cognition'?
+    Could you explain what you meant by the term "distributed cognition"?
     <|im_end|>
     <|im_start|>user
     Create another clarification sentence.
@@ -256,11 +252,20 @@ For the generation of a framework for the four categories, the model was provide
     <|im_start|>user
     Create a clarification sentence.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
+    Can you clarify or rephrase what this text is about?
+    <|im_end|>
+    <|im_start|>user
+    Create a clarification sentence.
+    <|im_end|>
+    <|im_start|>user
+    Create a clarification sentence.
+    <|im_end|>
+    <|im_start|>assistant
 
-        # SMALL TALK
-        "Small Talk": """<|im_start|>system
-    You generate a short small talk sentence suitable in an casual setting. You never repeat yourself.
+    Small Talk: |
+    <|im_start|>system
+    You generate a short small talk sentence suitable in a casual setting. You never repeat yourself.
     <|im_end|>
 
     <|im_start|>user
@@ -272,10 +277,22 @@ For the generation of a framework for the four categories, the model was provide
     <|im_start|>user
     Create another small talk sentence.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
+    Have you had your morning coffee yet?
+    <|im_end|>
+    <|im_start|>user
+    Create a small talk sentence.
+    <|im_end|>
+    <|im_start|>assistant
+    Did you catch the sunrise this morning? It was beautiful.
+    <|im_end|>
+    <|im_start|>user
+    Create a small talk sentence.
+    <|im_end|>
+    <|im_start|>assistant
 
-        # QUESTION
-        "Question": """<|im_start|>system
+    Question: |
+    <|im_start|>system
     You generate a factual or thoughtful question that can be used in a conversation or educational setting. You never repeat the same question.
     <|im_end|>
 
@@ -286,6 +303,12 @@ For the generation of a framework for the four categories, the model was provide
     What is the capital of France?
     <|im_end|>
     <|im_start|>user
+    Create another question.
+    <|im_end|>
+    <|im_start|>assistant
+    How does working memory influence problem-solving?
+    <|im_end|>
+    <|im_start|>user
     Create a question.
     <|im_end|>
     <|im_start|>assistant
@@ -294,10 +317,10 @@ For the generation of a framework for the four categories, the model was provide
     <|im_start|>user
     Create a question.
     <|im_end|>
-    <|im_start|>assistant""",
+    <|im_start|>assistant
 
-        # STATEMENT
-        "Statement": """<|im_start|>system
+    Statement: |
+    <|im_start|>system
     You are a helpful and knowledgeable assistant in an educational setting.
     You respond to student questions in a friendly and conversational tone, aiming to explain or clarify in one sentence.
     Each response should:
@@ -314,16 +337,27 @@ For the generation of a framework for the four categories, the model was provide
     Sleep helps your brain and body recover and process everything you’ve learned during the day.
     <|im_end|>
     <|im_start|>user
+    How do plants eat sunlight?
+    <|im_end|>
+    <|im_start|>assistant
+    Plants use a process called photosynthesis to turn sunlight into energy they can store and use.
+    <|im_end|>
+    <|im_start|>user
+    Can you explain what a neuron does?
+    <|im_end|>
+    <|im_start|>assistant
+    Sure! A neuron sends signals in the brain and body, helping you think, move, and feel things.
+    <|im_end|>
+    <|im_start|>user
     what is the translation of hi how are you doing in portugese?
     <|im_end|>
     <|im_start|>assistant
-    The translation of 'Hi, how are you doing?" in Portuguese is: "Oi, como você está?'
+    The translation of "Hi, how are you doing?" in Portuguese is: "Oi, como você está?"
     <|im_end|>
     <|im_start|>user
     Give a new, unique one-sentence answer to a new and different question.
     <|im_end|>
-    <|im_start|>assistant""",
-    }
+    <|im_start|>assistant
     ```
 
 

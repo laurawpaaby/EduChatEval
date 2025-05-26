@@ -24,7 +24,7 @@ generator = FrameworkGenerator(model_name="llama-3.2-3b-instruct", api_url="http
 
 # Generating the raw data 
 df_feedback = generator.generate_framework(
-    prompt_path="/outline_prompts/prompt_feedback.py", 
+    prompt_path="/templates/prompt_feedback.yaml", 
     num_samples=200, 
     csv_out="/data/labeled_feedback_data.csv"
 )

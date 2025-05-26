@@ -197,9 +197,7 @@ import pandas as pd
 from pathlib import Path
 
 from educhateval.dialogue_generation.simulate_dialogue import simulate_conversation
-from educhateval.dialogue_generation.txt_llm_inputs.prompt_loader import (
-    load_prompts_and_seed,
-)
+#from educhateval.dialogue_generation.txt_llm_inputs.prompt_loader import (load_prompts_and_seed)
 from educhateval.dialogue_generation.models.wrap_huggingface import ChatHF
 from educhateval.dialogue_generation.models.wrap_micr import ChatMLX
 
