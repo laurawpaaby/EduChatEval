@@ -10,7 +10,7 @@ The full source code for the [`EduChatEval package`](https://pypi.org/project/ed
 
 
 ### Contact
-For questions or collaboration inquiries, feel free to reach out to [Laura W Paaby](mailto:laurawpaaby@gmail.com).
+For questions or collaboration inquiries, feel free to reach out to [Laura W Paaby](mailto:laurapaaby18@gmail.com).
 
 
 ## Acknowledgements
