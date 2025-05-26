@@ -23,7 +23,7 @@ from typing import List, Dict, Optional
 from pydantic import BaseModel, ValidationError
 import importlib.util
 import sys
-
+import yaml
 
 # --- Pydantic schema ---
 class ConversationAnnotation(BaseModel):
@@ -86,7 +86,7 @@ def synthesize_dataset(
     if prompt_dict is None:
         if not prompt_path:
             raise ValueError("Either prompt_dict or prompt_path must be provided.")
-        prompt_dict = load_prompt_dict_from_py(prompt_path)
+        prompt_dict = load_prompt_dict_from_yaml(prompt_path)
 
     all_data = []
     for category, prompt in prompt_dict.items():
@@ -121,12 +121,19 @@ def synthesize_dataset(
     return df
 
 
-def load_prompt_dict_from_py(path: str) -> Dict[str, str]:
+# load a YAML file and ensure it contains a dictionary with string keys and values
+def load_prompt_dict_from_yaml(path: str) -> Dict[str, str]:
     """
-    Dynamically loads a dictionary named `prompt_dict` from a Python file.
+    Load prompt_dict from a YAML file and ensure it's correctly formatted for the Outline framework.
     """
-    spec = importlib.util.spec_from_file_location("prompt_module", path)
-    prompt_module = importlib.util.module_from_spec(spec)
-    sys.modules["prompt_module"] = prompt_module
-    spec.loader.exec_module(prompt_module)
-    return prompt_module.prompt_dict
+    with open(path, "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+
+    if not isinstance(data, dict):
+        raise ValueError("YAML must contain a top-level dictionary.")
+
+    for k, v in data.items():
+        if not isinstance(k, str) or not isinstance(v, str):
+            raise ValueError(f"Invalid prompt format for key '{k}'. Expected a string key and string value.")
+
+    return data

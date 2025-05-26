@@ -24,7 +24,7 @@ def plot_predicted_categories(
     tutor_col=None,
     use_percent=True,
     palette="icefire",
-    title="Predicted Category Distribution",
+    title="Predicted Category Frequency",
     show_ci=False,
 ):
     if not student_col and not tutor_col:
@@ -252,7 +252,7 @@ def plot_previous_turn_distribution(
     title=None,
 ):
     """
-    Plot the distribution of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.
+    Plot the frequency of predicted categories in the previous turn of the *opposite* agent. Both student and tutor is required.
     """
 
     if not student_col or not tutor_col:
@@ -350,7 +350,7 @@ def plot_previous_turn_distribution(
     # Labels and title
     g.set_axis_labels(f"Category in Current Turn for {focus_label}", y_label)
     g.fig.suptitle(
-        f"Distribution of Interactions: {focus_label} Focus",
+        f"Frequency of Interactions: {focus_label} Focus",
         fontsize=15,
         fontweight="bold",
         y=0.99,
@@ -398,7 +398,7 @@ def plot_turn_ci_predicted_categories(
     session_col=None,
     use_percent=True,
     palette="icefire",
-    title="Predicted Category Distribution",
+    title="Predicted Category Frequencies",
     show_ci=False,
 ):
     if not student_col and not tutor_col:
