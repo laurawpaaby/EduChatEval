@@ -885,7 +885,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># Bar plot of class distributions</span>
 <span class="n">viz</span><span class="o">.</span><span class="n">plot_category_bars</span><span class="p">(</span>
     <span class="n">df</span><span class="o">=</span><span class="n">annotaded_feedback</span><span class="p">,</span>
-    <span class="n">label_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span> <span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">],</span>
+    <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
     <span class="n">use_percent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Categories of Feedback&quot;</span><span class="p">,</span>
     <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;twilight&quot;</span>
@@ -896,7 +896,6 @@
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Trend plot of predicted categories over turns</span>
 <span class="n">viz</span><span class="o">.</span><span class="n">plot_turn_trends</span><span class="p">(</span>
     <span class="n">df</span><span class="o">=</span><span class="n">annotaded_feedback</span><span class="p">,</span>
-    <span class="n">student_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_student_msg&quot;</span><span class="p">,</span>
     <span class="n">tutor_col</span><span class="o">=</span><span class="s2">&quot;predicted_labels_tutor_msg&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Categories of Feedback over Turns&quot;</span><span class="p">,</span>
     <span class="n">show_ci</span><span class="o">=</span><span class="kc">True</span>
