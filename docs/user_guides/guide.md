@@ -17,7 +17,7 @@ Then import the framework generator:
 from educhateval import FrameworkGenerator
 ```
 
-Initialize the generator with your downloaded and loaded model (`model_name`) and adress of the locally hosted LM Studio API endpoint that handles generation requests (`api_url`), and generate labeled samples. 
+Initialize the generator with your downloaded and loaded model (`model_name`) and adress of the locally hosted LM Studio API endpoint that handles generation requests (`api_url`), and generate labeled samples. In this case a `YAML`file of prompts is provided to guide generation, similar to those found in the [*templates*](frameworks.md). Alternatively, this could be a python dictionary as done in the example of *intentions* below.
 
 ```python
 generator = FrameworkGenerator(model_name="llama-3.2-3b-instruct", api_url="http://localhost:1234/v1/completions")
@@ -49,7 +49,7 @@ simulator = DialogueSimulator(backend="mlx", model_id="mlx-community/Qwen2.5-7B-
 ```
 
 
-In this example a system prompt and seed message is given directly, see [Templates](frameworks.md) for how to structure a `YAML` input instead. 
+In this example a system prompt and seed message is given directly. Alternatively, this can be structured as a `YAML` input, see [*Templates*](frameworks.md) for examples. 
 ```python
 # making the custom prompt as dict
 custom_prompts = {
@@ -67,7 +67,7 @@ seed_message = "I've written this paragraph, please help me polish it: flowers a
 
 ```
 
-In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a `DataFrame` look at the intention scenario. 
+In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a `DataFrame` look at the *intention* scenario. 
 
 ```python
 df_single_feedback = simulator.simulate_dialogue(
@@ -80,7 +80,7 @@ df_single_feedback = simulator.simulate_dialogue(
 
 **Classify and Predict**
 
-Import the classifier and run prediction on the labeled, synthesized data. In this case only the `tutor messages` are of interest, as it is the feedback types provided by the llm that are being analyzed.
+Import the classifier and run prediction on the labeled, synthesized data. In this case only the `tutor messages` are of interest, as it is the feedback types provided by the LLM that are being analyzed.
 ```python
 from educhateval import PredictLabels
 
@@ -111,7 +111,7 @@ Generate plots - here focusing on the bar charts:
 # Bar plot of class distributions
 viz.plot_category_bars(
     df=annotaded_feedback,
-    label_columns=["predicted_labels_student_msg", "predicted_labels_tutor_msg"],
+    tutor_col="predicted_labels_tutor_msg",
     use_percent=True,
     title="Predicted Categories of Feedback",
     palette="twilight"
@@ -120,13 +120,12 @@ viz.plot_category_bars(
 
 Returns:
 
-![Bar Feedback](../pics/feedback_bar.png){ width="400" }
+![Bar Feedback](../pics/feedback_bar.png){ width="600" }
 
 ```python
 # Trend plot of predicted categories over turns
 viz.plot_turn_trends(
     df=annotaded_feedback,
-    student_col="predicted_labels_student_msg",
     tutor_col="predicted_labels_tutor_msg",
     title="Categories of Feedback over Turns",
     show_ci=True
@@ -157,9 +156,7 @@ from educhateval import FrameworkGenerator
 
 Initialize the generator with your downloaded and loaded model (`model_name`) and adress of the locally hosted LM Studio API endpoint that handles generation requests (`api_url`), and generate labeled samples. 
 
-In this example a dictionary is provided as prompt. 
-See [Templates](frameworks.md) for how to structure a `YAML` prompt input instead. 
-
+In this example a dictionary is provided as prompt. Alternatively, this can be structured as a `YAML` input, see [*Templates*](frameworks.md) for examples.
 
 ```python
 generator = FrameworkGenerator(model_name="llama-3.2-3b-instruct", api_url="http://localhost:1234/v1/completions") 
@@ -219,7 +216,7 @@ Now using the dictionary directly:
 ```python
 # Generating the raw data 
 df_4 = generator.generate_framework(
-    prompt_path=custom_prompt_dict,
+    prompt_dict_input=custom_prompt_dict,
     num_samples=200, 
     csv_out="/data/labeled_training_data.csv"
 )
@@ -242,7 +239,7 @@ simulator = DialogueSimulator(backend="mlx", model_id="mlx-community/Qwen2.5-7B-
 ```
 In this example, multiple dialogues are simulated representing different student agents. Each seed message in the `english_course` configuration acts as the starting input for one student. The model responds over several turns, alternating between the student and tutor roles. This looped setup helps create a diverse set of interaction sequences, each grounded in a unique initiating prompt.
 
-See [Templates](frameworks.md) for how to structure your `YAML` seed input used here. 
+See [*Templates*](frameworks.md) for how to structure your `YAML` seed input used here. 
 
 ```python
 # Extract seed messages for the English course
@@ -320,11 +317,11 @@ viz.plot_category_bars(
 Returns:
 
 
-![Table](../pics/sum_table.png){ width="400" }
+![Table](../pics/sum_table.png){ width="600" }
 
 And:
 
-![Bar](../pics/simple_bar.png){ width="400" }
+![Bar](../pics/simple_bar.png){ width="600" }
 
 
 
@@ -390,4 +387,4 @@ Opens:
 ![UI](../pics/ui_end.png)
 
 
-Find more detailed instructions in the [Chat Wrap Tutorial](https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md).
+*Find more detailed instructions in the [Chat Wrap Tutorial](https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md).*

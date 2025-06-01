@@ -1,8 +1,8 @@
 ![Screenshot](pics/frontpage.png)
 
-This package offers a framework for researchers to log and classify interactions between students and LLM-based tutors in educational settings. It supports structured, objective evaluation through classification, simulation, and visualization utilities, and is designed for flexible use across tasks of any scale. The framework supports both researchers with pre-collected datasets and those operating in data-sparse contexts. It designed as a modular tool that can be integrated at any stage of the evaluation process.
+This package offers a framework for researchers to log and classify interactions between students and LLM-based tutors in educational settings. It supports structured, quantitiative evaluation through classification, simulation, and visualization utilities, and is designed for flexible use across tasks of any scale. The framework supports both researchers with pre-collected datasets and those operating in data-sparse contexts. It designed as a modular tool that can be integrated at any stage of the evaluation process.
 
-The package is designed to:
+**The package is designed to:**
 
 - Synthesize a labeled classification framework using user-defined categories 
 - Simulate multi-turn student–tutor dialogues via role-based prompting and structured seed messages
@@ -12,8 +12,8 @@ The package is designed to:
 
 ---
 
-### User Guides and API 
-To run the full pipeline, the package requires integration with LM Studio (for local model hosting) and the Hugging Face ecosystem. Step-by-step tutorials are provided in the [User Guide section](user_guides/userguide_intro.md/), covering setup, configuration, and usage across all modules—from data generation to classification and visualization.
+### **User Guides and API** 
+To run the full pipeline, the package requires integration with [`LM Studio`](https://lmstudio.ai/) (for local model hosting) and the [`Hugging Face`](https://huggingface.co/) ecosystem. Step-by-step tutorials are provided in the [User Guide section](user_guides/userguide_intro.md/), covering setup, configuration, and usage across all modules—from data generation to classification and visualization.
 
 Detailed information on the available classes, functions, and configuration options can be found in the [API reference](api/api_frame_gen.md/).
 

@@ -14,7 +14,9 @@ This package offers a framework for researchers to log and classify interactions
 - Fine-tune and apply classification models to label conversational turns
 - Visualize dialogue patterns with summary tables, frequency plots, temporal trends, and sequential dependencies
 
-Overview of the system architecture:
+<br>
+
+Overview of the underlying framework architecture:
 
 <br>
 
@@ -71,7 +73,7 @@ generator = FrameworkGenerator(
 
 # apply generator to synthesize data
 df_4 = generator.generate_framework(
-    prompt_path="../templates/prompt_default_4types.py", # path to prompt template, can also be a direct dictionary
+    prompt_path="../templates/prompt_default_4types.yaml", # path to prompt template, can also be a direct dictionary
     num_samples=200                                      # number of samples per category to simulate
 )
 

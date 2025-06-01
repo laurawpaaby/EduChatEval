@@ -1,7 +1,7 @@
 
 Several modules within the pipeline accept **customized prompts** and **seed messages** to ensure that the synthesized data aligns with the specific interactional setting the user intends to simulate. Below are templates of both prompts and seed provided to illustrate how such customization can guide the generation process and support targeted use cases. There are two use cases: first for a *feedback* focused scenario, the second for a *intention* focused scenario.  
 
-**Be aware:** In this implementation of *Framework Generation* , the prompt templates use <|im_start|> and <|im_end|> delimiters to match the expected format of the default model (llama-3.2-3b-instruct). If another model is used, users must adjust the prompt formatting to match that model’s expected input schema and instruction behavior.
+**Be aware:** In this implementation of *Framework Generation* , the prompt templates use `<|im_start|>` and `<|im_end|>` delimiters to match the expected format of the default model (`llama-3.2-3b-instruct`). If another model is used, users should adjust the prompt formatting to match that model’s expected input schema and instruction behavior.
 
 ---
 

@@ -1,0 +1,13 @@
+turn,student_msg,tutor_msg
+1,"Hi, what is the largest planet in the solar system?",Jupiter is the largest planet in our solar system.
+2,"Thanks, what is the smallest? And how do they differ?","Mercury is the smallest planet. 
+
+The main differences between Jupiter and Mercury are:
+
+1. Size: Jupiter (diameter of over 142,000 km) is massive in contrast to Mercury's small diameter of about 4,879 km.
+
+2. Size and density: Jupiter is a gas giant with little solid material, whereas Mercury is a rocky planet.
+
+3. Atmosphere: Jupiter has no solid surface and an immense atmosphere, whereas Mercury's atmosphere is extremely thin.
+
+4. Composition: Jupiter is mostly hydrogen and helium gases, while Mercury is primarily rock and metal."

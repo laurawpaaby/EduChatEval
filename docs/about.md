@@ -6,12 +6,13 @@ This package was developed as part of a master’s thesis in Cognitive Science a
 The core contribution is supporting quantitative, interaction-level evaluation by turning dialogue data into structured, labeled outputs. By combining tools for classification, simulation, and visualization, the package enables data-driven reproducible analysis of chatbot-assisted learning and is intended for use in both experimental and applied research contexts.
 
 
-The full source code for the [`EduChatEval package`](https://pypi.org/project/educhateval/) is available on [GitHub](https://github.com/laurawpaaby/EduChatEval/tree/main) and is licensed under [MIT License](https://github.com/laurawpaaby/EduChatEval/blob/main/LICENSE)
+The full source code for the [`EduChatEval package`](https://pypi.org/project/educhateval/) is available on [GitHub](https://github.com/laurawpaaby/EduChatEval/tree/main) and is licensed under [MIT License](https://github.com/laurawpaaby/EduChatEval/blob/main/LICENSE).
 
 
 ### Contact
 For questions or collaboration inquiries, feel free to reach out to [Laura W Paaby](mailto:laurapaaby18@gmail.com).
 
+---
 
 ## Acknowledgements
 
