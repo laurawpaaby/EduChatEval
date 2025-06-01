@@ -812,7 +812,7 @@
 <p>Then import the framework generator: 
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
 </code></pre></div></p>
-<p>Initialize the generator with your downloaded and loaded model (<code>model_name</code>) and adress of the locally hosted LM Studio API endpoint that handles generation requests (<code>api_url</code>), and generate labeled samples. </p>
+<p>Initialize the generator with your downloaded and loaded model (<code>model_name</code>) and adress of the locally hosted LM Studio API endpoint that handles generation requests (<code>api_url</code>), and generate labeled samples. In this case a <code>YAML</code>file of prompts is provided to guide generation, similar to those found in the <a href="../frameworks/"><em>templates</em></a>. Alternatively, this could be a python dictionary as done in the example of <em>intentions</em> below.</p>
 <div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span>
 
 <span class="c1"># Generating the raw data </span>
@@ -836,7 +836,7 @@
 <span class="c1"># choose either mlx or Huggingface (HF) backend depending on the host of the model</span>
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">DialogueSimulator</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mlx&quot;</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>In this example a system prompt and seed message is given directly, see <a href="../frameworks/">Templates</a> for how to structure a <code>YAML</code> input instead. 
+<p>In this example a system prompt and seed message is given directly. Alternatively, this can be structured as a <code>YAML</code> input, see <a href="../frameworks/"><em>Templates</em></a> for examples. 
 <div class="highlight"><pre><span></span><code><span class="c1"># making the custom prompt as dict</span>
 <span class="n">custom_prompts</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;conversation_types&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -851,7 +851,7 @@
 <span class="n">prompt</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="p">[</span><span class="s2">&quot;conversation_types&quot;</span><span class="p">][</span><span class="s2">&quot;feedback&quot;</span><span class="p">]</span>
 <span class="n">seed_message</span> <span class="o">=</span> <span class="s2">&quot;I&#39;ve written this paragraph, please help me polish it: flowers are nice and they grow in gardens. some are red or yellow. people give them on birthdays and stuff. bees like them too.&quot;</span> 
 </code></pre></div></p>
-<p>In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a <code>DataFrame</code> look at the intention scenario. </p>
+<p>In this case the interactions of only one student is simulated. For an example where several student-tutor interactions are simulated and appended to a <code>DataFrame</code> look at the <em>intention</em> scenario. </p>
 <div class="highlight"><pre><span></span><code><span class="n">df_single_feedback</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">simulate_dialogue</span><span class="p">(</span>
     <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;feedback&quot;</span><span class="p">,</span>
     <span class="n">turns</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
@@ -860,7 +860,7 @@
 <span class="p">)</span>
 </code></pre></div>
 <p><strong>Classify and Predict</strong></p>
-<p>Import the classifier and run prediction on the labeled, synthesized data. In this case only the <code>tutor messages</code> are of interest, as it is the feedback types provided by the llm that are being analyzed.
+<p>Import the classifier and run prediction on the labeled, synthesized data. In this case only the <code>tutor messages</code> are of interest, as it is the feedback types provided by the LLM that are being analyzed.
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">PredictLabels</span>
 
 <span class="n">predictor</span> <span class="o">=</span> <span class="n">PredictLabels</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;distilbert/distilroberta-base&quot;</span><span class="p">)</span>
@@ -892,7 +892,7 @@
 <span class="p">)</span>
 </code></pre></div></p>
 <p>Returns:</p>
-<p><img alt="Bar Feedback" src="../../pics/feedback_bar.png" width="400" /></p>
+<p><img alt="Bar Feedback" src="../../pics/feedback_bar.png" width="600" /></p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Trend plot of predicted categories over turns</span>
 <span class="n">viz</span><span class="o">.</span><span class="n">plot_turn_trends</span><span class="p">(</span>
     <span class="n">df</span><span class="o">=</span><span class="n">annotaded_feedback</span><span class="p">,</span>
@@ -915,8 +915,7 @@ Returns:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">educhateval</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameworkGenerator</span>
 </code></pre></div></p>
 <p>Initialize the generator with your downloaded and loaded model (<code>model_name</code>) and adress of the locally hosted LM Studio API endpoint that handles generation requests (<code>api_url</code>), and generate labeled samples. </p>
-<p>In this example a dictionary is provided as prompt. 
-See <a href="../frameworks/">Templates</a> for how to structure a <code>YAML</code> prompt input instead. </p>
+<p>In this example a dictionary is provided as prompt. Alternatively, this can be structured as a <code>YAML</code> input, see <a href="../frameworks/"><em>Templates</em></a> for examples.</p>
 <div class="highlight"><pre><span></span><code><span class="n">generator</span> <span class="o">=</span> <span class="n">FrameworkGenerator</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;llama-3.2-3b-instruct&quot;</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1234/v1/completions&quot;</span><span class="p">)</span> 
 
 <span class="c1"># Dictionary of prompts</span>
@@ -972,7 +971,7 @@ See <a href="../frameworks/">Templates</a> for how to structure a <code>YAML</co
 <p>Now using the dictionary directly:
 <div class="highlight"><pre><span></span><code><span class="c1"># Generating the raw data </span>
 <span class="n">df_4</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_framework</span><span class="p">(</span>
-    <span class="n">prompt_path</span><span class="o">=</span><span class="n">custom_prompt_dict</span><span class="p">,</span>
+    <span class="n">prompt_dict_input</span><span class="o">=</span><span class="n">custom_prompt_dict</span><span class="p">,</span>
     <span class="n">num_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
     <span class="n">csv_out</span><span class="o">=</span><span class="s2">&quot;/data/labeled_training_data.csv&quot;</span>
 <span class="p">)</span>
@@ -991,7 +990,7 @@ See <a href="../frameworks/">Templates</a> for how to structure a <code>YAML</co
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">DialogueSimulator</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mlx&quot;</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mlx-community/Qwen2.5-7B-Instruct-1M-4bit&quot;</span><span class="p">)</span>
 </code></pre></div>
 In this example, multiple dialogues are simulated representing different student agents. Each seed message in the <code>english_course</code> configuration acts as the starting input for one student. The model responds over several turns, alternating between the student and tutor roles. This looped setup helps create a diverse set of interaction sequences, each grounded in a unique initiating prompt.</p>
-<p>See <a href="../frameworks/">Templates</a> for how to structure your <code>YAML</code> seed input used here. </p>
+<p>See <a href="../frameworks/"><em>Templates</em></a> for how to structure your <code>YAML</code> seed input used here. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Extract seed messages for the English course</span>
 <span class="n">english_seeds</span> <span class="o">=</span> <span class="n">seed_messages</span><span class="p">[</span><span class="s2">&quot;english_course&quot;</span><span class="p">][</span><span class="s2">&quot;seeds&quot;</span><span class="p">]</span>
 <span class="n">n_seeds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">english_seeds</span><span class="p">)</span>
@@ -1056,9 +1055,9 @@ In this example, multiple dialogues are simulated representing different student
 <span class="p">)</span>
 </code></pre></div></p>
 <p>Returns:</p>
-<p><img alt="Table" src="../../pics/sum_table.png" width="400" /></p>
+<p><img alt="Table" src="../../pics/sum_table.png" width="600" /></p>
 <p>And:</p>
-<p><img alt="Bar" src="../../pics/simple_bar.png" width="400" /></p>
+<p><img alt="Bar" src="../../pics/simple_bar.png" width="600" /></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Trend plot of predicted categories over turns</span>
 <span class="n">viz</span><span class="o">.</span><span class="n">plot_turn_trends</span><span class="p">(</span>
     <span class="n">df</span><span class="o">=</span><span class="n">annotated_df</span><span class="p">,</span>
@@ -1099,7 +1098,7 @@ his replaces the <em>synthesizing interactions</em> step above and is executed a
 <p><img alt="UI" src="../../pics/ui.png" />
 <img alt="UI" src="../../pics/ui_chat.png" />
 <img alt="UI" src="../../pics/ui_end.png" /></p>
-<p>Find more detailed instructions in the <a href="https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md">Chat Wrap Tutorial</a>.</p>
+<p><em>Find more detailed instructions in the <a href="https://github.com/laurawpaaby/EduChatEval/blob/main/tutorials/chat_wrap_instructions.md">Chat Wrap Tutorial</a>.</em></p>
 
 
 
