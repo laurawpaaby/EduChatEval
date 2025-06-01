@@ -1,11 +1,11 @@
 [project]
 name = "educhateval"
-version = "0.1.9"
-description = "A pipeline and package to implement and evaluate LLM chat bot tutors in education."
+version = "0.1.10"
+description = "A pipeline and package to implement and evaluate-based LLM chatbot tutors in education."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 authors = [
-  { name = "Laura Wulff Paaby", email = "202806616@post.au.dk" }
+  { name = "Laura Wulff Paaby", email = "laurapaaby18@gmail.com" }
 ]
 license = "MIT"
 
